@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Undangan Pernikahan Adat Jawa - Romeo &amp; Juliet</title>
+  <meta name="description" content="Pawiwahan Ageng Romeo &amp; Juliet - Adat Jawa Keraton">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Audio Element -->
+  <audio id="bgMusic" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=traditional-asian-melody-113337.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- Floating Audio Button -->
+  <div class="music-toggle" id="musicToggle" onclick="toggleMusic()" style="display:none;">
+    <i class="fas fa-compact-disc spin" id="musicIcon"></i>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast"><i class="fas fa-check-circle"></i> Nomor rekening berhasil disalin!</div>
+
+  <!-- Lightbox Modal -->
+  <div id="lightboxModal" class="lightbox-modal" onclick="closeLightbox()">
+    <span class="lightbox-close">&times;</span>
+    <img id="lightboxImg" src="" alt="Fullscreen Preview">
+  </div>
+
+  <!-- ==================== COVER SECTION ==================== -->
+  <div class="cover-section" id="cover">
+    <div class="batik-pattern-bg"></div>
+    <div class="cover-content" data-aos="zoom-in" data-aos-duration="1000">
+      <div class="gunungan-icon">
+        <svg viewBox="0 0 100 120" fill="currentColor">
+          <path d="M50 5 C30 35 10 70 5 110 L95 110 C90 70 70 35 50 5 Z" stroke="#C5A356" stroke-width="1.5" fill="rgba(197, 163, 86, 0.1)"/>
+          <path d="M50 20 L50 105 M30 65 Q50 45 70 65 M20 90 Q50 70 80 90" stroke="#C5A356" stroke-width="1"/>
+        </svg>
+      </div>
+      <p class="cover-salutation">PAWIWAHAN AGENG</p>
+      <h1 class="cover-title">Romeo &amp; Juliet</h1>
+      <p class="cover-date">Kamis Kliwon, 31 Desember 2026</p>
+      
+      <div class="jawa-divider">
+        <span></span><i class="fas fa-crown"></i><span></span>
+      </div>
+
+      <div class="cover-guest-box">
+        <p class="kepada">Katur Dhumateng Panjenenganipun:</p>
+        <h3 class="guest-name" id="namaTamuCover">Tamu Undangan</h3>
+        <p class="guest-note">Nyuwun donga pangestu saha rawuhipun</p>
+      </div>
+
+      <button class="btn-buka" onclick="bukaUndangan()">
+        <i class="fas fa-envelope-open-text"></i> Buka Undangan
+      </button>
+    </div>
+  </div>
+
+  <!-- ==================== MAIN INVITATION ==================== -->
+  <main class="main-content" id="mainContent">
+
+    <!-- HERO / SALUTATION -->
+    <section class="section-hero">
+      <div class="container text-center" data-aos="fade-up">
+        <div class="keraton-badge">Adat Jawa Keraton Ngayogyakarta</div>
+        <p class="bismillah-arab">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p>
+        <p class="salam-teks">Assalamu’alaikum Warahmatullahi Wabarakatuh</p>
+        <p class="opening-quote">
+          "Wonten ing antawisipun tanda-tanda panguwaosipun Allah, Panjenengane nyipta pasangan kanggo sira kabeh saka jenismu dhewe, supaya sira rumangsa ayem tentrem."
+        </p>
+        <p class="surah-label">— QS. Ar-Rum: 21 —</p>
+      </div>
+    </section>
+
+    <!-- MEMPELAI SECTION (KERATON ARCH STYLE) -->
+    <section class="section-mempelai" id="mempelai">
+      <div class="container">
+        <div class="section-heading text-center" data-aos="fade-up">
+          <span class="sub-title">Penganten Kakung &amp; Putri</span>
+          <h2>Mempelai Berbahagia</h2>
+          <div class="heading-line"></div>
+        </div>
+
+        <div class="mempelai-grid">
+          <!-- Pria -->
+          <div class="mempelai-card arch-card" data-aos="fade-right">
+            <div class="arch-photo-wrapper">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=80" alt="Romeo Prasetyo">
+              <div class="arch-border-gold"></div>
+            </div>
+            <h3 class="nama-mempelai">Romeo Prasetyo, S.T.</h3>
+            <p class="gelar-adat">Mempelai Kakung</p>
+            <p class="info-ortu">
+              Putra kapisan saking panjenenganipun<br>
+              <strong>Bpk. Hadi Prasetyo</strong> &amp; <strong>Ibu Siti Rahayu</strong><br>
+              <span class="asal-daerah">Kotagede, DI Yogyakarta</span>
+            </p>
+            <a href="https://instagram.com" target="_blank" class="sosmed-link"><i class="fab fa-instagram"></i> @romeoprasetyo</a>
+          </div>
+
+          <div class="mempelai-divider" data-aos="zoom-in">
+            <div class="ampersand-circle">&amp;</div>
+          </div>
+
+          <!-- Wanita -->
+          <div class="mempelai-card arch-card" data-aos="fade-left">
+            <div class="arch-photo-wrapper">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80" alt="Juliet Wulandari">
+              <div class="arch-border-gold"></div>
+            </div>
+            <h3 class="nama-mempelai">Juliet Wulandari, S.Pd.</h3>
+            <p class="gelar-adat">Mempelai Putri</p>
+            <p class="info-ortu">
+              Putri kaping kalih saking panjenenganipun<br>
+              <strong>Bpk. Suryo Wulandono</strong> &amp; <strong>Ibu Kartini Ayu</strong><br>
+              <span class="asal-daerah">Sleman, DI Yogyakarta</span>
+            </p>
+            <a href="https://instagram.com" target="_blank" class="sosmed-link"><i class="fab fa-instagram"></i> @julietwulandari</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COUNTDOWN -->
+    <section class="section-countdown">
+      <div class="container text-center" data-aos="fade-up">
+        <h3 class="countdown-heading">Ngetang Dinten Menuju Pawiwahan</h3>
+        <div class="timer-grid">
+          <div class="timer-box"><span class="timer-num" id="days">00</span><span class="timer-label">Dinten (Hari)</span></div>
+          <div class="timer-box"><span class="timer-num" id="hours">00</span><span class="timer-label">Jam</span></div>
+          <div class="timer-box"><span class="timer-num" id="minutes">00</span><span class="timer-label">Menit</span></div>
+          <div class="timer-box"><span class="timer-num" id="seconds">00</span><span class="timer-label">Detik</span></div>
+        </div>
+        <a href="https://calendar.google.com" target="_blank" class="btn-secondary">
+          <i class="far fa-calendar-plus"></i> Simpen wonten Google Calendar
+        </a>
+      </div>
+    </section>
+
+    <!-- ACARA -->
+    <section class="section-acara" id="acara">
+      <div class="container">
+        <div class="section-heading text-center" data-aos="fade-up">
+          <span class="sub-title">Wekdal &amp; Papan Palenggahan</span>
+          <h2>Rantamaning Adicara</h2>
+          <div class="heading-line"></div>
+        </div>
+
+        <div class="acara-grid">
+          <!-- Ijab Qobul -->
+          <div class="acara-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="acara-icon"><i class="fas fa-mosque"></i></div>
+            <h3>Ijab Qobul (Akad Nikah)</h3>
+            <p class="acara-tanggal"><i class="far fa-calendar-alt"></i> Kamis Kliwon, 31 Desember 2026</p>
+            <p class="acara-waktu"><i class="far fa-clock"></i> 08.00 - 10.00 WIB</p>
+            <div class="acara-tempat">
+              <strong>Kagungan Dalem Masjid Gedhe Kauman</strong>
+              <p>Alun-alun Keraton Ngayogyakarta Hadiningrat</p>
+            </div>
+            <a href="https://maps.google.com" target="_blank" class="btn-map">
+              <i class="fas fa-location-arrow"></i> Petunjuk Arah (Maps)
+            </a>
+          </div>
+
+          <!-- Resepsi / Panggih -->
+          <div class="acara-card highlight" data-aos="fade-up" data-aos-delay="200">
+            <div class="acara-badge">Upacara Panggih &amp; Resepsi</div>
+            <div class="acara-icon"><i class="fas fa-glass-cheers"></i></div>
+            <h3>Pahargyan Temanten (Resepsi)</h3>
+            <p class="acara-tanggal"><i class="far fa-calendar-alt"></i> Kamis Kliwon, 31 Desember 2026</p>
+            <p class="acara-waktu"><i class="far fa-clock"></i> 11.00 - 14.00 WIB</p>
+            <div class="acara-tempat">
+              <strong>Pendopo Agung Ndalem Ngabean</strong>
+              <p>Jl. Ngadisuryan No. 6, Patehan, Kraton, Yogyakarta</p>
+            </div>
+            <a href="https://maps.google.com" target="_blank" class="btn-map">
+              <i class="fas fa-location-arrow"></i> Petunjuk Arah (Maps)
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERI FOTO (6 FOTO ARCH GRID) -->
+    <section class="section-galeri" id="galeri">
+      <div class="container">
+        <div class="section-heading text-center" data-aos="fade-up">
+          <span class="sub-title">Dokumentasi Foto</span>
+          <h2>Koleksi Potret Bahagia</h2>
+          <div class="heading-line"></div>
+          <p class="gallery-subtitle">Klik pada foto untuk melihat ukuran penuh</p>
+        </div>
+
+        <div class="jawa-gallery-grid">
+          <div class="jawa-photo-card" data-aos="zoom-in" onclick="openLightbox('https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1000&auto=format&fit=crop&q=80')">
+            <div class="jawa-photo-arch">
+              <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=600&auto=format&fit=crop&q=80" alt="Foto Jawa 1">
+              <div class="zoom-hint"><i class="fas fa-search-plus"></i></div>
+            </div>
+          </div>
+          <div class="jawa-photo-card" data-aos="zoom-in" data-aos-delay="100" onclick="openLightbox('https://images.unsplash.com/photo-1519741497674-611481863552?w=1000&auto=format&fit=crop&q=80')">
+            <div class="jawa-photo-arch">
+              <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80" alt="Foto Jawa 2">
+              <div class="zoom-hint"><i class="fas fa-search-plus"></i></div>
+            </div>
+          </div>
+          <div class="jawa-photo-card" data-aos="zoom-in" data-aos-delay="200" onclick="openLightbox('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1000&auto=format&fit=crop&q=80')">
+            <div class="jawa-photo-arch">
+              <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80" alt="Foto Jawa 3">
+              <div class="zoom-hint"><i class="fas fa-search-plus"></i></div>
+            </div>
+          </div>
+          <div class="jawa-photo-card" data-aos="zoom-in" data-aos-delay="300" onclick="openLightbox('https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1000&auto=format&fit=crop&q=80')">
+            <div class="jawa-photo-arch">
+              <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=600&auto=format&fit=crop&q=80" alt="Foto Jawa 4">
+              <div class="zoom-hint"><i class="fas fa-search-plus"></i></div>
+            </div>
+          </div>
+          <div class="jawa-photo-card" data-aos="zoom-in" data-aos-delay="400" onclick="openLightbox('https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1000&auto=format&fit=crop&q=80')">
+            <div class="jawa-photo-arch">
+              <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600&auto=format&fit=crop&q=80" alt="Foto Jawa 5">
+              <div class="zoom-hint"><i class="fas fa-search-plus"></i></div>
+            </div>
+          </div>
+          <div class="jawa-photo-card" data-aos="zoom-in" data-aos-delay="500" onclick="openLightbox('https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1000&auto=format&fit=crop&q=80')">
+            <div class="jawa-photo-arch">
+              <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&auto=format&fit=crop&q=80" alt="Foto Jawa 6">
+              <div class="zoom-hint"><i class="fas fa-search-plus"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AMPLOP DIGITAL -->
+    <section class="section-gift" id="gift">
+      <div class="container">
+        <div class="section-heading text-center" data-aos="fade-up">
+          <span class="sub-title">Kado Katresnan</span>
+          <h2>Amplop Digital &amp; Kado Penganten</h2>
+          <div class="heading-line"></div>
+          <p class="gift-desc">Donga pangestu panjenengan dados berkah ingkang utami kagem temanten kekalih. Menawi kersa paring kado katresnan lumantar rekening:</p>
+        </div>
+
+        <div class="gift-cards">
+          <!-- BCA -->
+          <div class="bank-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="bank-header">
+              <span class="bank-name">BANK BCA</span>
+              <i class="fas fa-credit-card"></i>
+            </div>
+            <div class="bank-number" id="rek1">8465019283</div>
+            <p class="bank-owner">a.n. Romeo Prasetyo</p>
+            <button class="btn-copy" id="btnCopy1" onclick="copyRek('8465019283', this)">
+              <i class="far fa-copy"></i> Salin No. Rekening
+            </button>
+          </div>
+
+          <!-- BSI -->
+          <div class="bank-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="bank-header">
+              <span class="bank-name">BANK BSI</span>
+              <i class="fas fa-credit-card"></i>
+            </div>
+            <div class="bank-number" id="rek2">7182930415</div>
+            <p class="bank-owner">a.n. Juliet Wulandari</p>
+            <button class="btn-copy" id="btnCopy2" onclick="copyRek('7182930415', this)">
+              <i class="far fa-copy"></i> Salin No. Rekening
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP & BUKU TAMU -->
+    <section class="section-rsvp" id="rsvp">
+      <div class="container">
+        <div class="section-heading text-center" data-aos="fade-up">
+          <span class="sub-title">Konfirmasi &amp; Donga Pangestu</span>
+          <h2>Buku Tamu Pawiwahan</h2>
+          <div class="heading-line"></div>
+        </div>
+
+        <div class="rsvp-wrapper">
+          <form class="rsvp-form" id="rsvpForm" onsubmit="handleRSVP(event)" data-aos="fade-up">
+            <div class="form-group">
+              <label for="nama">Asma Jangkep (Nama Lengkap)</label>
+              <input type="text" id="nama" placeholder="Ketik asma panjenengan" required>
+            </div>
+            <div class="form-group">
+              <label for="kehadiran">Konfirmasi Rawuh</label>
+              <select id="kehadiran" required>
+                <option value="">-- Pilih Rawuh / Mboten --</option>
+                <option value="Hadir">Insya Allah Rawuh (Hadir)</option>
+                <option value="Tidak Hadir">Nyuwun Pangapunten Mboten Saged Rawuh</option>
+                <option value="Ragu-ragu">Taksih Rangu-rangu</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="ucapan">Donga Pangestu</label>
+              <textarea id="ucapan" rows="3" placeholder="Serat donga saha pangestu kagem temanten kekalih..." required></textarea>
+            </div>
+            <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Kirim Donga Pangestu</button>
+          </form>
+
+          <div class="guestbook-list" id="guestbookList" data-aos="fade-up" data-aos-delay="100">
+            <h3>Donga Pangestu Saking Sedherek</h3>
+            <div class="guest-messages" id="messagesContainer">
+              <!-- Rendered via JS Storage -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="section-footer text-center">
+      <div class="container">
+        <p class="pantun-jawa">
+          "Mugi Gusti Allah tansah paring berkah, katresnan, saha karaharjan wonten ing brayat enggalipun Romeo &amp; Juliet dumugi kaken-kaken ninen-ninen."
+        </p>
+        <p class="closing-thanks">Matur Nuwun Sanget Awit Rawuh Saha Donga Pangestunipun</p>
+        <h4 class="footer-names">Romeo &amp; Juliet</h4>
+        <p class="copyright">&copy; 2026 Romeo &amp; Juliet. Template Undangan Pernikahan Adat Jawa.</p>
+      </div>
+    </footer>
+
+    <!-- BOTTOM NAVBAR -->
+    <nav class="bottom-nav">
+      <a href="#mempelai" class="nav-link"><i class="fas fa-heart"></i><span>Temanten</span></a>
+      <a href="#acara" class="nav-link"><i class="far fa-calendar-alt"></i><span>Adicara</span></a>
+      <a href="#galeri" class="nav-link"><i class="far fa-images"></i><span>Galeri</span></a>
+      <a href="#gift" class="nav-link"><i class="fas fa-gift"></i><span>Kado</span></a>
+      <a href="#rsvp" class="nav-link"><i class="far fa-comment-dots"></i><span>Buku Tamu</span></a>
+    </nav>
+
+  </main>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true });
+
+    // URL Param Guest Name
+    const urlParams = new URLSearchParams(window.location.search);
+    const guestParam = urlParams.get('to') || urlParams.get('p') || urlParams.get('guest') || 'Tamu Undangan';
+    document.getElementById('namaTamuCover').textContent = guestParam;
+
+    // Music Player
+    const bgMusic = document.getElementById('bgMusic');
+    const musicToggle = document.getElementById('musicToggle');
+    const musicIcon = document.getElementById('musicIcon');
+    let isPlaying = false;
+
+    function bukaUndangan() {
+      document.getElementById('cover').classList.add('hide');
+      document.getElementById('mainContent').classList.add('show');
+      musicToggle.style.display = 'flex';
+      playMusic();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function playMusic() {
+      bgMusic.play().then(() => {
+        isPlaying = true;
+        musicIcon.classList.add('spin');
+      }).catch(e => console.log('Autoplay prevented:', e));
+    }
+
+    function toggleMusic() {
+      if (isPlaying) {
+        bgMusic.pause();
+        musicIcon.classList.remove('spin');
+        isPlaying = false;
+      } else {
+        bgMusic.play();
+        musicIcon.classList.add('spin');
+        isPlaying = true;
+      }
+    }
+
+    // Countdown Timer
+    const weddingDate = new Date('December 31, 2026 08:00:00').getTime();
+    setInterval(() => {
+      const now = new Date().getTime();
+      const diff = weddingDate - now;
+      if (diff > 0) {
+        document.getElementById('days').innerText = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
+        document.getElementById('hours').innerText = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+        document.getElementById('minutes').innerText = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+        document.getElementById('seconds').innerText = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
+      }
+    }, 1000);
+
+    // Copy Account Number
+    function copyRek(text, btn) {
+      navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById('toast');
+        toast.classList.add('show');
+        const oldText = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-check"></i> Disalin!';
+        setTimeout(() => {
+          toast.classList.remove('show');
+          btn.innerHTML = oldText;
+        }, 3000);
+      });
+    }
+
+    // Lightbox Modal
+    function openLightbox(src) {
+      const modal = document.getElementById('lightboxModal');
+      const img = document.getElementById('lightboxImg');
+      img.src = src;
+      modal.classList.add('show');
+    }
+    function closeLightbox() {
+      document.getElementById('lightboxModal').classList.remove('show');
+    }
+
+    // Guestbook & RSVP with LocalStorage
+    const STORAGE_KEY = 'gasnikah_guestbook_jawa';
+    const defaultWishes = [
+      { nama: "Raden Mas Suryo & Keluarga", kehadiran: "Hadir", ucapan: "Ndherek mangayubagya Mas Romeo & Mbak Juliet, mugi tansah runtut atut dumugi kaken-kaken ninen-ninen.", waktu: "1 jam lalu" },
+      { nama: "Keluarga Besar Bpk. Daryanto", kehadiran: "Hadir", ucapan: "Ndherek bingah, mugi dados keluarga ingkang sakinah mawaddah warahmah.", waktu: "3 jam lalu" }
+    ];
+
+    function loadGuestbook() {
+      const data = JSON.parse(localStorage.getItem(STORAGE_KEY)) || defaultWishes;
+      const container = document.getElementById('messagesContainer');
+      container.innerHTML = '';
+      data.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'msg-card';
+        card.innerHTML = `
+          <div class="msg-author"><strong>${escapeHtml(item.nama)}</strong> <span class="badge-hadir">${escapeHtml(item.kehadiran)}</span></div>
+          <p>${escapeHtml(item.ucapan)}</p>
+          <span class="msg-time">${escapeHtml(item.waktu)}</span>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function handleRSVP(e) {
+      e.preventDefault();
+      const nama = document.getElementById('nama').value.trim();
+      const kehadiran = document.getElementById('kehadiran').value;
+      const ucapan = document.getElementById('ucapan').value.trim();
+
+      const newEntry = { nama: nama, kehadiran: kehadiran, ucapan: ucapan, waktu: "Bubar mawon" };
+      const data = JSON.parse(localStorage.getItem(STORAGE_KEY)) || defaultWishes;
+      data.unshift(newEntry);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      loadGuestbook();
+
+      document.getElementById('rsvpForm').reset();
+      
+      const confirmWA = confirm("Matur Nuwun! Doa restu Anda telah tersimpan di Buku Tamu Website.\n\nApakah Anda ingin mengirimkan konfirmasi kehadiran ini langsung ke WhatsApp Pengantin?");
+      if (confirmWA) {
+        const waMsg = `*KONFIRMASI RSVP PAWIWAHAN ADAT JAWA*\n` +
+          `-----------------------------------\n` +
+          `👤 *Asma:* ${nama}\n` +
+          `📌 *Kerawuhan:* ${kehadiran}\n` +
+          `💌 *Donga Restu:*\n"${ucapan}"\n` +
+          `-----------------------------------\n` +
+          `Matur Nuwun Sanget! Raden Arya & Roro Anindya.`;
+        window.open(`https://api.whatsapp.com/send?phone=6281234567890&text=${encodeURIComponent(waMsg)}`, '_blank');
+      }
+    }
+
+    function escapeHtml(text) {
+      return text.replace(/[&<>"']/g, function(m) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m];
+      });
+    }
+
+    loadGuestbook();
+  </script>
+</body>
+</html>

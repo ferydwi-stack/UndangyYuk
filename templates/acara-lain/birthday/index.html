@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sweet 17th Birthday Party - Aurelia Keisha</title>
+  <meta name="description" content="You're Invited to Aurelia's 17th Birthday Bash!">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <audio id="bgMusic" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=party-pop-dance-10943.mp3" type="audio/mp3">
+  </audio>
+
+  <div class="music-toggle" id="musicToggle" onclick="toggleMusic()" style="display:none;">
+    <i class="fas fa-compact-disc spin" id="musicIcon"></i>
+  </div>
+
+  <div id="toast" class="toast"><i class="fas fa-check-circle"></i> Nomor rekening berhasil disalin!</div>
+
+  <!-- COVER BIRTHDAY -->
+  <div class="cover-section" id="cover">
+    <div class="cover-content" data-aos="zoom-in">
+      <div class="sparkle-icon"><i class="fas fa-glass-cheers"></i></div>
+      <p class="cover-salutation">YOU'RE INVITED TO CELEBRATE</p>
+      <h1 class="cover-title">Aurelia's Sweet 17th</h1>
+      <p class="cover-date">Saturday, 05 December 2026</p>
+      
+      <div class="divider-line">
+        <span></span><i class="fas fa-gem"></i><span></span>
+      </div>
+
+      <div class="cover-guest-box">
+        <p class="kepada">Special VIP Invitation For:</p>
+        <h3 class="guest-name" id="namaTamuCover">Best Friend</h3>
+        <p class="guest-note">Get ready to dance, laugh, and celebrate together!</p>
+      </div>
+
+      <button class="btn-buka" onclick="bukaUndangan()">
+        <i class="fas fa-envelope-open"></i> Open Party Invitation
+      </button>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content" id="mainContent">
+
+    <section class="section-hero text-center" data-aos="fade-up">
+      <div class="container">
+        <span class="party-badge">✨ CHAPTER 17 &bull; THE GLOW ERA ✨</span>
+        <h2 class="hero-headline">Let's Party &amp; Make Memories!</h2>
+        <p class="hero-desc">
+          Waktu berjalan begitu cepat! Di usia yang ke-17 ini, aku ingin merayakan malam spesial ini bersama orang-orang tersayang. Pastikan kamu hadir ya!
+        </p>
+      </div>
+    </section>
+
+    <!-- PROFIL ULANG TAHUN -->
+    <section class="section-profil text-center" id="profil">
+      <div class="container">
+        <div class="bday-card" data-aos="zoom-in">
+          <div class="bday-photo-frame">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80" alt="Aurelia Keisha">
+          </div>
+          <h3 class="nama-bday">Aurelia Keisha Putri</h3>
+          <p class="bday-age">TURNING 17 &bull; DECEMBER 05, 2026</p>
+          <div class="dresscode-box">
+            <i class="fas fa-tshirt"></i>
+            <div>
+              <strong>Dress Code:</strong>
+              <p>Glam Touch / Black &amp; Rose Gold Sparkle</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WAKTU & LOKASI PARTY -->
+    <section class="section-acara" id="acara">
+      <div class="container">
+        <div class="section-heading text-center" data-aos="fade-up">
+          <span class="sub-title">Time &amp; Venue</span>
+          <h2>The Celebration Details</h2>
+          <div class="heading-line"></div>
+        </div>
+
+        <div class="acara-grid">
+          <div class="acara-card" data-aos="fade-up">
+            <div class="acara-icon"><i class="fas fa-music"></i></div>
+            <h3>Sweet 17th Dinner &amp; Party</h3>
+            <p class="acara-tanggal"><i class="far fa-calendar-alt"></i> Saturday, 05 December 2026</p>
+            <p class="acara-waktu"><i class="far fa-clock"></i> 18.30 WIB - Selesai</p>
+            <div class="acara-tempat">
+              <strong>Sky Lounge &amp; Ballroom - Senayan Park</strong>
+              <p>Jl. Gerbang Pemuda No. 3, Gelora, Tanah Abang, Jakarta Pusat</p>
+            </div>
+            <a href="https://maps.google.com" target="_blank" class="btn-map"><i class="fas fa-location-arrow"></i> Open Google Maps Route</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERI FOTO (4 FOTO PARTY) -->
+    <section class="section-galeri" id="galeri">
+      <div class="container text-center">
+        <div class="section-heading" data-aos="fade-up">
+          <span class="sub-title">Photo Highlights</span>
+          <h2>Moments &amp; Memories</h2>
+          <div class="heading-line"></div>
+        </div>
+
+        <div class="bday-gallery-grid">
+          <div class="photo-item" data-aos="zoom-in">
+            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80" alt="Party 1">
+          </div>
+          <div class="photo-item" data-aos="zoom-in" data-aos-delay="100">
+            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80" alt="Party 2">
+          </div>
+          <div class="photo-item" data-aos="zoom-in" data-aos-delay="200">
+            <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600&auto=format&fit=crop&q=80" alt="Party 3">
+          </div>
+          <div class="photo-item" data-aos="zoom-in" data-aos-delay="300">
+            <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=600&auto=format&fit=crop&q=80" alt="Party 4">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KADO / GIFT REGISTRY -->
+    <section class="section-gift" id="gift">
+      <div class="container text-center">
+        <div class="section-heading" data-aos="fade-up">
+          <span class="sub-title">Birthday Gift</span>
+          <h2>Cashless Gift &amp; Treats</h2>
+          <div class="heading-line"></div>
+          <p class="gift-desc">Kehadiran kamu adalah hadiah terbaik! Bagi yang ingin mengirimkan kado digital:</p>
+        </div>
+
+        <div class="bank-card" data-aos="zoom-in">
+          <div class="bank-header"><span class="bank-name">BANK BCA / BLU</span><i class="fas fa-gift"></i></div>
+          <div class="bank-number">5271829384</div>
+          <p class="bank-owner">a.n. Aurelia Keisha Putri</p>
+          <button class="btn-copy" onclick="copyRek('5271829384', this)"><i class="far fa-copy"></i> Copy Account Number</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP PARTY -->
+    <section class="section-rsvp" id="rsvp">
+      <div class="container">
+        <div class="section-heading text-center" data-aos="fade-up">
+          <span class="sub-title">RSVP &amp; Wishes</span>
+          <h2>Will You Be There?</h2>
+          <div class="heading-line"></div>
+        </div>
+
+        <div class="rsvp-wrapper">
+          <form class="rsvp-form" id="rsvpForm" onsubmit="handleRSVP(event)">
+            <div class="form-group">
+              <label for="nama">Your Name:</label>
+              <input type="text" id="nama" placeholder="Enter your name..." required>
+            </div>
+            <div class="form-group">
+              <label for="kehadiran">Will You Attend?</label>
+              <select id="kehadiran" required>
+                <option value="">-- Choose Attendance --</option>
+                <option value="Yes, I will attend!">Yes, I'll be there! 🎉</option>
+                <option value="Sorry, can't make it">Sorry, can't make it 😢</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="ucapan">Birthday Wishes for Aurelia:</label>
+              <textarea id="ucapan" rows="3" placeholder="Drop your birthday wishes..." required></textarea>
+            </div>
+            <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Send RSVP &amp; Wishes</button>
+          </form>
+
+          <div class="guestbook-list">
+            <h3>Friends' Birthday Wishes</h3>
+            <div class="guest-messages" id="messagesContainer">
+              <!-- Rendered via Storage -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="section-footer text-center">
+      <div class="container">
+        <h4 class="footer-names">See You at Aurelia's 17th! ✨</h4>
+        <p class="copyright">&copy; 2026 Sweet 17th Birthday Invitation. Template by UndangYuk.com</p>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true });
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const guestParam = urlParams.get('to') || urlParams.get('p') || urlParams.get('guest') || 'Special Guest';
+    document.getElementById('namaTamuCover').textContent = guestParam;
+
+    const bgMusic = document.getElementById('bgMusic');
+    const musicToggle = document.getElementById('musicToggle');
+    const musicIcon = document.getElementById('musicIcon');
+    let isPlaying = false;
+
+    function bukaUndangan() {
+      document.getElementById('cover').classList.add('hide');
+      document.getElementById('mainContent').classList.add('show');
+      musicToggle.style.display = 'flex';
+      bgMusic.play().then(() => { isPlaying = true; musicIcon.classList.add('spin'); }).catch(e => console.log(e));
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleMusic() {
+      if (isPlaying) { bgMusic.pause(); musicIcon.classList.remove('spin'); isPlaying = false; }
+      else { bgMusic.play(); musicIcon.classList.add('spin'); isPlaying = true; }
+    }
+
+    function copyRek(text, btn) {
+      navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById('toast');
+        toast.classList.add('show');
+        const oldText = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+        setTimeout(() => {
+          toast.classList.remove('show');
+          btn.innerHTML = oldText;
+        }, 3000);
+      });
+    }
+
+    const STORAGE_KEY = 'gasnikah_guestbook_birthday';
+    const defaultWishes = [
+      { nama: "Jessica & Trio", kehadiran: "Yes, I will attend!", ucapan: "Happy 17th Birthday Aurel!! Cant wait to party with you babe ✨", waktu: "2 hours ago" },
+      { nama: "Bryan & Geng SMA", kehadiran: "Yes, I will attend!", ucapan: "HBD Aurelia! Sukses selalu dan traktirannya ditunggu bro haha.", waktu: "4 hours ago" }
+    ];
+
+    function loadGuestbook() {
+      const data = JSON.parse(localStorage.getItem(STORAGE_KEY)) || defaultWishes;
+      const container = document.getElementById('messagesContainer');
+      container.innerHTML = '';
+      data.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'msg-card';
+        card.innerHTML = `
+          <div class="msg-author"><strong>${escapeHtml(item.nama)}</strong> <span class="badge-hadir">${escapeHtml(item.kehadiran)}</span></div>
+          <p>${escapeHtml(item.ucapan)}</p>
+          <span class="msg-time">${escapeHtml(item.waktu)}</span>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function handleRSVP(e) {
+      e.preventDefault();
+      const nama = document.getElementById('nama').value.trim();
+      const kehadiran = document.getElementById('kehadiran').value;
+      const ucapan = document.getElementById('ucapan').value.trim();
+
+      const newEntry = { nama: nama, kehadiran: kehadiran, ucapan: ucapan, waktu: "Just now" };
+      const data = JSON.parse(localStorage.getItem(STORAGE_KEY)) || defaultWishes;
+      data.unshift(newEntry);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      loadGuestbook();
+
+      document.getElementById('rsvpForm').reset();
+      
+      const confirmWA = confirm("Thank you! Your RSVP has been saved.\n\nWould you like to send this confirmation to Aurelia on WhatsApp?");
+      if (confirmWA) {
+        const waMsg = `*RSVP CONFIRMATION - AURELIA'S SWEET 17TH*\n` +
+          `-----------------------------------\n` +
+          `👤 *Name:* ${nama}\n` +
+          `📌 *Status:* ${kehadiran}\n` +
+          `💌 *Birthday Wishes:*\n"${ucapan}"\n` +
+          `-----------------------------------\n` +
+          `See you at the party! ✨`;
+        window.open(`https://api.whatsapp.com/send?phone=6281234567890&text=${encodeURIComponent(waMsg)}`, '_blank');
+      }
+    }
+
+    function escapeHtml(text) {
+      return text.replace(/[&<>"']/g, function(m) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m];
+      });
+    }
+
+    loadGuestbook();
+  </script>
+</body>
+</html>

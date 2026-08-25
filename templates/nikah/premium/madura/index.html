@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Undangan Pernikahan Adat Madura - Sakera &amp; Marlena</title>
+  <meta name="description" content="Panganten Ageng Sakera &amp; Marlena - Adat Madura">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <audio id="bgMusic" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=traditional-asian-melody-113337.mp3" type="audio/mp3">
+  </audio>
+
+  <div class="music-toggle" id="musicToggle" onclick="toggleMusic()" style="display:none;">
+    <i class="fas fa-compact-disc spin" id="musicIcon"></i>
+  </div>
+
+  <div id="toast" class="toast"><i class="fas fa-check-circle"></i> Nomor rekening berhasil disalin!</div>
+
+  <div id="lightboxModal" class="lightbox-modal" onclick="closeLightbox()">
+    <span class="lightbox-close">&times;</span>
+    <img id="lightboxImg" src="" alt="Fullscreen Preview">
+  </div>
+
+  <!-- COVER -->
+  <div class="cover-section" id="cover">
+    <div class="madura-bg-pattern"></div>
+    <div class="cover-content" data-aos="zoom-in" data-aos-duration="1000">
+      <div class="celurit-icon"><i class="fas fa-shield-alt"></i></div>
+      <p class="cover-salutation">PANGANTEN AGENG ADAT MADURA</p>
+      <h1 class="cover-title">Sakera &amp; Marlena</h1>
+      <p class="cover-date">Minggu, 20 Desember 2026</p>
+      
+      <div class="madura-divider">
+        <span></span><i class="fas fa-bullhorn"></i><span></span>
+      </div>
+
+      <div class="cover-guest-box">
+        <p class="kepada">Katur Dhumateng Panjenenganipun:</p>
+        <h3 class="guest-name" id="namaTamuCover">Tamu Undangan</h3>
+        <p class="guest-note">Mator sakalangkong dhabu tor donganepon</p>
+      </div>
+
+      <button class="btn-buka" onclick="bukaUndangan()">
+        <i class="fas fa-envelope-open-text"></i> Buka Undangan
+      </button>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content" id="mainContent">
+
+    <section class="section-hero">
+      <div class="container text-center" data-aos="fade-up">
+        <div class="madura-badge">Adat Madura Pese'an &amp; Beludru Emas</div>
+        <p class="bismillah-arab">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p>
+        <p class="salam-teks">Assalamu’alaikum Warahmatullahi Wabarakatuh</p>
+        <p class="opening-quote">
+          "Mon aeng ta' kereng, mon taresna ta' lebur. Mugeh kasambu' dheddi kalowarga se sakinah mawaddah warahmah."
+        </p>
+        <p class="surah-label">— Paribasan Madura —</p>
+      </div>
+    </section>
+
+    <!-- MEMPELAI (WIDESCREEN CINEMATIC FRAME) -->
+    <section class="section-mempelai" id="mempelai">
+      <div class="container">
+        <div class="section-heading text-center" data-aos="fade-up">
+          <span class="sub-title">Panganten Lakang &amp; Bine'</span>
+          <h2>Mempelai Berbahagia</h2>
+          <div class="heading-line"></div>
+        </div>
+
+        <div class="mempelai-grid">
+          <!-- Pria -->
+          <div class="mempelai-card wide-card" data-aos="fade-right">
+            <div class="wide-photo-wrapper">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=80" alt="Sakera">
+            </div>
+            <h3 class="nama-mempelai">Ahmad Sakera, S.E.</h3>
+            <p class="gelar-adat">Mempelai Lakang</p>
+            <p class="info-ortu">
+              Pottra kapeng settong dhari<br>
+              <strong>Bpk. H. Mahmud Sakera</strong> &amp; <strong>Ibu Hj. Siti Aisyah</strong><br>
+              <span class="asal-kota">Bangkalan, Madura</span>
+            </p>
+            <a href="https://instagram.com" target="_blank" class="sosmed-link"><i class="fab fa-instagram"></i> @ahmadsakera</a>
+          </div>
+
+          <div class="mempelai-divider" data-aos="zoom-in">
+            <div class="ampersand-circle">&amp;</div>
+          </div>
+
+          <!-- Wanita -->
+          <div class="mempelai-card wide-card" data-aos="fade-left">
+            <div class="wide-photo-wrapper">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80" alt="Marlena">
+            </div>
+            <h3 class="nama-mempelai">Siti Marlena, S.Pd.</h3>
+            <p class="gelar-adat">Mempelai Bine'</p>
+            <p class="info-ortu">
+              Pottre kapeng dhuwa' dhari<br>
+              <strong>Bpk. H. Zaini Rasyid</strong> &amp; <strong>Ibu Hj. Faridah</strong><br>
+              <span class="asal-kota">Sumenep, Madura</span>
+            </p>
+            <a href="https://instagram.com" target="_blank" class="sosmed-link"><i class="fab fa-instagram"></i> @sitimarlena</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COUNTDOWN -->
+    <section class="section-countdown">
+      <div class="container text-center" data-aos="fade-up">
+        <h3 class="countdown-heading">Ngetong Areh Menuju Pangantenan</h3>
+        <div class="timer-grid">
+          <div class="timer-box"><span class="timer-num" id="days">00</span><span class="timer-label">Areh (Hari)</span></div>
+          <div class="timer-box"><span class="timer-num" id="hours">00</span><span class="timer-label">Jam</span></div>
+          <div class="timer-box"><span class="timer-num" id="minutes">00</span><span class="timer-label">Menit</span></div>
+          <div class="timer-box"><span class="timer-num" id="seconds">00</span><span class="timer-label">Detik</span></div>
+        </div>
+        <a href="https://calendar.google.com" target="_blank" class="btn-secondary">
+          <i class="far fa-calendar-plus"></i> Simpen e Google Calendar
+        </a>
+      </div>
+    </section>
+
+    <!-- ACARA -->
+    <section class="section-acara" id="acara">
+      <div class="container">
+        <div class="section-heading text-center" data-aos="fade-up">
+          <span class="sub-title">Waktu &amp; Tempat</span>
+          <h2>Rancangan Acara</h2>
+          <div class="heading-line"></div>
+        </div>
+
+        <div class="acara-grid">
+          <div class="acara-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="acara-icon"><i class="fas fa-mosque"></i></div>
+            <h3>Akad Nikah</h3>
+            <p class="acara-tanggal"><i class="far fa-calendar-alt"></i> Minggu, 20 Desember 2026</p>
+            <p class="acara-waktu"><i class="far fa-clock"></i> 08.30 - 10.30 WIB</p>
+            <div class="acara-tempat">
+              <strong>Masjid Agung Jamik Sumenep</strong>
+              <p>Jl. Trunojoyo No. 1, Bangselok, Sumenep, Madura</p>
+            </div>
+            <a href="https://maps.google.com" target="_blank" class="btn-map"><i class="fas fa-location-arrow"></i> Petunjuk Lokasi</a>
+          </div>
+
+          <div class="acara-card highlight" data-aos="fade-up" data-aos-delay="200">
+            <div class="acara-badge">Pesta Panganten</div>
+            <div class="acara-icon"><i class="fas fa-glass-cheers"></i></div>
+            <h3>Resepsi Panganten Ageng</h3>
+            <p class="acara-tanggal"><i class="far fa-calendar-alt"></i> Minggu, 20 Desember 2026</p>
+            <p class="acara-waktu"><i class="far fa-clock"></i> 11.30 - 15.00 WIB</p>
+            <div class="acara-tempat">
+              <strong>Gedung Islamic Center Pamekasan</strong>
+              <p>Jl. Raya Panglegur, Tlanakan, Pamekasan, Madura</p>
+            </div>
+            <a href="https://maps.google.com" target="_blank" class="btn-map"><i class="fas fa-location-arrow"></i> Petunjuk Lokasi</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERI FOTO (5 FOTO DYNAMIC GRID MADURA) -->
+    <section class="section-galeri" id="galeri">
+      <div class="container">
+        <div class="section-heading text-center" data-aos="fade-up">
+          <span class="sub-title">Dokumentasi Foto</span>
+          <h2>Galeri Pesona Madura (5 Potret)</h2>
+          <div class="heading-line"></div>
+          <p class="gallery-subtitle">Klik gambar untuk melihat ukuran besar</p>
+        </div>
+
+        <div class="madura-gallery-grid">
+          <div class="madura-photo-hero" data-aos="fade-right" onclick="openLightbox('https://images.unsplash.com/photo-1519741497674-611481863552?w=1000&auto=format&fit=crop&q=80')">
+            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&auto=format&fit=crop&q=80" alt="Madura 1">
+            <div class="zoom-hint"><i class="fas fa-search-plus"></i></div>
+          </div>
+          <div class="madura-photo-subgrid">
+            <div class="madura-sub-item" data-aos="zoom-in" data-aos-delay="100" onclick="openLightbox('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1000&auto=format&fit=crop&q=80')">
+              <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=500&auto=format&fit=crop&q=80" alt="Madura 2">
+              <div class="zoom-hint"><i class="fas fa-search-plus"></i></div>
+            </div>
+            <div class="madura-sub-item" data-aos="zoom-in" data-aos-delay="200" onclick="openLightbox('https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1000&auto=format&fit=crop&q=80')">
+              <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=500&auto=format&fit=crop&q=80" alt="Madura 3">
+              <div class="zoom-hint"><i class="fas fa-search-plus"></i></div>
+            </div>
+            <div class="madura-sub-item" data-aos="zoom-in" data-aos-delay="300" onclick="openLightbox('https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1000&auto=format&fit=crop&q=80')">
+              <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=500&auto=format&fit=crop&q=80" alt="Madura 4">
+              <div class="zoom-hint"><i class="fas fa-search-plus"></i></div>
+            </div>
+            <div class="madura-sub-item" data-aos="zoom-in" data-aos-delay="400" onclick="openLightbox('https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=1000&auto=format&fit=crop&q=80')">
+              <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=500&auto=format&fit=crop&q=80" alt="Madura 5">
+              <div class="zoom-hint"><i class="fas fa-search-plus"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AMPLOP DIGITAL -->
+    <section class="section-gift" id="gift">
+      <div class="container">
+        <div class="section-heading text-center" data-aos="fade-up">
+          <span class="sub-title">Tanda Kasih</span>
+          <h2>Kado &amp; Amplop Digital</h2>
+          <div class="heading-line"></div>
+          <p class="gift-desc">Donga tor kehadiran panjenengan dhaddi berkah paleng ageng. Mon badha se kersa apareng tanda taresna:</p>
+        </div>
+
+        <div class="gift-cards">
+          <div class="bank-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="bank-header"><span class="bank-name">BANK JATIM</span><i class="fas fa-credit-card"></i></div>
+            <div class="bank-number" id="rek1">0091827364</div>
+            <p class="bank-owner">a.n. Ahmad Sakera</p>
+            <button class="btn-copy" onclick="copyRek('0091827364', this)"><i class="far fa-copy"></i> Salin Rekening Bank Jatim</button>
+          </div>
+
+          <div class="bank-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="bank-header"><span class="bank-name">BANK BCA</span><i class="fas fa-credit-card"></i></div>
+            <div class="bank-number" id="rek2">7910293847</div>
+            <p class="bank-owner">a.n. Siti Marlena</p>
+            <button class="btn-copy" onclick="copyRek('7910293847', this)"><i class="far fa-copy"></i> Salin Rekening BCA</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP & BUKU TAMU -->
+    <section class="section-rsvp" id="rsvp">
+      <div class="container">
+        <div class="section-heading text-center" data-aos="fade-up">
+          <span class="sub-title">Konfirmasi &amp; Donga</span>
+          <h2>Buku Tamu Panganten</h2>
+          <div class="heading-line"></div>
+        </div>
+
+        <div class="rsvp-wrapper">
+          <form class="rsvp-form" id="rsvpForm" onsubmit="handleRSVP(event)" data-aos="fade-up">
+            <div class="form-group">
+              <label for="nama">Asma Lengkap</label>
+              <input type="text" id="nama" placeholder="Ketik asma panjenengan..." required>
+            </div>
+            <div class="form-group">
+              <label for="kehadiran">Konfirmasi Kehadiran</label>
+              <select id="kehadiran" required>
+                <option value="">-- Pilih Rawuh / Enje' --</option>
+                <option value="Hadir">Insya Allah Dateng (Hadir)</option>
+                <option value="Tidak Hadir">Ta' Bisa Dateng (Minta Maaf)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="ucapan">Donga Restu</label>
+              <textarea id="ucapan" rows="3" placeholder="Toles donga kagem temanten..." required></textarea>
+            </div>
+            <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Kirem Donga</button>
+          </form>
+
+          <div class="guestbook-list" id="guestbookList" data-aos="fade-up" data-aos-delay="100">
+            <h3>Donga Dhari Taretan</h3>
+            <div class="guest-messages" id="messagesContainer">
+              <!-- Rendered via LocalStorage -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="section-footer text-center">
+      <div class="container">
+        <p class="pantun-madura">
+          "Mator sakalangkong bannya' atas donga tor rawuhipon taretan sadaja."
+        </p>
+        <h4 class="footer-names">Sakera &amp; Marlena</h4>
+        <p class="copyright">&copy; 2026 Sakera &amp; Marlena. Template Undangan Adat Madura.</p>
+      </div>
+    </footer>
+
+    <!-- BOTTOM NAVBAR -->
+    <nav class="bottom-nav">
+      <a href="#mempelai" class="nav-link"><i class="fas fa-heart"></i><span>Mempelai</span></a>
+      <a href="#acara" class="nav-link"><i class="far fa-calendar-alt"></i><span>Acara</span></a>
+      <a href="#galeri" class="nav-link"><i class="far fa-images"></i><span>Galeri</span></a>
+      <a href="#gift" class="nav-link"><i class="fas fa-gift"></i><span>Kado</span></a>
+      <a href="#rsvp" class="nav-link"><i class="far fa-comment-dots"></i><span>Buku Tamu</span></a>
+    </nav>
+
+  </main>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true });
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const guestParam = urlParams.get('to') || urlParams.get('p') || urlParams.get('guest') || 'Tamu Undangan';
+    document.getElementById('namaTamuCover').textContent = guestParam;
+
+    const bgMusic = document.getElementById('bgMusic');
+    const musicToggle = document.getElementById('musicToggle');
+    const musicIcon = document.getElementById('musicIcon');
+    let isPlaying = false;
+
+    function bukaUndangan() {
+      document.getElementById('cover').classList.add('hide');
+      document.getElementById('mainContent').classList.add('show');
+      musicToggle.style.display = 'flex';
+      bgMusic.play().then(() => { isPlaying = true; musicIcon.classList.add('spin'); }).catch(e => console.log(e));
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleMusic() {
+      if (isPlaying) { bgMusic.pause(); musicIcon.classList.remove('spin'); isPlaying = false; }
+      else { bgMusic.play(); musicIcon.classList.add('spin'); isPlaying = true; }
+    }
+
+    const weddingDate = new Date('December 20, 2026 08:30:00').getTime();
+    setInterval(() => {
+      const now = new Date().getTime();
+      const diff = weddingDate - now;
+      if (diff > 0) {
+        document.getElementById('days').innerText = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
+        document.getElementById('hours').innerText = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+        document.getElementById('minutes').innerText = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+        document.getElementById('seconds').innerText = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
+      }
+    }, 1000);
+
+    function copyRek(text, btn) {
+      navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById('toast');
+        toast.classList.add('show');
+        const oldText = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-check"></i> Disalin!';
+        setTimeout(() => {
+          toast.classList.remove('show');
+          btn.innerHTML = oldText;
+        }, 3000);
+      });
+    }
+
+    function openLightbox(src) {
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('lightboxModal').classList.add('show');
+    }
+    function closeLightbox() {
+      document.getElementById('lightboxModal').classList.remove('show');
+    }
+
+    // Guestbook LocalStorage
+    const STORAGE_KEY = 'gasnikah_guestbook_madura';
+    const defaultWishes = [
+      { nama: "H. Syafi'i & Keluarga", kehadiran: "Hadir", ucapan: "Mator salametan kagem Sakera & Marlena, mugeh taretan sadaja langgeng sampek tuwa.", waktu: "1 jam lalu" },
+      { nama: "Keluarga Besar Bangkalan", kehadiran: "Hadir", ucapan: "Barakallahu lakuma, rukun teros tor bannya' rejekenah.", waktu: "3 jam lalu" }
+    ];
+
+    function loadGuestbook() {
+      const data = JSON.parse(localStorage.getItem(STORAGE_KEY)) || defaultWishes;
+      const container = document.getElementById('messagesContainer');
+      container.innerHTML = '';
+      data.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'msg-card';
+        card.innerHTML = `
+          <div class="msg-author"><strong>${escapeHtml(item.nama)}</strong> <span class="badge-hadir">${escapeHtml(item.kehadiran)}</span></div>
+          <p>${escapeHtml(item.ucapan)}</p>
+          <span class="msg-time">${escapeHtml(item.waktu)}</span>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function handleRSVP(e) {
+      e.preventDefault();
+      const nama = document.getElementById('nama').value.trim();
+      const kehadiran = document.getElementById('kehadiran').value;
+      const ucapan = document.getElementById('ucapan').value.trim();
+
+      const newEntry = { nama: nama, kehadiran: kehadiran, ucapan: ucapan, waktu: "Buruan" };
+      const data = JSON.parse(localStorage.getItem(STORAGE_KEY)) || defaultWishes;
+      data.unshift(newEntry);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      loadGuestbook();
+
+      document.getElementById('rsvpForm').reset();
+      alert('Mator sakalangkong! Donga sampun maso\'.');
+    }
+
+    function escapeHtml(text) {
+      return text.replace(/[&<>"']/g, function(m) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m];
+      });
+    }
+
+    loadGuestbook();
+  </script>
+</body>
+</html>

@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Undangan Pernikahan Adat Betawi - Mamat &amp; Zaenab</title>
+  <meta name="description" content="Pesta Palang Pintu Mamat &amp; Zaenab - Adat Betawi">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <audio id="bgMusic" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=traditional-asian-melody-113337.mp3" type="audio/mp3">
+  </audio>
+
+  <div class="music-toggle" id="musicToggle" onclick="toggleMusic()" style="display:none;">
+    <i class="fas fa-compact-disc spin" id="musicIcon"></i>
+  </div>
+
+  <div id="toast" class="toast"><i class="fas fa-check-circle"></i> Nomer rekening udeh disalin, Makasih!</div>
+
+  <div id="lightboxModal" class="lightbox-modal" onclick="closeLightbox()">
+    <span class="lightbox-close">&times;</span>
+    <img id="lightboxImg" src="" alt="Fullscreen Preview">
+  </div>
+
+  <!-- COVER -->
+  <div class="cover-section" id="cover">
+    <div class="gigi-balang-top"></div>
+    <div class="cover-content" data-aos="zoom-in" data-aos-duration="1000">
+      <div class="betawi-icon"><i class="fas fa-crown"></i></div>
+      <p class="cover-salutation">HAJATAN BEBESAN BETAWI</p>
+      <h1 class="cover-title">Mamat &amp; Zaenab</h1>
+      <p class="cover-date">Minggu, 15 Nopember 2026</p>
+      
+      <div class="betawi-divider">
+        <span></span><i class="fas fa-fan"></i><span></span>
+      </div>
+
+      <div class="cover-guest-box">
+        <p class="kepada">Kagak Mengurangi Rasa Hormat, Katur Dhumateng:</p>
+        <h3 class="guest-name" id="namaTamuCover">Tamu Undangan</h3>
+        <p class="guest-note">Moga abang, mpok, encang, encing pada sehat walafiat</p>
+      </div>
+
+      <button class="btn-buka" onclick="bukaUndangan()">
+        <i class="fas fa-envelope-open-text"></i> Buka Undangan
+      </button>
+    </div>
+    <div class="gigi-balang-bottom"></div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content" id="mainContent">
+
+    <section class="section-hero">
+      <div class="container text-center" data-aos="fade-up">
+        <div class="betawi-badge">Adat Betawi Asli — Palang Pintu</div>
+        <p class="bismillah-arab">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p>
+        <p class="salam-teks">Assalamu’alaikum Warahmatullahi Wabarakatuh</p>
+        <p class="opening-quote">
+          "Buah mangga buah kuweni, dimakan manis di pinggir kali.<br>
+          Kite berdua udeh sehati, mohon doanye biar berkah sampe nanti."
+        </p>
+        <p class="surah-label">— Pantun Betawi —</p>
+      </div>
+    </section>
+
+    <!-- MEMPELAI (POLAROID PINNED FRAME) -->
+    <section class="section-mempelai" id="mempelai">
+      <div class="container">
+        <div class="section-heading text-center" data-aos="fade-up">
+          <span class="sub-title">Penganten Lanang &amp; Wadon</span>
+          <h2>Dua Hati Nyatu</h2>
+          <div class="heading-line"></div>
+        </div>
+
+        <div class="mempelai-grid">
+          <!-- Pria -->
+          <div class="mempelai-card polaroid-card tilt-left" data-aos="fade-right">
+            <div class="polaroid-pin"><i class="fas fa-thumbtack"></i></div>
+            <div class="polaroid-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=80" alt="Bang Mamat">
+            </div>
+            <h3 class="nama-mempelai">Muhammad Rahmat (Bang Mamat)</h3>
+            <p class="gelar-adat">Penganten Lanang</p>
+            <p class="info-ortu">
+              Anak bontot dari Babeh<br>
+              <strong>Bpk. H. Sabeni Sanusi</strong> &amp; <strong>Nyak Hj. Rogayah</strong><br>
+              <span class="asal-kampung">Kampung Condet, Jakarta Timur</span>
+            </p>
+            <a href="https://instagram.com" target="_blank" class="sosmed-link"><i class="fab fa-instagram"></i> @bangmamat_betawi</a>
+          </div>
+
+          <div class="mempelai-divider" data-aos="zoom-in">
+            <div class="ampersand-circle">&amp;</div>
+          </div>
+
+          <!-- Wanita -->
+          <div class="mempelai-card polaroid-card tilt-right" data-aos="fade-left">
+            <div class="polaroid-pin"><i class="fas fa-thumbtack"></i></div>
+            <div class="polaroid-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80" alt="Mpok Zaenab">
+            </div>
+            <h3 class="nama-mempelai">Zaenab Rohmah, S.Pd.</h3>
+            <p class="gelar-adat">Penganten Wadon</p>
+            <p class="info-ortu">
+              Anak sulung dari Babeh<br>
+              <strong>Bpk. H. Mansyur Somad</strong> &amp; <strong>Nyak Hj. Aminah</strong><br>
+              <span class="asal-kampung">Kampung Rawabelong, Jakarta Barat</span>
+            </p>
+            <a href="https://instagram.com" target="_blank" class="sosmed-link"><i class="fab fa-instagram"></i> @zaenab_rohmah</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COUNTDOWN -->
+    <section class="section-countdown">
+      <div class="container text-center" data-aos="fade-up">
+        <h3 class="countdown-heading">Ngitung Ari Menuju Palang Pintu</h3>
+        <div class="timer-grid">
+          <div class="timer-box"><span class="timer-num" id="days">00</span><span class="timer-label">Ari (Hari)</span></div>
+          <div class="timer-box"><span class="timer-num" id="hours">00</span><span class="timer-label">Jam</span></div>
+          <div class="timer-box"><span class="timer-num" id="minutes">00</span><span class="timer-label">Menit</span></div>
+          <div class="timer-box"><span class="timer-num" id="seconds">00</span><span class="timer-label">Detik</span></div>
+        </div>
+        <a href="https://calendar.google.com" target="_blank" class="btn-secondary">
+          <i class="far fa-calendar-plus"></i> Simpen ke Google Calendar
+        </a>
+      </div>
+    </section>
+
+    <!-- ACARA -->
+    <section class="section-acara" id="acara">
+      <div class="container">
+        <div class="section-heading text-center" data-aos="fade-up">
+          <span class="sub-title">Waktu &amp; Tempat Acara</span>
+          <h2>Jadwal Palang Pintu &amp; Hajatan</h2>
+          <div class="heading-line"></div>
+        </div>
+
+        <div class="acara-grid">
+          <div class="acara-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="acara-icon"><i class="fas fa-mosque"></i></div>
+            <h3>Akad Nikah</h3>
+            <p class="acara-tanggal"><i class="far fa-calendar-alt"></i> Minggu, 15 Nopember 2026</p>
+            <p class="acara-waktu"><i class="far fa-clock"></i> 08.00 - 10.00 WIB</p>
+            <div class="acara-tempat">
+              <strong>Masjid Agung Sunda Kelapa</strong>
+              <p>Jl. Taman Sunda Kelapa No. 16, Menteng, Jakarta Pusat</p>
+            </div>
+            <a href="https://maps.google.com" target="_blank" class="btn-map"><i class="fas fa-location-arrow"></i> Petunjuk Lokasi</a>
+          </div>
+
+          <div class="acara-card highlight" data-aos="fade-up" data-aos-delay="200">
+            <div class="acara-badge">Palang Pintu &amp; Hajatan</div>
+            <div class="acara-icon"><i class="fas fa-glass-cheers"></i></div>
+            <h3>Resepsi Palang Pintu</h3>
+            <p class="acara-tanggal"><i class="far fa-calendar-alt"></i> Minggu, 15 Nopember 2026</p>
+            <p class="acara-waktu"><i class="far fa-clock"></i> 11.00 - 16.00 WIB</p>
+            <div class="acara-tempat">
+              <strong>Gedung Aneka Bhakti</strong>
+              <p>Jl. Salemba Raya No. 28, Kenari, Senen, Jakarta Pusat</p>
+            </div>
+            <a href="https://maps.google.com" target="_blank" class="btn-map"><i class="fas fa-location-arrow"></i> Petunjuk Lokasi</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERI FOTO (6 FOTO POLAROID SCRAPBOOK) -->
+    <section class="section-galeri" id="galeri">
+      <div class="container">
+        <div class="section-heading text-center" data-aos="fade-up">
+          <span class="sub-title">Potret Prewed</span>
+          <h2>Galeri Kenangan Babeh &amp; Nyak (6 Foto)</h2>
+          <div class="heading-line"></div>
+          <p class="gallery-subtitle">Klik potret polaroid bakal liat ukuran guede</p>
+        </div>
+
+        <div class="betawi-polaroid-grid">
+          <div class="polaroid-item p-tilt-1" data-aos="zoom-in" onclick="openLightbox('https://images.unsplash.com/photo-1519741497674-611481863552?w=1000&auto=format&fit=crop&q=80')">
+            <div class="p-img"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=500&auto=format&fit=crop&q=80" alt="Betawi 1"></div>
+            <p class="p-caption">Kite Berdua di Setu Babakan</p>
+          </div>
+          <div class="polaroid-item p-tilt-2" data-aos="zoom-in" data-aos-delay="100" onclick="openLightbox('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1000&auto=format&fit=crop&q=80')">
+            <div class="p-img"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=500&auto=format&fit=crop&q=80" alt="Betawi 2"></div>
+            <p class="p-caption">Senyum Mpok Zaenab</p>
+          </div>
+          <div class="polaroid-item p-tilt-3" data-aos="zoom-in" data-aos-delay="200" onclick="openLightbox('https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1000&auto=format&fit=crop&q=80')">
+            <div class="p-img"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=500&auto=format&fit=crop&q=80" alt="Betawi 3"></div>
+            <p class="p-caption">Gagah Bang Mamat</p>
+          </div>
+          <div class="polaroid-item p-tilt-1" data-aos="zoom-in" data-aos-delay="300" onclick="openLightbox('https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1000&auto=format&fit=crop&q=80')">
+            <div class="p-img"><img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=500&auto=format&fit=crop&q=80" alt="Betawi 4"></div>
+            <p class="p-caption">Roti Buaya &amp; Kembang Kelapa</p>
+          </div>
+          <div class="polaroid-item p-tilt-2" data-aos="zoom-in" data-aos-delay="400" onclick="openLightbox('https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=1000&auto=format&fit=crop&q=80')">
+            <div class="p-img"><img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=500&auto=format&fit=crop&q=80" alt="Betawi 5"></div>
+            <p class="p-caption">Satu Janji Setia</p>
+          </div>
+          <div class="polaroid-item p-tilt-3" data-aos="zoom-in" data-aos-delay="500" onclick="openLightbox('https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=1000&auto=format&fit=crop&q=80')">
+            <div class="p-img"><img src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=500&auto=format&fit=crop&q=80" alt="Betawi 6"></div>
+            <p class="p-caption">Samawa Sampe Kakek Nenek</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AMPLOP DIGITAL -->
+    <section class="section-gift" id="gift">
+      <div class="container">
+        <div class="section-heading text-center" data-aos="fade-up">
+          <span class="sub-title">Tanda Kasih</span>
+          <h2>Kado &amp; Amplop Digital</h2>
+          <div class="heading-line"></div>
+          <p class="gift-desc">Doa restu abang mpok pade jadi hadiah paling berkah. Kalo mau ngasih tanda tresna lewat amplop online:</p>
+        </div>
+
+        <div class="gift-cards">
+          <div class="bank-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="bank-header"><span class="bank-name">BANK DKI</span><i class="fas fa-credit-card"></i></div>
+            <div class="bank-number" id="rek1">1019283746</div>
+            <p class="bank-owner">a.n. Muhammad Rahmat</p>
+            <button class="btn-copy" onclick="copyRek('1019283746', this)"><i class="far fa-copy"></i> Salin Rekening DKI</button>
+          </div>
+
+          <div class="bank-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="bank-header"><span class="bank-name">BANK BCA</span><i class="fas fa-credit-card"></i></div>
+            <div class="bank-number" id="rek2">5220193847</div>
+            <p class="bank-owner">a.n. Zaenab Rohmah</p>
+            <button class="btn-copy" onclick="copyRek('5220193847', this)"><i class="far fa-copy"></i> Salin Rekening BCA</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP & BUKU TAMU -->
+    <section class="section-rsvp" id="rsvp">
+      <div class="container">
+        <div class="section-heading text-center" data-aos="fade-up">
+          <span class="sub-title">Konfirmasi &amp; Doa</span>
+          <h2>Buku Tamu Hajatan</h2>
+          <div class="heading-line"></div>
+        </div>
+
+        <div class="rsvp-wrapper">
+          <form class="rsvp-form" id="rsvpForm" onsubmit="handleRSVP(event)" data-aos="fade-up">
+            <div class="form-group">
+              <label for="nama">Nama Lengkap Abang/Mpok</label>
+              <input type="text" id="nama" placeholder="Ketik nama ente..." required>
+            </div>
+            <div class="form-group">
+              <label for="kehadiran">Bisa Dateng Kaga?</label>
+              <select id="kehadiran" required>
+                <option value="">-- Pilih Dateng / Kaga --</option>
+                <option value="Hadir">Insya Allah Dateng (Hadir)</option>
+                <option value="Tidak Hadir">Kaga Bisa Dateng, Kirim Doa Aje</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="ucapan">Tulis Doa &amp; Pantun Ente</label>
+              <textarea id="ucapan" rows="3" placeholder="Tulis doa buat penganten..." required></textarea>
+            </div>
+            <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Kirim Doa &amp; Pantun</button>
+          </form>
+
+          <div class="guestbook-list" id="guestbookList" data-aos="fade-up" data-aos-delay="100">
+            <h3>Doa &amp; Ucapan Tetangge</h3>
+            <div class="guest-messages" id="messagesContainer">
+              <!-- LocalStorage Loaded -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="section-footer text-center">
+      <div class="container">
+        <p class="pantun-betawi-footer">
+          "Jalan-jalan ke Pasar Baru, jangan lupe beli kebaya.<br>
+          Mamat Zaenab udeh bersatu, doain biar bahagia seumur idupnye!"
+        </p>
+        <p class="closing-thanks">Makasih banyak buat abang, mpok, encang, encing semuanye.</p>
+        <h4 class="footer-names">Mamat &amp; Zaenab</h4>
+        <p class="copyright">&copy; 2026 Mamat &amp; Zaenab. Template Undangan Adat Betawi.</p>
+      </div>
+    </footer>
+
+    <!-- BOTTOM NAVBAR -->
+    <nav class="bottom-nav">
+      <a href="#mempelai" class="nav-link"><i class="fas fa-heart"></i><span>Mempelai</span></a>
+      <a href="#acara" class="nav-link"><i class="far fa-calendar-alt"></i><span>Hajatan</span></a>
+      <a href="#galeri" class="nav-link"><i class="far fa-images"></i><span>Galeri</span></a>
+      <a href="#gift" class="nav-link"><i class="fas fa-gift"></i><span>Kado</span></a>
+      <a href="#rsvp" class="nav-link"><i class="far fa-comment-dots"></i><span>Buku Tamu</span></a>
+    </nav>
+
+  </main>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true });
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const guestParam = urlParams.get('to') || urlParams.get('p') || urlParams.get('guest') || 'Tamu Undangan';
+    document.getElementById('namaTamuCover').textContent = guestParam;
+
+    const bgMusic = document.getElementById('bgMusic');
+    const musicToggle = document.getElementById('musicToggle');
+    const musicIcon = document.getElementById('musicIcon');
+    let isPlaying = false;
+
+    function bukaUndangan() {
+      document.getElementById('cover').classList.add('hide');
+      document.getElementById('mainContent').classList.add('show');
+      musicToggle.style.display = 'flex';
+      bgMusic.play().then(() => { isPlaying = true; musicIcon.classList.add('spin'); }).catch(e => console.log(e));
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleMusic() {
+      if (isPlaying) { bgMusic.pause(); musicIcon.classList.remove('spin'); isPlaying = false; }
+      else { bgMusic.play(); musicIcon.classList.add('spin'); isPlaying = true; }
+    }
+
+    const weddingDate = new Date('November 15, 2026 08:00:00').getTime();
+    setInterval(() => {
+      const now = new Date().getTime();
+      const diff = weddingDate - now;
+      if (diff > 0) {
+        document.getElementById('days').innerText = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
+        document.getElementById('hours').innerText = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+        document.getElementById('minutes').innerText = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+        document.getElementById('seconds').innerText = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
+      }
+    }, 1000);
+
+    function copyRek(text, btn) {
+      navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById('toast');
+        toast.classList.add('show');
+        const oldText = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-check"></i> Udeh Disalin!';
+        setTimeout(() => {
+          toast.classList.remove('show');
+          btn.innerHTML = oldText;
+        }, 3000);
+      });
+    }
+
+    function openLightbox(src) {
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('lightboxModal').classList.add('show');
+    }
+    function closeLightbox() {
+      document.getElementById('lightboxModal').classList.remove('show');
+    }
+
+    // Guestbook LocalStorage
+    const STORAGE_KEY = 'gasnikah_guestbook_betawi';
+    const defaultWishes = [
+      { nama: "Babeh Dulah & Nyak Minah", kehadiran: "Hadir", ucapan: "Selamat ya Mamat & Zaenab! Palang pintunye jangan lupe diancurin, semoga sakinah mawaddah warahmah.", waktu: "2 jam lalu" },
+      { nama: "Encang Rojali Condet", kehadiran: "Hadir", ucapan: "Gagah bener Bang Mamat dapet Zaenab. Semoga rejekinye ngalir deres!", waktu: "5 jam lalu" }
+    ];
+
+    function loadGuestbook() {
+      const data = JSON.parse(localStorage.getItem(STORAGE_KEY)) || defaultWishes;
+      const container = document.getElementById('messagesContainer');
+      container.innerHTML = '';
+      data.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'msg-card';
+        card.innerHTML = `
+          <div class="msg-author"><strong>${escapeHtml(item.nama)}</strong> <span class="badge-hadir">${escapeHtml(item.kehadiran)}</span></div>
+          <p>${escapeHtml(item.ucapan)}</p>
+          <span class="msg-time">${escapeHtml(item.waktu)}</span>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function handleRSVP(e) {
+      e.preventDefault();
+      const nama = document.getElementById('nama').value.trim();
+      const kehadiran = document.getElementById('kehadiran').value;
+      const ucapan = document.getElementById('ucapan').value.trim();
+
+      const newEntry = { nama: nama, kehadiran: kehadiran, ucapan: ucapan, waktu: "Barusan nih" };
+      const data = JSON.parse(localStorage.getItem(STORAGE_KEY)) || defaultWishes;
+      data.unshift(newEntry);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      loadGuestbook();
+
+      document.getElementById('rsvpForm').reset();
+      
+      const confirmWA = confirm("Makasih Banyak, Ncang Ncing! Doa restu udah tersimpan di Buku Tamu Website.\n\nMau kirim bukti konfirmasi kehadiran ini langsung ke WhatsApp Pengantin?");
+      if (confirmWA) {
+        const waMsg = `*KONFIRMASI RSVP HAJATAN ADAT BETAWI*\n` +
+          `-----------------------------------\n` +
+          `👤 *Nama:* ${nama}\n` +
+          `📌 *Kehadiran:* ${kehadiran}\n` +
+          `💌 *Ucapan & Doa:*\n"${ucapan}"\n` +
+          `-----------------------------------\n` +
+          `Makasih Banyak! Bang Jampang & Non Zaenab.`;
+        window.open(`https://api.whatsapp.com/send?phone=6281234567890&text=${encodeURIComponent(waMsg)}`, '_blank');
+      }
+    }
+
+    function escapeHtml(text) {
+      return text.replace(/[&<>"']/g, function(m) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m];
+      });
+    }
+
+    loadGuestbook();
+  </script>
+</body>
+</html>
