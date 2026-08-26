@@ -8,9 +8,637 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
+  <style>
+:root {
+  --primary: #D35400; /* Oranye Betawi */
+  --primary-dark: #A04000;
+  --secondary: #27AE60; /* Hijau Gigi Balang */
+  --gold: #F39C12;
+  --bg-cream: #FCF9F2;
+  --text-dark: #2C3E50;
+  --text-muted: #7F8C8D;
+  --white: #FFFFFF;
+  --shadow: 0 10px 30px rgba(211, 84, 0, 0.15);
+  --border-gold: 1px solid rgba(243, 156, 18, 0.4);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+  background-color: var(--bg-cream);
+  color: var(--text-dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, .cover-title, .nama-mempelai, .footer-names {
+  font-family: 'Playfair Display', serif;
+  color: var(--primary-dark);
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.text-center { text-align: center; }
+
+/* GIGI BALANG BORDERS */
+.gigi-balang-top, .gigi-balang-bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background: repeating-linear-gradient(45deg, var(--gold), var(--gold) 10px, var(--secondary) 10px, var(--secondary) 20px, var(--primary) 20px, var(--primary) 30px);
+}
+.gigi-balang-top { top: 0; }
+.gigi-balang-bottom { bottom: 0; }
+
+/* COVER */
+.cover-section {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #4A1C00 0%, #7E3100 50%, #2A1000 100%);
+  color: #FFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
+  padding: 20px;
+  text-align: center;
+}
+
+.cover-section.hide {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cover-content {
+  position: relative;
+  z-index: 2;
+  max-width: 480px;
+  border: 2px solid var(--gold);
+  padding: 40px 25px;
+  border-radius: 20px;
+  background: rgba(74, 28, 0, 0.88);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+.betawi-icon {
+  font-size: 36px;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.cover-salutation {
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.cover-title {
+  font-size: 34px;
+  color: #FFF;
+  margin: 6px 0;
+}
+
+.cover-date {
+  font-size: 14px;
+  color: #F9E79F;
+}
+
+.betawi-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 15px 0 20px;
+  color: var(--gold);
+}
+.betawi-divider span { height: 1px; width: 40px; background: var(--gold); }
+
+.cover-guest-box {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px dashed var(--gold);
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+}
+.cover-guest-box .kepada { font-size: 12px; color: #CCC; }
+.cover-guest-box .guest-name { font-size: 20px; color: var(--gold); margin: 5px 0; font-weight: 700; }
+.cover-guest-box .guest-note { font-size: 11px; color: #AAA; }
+
+.btn-buka {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--primary) 100%);
+  color: #FFF;
+  border: none;
+  padding: 12px 32px;
+  font-size: 15px;
+  font-weight: 800;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(211, 84, 0, 0.4);
+  transition: all 0.3s;
+}
+.btn-buka:hover { transform: translateY(-2px); }
+
+/* MAIN CONTENT */
+.main-content {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  padding-bottom: 80px;
+}
+.main-content.show {
+  display: block;
+  opacity: 1;
+}
+
+section { padding: 65px 0; position: relative; }
+.section-heading { margin-bottom: 40px; }
+.section-heading .sub-title {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 12px;
+  color: var(--primary);
+  font-weight: 700;
+}
+.section-heading h2 { font-size: 28px; margin: 5px 0 10px; }
+.heading-line { width: 60px; height: 3px; background: var(--primary); margin: 0 auto; border-radius: 2px; }
+
+/* HERO */
+.section-hero {
+  background: linear-gradient(180deg, #FDEED9 0%, var(--bg-cream) 100%);
+  padding: 75px 0 45px;
+}
+.betawi-badge {
+  display: inline-block;
+  background: var(--primary);
+  color: #FFF;
+  font-size: 12px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+.bismillah-arab { font-size: 24px; color: var(--primary-dark); margin-bottom: 8px; }
+.salam-teks { font-weight: 700; color: var(--primary-dark); margin-bottom: 12px; }
+.opening-quote { font-style: italic; max-width: 650px; margin: 0 auto 10px; color: var(--text-muted); font-size: 14px; }
+.surah-label { font-size: 12px; font-weight: 700; color: var(--primary); }
+
+/* MEMPELAI (POLAROID STYLE) */
+.mempelai-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+.mempelai-card.polaroid-card {
+  background: var(--white);
+  border: 1px solid #E0D7C6;
+  border-radius: 12px;
+  padding: 20px 20px 25px;
+  text-align: center;
+  flex: 1;
+  min-width: 260px;
+  max-width: 340px;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+  position: relative;
+  transition: transform 0.3s;
+}
+.mempelai-card.polaroid-card.tilt-left { transform: rotate(-2deg); }
+.mempelai-card.polaroid-card.tilt-right { transform: rotate(2deg); }
+.mempelai-card.polaroid-card:hover { transform: rotate(0deg) scale(1.02); }
+
+.polaroid-pin {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--primary);
+  font-size: 22px;
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.3));
+}
+
+.polaroid-img-wrapper {
+  width: 100%;
+  height: 220px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 15px;
+  border: 1px solid #EEE;
+}
+.polaroid-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.nama-mempelai { font-size: 20px; margin-bottom: 4px; }
+.gelar-adat { font-size: 12px; color: var(--primary); font-weight: 700; margin-bottom: 12px; }
+.info-ortu { font-size: 13px; color: var(--text-muted); margin-bottom: 15px; }
+.asal-kampung { display: block; font-size: 12px; color: var(--secondary); margin-top: 4px; font-weight: 600; }
+.sosmed-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--primary-dark);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 14px;
+  background: #FDEED9;
+  border-radius: 20px;
+  transition: 0.3s;
+}
+.sosmed-link:hover { background: var(--primary); color: #FFF; }
+.ampersand-circle {
+  width: 50px;
+  height: 50px;
+  background: var(--primary);
+  color: #FFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* COUNTDOWN */
+.section-countdown {
+  background: linear-gradient(135deg, #4A1C00 0%, #7E3100 100%);
+  color: var(--white);
+}
+.countdown-heading { color: #FFF; margin-bottom: 25px; font-size: 20px; }
+.timer-grid { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; }
+.timer-box {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--gold);
+  border-radius: 12px;
+  padding: 15px 12px;
+  min-width: 70px;
+}
+.timer-num { display: block; font-size: 28px; font-weight: 700; color: #FFF; font-family: 'Playfair Display', serif; }
+.timer-label { font-size: 11px; text-transform: uppercase; color: #CCC; }
+.btn-secondary {
+  display: inline-block;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: #FFF;
+  text-decoration: none;
+  padding: 10px 22px;
+  border-radius: 25px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+.btn-secondary:hover { background: var(--gold); color: #4A1C00; }
+
+/* ACARA */
+.acara-grid { display: flex; gap: 25px; flex-wrap: wrap; justify-content: center; }
+.acara-card {
+  background: var(--white);
+  border: 1px solid #E8DECE;
+  border-radius: 16px;
+  padding: 30px 20px;
+  text-align: center;
+  flex: 1;
+  min-width: 280px;
+  max-width: 400px;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+.acara-card.highlight { border: 2px solid var(--primary); }
+.acara-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--secondary);
+  color: #FFF;
+  padding: 4px 16px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 700;
+}
+.acara-icon { font-size: 32px; color: var(--primary); margin-bottom: 12px; }
+.acara-tanggal, .acara-waktu { font-size: 14px; color: var(--text-dark); margin: 4px 0; font-weight: 600; }
+.acara-tempat { margin: 15px 0 20px; padding: 12px; background: #FDF4E7; border-radius: 8px; font-size: 13px; }
+.acara-tempat strong { display: block; color: var(--primary-dark); margin-bottom: 4px; }
+.btn-map {
+  display: inline-block;
+  background: var(--primary);
+  color: var(--white);
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+.btn-map:hover { background: var(--primary-dark); }
+
+/* GALLERY (6 FOTO POLAROID SCRAPBOOK) */
+.gallery-subtitle { font-size: 13px; color: var(--text-muted); margin-top: 5px; }
+.betawi-polaroid-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 25px;
+  padding: 15px 0;
+}
+.polaroid-item {
+  background: var(--white);
+  padding: 12px 12px 18px;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  border: 1px solid #DDD;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.polaroid-item.p-tilt-1 { transform: rotate(-2deg); }
+.polaroid-item.p-tilt-2 { transform: rotate(2deg); }
+.polaroid-item.p-tilt-3 { transform: rotate(-1deg); }
+.polaroid-item:hover { transform: rotate(0deg) scale(1.04); box-shadow: 0 14px 30px rgba(0,0,0,0.18); }
+
+.p-img {
+  height: 200px;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.p-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.p-caption {
+  font-size: 12px;
+  font-weight: 600;
+  color: #555;
+  text-align: center;
+  font-style: italic;
+}
+
+/* LIGHTBOX */
+.lightbox-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  z-index: 10000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.lightbox-modal.show { display: flex; }
+.lightbox-modal img {
+  max-width: 90vw;
+  max-height: 85vh;
+  border-radius: 10px;
+  border: 2px solid var(--primary);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+}
+.lightbox-close {
+  position: absolute;
+  top: 25px;
+  right: 35px;
+  color: #FFF;
+  font-size: 35px;
+  cursor: pointer;
+}
+
+/* GIFT */
+.gift-desc { max-width: 550px; margin: 10px auto 0; font-size: 14px; color: var(--text-muted); }
+.gift-cards { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 30px; }
+.bank-card {
+  background: linear-gradient(135deg, #7E3100 0%, #4A1C00 100%);
+  color: var(--white);
+  border: 1px solid var(--gold);
+  border-radius: 16px;
+  padding: 25px 20px;
+  min-width: 270px;
+  max-width: 320px;
+  text-align: left;
+}
+.bank-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; color: var(--gold); }
+.bank-name { font-weight: 700; }
+.bank-number { font-family: 'Playfair Display', serif; font-size: 22px; color: #FFF; margin-bottom: 5px; }
+.bank-owner { font-size: 13px; color: #CCC; margin-bottom: 20px; }
+.btn-copy {
+  width: 100%;
+  background: var(--gold);
+  color: #4A1C00;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.btn-copy:hover { background: #FFF; }
+
+/* RSVP */
+.section-rsvp { background: #FDEED9; }
+.rsvp-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 850px; margin: 0 auto; }
+@media (max-width: 768px) { .rsvp-wrapper { grid-template-columns: 1fr; } }
+.rsvp-form, .guestbook-list {
+  background: var(--white);
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  border: 1px solid #E8DECE;
+}
+.form-group { margin-bottom: 15px; text-align: left; }
+.form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 5px; }
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #CCC;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+}
+.btn-submit {
+  width: 100%;
+  background: var(--primary);
+  color: var(--white);
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+}
+.guest-messages { max-height: 300px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+.msg-card { background: var(--bg-cream); padding: 12px; border-radius: 8px; border-left: 4px solid var(--primary); text-align: left; }
+.msg-author { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 4px; }
+.badge-hadir { background: var(--secondary); color: #FFF; font-size: 10px; padding: 2px 6px; border-radius: 4px; }
+.msg-card p { font-size: 12px; }
+.msg-time { display: block; font-size: 10px; color: #888; margin-top: 4px; }
+
+/* FOOTER */
+.section-footer { background: #2A1000; color: var(--white); padding: 50px 0 90px; }
+.pantun-betawi-footer { font-style: italic; font-size: 14px; color: var(--gold); max-width: 600px; margin: 0 auto 20px; line-height: 1.8; }
+.footer-names { font-size: 28px; color: #FFF; margin-bottom: 10px; }
+.copyright { font-size: 12px; color: #888; }
+
+/* BOTTOM NAV */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-around;
+  padding: 8px 0;
+  box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.08);
+  z-index: 900;
+  border-top: 2px solid var(--primary);
+}
+.nav-link { display: flex; flex-direction: column; align-items: center; text-decoration: none; color: var(--text-muted); font-size: 11px; }
+.nav-link i { font-size: 18px; margin-bottom: 2px; }
+.nav-link:hover { color: var(--primary); }
+
+.music-toggle {
+  position: fixed;
+  bottom: 75px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  background: var(--primary);
+  color: #FFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  z-index: 950;
+  font-size: 20px;
+}
+.spin { animation: spinMusic 3s linear infinite; }
+@keyframes spinMusic { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+.toast {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: #333;
+  color: #FFF;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-size: 13px;
+  z-index: 1000;
+  opacity: 0;
+  transition: all 0.4s ease;
+  pointer-events: none;
+}
+.toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+
+/* ========================================================
+   ENHANCED UTILITIES & SECTION STYLING (PERFECT RENDER)
+   ======================================================== */
+.section-mempelai, .section-acara, .section-galeri, .section-gift, .section-profil, .section-cerita, .section-rsvp {
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.mempelai-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0;
+  font-size: 22px;
+  color: var(--gold, var(--primary, #D4AF37));
+}
+.mempelai-divider span {
+  display: block;
+  width: 50px;
+  height: 1px;
+  background: var(--gold, var(--primary, #D4AF37));
+  opacity: 0.5;
+}
+
+.gift-desc {
+  font-size: 14px;
+  color: var(--text-muted, #64748B);
+  max-width: 520px;
+  margin: 0 auto 30px;
+  line-height: 1.6;
+}
+
+.bank-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-dark, #1E293B);
+  margin-bottom: 4px;
+}
+
+.closing-thanks {
+  font-size: 15px;
+  color: var(--text-muted, #64748B);
+  line-height: 1.7;
+  max-width: 580px;
+  margin: 0 auto 25px;
+}
+
+.arch-border-gold, .gonjong-frame-gold, .oval-border-gold {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+}
+
+.bali-mandala-bg, .sutera-bg-pattern, .songket-bg-pattern, .dayak-pattern-bg, .madura-bg-pattern, .rustic-leaf-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+}
+
+
+/* PURE CSS SMOOTH ANIMATIONS */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+.cover-content {
+  animation: zoomIn 0.8s ease-out forwards;
+}
+.section-hero .container, .section-heading {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+</style>
 </head>
 <body>
 
@@ -32,7 +660,7 @@
   <!-- COVER -->
   <div class="cover-section" id="cover">
     <div class="gigi-balang-top"></div>
-    <div class="cover-content" data-aos="zoom-in" data-aos-duration="1000">
+    <div class="cover-content" style="opacity:1 !important; visibility:visible !important;">
       <div class="betawi-icon"><i class="fas fa-crown"></i></div>
       <p class="cover-salutation">HAJATAN BEBESAN BETAWI</p>
       <h1 class="cover-title">Mamat &amp; Zaenab</h1>
@@ -59,7 +687,7 @@
   <main class="main-content" id="mainContent">
 
     <section class="section-hero">
-      <div class="container text-center" data-aos="fade-up">
+      <div class="container text-center">
         <div class="betawi-badge">Adat Betawi Asli — Palang Pintu</div>
         <p class="bismillah-arab">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p>
         <p class="salam-teks">Assalamu’alaikum Warahmatullahi Wabarakatuh</p>
@@ -74,7 +702,7 @@
     <!-- MEMPELAI (POLAROID PINNED FRAME) -->
     <section class="section-mempelai" id="mempelai">
       <div class="container">
-        <div class="section-heading text-center" data-aos="fade-up">
+        <div class="section-heading text-center">
           <span class="sub-title">Penganten Lanang &amp; Wadon</span>
           <h2>Dua Hati Nyatu</h2>
           <div class="heading-line"></div>
@@ -82,7 +710,7 @@
 
         <div class="mempelai-grid">
           <!-- Pria -->
-          <div class="mempelai-card polaroid-card tilt-left" data-aos="fade-right">
+          <div class="mempelai-card polaroid-card tilt-left">
             <div class="polaroid-pin"><i class="fas fa-thumbtack"></i></div>
             <div class="polaroid-img-wrapper">
               <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=80" alt="Bang Mamat">
@@ -97,12 +725,12 @@
             <a href="https://instagram.com" target="_blank" class="sosmed-link"><i class="fab fa-instagram"></i> @bangmamat_betawi</a>
           </div>
 
-          <div class="mempelai-divider" data-aos="zoom-in">
+          <div class="mempelai-divider">
             <div class="ampersand-circle">&amp;</div>
           </div>
 
           <!-- Wanita -->
-          <div class="mempelai-card polaroid-card tilt-right" data-aos="fade-left">
+          <div class="mempelai-card polaroid-card tilt-right">
             <div class="polaroid-pin"><i class="fas fa-thumbtack"></i></div>
             <div class="polaroid-img-wrapper">
               <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80" alt="Mpok Zaenab">
@@ -122,7 +750,7 @@
 
     <!-- COUNTDOWN -->
     <section class="section-countdown">
-      <div class="container text-center" data-aos="fade-up">
+      <div class="container text-center">
         <h3 class="countdown-heading">Ngitung Ari Menuju Palang Pintu</h3>
         <div class="timer-grid">
           <div class="timer-box"><span class="timer-num" id="days">00</span><span class="timer-label">Ari (Hari)</span></div>
@@ -139,14 +767,14 @@
     <!-- ACARA -->
     <section class="section-acara" id="acara">
       <div class="container">
-        <div class="section-heading text-center" data-aos="fade-up">
+        <div class="section-heading text-center">
           <span class="sub-title">Waktu &amp; Tempat Acara</span>
           <h2>Jadwal Palang Pintu &amp; Hajatan</h2>
           <div class="heading-line"></div>
         </div>
 
         <div class="acara-grid">
-          <div class="acara-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="acara-card">
             <div class="acara-icon"><i class="fas fa-mosque"></i></div>
             <h3>Akad Nikah</h3>
             <p class="acara-tanggal"><i class="far fa-calendar-alt"></i> Minggu, 15 Nopember 2026</p>
@@ -158,7 +786,7 @@
             <a href="https://maps.google.com" target="_blank" class="btn-map"><i class="fas fa-location-arrow"></i> Petunjuk Lokasi</a>
           </div>
 
-          <div class="acara-card highlight" data-aos="fade-up" data-aos-delay="200">
+          <div class="acara-card highlight">
             <div class="acara-badge">Palang Pintu &amp; Hajatan</div>
             <div class="acara-icon"><i class="fas fa-glass-cheers"></i></div>
             <h3>Resepsi Palang Pintu</h3>
@@ -177,7 +805,7 @@
     <!-- GALERI FOTO (6 FOTO POLAROID SCRAPBOOK) -->
     <section class="section-galeri" id="galeri">
       <div class="container">
-        <div class="section-heading text-center" data-aos="fade-up">
+        <div class="section-heading text-center">
           <span class="sub-title">Potret Prewed</span>
           <h2>Galeri Kenangan Babeh &amp; Nyak (6 Foto)</h2>
           <div class="heading-line"></div>
@@ -185,27 +813,27 @@
         </div>
 
         <div class="betawi-polaroid-grid">
-          <div class="polaroid-item p-tilt-1" data-aos="zoom-in" onclick="openLightbox('https://images.unsplash.com/photo-1519741497674-611481863552?w=1000&auto=format&fit=crop&q=80')">
+          <div class="polaroid-item p-tilt-1" onclick="openLightbox('https://images.unsplash.com/photo-1519741497674-611481863552?w=1000&auto=format&fit=crop&q=80')">
             <div class="p-img"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=500&auto=format&fit=crop&q=80" alt="Betawi 1"></div>
             <p class="p-caption">Kite Berdua di Setu Babakan</p>
           </div>
-          <div class="polaroid-item p-tilt-2" data-aos="zoom-in" data-aos-delay="100" onclick="openLightbox('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1000&auto=format&fit=crop&q=80')">
+          <div class="polaroid-item p-tilt-2" onclick="openLightbox('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1000&auto=format&fit=crop&q=80')">
             <div class="p-img"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=500&auto=format&fit=crop&q=80" alt="Betawi 2"></div>
             <p class="p-caption">Senyum Mpok Zaenab</p>
           </div>
-          <div class="polaroid-item p-tilt-3" data-aos="zoom-in" data-aos-delay="200" onclick="openLightbox('https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1000&auto=format&fit=crop&q=80')">
+          <div class="polaroid-item p-tilt-3" onclick="openLightbox('https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1000&auto=format&fit=crop&q=80')">
             <div class="p-img"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=500&auto=format&fit=crop&q=80" alt="Betawi 3"></div>
             <p class="p-caption">Gagah Bang Mamat</p>
           </div>
-          <div class="polaroid-item p-tilt-1" data-aos="zoom-in" data-aos-delay="300" onclick="openLightbox('https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1000&auto=format&fit=crop&q=80')">
+          <div class="polaroid-item p-tilt-1" onclick="openLightbox('https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1000&auto=format&fit=crop&q=80')">
             <div class="p-img"><img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=500&auto=format&fit=crop&q=80" alt="Betawi 4"></div>
             <p class="p-caption">Roti Buaya &amp; Kembang Kelapa</p>
           </div>
-          <div class="polaroid-item p-tilt-2" data-aos="zoom-in" data-aos-delay="400" onclick="openLightbox('https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=1000&auto=format&fit=crop&q=80')">
+          <div class="polaroid-item p-tilt-2" onclick="openLightbox('https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=1000&auto=format&fit=crop&q=80')">
             <div class="p-img"><img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=500&auto=format&fit=crop&q=80" alt="Betawi 5"></div>
             <p class="p-caption">Satu Janji Setia</p>
           </div>
-          <div class="polaroid-item p-tilt-3" data-aos="zoom-in" data-aos-delay="500" onclick="openLightbox('https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=1000&auto=format&fit=crop&q=80')">
+          <div class="polaroid-item p-tilt-3" onclick="openLightbox('https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=1000&auto=format&fit=crop&q=80')">
             <div class="p-img"><img src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=500&auto=format&fit=crop&q=80" alt="Betawi 6"></div>
             <p class="p-caption">Samawa Sampe Kakek Nenek</p>
           </div>
@@ -216,7 +844,7 @@
     <!-- AMPLOP DIGITAL -->
     <section class="section-gift" id="gift">
       <div class="container">
-        <div class="section-heading text-center" data-aos="fade-up">
+        <div class="section-heading text-center">
           <span class="sub-title">Tanda Kasih</span>
           <h2>Kado &amp; Amplop Digital</h2>
           <div class="heading-line"></div>
@@ -224,14 +852,14 @@
         </div>
 
         <div class="gift-cards">
-          <div class="bank-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="bank-card">
             <div class="bank-header"><span class="bank-name">BANK DKI</span><i class="fas fa-credit-card"></i></div>
             <div class="bank-number" id="rek1">1019283746</div>
             <p class="bank-owner">a.n. Muhammad Rahmat</p>
             <button class="btn-copy" onclick="copyRek('1019283746', this)"><i class="far fa-copy"></i> Salin Rekening DKI</button>
           </div>
 
-          <div class="bank-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="bank-card">
             <div class="bank-header"><span class="bank-name">BANK BCA</span><i class="fas fa-credit-card"></i></div>
             <div class="bank-number" id="rek2">5220193847</div>
             <p class="bank-owner">a.n. Zaenab Rohmah</p>
@@ -244,14 +872,14 @@
     <!-- RSVP & BUKU TAMU -->
     <section class="section-rsvp" id="rsvp">
       <div class="container">
-        <div class="section-heading text-center" data-aos="fade-up">
+        <div class="section-heading text-center">
           <span class="sub-title">Konfirmasi &amp; Doa</span>
           <h2>Buku Tamu Hajatan</h2>
           <div class="heading-line"></div>
         </div>
 
         <div class="rsvp-wrapper">
-          <form class="rsvp-form" id="rsvpForm" onsubmit="handleRSVP(event)" data-aos="fade-up">
+          <form class="rsvp-form" id="rsvpForm" onsubmit="handleRSVP(event)">
             <div class="form-group">
               <label for="nama">Nama Lengkap Abang/Mpok</label>
               <input type="text" id="nama" placeholder="Ketik nama ente..." required>
@@ -271,7 +899,7 @@
             <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Kirim Doa &amp; Pantun</button>
           </form>
 
-          <div class="guestbook-list" id="guestbookList" data-aos="fade-up" data-aos-delay="100">
+          <div class="guestbook-list" id="guestbookList">
             <h3>Doa &amp; Ucapan Tetangge</h3>
             <div class="guest-messages" id="messagesContainer">
               <!-- LocalStorage Loaded -->
