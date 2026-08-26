@@ -125,30 +125,103 @@
     .stat-label { font-size: 12px; color: var(--text-muted); font-weight: 600; }
     .stat-divider { width: 1px; height: 35px; background: #CBD5E1; }
 
-    /* PHONE MOCKUP HERO */
-    .phone-mockup-wrapper { position: relative; max-width: 320px; margin: 0 auto; }
-    .phone-frame {
-      background: #000; border-radius: 40px; padding: 12px;
-      box-shadow: 0 25px 60px rgba(0,0,0,0.3), inset 0 0 0 2px #334155; position: relative;
-    }
-    .phone-notch {
-      position: absolute; top: 18px; left: 50%; transform: translateX(-50%);
-      width: 100px; height: 18px; background: #000; border-radius: 10px; z-index: 10;
-    }
-    .phone-screen { border-radius: 30px; overflow: hidden; height: 560px; background: #FFF; position: relative; }
-    .phone-screen iframe { width: 100%; height: 100%; border: none; }
+    /* SLEEK GLASS TABLET / FRAMELESS INTERACTIVE WINDOW HERO */
+    .glass-window-container { position: relative; max-width: 440px; margin: 0 auto; }
     
-    .hero-switcher {
-      background: #FFF; border: var(--border-light); border-radius: 20px;
-      padding: 14px 18px; margin-top: 20px; box-shadow: var(--shadow-sm); text-align: center;
+    .floating-badge {
+      position: absolute; z-index: 12; display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px);
+      padding: 8px 14px; border-radius: 20px; font-size: 11.5px; font-weight: 700;
+      color: var(--secondary); box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+      border: 1px solid rgba(212, 160, 23, 0.35); animation: floatBadge 4s ease-in-out infinite alternate;
     }
-    .switcher-label { font-size: 12px; font-weight: 700; color: var(--text-muted); margin-bottom: 8px; display: block; }
-    .switcher-buttons { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; }
-    .btn-switch {
-      background: #F1F5F9; border: none; padding: 6px 14px; border-radius: 15px; font-size: 12px; font-weight: 700;
-      color: var(--secondary); cursor: pointer; transition: all 0.2s;
+    .badge-top-left { top: -14px; left: -18px; }
+    .badge-bottom-right { bottom: 12px; right: -18px; animation-delay: 2s; }
+    @keyframes floatBadge {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(-8px); }
     }
-    .btn-switch.active, .btn-switch:hover { background: var(--primary); color: #FFF; }
+
+    .glass-window {
+      background: #FFFFFF; border-radius: 22px;
+      border: 1.5px solid rgba(212, 160, 23, 0.3);
+      box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.22), 0 0 0 1px rgba(255, 255, 255, 0.8);
+      overflow: hidden; display: flex; flex-direction: column;
+    }
+
+    .window-topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 16px; background: #0F172A; color: #FFF;
+    }
+    .window-dots { display: flex; gap: 6px; align-items: center; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+    .dot-red { background: #EF4444; }
+    .dot-yellow { background: #F59E0B; }
+    .dot-green { background: #10B981; }
+
+    .window-title-badge {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 12px; font-weight: 700; color: #E2E8F0;
+    }
+    .live-pulse {
+      width: 8px; height: 8px; border-radius: 50%; background: #22C55E;
+      box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+      animation: pulseGreen 1.8s infinite;
+    }
+    @keyframes pulseGreen {
+      0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+      70% { box-shadow: 0 0 0 7px rgba(34, 197, 94, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+    }
+
+    .btn-window-fullscreen {
+      background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #FFF; font-size: 11px; font-weight: 700; padding: 4px 10px;
+      border-radius: 12px; cursor: pointer; transition: all 0.2s;
+      display: flex; align-items: center; gap: 5px;
+    }
+    .btn-window-fullscreen:hover { background: var(--primary); border-color: var(--primary); }
+
+    .window-tab-bar {
+      display: flex; gap: 6px; padding: 8px 12px; background: #F8FAFC;
+      border-bottom: 1px solid #E2E8F0; overflow-x: auto; scrollbar-width: none;
+    }
+    .window-tab-bar::-webkit-scrollbar { display: none; }
+    .tab-pill {
+      background: #FFF; border: 1px solid #E2E8F0; padding: 6px 12px;
+      border-radius: 14px; font-size: 11.5px; font-weight: 700; color: #64748B;
+      cursor: pointer; transition: all 0.2s; white-space: nowrap;
+      display: inline-flex; align-items: center; gap: 5px;
+    }
+    .tab-pill.active, .tab-pill:hover {
+      background: var(--primary); color: #FFF; border-color: var(--primary);
+      box-shadow: 0 3px 10px rgba(184, 134, 11, 0.25);
+    }
+
+    .window-viewport-wrap {
+      width: 100%; height: 530px; background: #0A0D14;
+      position: relative; overflow: hidden;
+    }
+    .window-viewport {
+      width: 100%; height: 100%; overflow: hidden; position: relative;
+    }
+    .window-viewport iframe {
+      width: calc(100% + 18px); height: 100%; border: none;
+      scrollbar-width: none; -ms-overflow-style: none;
+    }
+    .window-viewport iframe::-webkit-scrollbar { display: none; width: 0 !important; height: 0 !important; }
+
+    .window-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 14px; background: #FFF; border-top: 1px solid #E2E8F0;
+    }
+    .window-footer-hint { font-size: 11px; color: #64748B; font-weight: 600; }
+    .btn-window-order {
+      background: #16A34A; color: #FFF; border: none; padding: 6px 14px;
+      border-radius: 12px; font-size: 11.5px; font-weight: 800; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 5px; transition: all 0.2s;
+    }
+    .btn-window-order:hover { background: #15803D; box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3); }
 
     /* SECTION HEADERS */
     section { padding: 90px 0; }
@@ -436,27 +509,77 @@
         </div>
       </div>
 
-      <!-- HERO VISUAL PHONE MOCKUP -->
+      <!-- HERO VISUAL: SLEEK GLASS TABLET / FRAMELESS INTERACTIVE WINDOW -->
       <div class="hero-visual">
-        <div class="phone-mockup-wrapper">
-          <div class="phone-frame">
-            <div class="phone-notch"></div>
-            <div class="phone-screen">
-              <iframe id="heroPhoneIframe" src="jawa?to=fufufafa" title="Live Preview Undangan"></iframe>
-            </div>
+        <div class="glass-window-container">
+          
+          <!-- FLOATING LUXURY BADGES -->
+          <div class="floating-badge badge-top-left">
+            <i class="fas fa-music" style="color:var(--primary);"></i>
+            <span>Alunan Musik Tradisional Sakral</span>
           </div>
-        </div>
+          <div class="floating-badge badge-bottom-right">
+            <i class="fas fa-check-circle" style="color:#16A34A;"></i>
+            <span>100% Responsif &amp; Interaktif</span>
+          </div>
 
-        <!-- HERO LIVE SWITCHER -->
-        <div class="hero-switcher">
-          <span class="switcher-label"><i class="fas fa-palette"></i> Coba Ganti Tema di Layar Ponsel:</span>
-          <div class="switcher-buttons">
-            <button class="btn-switch active" onclick="switchHeroTheme('jawa', this)">Jawa (Premium)</button>
-            <button class="btn-switch" onclick="switchHeroTheme('bali', this)">Bali (Prada)</button>
-            <button class="btn-switch" onclick="switchHeroTheme('minang', this)">Minang (Gonjong)</button>
-            <button class="btn-switch" onclick="switchHeroTheme('sunda', this)">Sunda (Standar)</button>
-            <button class="btn-switch" onclick="switchHeroTheme('modern', this)">Modern VIP</button>
+          <!-- THE GLASS WINDOW -->
+          <div class="glass-window">
+            
+            <!-- WINDOW TOP BAR -->
+            <div class="window-topbar">
+              <div class="window-dots">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+              </div>
+              
+              <div class="window-title-badge">
+                <span class="live-pulse"></span>
+                <span id="windowActiveTitle">Live Demo · Adat Jawa</span>
+              </div>
+
+              <button class="btn-window-fullscreen" onclick="openHeroDemoModal()" title="Buka Pratinjau Layar Penuh">
+                <i class="fas fa-expand"></i> <span>Layar Penuh</span>
+              </button>
+            </div>
+
+            <!-- THEME SWITCHER TABS (TOP OF PREVIEW) -->
+            <div class="window-tab-bar">
+              <button class="tab-pill active" onclick="switchHeroTheme('jawa', 'Adat Jawa Kasultanan', this)">
+                <i class="fas fa-crown"></i> Jawa
+              </button>
+              <button class="tab-pill" onclick="switchHeroTheme('bali', 'Adat Bali Pawiwahan', this)">
+                <i class="fas fa-gem"></i> Bali
+              </button>
+              <button class="tab-pill" onclick="switchHeroTheme('minang', 'Adat Minangkabau', this)">
+                <i class="fas fa-landmark"></i> Minang
+              </button>
+              <button class="tab-pill" onclick="switchHeroTheme('sunda', 'Adat Sunda Priangan', this)">
+                <i class="fas fa-feather-alt"></i> Sunda
+              </button>
+              <button class="tab-pill" onclick="switchHeroTheme('modern', 'Modern Luxury VIP', this)">
+                <i class="fas fa-star"></i> Modern
+              </button>
+            </div>
+
+            <!-- FRAMELESS VIEWPORT (NO SCROLLBAR DISTORTION) -->
+            <div class="window-viewport-wrap">
+              <div class="window-viewport">
+                <iframe id="heroPhoneIframe" src="jawa?to=fufufafa" title="Live Preview Undangan"></iframe>
+              </div>
+            </div>
+
+            <!-- WINDOW FOOTER ACTIONS -->
+            <div class="window-footer">
+              <span class="window-footer-hint"><i class="fas fa-hand-pointer"></i> Buka undangan &amp; coba interaksinya</span>
+              <button class="btn-window-order" onclick="openOrderFromHero()">
+                <i class="fab fa-whatsapp"></i> Pesan Tema Ini
+              </button>
+            </div>
+
           </div>
+
         </div>
       </div>
 
@@ -1308,15 +1431,38 @@
       }
     }
 
-    // 3. HERO PHONE SWITCHER
-    function switchHeroTheme(themeName, btn) {
+    // 3. HERO WINDOW SWITCHER & ACTIONS
+    let currentHeroThemeKey = 'jawa';
+    let currentHeroThemeTitle = 'Adat Jawa Kasultanan';
+
+    function switchHeroTheme(themeName, themeTitle, btn) {
+      currentHeroThemeKey = themeName;
+      currentHeroThemeTitle = themeTitle || 'Adat Jawa';
+
       const iframe = document.getElementById('heroPhoneIframe');
       if (iframe) {
         const relPath = getTemplatePath(themeName);
         iframe.src = `${relPath}?to=fufufafa`;
       }
-      document.querySelectorAll('.btn-switch').forEach(b => b.classList.remove('active'));
+      
+      const titleBadge = document.getElementById('windowActiveTitle');
+      if (titleBadge) {
+        titleBadge.innerText = `Live Demo · ${currentHeroThemeTitle}`;
+      }
+
+      document.querySelectorAll('.tab-pill').forEach(b => b.classList.remove('active'));
       if (btn) btn.classList.add('active');
+    }
+
+    function openHeroDemoModal() {
+      const relPath = getTemplatePath(currentHeroThemeKey);
+      openDemoModal(`${relPath}?to=fufufafa`, currentHeroThemeTitle);
+    }
+
+    function openOrderFromHero() {
+      const isStandar = ['sunda', 'betawi', 'rustic'].includes(currentHeroThemeKey);
+      const paketName = isStandar ? 'Paket Standar 35k' : 'Paket Premium 50k';
+      openOrderModal(paketName, currentHeroThemeTitle);
     }
 
     // 4. FILTER KATALOG
