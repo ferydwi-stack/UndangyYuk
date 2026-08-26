@@ -711,17 +711,45 @@
               <input type="text" id="inputNamaTamu" class="form-control" value="Bpk. Anang dan Keluarga" oninput="updateWAPreview()">
             </div>
             <div class="form-group">
-              <label><i class="fas fa-palette"></i> Pilihan Desain Tema:</label>
-              <select id="selectTema" class="form-control" onchange="updateWAPreview()">
-                <option value="jawa">Adat Jawa Kasultanan (Full Canvas)</option>
-                <option value="bali">Adat Bali Pawiwahan (Full Canvas)</option>
-                <option value="minang">Adat Minang Rumah Gadang (Full Canvas)</option>
-                <option value="batak">Adat Batak Toba Gorga (Full Canvas)</option>
-                <option value="sunda">Adat Sunda Priangan (Standar)</option>
-                <option value="betawi">Adat Betawi (Standar)</option>
-                <option value="rustic">Rustic Botanical (Standar)</option>
-                <option value="modern">Modern Luxury VIP (Custom)</option>
+              <label><i class="fas fa-folder-open" style="color:var(--primary);"></i> Pilihan Folder Undangan / Tema:</label>
+              <select id="selectTema" class="form-control" onchange="handleTemaChange()">
+                <optgroup label="🌟 FOLDER PESANAN KLIEN (LINK PENDEK)">
+                  <option value="fery-cewek" selected>📁 fery-cewek (Fery &amp; Anisa)</option>
+                  <option value="fery-girls">📁 fery-girls (Fery &amp; Anisa)</option>
+                  <option value="__custom__">➕ [Ketik Nama Folder Klien Sendiri...]</option>
+                </optgroup>
+                <optgroup label="👑 PAKET PREMIUM 50K (MASTER DEMO)">
+                  <option value="templates/nikah/premium/jawa/index.html">Adat Jawa Kasultanan (Premium 50k)</option>
+                  <option value="templates/nikah/premium/bali/index.html">Adat Bali Pawiwahan (Premium 50k)</option>
+                  <option value="templates/nikah/premium/minang/index.html">Adat Minang Rumah Gadang (Premium 50k)</option>
+                  <option value="templates/nikah/premium/batak/index.html">Adat Batak Toba Gorga (Premium 50k)</option>
+                  <option value="templates/nikah/premium/bugis/index.html">Adat Bugis Makassar (Premium 50k)</option>
+                  <option value="templates/nikah/premium/dayak/index.html">Adat Dayak Kenyah (Premium 50k)</option>
+                  <option value="templates/nikah/premium/madura/index.html">Adat Madura Karapan (Premium 50k)</option>
+                  <option value="templates/nikah/premium/palembang/index.html">Adat Palembang Aesan Gede (Premium 50k)</option>
+                </optgroup>
+                <optgroup label="🥉 PAKET STANDAR 35K (MASTER DEMO)">
+                  <option value="templates/nikah/standar/sunda/index.html">Adat Sunda Priangan (Standar 35k)</option>
+                  <option value="templates/nikah/standar/betawi/index.html">Adat Betawi Palang Pintu (Standar 35k)</option>
+                  <option value="templates/nikah/standar/rustic/index.html">Rustic Botanical (Standar 35k)</option>
+                </optgroup>
+                <optgroup label="💎 PAKET CUSTOM &amp; ACARA LAIN">
+                  <option value="templates/nikah/custom/modern/index.html">Modern Luxury VIP (Custom)</option>
+                  <option value="templates/acara-lain/khitan/index.html">Khitanan Putra Bahagia (Acara Lain)</option>
+                  <option value="templates/acara-lain/aqiqah/index.html">Aqiqah Barakah (Acara Lain)</option>
+                  <option value="templates/acara-lain/birthday/index.html">Sweet 17th Birthday (Acara Lain)</option>
+                  <option value="templates/acara-lain/wisuda/index.html">Graduation / Wisuda (Acara Lain)</option>
+                </optgroup>
               </select>
+            </div>
+
+            <!-- CUSTOM FOLDER INPUT FIELD -->
+            <div class="form-group" id="customFolderGroup" style="display:none;">
+              <label><i class="fas fa-link"></i> Ketik Nama Folder Klien (contoh: fery-cewek, budi-ani):</label>
+              <div style="display:flex; align-items:center; background:#F8FAFC; border:var(--border-light); border-radius:var(--radius-sm); padding-left:12px;">
+                <span style="font-size:12.5px; color:var(--text-muted); font-weight:700;">https://undangy-yuk.vercel.app/</span>
+                <input type="text" id="inputCustomSlug" class="form-control" style="border:none; background:transparent;" placeholder="nama-folder-klien" value="fery-cewek" oninput="updateWAPreview()">
+              </div>
             </div>
             <div class="form-group">
               <label><i class="fas fa-comment-dots"></i> Gaya Bahasa / Nada Bicara:</label>
@@ -1205,17 +1233,51 @@
     }
 
     // 1. UPDATE LIVE WHATSAPP MESSAGE PREVIEW
+    function handleTemaChange() {
+      const sel = document.getElementById('selectTema');
+      const customGroup = document.getElementById('customFolderGroup');
+      const inputMempelai = document.getElementById('inputNamaMempelai');
+      
+      if (sel && sel.value === '__custom__') {
+        if (customGroup) customGroup.style.display = 'block';
+      } else {
+        if (customGroup) customGroup.style.display = 'none';
+      }
+
+      // Auto update sample couple name if client folder selected
+      if (sel && (sel.value === 'fery-cewek' || sel.value === 'fery-girls') && inputMempelai) {
+        inputMempelai.value = 'Fery & Anisa';
+      } else if (sel && sel.value.includes('templates/') && inputMempelai && inputMempelai.value === 'Fery & Anisa') {
+        inputMempelai.value = 'Danang & Sekar';
+      }
+
+      updateWAPreview();
+      generateBulkLinks();
+    }
+
+    function getTargetInvitePath() {
+      const sel = document.getElementById('selectTema');
+      if (!sel) return 'fery-cewek';
+      const val = sel.value;
+      if (val === '__custom__') {
+        const customInput = document.getElementById('inputCustomSlug');
+        const customVal = (customInput ? customInput.value.trim() : '') || 'fery-cewek';
+        return customVal.replace(/^\/+/, '');
+      }
+      return val;
+    }
+
+    // 1. UPDATE LIVE WHATSAPP MESSAGE PREVIEW
     function updateWAPreview() {
-      const mempelai = document.getElementById('inputNamaMempelai').value.trim() || 'Danang & Sekar';
-      const tamu = document.getElementById('inputNamaTamu').value.trim() || 'Bpk. Anang dan Keluarga';
-      const tema = document.getElementById('selectTema').value;
-      const tone = document.getElementById('selectTone').value;
-      const withProkes = document.getElementById('checkProkes').checked;
-      const withDoa = document.getElementById('checkDoa').checked;
+      const mempelai = (document.getElementById('inputNamaMempelai') ? document.getElementById('inputNamaMempelai').value.trim() : '') || 'Danang & Sekar';
+      const tamu = (document.getElementById('inputNamaTamu') ? document.getElementById('inputNamaTamu').value.trim() : '') || 'Bpk. Anang dan Keluarga';
+      const tone = document.getElementById('selectTone') ? document.getElementById('selectTone').value : 'formal';
+      const withProkes = document.getElementById('checkProkes') ? document.getElementById('checkProkes').checked : true;
+      const withDoa = document.getElementById('checkDoa') ? document.getElementById('checkDoa').checked : true;
 
       const currentOrigin = getSiteOrigin();
       const encodedTamu = encodeURIComponent(tamu);
-      const relPath = getTemplatePath(tema);
+      const relPath = getTargetInvitePath();
       const inviteUrl = `${currentOrigin}/${relPath}?to=${encodedTamu}`;
 
       let message = "";
@@ -1308,7 +1370,6 @@
     // 2. BULK GUEST GENERATOR
     function generateBulkLinks() {
       const rawText = document.getElementById('bulkNames').value.trim();
-      const tema = document.getElementById('selectTema').value;
       const container = document.getElementById('bulkResultsContainer');
 
       if (!rawText) {
@@ -1318,7 +1379,7 @@
 
       const names = rawText.split('\n').map(n => n.trim()).filter(n => n.length > 0);
       const currentOrigin = getSiteOrigin();
-      const relPath = getTemplatePath(tema);
+      const relPath = getTargetInvitePath();
 
       let html = '';
       names.forEach((name, idx) => {
