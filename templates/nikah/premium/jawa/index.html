@@ -363,7 +363,11 @@
       document.getElementById('mainContent').classList.add('show');
       musicToggle.style.display = 'flex';
       playMusic();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: 'smooth' 
+      if (typeof AOS !== 'undefined') {
+        setTimeout(() => { AOS.refresh(); }, 150);
+      }
+    });
     }
 
     function playMusic() {

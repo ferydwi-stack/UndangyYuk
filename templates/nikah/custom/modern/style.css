@@ -533,3 +533,68 @@ section { padding: 75px 0; position: relative; }
   pointer-events: none;
 }
 .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+
+/* ========================================================
+   ENHANCED UTILITIES & SECTION STYLING (PERFECT RENDER)
+   ======================================================== */
+.section-mempelai, .section-acara, .section-galeri, .section-gift, .section-profil, .section-cerita, .section-rsvp {
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.mempelai-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0;
+  font-size: 22px;
+  color: var(--gold, var(--primary, #D4AF37));
+}
+.mempelai-divider span {
+  display: block;
+  width: 50px;
+  height: 1px;
+  background: var(--gold, var(--primary, #D4AF37));
+  opacity: 0.5;
+}
+
+.gift-desc {
+  font-size: 14px;
+  color: var(--text-muted, #64748B);
+  max-width: 520px;
+  margin: 0 auto 30px;
+  line-height: 1.6;
+}
+
+.bank-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-dark, #1E293B);
+  margin-bottom: 4px;
+}
+
+.closing-thanks {
+  font-size: 15px;
+  color: var(--text-muted, #64748B);
+  line-height: 1.7;
+  max-width: 580px;
+  margin: 0 auto 25px;
+}
+
+.arch-border-gold, .gonjong-frame-gold, .oval-border-gold {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+}
+
+.bali-mandala-bg, .sutera-bg-pattern, .songket-bg-pattern, .dayak-pattern-bg, .madura-bg-pattern, .rustic-leaf-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+}

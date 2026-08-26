@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
@@ -1451,6 +1451,37 @@ section {
   .nav-links, .nav-actions {
     display: none;
   }
+  .nav-links.mobile-open, .nav-actions.mobile-open {
+    display: flex;
+  }
+  .nav-links.mobile-open {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: rgba(250, 248, 245, 0.98);
+    backdrop-filter: blur(16px);
+    padding: 16px 24px;
+    gap: 12px;
+    border-bottom: var(--border-light);
+    box-shadow: var(--shadow-md);
+    z-index: 999;
+  }
+  .nav-actions.mobile-open {
+    position: absolute;
+    top: calc(100% + 180px);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: rgba(250, 248, 245, 0.98);
+    backdrop-filter: blur(16px);
+    padding: 12px 24px 16px;
+    gap: 10px;
+    border-bottom: var(--border-light);
+    box-shadow: var(--shadow-md);
+    z-index: 999;
+  }
   .mobile-menu-toggle {
     display: block;
   }
@@ -1642,7 +1673,7 @@ section {
 
           <div class="form-group">
             <label for="inputNamaMempelai">Nama Panggilan Pengantin</label>
-            <input type="text" id="inputNamaMempelai" value="Shella &amp; Abi" placeholder="Contoh: Shella &amp; Abi" oninput="updateWAPreview()">
+            <input type="text" id="inputNamaMempelai" value="cowo &amp; Abi" placeholder="Contoh: cowo &amp; cewe" oninput="updateWAPreview()">
           </div>
 
           <div class="form-group">
@@ -1653,7 +1684,7 @@ section {
           <div class="form-group">
             <label for="selectTema">Pilih Tema Undangan</label>
             <select id="selectTema" onchange="updateWAPreview()">
-              <optgroup label="👰 Undangan Pernikahan (Wedding)">
+              <optgroup label="ðŸ‘° Undangan Pernikahan (Wedding)">
                 <option value="jawa">Adat Jawa (Raden &amp; Roro)</option>
                 <option value="sunda">Adat Sunda (Cecep &amp; Nenden)</option>
                 <option value="minang">Adat Minangkabau (Sutan &amp; Puti)</option>
@@ -1664,10 +1695,10 @@ section {
                 <option value="dayak">Adat Dayak Borneo (Apot &amp; Lawing)</option>
                 <option value="madura">Adat Madura (Sakera &amp; Marlena)</option>
                 <option value="palembang">Adat Palembang (Raden Kemas &amp; Nyimas)</option>
-                <option value="modern">Modern Luxury (Shella &amp; Abi)</option>
+                <option value="modern">Modern Luxury (cowo &amp; cewe)</option>
                 <option value="rustic">Rustic Boho (Damar &amp; Senja)</option>
               </optgroup>
-              <optgroup label="🎉 Undangan Acara Lainnya (Non-Wedding)">
+              <optgroup label="ðŸŽ‰ Undangan Acara Lainnya (Non-Wedding)">
                 <option value="khitan">Tasyakuran Khitanan (Rayyan)</option>
                 <option value="aqiqah">Tasyakuran Aqiqah (Zhafira)</option>
                 <option value="birthday">Sweet 17th Birthday Party (Aurelia)</option>
@@ -1759,7 +1790,7 @@ section {
         <button class="tab-btn" onclick="filterCatalog('standar', this)">Pernikahan Standar (3-4 Foto)</button>
         <button class="tab-btn" onclick="filterCatalog('premium', this)">Pernikahan Premium Adat (6-8 Foto)</button>
         <button class="tab-btn" onclick="filterCatalog('vip', this)">VIP Custom (8-12 Foto)</button>
-        <button class="tab-btn" onclick="filterCatalog('acara-lain', this)">🎉 Undangan Acara Lainnya</button>
+        <button class="tab-btn" onclick="filterCatalog('acara-lain', this)">ðŸŽ‰ Undangan Acara Lainnya</button>
       </div>
 
       <!-- CARDS GRID -->
@@ -1784,7 +1815,7 @@ section {
               <button class="btn-demo-modal" onclick="openDemoModal('templates/nikah/premium/jawa/index.html?to=Bpk.+Anang+dan+Keluarga', 'Adat Jawa Kasultanan')">
                 <i class="fas fa-mobile-alt"></i> Pratinjau
               </button>
-              <a href="templates/nikah/premium/jawa/index.html?to=Bpk.+Anang+dan+Keluarga" target="_blank" class="btn-external" title="Buka Tab Baru">
+              <a href="templates/nikah/premium/jawa/index.html?to=Bpk.+Anang+dan+Keluarga" target="_blank" rel="noopener noreferrer" class="btn-external" title="Buka Tab Baru">
                 <i class="fas fa-external-link-alt"></i>
               </a>
             </div>
@@ -1810,7 +1841,7 @@ section {
               <button class="btn-demo-modal" onclick="openDemoModal('templates/nikah/standar/sunda/index.html?to=Bpk.+Anang+dan+Keluarga', 'Adat Sunda Priangan')">
                 <i class="fas fa-mobile-alt"></i> Pratinjau
               </button>
-              <a href="templates/nikah/standar/sunda/index.html?to=Bpk.+Anang+dan+Keluarga" target="_blank" class="btn-external" title="Buka Tab Baru">
+              <a href="templates/nikah/standar/sunda/index.html?to=Bpk.+Anang+dan+Keluarga" target="_blank" rel="noopener noreferrer" class="btn-external" title="Buka Tab Baru">
                 <i class="fas fa-external-link-alt"></i>
               </a>
             </div>
@@ -1836,7 +1867,7 @@ section {
               <button class="btn-demo-modal" onclick="openDemoModal('templates/nikah/premium/minang/index.html?to=Bpk.+Anang+dan+Keluarga', 'Adat Minangkabau')">
                 <i class="fas fa-mobile-alt"></i> Pratinjau
               </button>
-              <a href="templates/nikah/premium/minang/index.html?to=Bpk.+Anang+dan+Keluarga" target="_blank" class="btn-external" title="Buka Tab Baru">
+              <a href="templates/nikah/premium/minang/index.html?to=Bpk.+Anang+dan+Keluarga" target="_blank" rel="noopener noreferrer" class="btn-external" title="Buka Tab Baru">
                 <i class="fas fa-external-link-alt"></i>
               </a>
             </div>
@@ -1862,7 +1893,7 @@ section {
               <button class="btn-demo-modal" onclick="openDemoModal('templates/nikah/premium/batak/index.html?to=Bpk.+Anang+dan+Keluarga', 'Adat Batak Toba')">
                 <i class="fas fa-mobile-alt"></i> Pratinjau
               </button>
-              <a href="templates/nikah/premium/batak/index.html?to=Bpk.+Anang+dan+Keluarga" target="_blank" class="btn-external" title="Buka Tab Baru">
+              <a href="templates/nikah/premium/batak/index.html?to=Bpk.+Anang+dan+Keluarga" target="_blank" rel="noopener noreferrer" class="btn-external" title="Buka Tab Baru">
                 <i class="fas fa-external-link-alt"></i>
               </a>
             </div>
@@ -1888,7 +1919,7 @@ section {
               <button class="btn-demo-modal" onclick="openDemoModal('templates/nikah/premium/bali/index.html?to=Bpk.+Anang+dan+Keluarga', 'Adat Bali Pawiwahan')">
                 <i class="fas fa-mobile-alt"></i> Pratinjau
               </button>
-              <a href="templates/nikah/premium/bali/index.html?to=Bpk.+Anang+dan+Keluarga" target="_blank" class="btn-external" title="Buka Tab Baru">
+              <a href="templates/nikah/premium/bali/index.html?to=Bpk.+Anang+dan+Keluarga" target="_blank" rel="noopener noreferrer" class="btn-external" title="Buka Tab Baru">
                 <i class="fas fa-external-link-alt"></i>
               </a>
             </div>
@@ -1914,7 +1945,7 @@ section {
               <button class="btn-demo-modal" onclick="openDemoModal('templates/nikah/premium/bugis/index.html?to=Bpk.+Anang+dan+Keluarga', 'Adat Bugis Makassar')">
                 <i class="fas fa-mobile-alt"></i> Pratinjau
               </button>
-              <a href="templates/nikah/premium/bugis/index.html?to=Bpk.+Anang+dan+Keluarga" target="_blank" class="btn-external" title="Buka Tab Baru">
+              <a href="templates/nikah/premium/bugis/index.html?to=Bpk.+Anang+dan+Keluarga" target="_blank" rel="noopener noreferrer" class="btn-external" title="Buka Tab Baru">
                 <i class="fas fa-external-link-alt"></i>
               </a>
             </div>
@@ -1940,7 +1971,7 @@ section {
               <button class="btn-demo-modal" onclick="openDemoModal('templates/nikah/standar/betawi/index.html?to=Bpk.+Anang+dan+Keluarga', 'Adat Betawi')">
                 <i class="fas fa-mobile-alt"></i> Pratinjau
               </button>
-              <a href="templates/nikah/standar/betawi/index.html?to=Bpk.+Anang+dan+Keluarga" target="_blank" class="btn-external" title="Buka Tab Baru">
+              <a href="templates/nikah/standar/betawi/index.html?to=Bpk.+Anang+dan+Keluarga" target="_blank" rel="noopener noreferrer" class="btn-external" title="Buka Tab Baru">
                 <i class="fas fa-external-link-alt"></i>
               </a>
             </div>
@@ -1966,7 +1997,7 @@ section {
               <button class="btn-demo-modal" onclick="openDemoModal('templates/nikah/premium/dayak/index.html?to=Bpk.+Anang+dan+Keluarga', 'Adat Dayak Borneo')">
                 <i class="fas fa-mobile-alt"></i> Pratinjau
               </button>
-              <a href="templates/nikah/premium/dayak/index.html?to=Bpk.+Anang+dan+Keluarga" target="_blank" class="btn-external" title="Buka Tab Baru">
+              <a href="templates/nikah/premium/dayak/index.html?to=Bpk.+Anang+dan+Keluarga" target="_blank" rel="noopener noreferrer" class="btn-external" title="Buka Tab Baru">
                 <i class="fas fa-external-link-alt"></i>
               </a>
             </div>
@@ -1992,7 +2023,7 @@ section {
               <button class="btn-demo-modal" onclick="openDemoModal('templates/nikah/premium/madura/index.html?to=Bpk.+Anang+dan+Keluarga', 'Adat Madura')">
                 <i class="fas fa-mobile-alt"></i> Pratinjau
               </button>
-              <a href="templates/nikah/premium/madura/index.html?to=Bpk.+Anang+dan+Keluarga" target="_blank" class="btn-external" title="Buka Tab Baru">
+              <a href="templates/nikah/premium/madura/index.html?to=Bpk.+Anang+dan+Keluarga" target="_blank" rel="noopener noreferrer" class="btn-external" title="Buka Tab Baru">
                 <i class="fas fa-external-link-alt"></i>
               </a>
             </div>
@@ -2018,7 +2049,7 @@ section {
               <button class="btn-demo-modal" onclick="openDemoModal('templates/nikah/premium/palembang/index.html?to=Bpk.+Anang+dan+Keluarga', 'Adat Palembang Darussalam')">
                 <i class="fas fa-mobile-alt"></i> Pratinjau
               </button>
-              <a href="templates/nikah/premium/palembang/index.html?to=Bpk.+Anang+dan+Keluarga" target="_blank" class="btn-external" title="Buka Tab Baru">
+              <a href="templates/nikah/premium/palembang/index.html?to=Bpk.+Anang+dan+Keluarga" target="_blank" rel="noopener noreferrer" class="btn-external" title="Buka Tab Baru">
                 <i class="fas fa-external-link-alt"></i>
               </a>
             </div>
@@ -2044,7 +2075,7 @@ section {
               <button class="btn-demo-modal" onclick="openDemoModal('templates/nikah/custom/modern/index.html?to=Bpk.+Anang+dan+Keluarga', 'Modern Luxury')">
                 <i class="fas fa-mobile-alt"></i> Pratinjau
               </button>
-              <a href="templates/nikah/custom/modern/index.html?to=Bpk.+Anang+dan+Keluarga" target="_blank" class="btn-external" title="Buka Tab Baru">
+              <a href="templates/nikah/custom/modern/index.html?to=Bpk.+Anang+dan+Keluarga" target="_blank" rel="noopener noreferrer" class="btn-external" title="Buka Tab Baru">
                 <i class="fas fa-external-link-alt"></i>
               </a>
             </div>
@@ -2070,7 +2101,7 @@ section {
               <button class="btn-demo-modal" onclick="openDemoModal('templates/nikah/standar/rustic/index.html?to=Bpk.+Anang+dan+Keluarga', 'Rustic Boho')">
                 <i class="fas fa-mobile-alt"></i> Pratinjau
               </button>
-              <a href="templates/nikah/standar/rustic/index.html?to=Bpk.+Anang+dan+Keluarga" target="_blank" class="btn-external" title="Buka Tab Baru">
+              <a href="templates/nikah/standar/rustic/index.html?to=Bpk.+Anang+dan+Keluarga" target="_blank" rel="noopener noreferrer" class="btn-external" title="Buka Tab Baru">
                 <i class="fas fa-external-link-alt"></i>
               </a>
             </div>
@@ -2096,7 +2127,7 @@ section {
               <button class="btn-demo-modal" onclick="openDemoModal('templates/acara-lain/khitan/index.html?to=Bpk.+Anang+dan+Keluarga', 'Tasyakuran Khitanan')">
                 <i class="fas fa-mobile-alt"></i> Pratinjau
               </button>
-              <a href="templates/acara-lain/khitan/index.html?to=Bpk.+Anang+dan+Keluarga" target="_blank" class="btn-external" title="Buka Tab Baru">
+              <a href="templates/acara-lain/khitan/index.html?to=Bpk.+Anang+dan+Keluarga" target="_blank" rel="noopener noreferrer" class="btn-external" title="Buka Tab Baru">
                 <i class="fas fa-external-link-alt"></i>
               </a>
             </div>
@@ -2122,7 +2153,7 @@ section {
               <button class="btn-demo-modal" onclick="openDemoModal('templates/acara-lain/aqiqah/index.html?to=Bpk.+Anang+dan+Keluarga', 'Tasyakuran Aqiqah')">
                 <i class="fas fa-mobile-alt"></i> Pratinjau
               </button>
-              <a href="templates/acara-lain/aqiqah/index.html?to=Bpk.+Anang+dan+Keluarga" target="_blank" class="btn-external" title="Buka Tab Baru">
+              <a href="templates/acara-lain/aqiqah/index.html?to=Bpk.+Anang+dan+Keluarga" target="_blank" rel="noopener noreferrer" class="btn-external" title="Buka Tab Baru">
                 <i class="fas fa-external-link-alt"></i>
               </a>
             </div>
@@ -2148,7 +2179,7 @@ section {
               <button class="btn-demo-modal" onclick="openDemoModal('templates/acara-lain/birthday/index.html?to=Bpk.+Anang+dan+Keluarga', 'Sweet 17th Birthday')">
                 <i class="fas fa-mobile-alt"></i> Pratinjau
               </button>
-              <a href="templates/acara-lain/birthday/index.html?to=Bpk.+Anang+dan+Keluarga" target="_blank" class="btn-external" title="Buka Tab Baru">
+              <a href="templates/acara-lain/birthday/index.html?to=Bpk.+Anang+dan+Keluarga" target="_blank" rel="noopener noreferrer" class="btn-external" title="Buka Tab Baru">
                 <i class="fas fa-external-link-alt"></i>
               </a>
             </div>
@@ -2174,7 +2205,7 @@ section {
               <button class="btn-demo-modal" onclick="openDemoModal('templates/acara-lain/wisuda/index.html?to=Bpk.+Anang+dan+Keluarga', 'Tasyakuran Wisuda')">
                 <i class="fas fa-mobile-alt"></i> Pratinjau
               </button>
-              <a href="templates/acara-lain/wisuda/index.html?to=Bpk.+Anang+dan+Keluarga" target="_blank" class="btn-external" title="Buka Tab Baru">
+              <a href="templates/acara-lain/wisuda/index.html?to=Bpk.+Anang+dan+Keluarga" target="_blank" rel="noopener noreferrer" class="btn-external" title="Buka Tab Baru">
                 <i class="fas fa-external-link-alt"></i>
               </a>
             </div>
@@ -2406,9 +2437,9 @@ section {
             Platform pembuatan undangan pernikahan digital elegan berbasis tema adat Nusantara dan Modern nomor 1 di Indonesia. Praktis, hemat biaya, dan ramah lingkungan.
           </p>
           <div class="social-links">
-            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
-            <a href="https://wa.me/6281234567890" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+            <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
           </div>
         </div>
 
@@ -2448,7 +2479,7 @@ section {
   </footer>
 
   <!-- FLOATING WHATSAPP BUTTON -->
-  <a href="https://wa.me/6281234567890?text=Halo%20Admin%20UndangYuk,%20saya%20tertarik%20untuk%20membuat%20undangan%20pernikahan%20digital." target="_blank" class="floating-wa" title="Konsultasi WhatsApp">
+  <a href="https://wa.me/6281234567890?text=Halo%20Admin%20UndangYuk,%20saya%20tertarik%20untuk%20membuat%20undangan%20pernikahan%20digital." target="_blank" rel="noopener noreferrer" class="floating-wa" title="Konsultasi WhatsApp">
     <i class="fab fa-whatsapp"></i>
     <span class="floating-wa-tooltip">Konsultasi Admin WA</span>
   </a>
@@ -2489,7 +2520,7 @@ section {
         <div class="form-group">
           <label for="orderTema">Pilihan Tema:</label>
           <select id="orderTema">
-            <optgroup label="👰 Undangan Pernikahan">
+            <optgroup label="ðŸ‘° Undangan Pernikahan">
               <option value="Adat Jawa (Kasultanan)">Adat Jawa (Kasultanan)</option>
               <option value="Adat Sunda (Priangan)">Adat Sunda (Priangan)</option>
               <option value="Adat Minangkabau">Adat Minangkabau</option>
@@ -2503,7 +2534,7 @@ section {
               <option value="Modern Luxury">Modern Luxury</option>
               <option value="Rustic Boho">Rustic Boho</option>
             </optgroup>
-            <optgroup label="🎉 Undangan Acara Lainnya">
+            <optgroup label="ðŸŽ‰ Undangan Acara Lainnya">
               <option value="Tasyakuran Khitanan">Tasyakuran Khitanan</option>
               <option value="Tasyakuran Walimatul Aqiqah">Tasyakuran Walimatul Aqiqah</option>
               <option value="Sweet 17th Birthday Party">Sweet 17th Birthday Party</option>
@@ -2513,7 +2544,7 @@ section {
         </div>
         <div class="form-group">
           <label for="orderMempelai">Nama Pasangan (Pria &amp; Wanita):</label>
-          <input type="text" id="orderMempelai" placeholder="Contoh: Shella &amp; Abi" required>
+          <input type="text" id="orderMempelai" placeholder="Contoh: cowo &amp; cewe" required>
         </div>
         <div class="form-group">
           <label for="orderTanggal">Perkiraan Tanggal Acara:</label>
@@ -2539,6 +2570,10 @@ section {
  * UNDANGYUK.COM - MAIN JAVASCRIPT
  * Generator Pesan WhatsApp, Bulk Generator, Order Checkout, Live Switcher & Modal Preview
  */
+
+const ADMIN_WA = '6281234567890';
+
+const SITE_DOMAIN = 'https://undangy-yuk.vercel.app';
 
 const THEME_PATHS = {
   // Nikah - Standar
@@ -2566,35 +2601,60 @@ const THEME_PATHS = {
   'wisuda': 'templates/acara-lain/wisuda/index.html'
 };
 
+function getSiteOrigin() {
+  if (window.location.origin && window.location.origin !== 'null' && window.location.origin.startsWith('http')) {
+    return window.location.origin;
+  }
+  return SITE_DOMAIN;
+}
+
 function getTemplatePath(themeKey) {
-  return THEME_PATHS[themeKey] || `templates/nikah/custom/modern/index.html`;
+  return THEME_PATHS[themeKey] || 'templates/nikah/custom/modern/index.html';
+}
+
+const NON_WEDDING_THEMES = ['khitan', 'aqiqah', 'birthday', 'wisuda'];
+
+const THEME_LABELS = {
+  'jawa': 'Adat Jawa', 'sunda': 'Adat Sunda', 'minang': 'Adat Minangkabau',
+  'batak': 'Adat Batak Toba', 'bali': 'Adat Bali', 'bugis': 'Adat Bugis Makassar',
+  'betawi': 'Adat Betawi', 'dayak': 'Adat Dayak', 'madura': 'Adat Madura',
+  'palembang': 'Adat Palembang', 'modern': 'Modern Luxury', 'rustic': 'Rustic Boho',
+  'khitan': 'Tasyakuran Khitanan', 'aqiqah': 'Tasyakuran Aqiqah',
+  'birthday': 'Sweet 17th Birthday', 'wisuda': 'Tasyakuran Wisuda'
+};
+
+function getEventLabel(tema) {
+  if (tema === 'khitan') return 'syukuran khitanan';
+  if (tema === 'aqiqah') return 'tasyakuran aqiqah';
+  if (tema === 'birthday') return 'perayaan ulang tahun';
+  if (tema === 'wisuda') return 'tasyakuran wisuda';
+  return 'pernikahan';
 }
 
 // 1. UPDATE LIVE WHATSAPP MESSAGE PREVIEW
 function updateWAPreview() {
-  const mempelai = document.getElementById('inputNamaMempelai').value.trim() || 'Shella & Abi';
+  const mempelai = document.getElementById('inputNamaMempelai').value.trim() || 'cwow & cewe';
   const tamu = document.getElementById('inputNamaTamu').value.trim() || 'Bpk. Anang dan Keluarga';
   const tema = document.getElementById('selectTema').value;
   const tone = document.getElementById('selectTone').value;
   const withProkes = document.getElementById('checkProkes').checked;
   const withDoa = document.getElementById('checkDoa').checked;
 
-  const currentOrigin = window.location.origin === 'null' || !window.location.origin.startsWith('http') 
-    ? 'https://www.undangyuk.com' 
-    : window.location.origin;
-
+  const currentOrigin = getSiteOrigin();
   const encodedTamu = encodeURIComponent(tamu);
   const relPath = getTemplatePath(tema);
-  const weddingUrl = `${currentOrigin}/${relPath}?to=${encodedTamu}`;
+  const inviteUrl = `${currentOrigin}/${relPath}?to=${encodedTamu}`;
+  const isNonWedding = NON_WEDDING_THEMES.includes(tema);
+  const eventLabel = getEventLabel(tema);
 
   let message = "";
 
   if (tone === 'formal') {
     message = `Kepada Yth.\nBapak/Ibu/Saudara/i *${tamu}*\n\n` +
-      `Tanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami:\n\n` +
+      `Tanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara ${eventLabel} kami:\n\n` +
       `*${mempelai}*\n\n` +
       `Berikut link undangan kami untuk info lengkap mengenai waktu dan lokasi acara:\n` +
-      `${weddingUrl}\n\n`;
+      `${inviteUrl}\n\n`;
     if (withDoa) {
       message += `Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir serta memberikan doa restu.\n\n`;
     }
@@ -2605,39 +2665,39 @@ function updateWAPreview() {
       `Salam hangat,\n*${mempelai}*`;
 
   } else if (tone === 'islami') {
-    message = `Assalamu’alaikum Warahmatullahi Wabarakatuh\n\n` +
+    message = `Assalamuâ€™alaikum Warahmatullahi Wabarakatuh\n\n` +
       `Kepada Yth. Bapak/Ibu/Saudara/i *${tamu}*\n\n` +
-      `Dengan memohon rahmat dan ridho Allah Subhanahu Wa Ta'ala, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk menghadiri akad dan resepsi pernikahan kami:\n\n` +
+      `Dengan memohon rahmat dan ridho Allah Subhanahu Wa Ta'ala, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara ${eventLabel} kami:\n\n` +
       `*${mempelai}*\n\n` +
       `Detail rangkaian acara dan lokasi dapat dilihat pada link undangan berikut:\n` +
-      `${weddingUrl}\n\n`;
+      `${inviteUrl}\n\n`;
     if (withDoa) {
       message += `Ungkapan terima kasih yang tulus kami sampaikan atas kehadiran serta doa restu yang Bapak/Ibu/Saudara/i berikan.\n\n`;
     }
     if (withProkes) {
-      message += `_“Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya...” (QS. Ar-Rum: 21)_\n\n`;
+      message += `_â€œDan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya...â€ (QS. Ar-Rum: 21)_\n\n`;
     }
-    message += `Wassalamu’alaikum Warahmatullahi Wabarakatuh\n\n` +
+    message += `Wassalamuâ€™alaikum Warahmatullahi Wabarakatuh\n\n` +
       `Kami yang berbahagia,\n*${mempelai}*`;
 
   } else if (tone === 'santai') {
-    message = `Halo *${tamu}*! 👋\n\n` +
-      `Kabar bahagia! Kami ingin mengundang kamu untuk hadir dan merayakan momen pernikahan kami:\n\n` +
-      `💍 *${mempelai}*\n\n` +
+    message = `Halo *${tamu}*! ðŸ‘‹\n\n` +
+      `Kabar bahagia! Kami ingin mengundang kamu untuk hadir dan merayakan momen ${eventLabel} kami:\n\n` +
+      `ðŸ’ *${mempelai}*\n\n` +
       `Buka link undangan digital di bawah ini ya untuk cek jadwal acara, peta lokasi, dan galeri foto:\n` +
-      `${weddingUrl}\n\n`;
+      `${inviteUrl}\n\n`;
     if (withDoa) {
       message += `Kehadiran dan doa restu kamu bakal bikin hari bahagia kami makin lengkap!\n\n`;
     }
-    message += `Sampai ketemu di hari H ya! ✨\n\n` +
+    message += `Sampai ketemu di hari H ya! âœ¨\n\n` +
       `Salam hangat,\n*${mempelai}*`;
 
   } else if (tone === 'singkat') {
     message = `Yth. *${tamu}*\n\n` +
-      `Kami mengundang Anda pada pernikahan *${mempelai}*.\n\n` +
+      `Kami mengundang Anda pada acara ${eventLabel} *${mempelai}*.\n\n` +
       `Info lengkap & RSVP:\n` +
-      `${weddingUrl}\n\n` +
-      `Terima kasih atas doa & kehadirannya! 🙏`;
+      `${inviteUrl}\n\n` +
+      `Terima kasih atas doa & kehadirannya! ðŸ™`;
   }
 
   const previewBox = document.getElementById('waPreviewText');
@@ -2647,12 +2707,34 @@ function updateWAPreview() {
 }
 
 // 2. COPY WA TEXT
+function copyToClipboard(text) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    return navigator.clipboard.writeText(text);
+  }
+  return new Promise(function(resolve, reject) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      document.execCommand('copy');
+      resolve();
+    } catch (e) {
+      reject(e);
+    } finally {
+      document.body.removeChild(ta);
+    }
+  });
+}
+
 function copyWAText() {
   const text = document.getElementById('waPreviewText').innerText;
-  navigator.clipboard.writeText(text).then(() => {
+  copyToClipboard(text).then(() => {
     showToast('Teks undangan WhatsApp berhasil disalin!');
-  }).catch(err => {
-    alert('Gagal menyalin teks.');
+  }).catch(() => {
+    showToast('Gagal menyalin teks. Silakan salin manual.');
   });
 }
 
@@ -2675,9 +2757,7 @@ function generateBulkLinks() {
   }
 
   const names = rawText.split('\n').map(n => n.trim()).filter(n => n.length > 0);
-  const currentOrigin = window.location.origin === 'null' || !window.location.origin.startsWith('http') 
-    ? 'https://www.undangyuk.com' 
-    : window.location.origin;
+  const currentOrigin = getSiteOrigin();
 
   const relPath = getTemplatePath(tema);
 
@@ -2702,11 +2782,13 @@ function generateBulkLinks() {
 }
 
 function copyBulkLink(link, btn) {
-  navigator.clipboard.writeText(link).then(() => {
+  copyToClipboard(link).then(() => {
     const oldText = btn.innerHTML;
     btn.innerHTML = '<i class="fas fa-check"></i> Disalin!';
     showToast('Link tamu berhasil disalin!');
     setTimeout(() => { btn.innerHTML = oldText; }, 2500);
+  }).catch(() => {
+    showToast('Gagal menyalin link. Silakan salin manual.');
   });
 }
 
@@ -2735,10 +2817,35 @@ function switchHeroTheme(themeName, btn) {
 }
 
 // 7. CATALOG FILTER
+const CATEGORY_MAP = {
+  'jawa-bali': ['premium'],
+  'sumatera': ['premium'],
+  'nusantara': ['premium'],
+  'modern-rustic': ['standar', 'vip']
+};
+const CATEGORY_THEMES = {
+  'jawa-bali': ['jawa', 'bali'],
+  'sumatera': ['minang', 'batak', 'palembang'],
+  'nusantara': ['bugis', 'dayak', 'madura'],
+  'modern-rustic': ['modern', 'rustic']
+};
+
 function filterCatalog(category, btn) {
   const cards = document.querySelectorAll('.catalog-card');
+  const themeFilter = CATEGORY_THEMES[category];
+
   cards.forEach(card => {
-    if (category === 'all' || card.getAttribute('data-category') === category) {
+    if (category === 'all') {
+      card.style.display = 'flex';
+    } else if (themeFilter) {
+      const cardThemes = Array.from(card.querySelectorAll('.card-title')).map(t => t.textContent.toLowerCase());
+      const cardBadge = (card.querySelector('.badge-tag') || {}).textContent || '';
+      const match = themeFilter.some(t => {
+        const label = (THEME_LABELS[t] || '').toLowerCase();
+        return cardThemes.some(ct => ct.includes(label.split(' ').pop())) || cardBadge.toLowerCase().includes(t);
+      });
+      card.style.display = match ? 'flex' : 'none';
+    } else if (card.getAttribute('data-category') === category) {
       card.style.display = 'flex';
     } else {
       card.style.display = 'none';
@@ -2819,22 +2926,28 @@ function submitOrderForm(e) {
   e.preventDefault();
   const paket = document.getElementById('orderPaket').value;
   const tema = document.getElementById('orderTema').value;
-  const mempelai = document.getElementById('orderMempelai').value;
+  const mempelai = document.getElementById('orderMempelai').value.trim();
   const tanggal = document.getElementById('orderTanggal').value;
-  const waUser = document.getElementById('orderNomorWA').value;
-  const catatan = document.getElementById('orderCatatan').value || '-';
+  const waUser = document.getElementById('orderNomorWA').value.trim();
+  const catatan = document.getElementById('orderCatatan').value.trim() || '-';
+
+  if (!mempelai) { showToast('Silakan isi nama pasangan.'); return; }
+  if (!tanggal) { showToast('Silakan isi tanggal acara.'); return; }
+  if (!waUser || waUser.length < 10) { showToast('Nomor WhatsApp tidak valid.'); return; }
+
+  const normalizedWA = waUser.replace(/[^0-9]/g, '');
 
   const orderMsg = 
     `*FORMULIR PEMESANAN UNDANGYUK.COM*\n` +
     `=============================\n` +
-    `📦 *Paket:* ${paket}\n` +
-    `🎨 *Pilihan Tema:* ${tema}\n` +
-    `👫 *Nama Mempelai:* ${mempelai}\n` +
-    `📅 *Tanggal Acara:* ${tanggal}\n` +
-    `📱 *No. WhatsApp:* ${waUser}\n` +
-    `📝 *Catatan Tambahan:* ${catatan}\n` +
+    `*Paket:* ${paket}\n` +
+    `*Pilihan Tema:* ${tema}\n` +
+    `*Nama Mempelai:* ${mempelai}\n` +
+    `*Tanggal Acara:* ${tanggal}\n` +
+    `*No. WhatsApp:* ${normalizedWA}\n` +
+    `*Catatan Tambahan:* ${catatan}\n` +
     `=============================\n\n` +
-    `Halo Admin UndangYuk, saya ingin memesan undangan digital dengan data di atas. Mohon info nomor rekening pembayaran dan proses pembuatan draft-nya. Terima kasih! 🙏`;
+    `Halo Admin UndangYuk, saya ingin memesan undangan digital dengan data di atas. Mohon info nomor rekening pembayaran dan proses pembuatan draft-nya. Terima kasih!`;
 
   const encoded = encodeURIComponent(orderMsg);
   window.open(`https://api.whatsapp.com/send?phone=${ADMIN_WA}&text=${encoded}`, '_blank');
@@ -2848,6 +2961,21 @@ function toggleFAQ(button) {
   document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
   if (!isActive) {
     item.classList.add('active');
+  }
+}
+
+// 11. MOBILE MENU TOGGLE
+function toggleMobileMenu() {
+  const navLinks = document.querySelector('.nav-links');
+  const navActions = document.querySelector('.nav-actions');
+  const toggle = document.querySelector('.mobile-menu-toggle i');
+  const isOpen = navLinks.classList.contains('mobile-open');
+
+  navLinks.classList.toggle('mobile-open');
+  navActions.classList.toggle('mobile-open');
+
+  if (toggle) {
+    toggle.className = isOpen ? 'fas fa-bars' : 'fas fa-times';
   }
 }
 

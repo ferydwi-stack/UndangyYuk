@@ -347,7 +347,11 @@
       document.getElementById('cover').classList.add('hide');
       document.getElementById('mainContent').classList.add('show');
       musicToggle.style.display = 'flex';
-      bgMusic.play().then(() => { isPlaying = true; musicIcon.classList.add('spin'); }).catch(e => console.log(e));
+      bgMusic.play().then(() => { isPlaying = true; musicIcon.classList.add('spin'); 
+      if (typeof AOS !== 'undefined') {
+        setTimeout(() => { AOS.refresh(); }, 150);
+      }
+    }).catch(e => console.log(e));
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
