@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
@@ -704,7 +704,7 @@
           <div class="generator-form">
             <div class="form-group">
               <label><i class="fas fa-user-friends"></i> Nama Pasangan Mempelai:</label>
-              <input type="text" id="inputNamaMempelai" class="form-control" value="Danang &amp; Sekar" oninput="updateWAPreview()">
+              <input type="text" id="inputNamaMempelai" class="form-control" value="Fery & Dila" oninput="updateWAPreview()">
             </div>
             <div class="form-group">
               <label><i class="fas fa-user"></i> Nama Tamu Undangan:</label>
@@ -746,12 +746,6 @@
             <!-- CUSTOM FOLDER INPUT IF USER ADDS NEW FOLDER -->
             <div class="form-group" id="customFolderBox" style="display:none;">
               <label><i class="fas fa-folder-plus"></i> Masukkan Nama Folder Klien Baru:</label>
-              <input type="text" id="customFolderName" class="form-control" placeholder="Contoh: fery-dila atau dimas-putri" value="fery-dila" oninput="updateWAPreview()">
-            </div>
-
-            <!-- CUSTOM FOLDER INPUT IF USER ADDS NEW FOLDER -->
-            <div class="form-group" id="customFolderBox" style="display:none;">
-              <label><i class="fas fa-folder-plus"></i> Masukkan Nama Folder Baru:</label>
               <input type="text" id="customFolderName" class="form-control" placeholder="Contoh: fery-dila atau dimas-putri" value="fery-dila" oninput="updateWAPreview()">
             </div>
             <div class="form-group">
@@ -1234,12 +1228,42 @@
     }
 
     function getTemplatePath(themeKey) {
-      return THEME_PATHS[themeKey] || 'jawa';
+      if (THEME_PATHS[themeKey]) return THEME_PATHS[themeKey];
+      // For custom client folders not in THEME_PATHS
+      return themeKey + '/index.html';
+    }
+
+    // HANDLE DROPDOWN FOLDER CHANGE
+    function handleSelectFolderChange() {
+      const sel = document.getElementById('selectTema');
+      const val = sel.value;
+      const customBox = document.getElementById('customFolderBox');
+
+      // Show/hide custom folder input
+      if (val === '__custom_folder__') {
+        if (customBox) customBox.style.display = 'block';
+      } else {
+        if (customBox) customBox.style.display = 'none';
+      }
+
+      // Auto-update couple name based on folder name
+      if (val !== '__custom_folder__') {
+        const nameInput = document.getElementById('inputNamaMempelai');
+        // Extract couple name from folder name (e.g., "fery-dila" -> "Fery & Dila")
+        const parts = val.split('-');
+        if (parts.length === 2) {
+          const name1 = parts[0].charAt(0).toUpperCase() + parts[0].slice(1);
+          const name2 = parts[1].charAt(0).toUpperCase() + parts[1].slice(1);
+          nameInput.value = name1 + ' & ' + name2;
+        }
+      }
+
+      updateWAPreview();
     }
 
     // 1. UPDATE LIVE WHATSAPP MESSAGE PREVIEW
     function updateWAPreview() {
-      const mempelai = document.getElementById('inputNamaMempelai').value.trim() || 'Danang & Sekar';
+      const mempelai = document.getElementById('inputNamaMempelai').value.trim() || 'Nama Mempelai';
       const tamu = document.getElementById('inputNamaTamu').value.trim() || 'Bpk. Anang dan Keluarga';
       const tema = document.getElementById('selectTema').value;
       const tone = document.getElementById('selectTone').value;
