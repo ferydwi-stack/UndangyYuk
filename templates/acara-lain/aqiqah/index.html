@@ -285,6 +285,7 @@
   </main>
 
   <script>
+    // 1. Safe Guest Parameter Extraction
     const urlParams = new URLSearchParams(window.location.search);
     const guestParam = urlParams.get('to') || urlParams.get('p') || urlParams.get('guest');
     const guestEl = document.getElementById('namaTamuCover');
@@ -294,22 +295,25 @@
       } else {
         guestEl.textContent = "Tamu Undangan Yang Berbahagia";
       }
-    } else {
-        guestEl.textContent = "Tamu Undangan";
-      }
     }
 
+    // 2. Music Player & Open Invitation
     const bgMusic = document.getElementById('bgMusic');
     const musicToggle = document.getElementById('musicToggle');
     const musicIcon = document.getElementById('musicIcon');
     let isPlaying = false;
 
     function bukaUndangan() {
-      document.getElementById('cover').classList.add('hide');
-      document.getElementById('mainContent').classList.add('show');
+      const cover = document.getElementById('cover');
+      const mainContent = document.getElementById('mainContent');
+      if (cover) cover.classList.add('hide');
+      if (mainContent) mainContent.classList.add('show');
       if (musicToggle) musicToggle.style.display = 'flex';
       if (bgMusic) {
-        bgMusic.play().then(() => { isPlaying = true; }).catch(e => console.log(e));
+        bgMusic.play().then(() => {
+          isPlaying = true;
+          if (musicIcon) musicIcon.classList.add('spin');
+        }).catch(e => console.log('Audio autoplay prevented:', e));
       }
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -327,7 +331,8 @@
       }
     }
 
-    const targetDate = new Date('December 5, 2026 10:00:00').getTime();
+    // 3. Countdown Timer
+    const targetDate = new Date('December 05, 2026 08:00:00').getTime();
     setInterval(() => {
       const now = new Date().getTime();
       const diff = targetDate - now;
@@ -343,12 +348,20 @@
       }
     }, 1000);
 
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.15 });
-    document.querySelectorAll('.animate').forEach(el => obs.observe(el));
+    // 4. Scroll Reveal Animations
+    if ('IntersectionObserver' in window) {
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.animate').forEach(el => obs.observe(el));
+    }
 
+    // 5. Firebase Cloud Firestore RSVP & Real-time Guestbook
     const THEME_CLOUD_ID = 'acara_aqiqah';
+
+    function esc(t) {
+      return (t || '').replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m]));
+    }
 
     function renderCloudWishes(wishes) {
       const feed = document.getElementById('messagesContainer');
@@ -362,16 +375,15 @@
       });
     }
 
-    // Connect real-time Firebase listener
     if (window.listenRSVPFromCloud) {
       window.listenRSVPFromCloud(THEME_CLOUD_ID, renderCloudWishes);
     }
 
     async function handleRSVP(e) {
       e.preventDefault();
-      const n = document.getElementById('nama').value.trim();
-      const k = document.getElementById('kehadiran').value;
-      const u = document.getElementById('ucapan').value.trim();
+      const n = (document.getElementById('nama') ? document.getElementById('nama').value : '').trim();
+      const k = document.getElementById('kehadiran') ? document.getElementById('kehadiran').value : 'Hadir';
+      const u = (document.getElementById('ucapan') ? document.getElementById('ucapan').value : '').trim();
       
       if (window.submitRSVPToCloud) {
         await window.submitRSVPToCloud(THEME_CLOUD_ID, { nama: n, kehadiran: k, ucapan: u });
@@ -388,77 +400,28 @@
       e.target.reset();
     }
 
-    function esc(t) {
-      return t.replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m]));
-    }
-
+    // 6. Copy Rekening Bank
     function copyRek(num, btn) {
-      navigator.clipboard.writeText(num).then(() => {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(num).then(() => {
+          const old = btn.innerHTML;
+          btn.innerHTML = '<i class="fas fa-check"></i> Disalin!';
+          setTimeout(() => { btn.innerHTML = old; }, 2000);
+        });
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = num;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
         const old = btn.innerHTML;
         btn.innerHTML = '<i class="fas fa-check"></i> Disalin!';
         setTimeout(() => { btn.innerHTML = old; }, 2000);
-      });
+      }
     }
 
-  // Full Canvas Particle Effect
-  (function initCanvasParticles() {
-    const canvas = document.getElementById('canvasParticles');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    let width = canvas.width = window.innerWidth;
-    let height = canvas.height = window.innerHeight;
-
-    window.addEventListener('resize', () => {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    });
-
-    const particles = [];
-    const count = window.innerWidth < 600 ? 25 : 45;
-
-    for (let i = 0; i < count; i++) {
-      particles.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        r: Math.random() * 3 + 1,
-        dx: (Math.random() - 0.5) * 0.8,
-        dy: Math.random() * 1.2 + 0.5,
-        opacity: Math.random() * 0.7 + 0.2,
-        rot: Math.random() * Math.PI * 2,
-        rotSpeed: (Math.random() - 0.5) * 0.02
-      });
-    }
-
-    function render() {
-      ctx.clearRect(0, 0, width, height);
-      particles.forEach(p => {
-        p.x += p.dx;
-        p.y += p.dy;
-        p.rot += p.rotSpeed;
-
-        if (p.y > height) { p.y = -10; p.x = Math.random() * width; }
-        if (p.x > width) p.x = 0;
-        if (p.x < 0) p.x = width;
-
-        ctx.save();
-        ctx.translate(p.x, p.y);
-        ctx.rotate(p.rot);
-        ctx.globalAlpha = p.opacity;
-
-        
-          // Petal Shape
-          ctx.fillStyle = '#E8A598';
-          ctx.beginPath();
-          ctx.ellipse(0, 0, p.r * 2, p.r * 1.2, 0, 0, Math.PI * 2);
-          ctx.fill();
-        
-        ctx.restore();
-      });
-      requestAnimationFrame(render);
-    }
-    render();
-  })();
-
+    
   </script>
 </body>
 </html>

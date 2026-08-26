@@ -434,46 +434,83 @@
   </main>
 
   <script>
-    const urlParams=new URLSearchParams(window.location.search);
-    document.getElementById('namaTamuCover').textContent=urlParams.get('to')||'Tamu Undangan';
-
-    const bgMusic=document.getElementById('bgMusic');
-    const musicToggle=document.getElementById('musicToggle');
-    const musicIcon=document.getElementById('musicIcon');
-    let isPlaying=false;
-
-    function bukaUndangan(){
-      document.getElementById('cover').classList.add('hide');
-      document.getElementById('mainContent').classList.add('show');
-      musicToggle.style.display='flex';
-      bgMusic.play().then(()=>{isPlaying=true}).catch(e=>console.log(e));
-      window.scrollTo({top:0,behavior:'smooth'});
-    }
-    function toggleMusic(){
-      if(isPlaying){bgMusic.pause();musicIcon.classList.remove('spin');isPlaying=false}
-      else{bgMusic.play();musicIcon.classList.add('spin');isPlaying=true}
-    }
-
-    // Countdown
-    const wDate=new Date('November 14,2026 08:00:00').getTime();
-    setInterval(()=>{
-      const now=new Date().getTime(),d=wDate-now;
-      if(d>0){
-        document.getElementById('days').innerText=String(Math.floor(d/(1000*60*60*24))).padStart(2,'0');
-        document.getElementById('hours').innerText=String(Math.floor((d%(1000*60*60*24))/(1000*60*60))).padStart(2,'0');
-        document.getElementById('minutes').innerText=String(Math.floor((d%(1000*60*60))/(1000*60))).padStart(2,'0');
-        document.getElementById('seconds').innerText=String(Math.floor((d%(1000*60))/1000)).padStart(2,'0');
+    // 1. Safe Guest Parameter Extraction
+    const urlParams = new URLSearchParams(window.location.search);
+    const guestParam = urlParams.get('to') || urlParams.get('p') || urlParams.get('guest');
+    const guestEl = document.getElementById('namaTamuCover');
+    if (guestEl) {
+      if (guestParam && guestParam.trim().length > 0) {
+        guestEl.textContent = decodeURIComponent(guestParam.trim());
+      } else {
+        guestEl.textContent = "Tamu Undangan Yang Berbahagia";
       }
-    },1000);
+    }
 
-    // Scroll animations
-    const obs=new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
-    },{threshold:0.15});
-    document.querySelectorAll('.animate').forEach(el=>obs.observe(el));
+    // 2. Music Player & Open Invitation
+    const bgMusic = document.getElementById('bgMusic');
+    const musicToggle = document.getElementById('musicToggle');
+    const musicIcon = document.getElementById('musicIcon');
+    let isPlaying = false;
 
-    // RSVP
+    function bukaUndangan() {
+      const cover = document.getElementById('cover');
+      const mainContent = document.getElementById('mainContent');
+      if (cover) cover.classList.add('hide');
+      if (mainContent) mainContent.classList.add('show');
+      if (musicToggle) musicToggle.style.display = 'flex';
+      if (bgMusic) {
+        bgMusic.play().then(() => {
+          isPlaying = true;
+          if (musicIcon) musicIcon.classList.add('spin');
+        }).catch(e => console.log('Audio autoplay prevented:', e));
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleMusic() {
+      if (!bgMusic) return;
+      if (isPlaying) {
+        bgMusic.pause();
+        if (musicIcon) musicIcon.classList.remove('spin');
+        isPlaying = false;
+      } else {
+        bgMusic.play();
+        if (musicIcon) musicIcon.classList.add('spin');
+        isPlaying = true;
+      }
+    }
+
+    // 3. Countdown Timer
+    const targetDate = new Date('December 05, 2026 08:00:00').getTime();
+    setInterval(() => {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+      if (diff > 0) {
+        const d = document.getElementById('days');
+        const h = document.getElementById('hours');
+        const m = document.getElementById('minutes');
+        const s = document.getElementById('seconds');
+        if (d) d.innerText = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
+        if (h) h.innerText = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+        if (m) m.innerText = String(Math.floor((diff % (1000 * 60)) / (1000 * 60))).padStart(2, '0');
+        if (s) s.innerText = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
+      }
+    }, 1000);
+
+    // 4. Scroll Reveal Animations
+    if ('IntersectionObserver' in window) {
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.animate').forEach(el => obs.observe(el));
+    }
+
+    // 5. Firebase Cloud Firestore RSVP & Real-time Guestbook
     const THEME_CLOUD_ID = 'bali_pawiwahan';
+
+    function esc(t) {
+      return (t || '').replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m]));
+    }
 
     function renderCloudWishes(wishes) {
       const feed = document.getElementById('messagesContainer');
@@ -487,16 +524,15 @@
       });
     }
 
-    // Connect real-time Firebase listener
     if (window.listenRSVPFromCloud) {
       window.listenRSVPFromCloud(THEME_CLOUD_ID, renderCloudWishes);
     }
 
     async function handleRSVP(e) {
       e.preventDefault();
-      const n = document.getElementById('nama').value.trim();
-      const k = document.getElementById('kehadiran').value;
-      const u = document.getElementById('ucapan').value.trim();
+      const n = (document.getElementById('nama') ? document.getElementById('nama').value : '').trim();
+      const k = document.getElementById('kehadiran') ? document.getElementById('kehadiran').value : 'Hadir';
+      const u = (document.getElementById('ucapan') ? document.getElementById('ucapan').value : '').trim();
       
       if (window.submitRSVPToCloud) {
         await window.submitRSVPToCloud(THEME_CLOUD_ID, { nama: n, kehadiran: k, ucapan: u });
@@ -512,70 +548,97 @@
       alert('Terima kasih banyak! Konfirmasi RSVP & Doa Restu Anda telah tersimpan secara real-time.');
       e.target.reset();
     }
-    function esc(t){return t.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
-    function copyRek(n,btn){navigator.clipboard.writeText(n).then(()=>{const o=btn.innerHTML;btn.innerHTML='<i class="fas fa-check"></i> Disalin!';setTimeout(()=>{btn.innerHTML=o},2000)})}
-  
-  // Full Canvas Particle Effect
-  (function initCanvasParticles() {
-    const canvas = document.getElementById('canvasParticles');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    let width = canvas.width = window.innerWidth;
-    let height = canvas.height = window.innerHeight;
 
-    window.addEventListener('resize', () => {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    });
-
-    const particles = [];
-    const count = window.innerWidth < 600 ? 25 : 45;
-
-    for (let i = 0; i < count; i++) {
-      particles.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        r: Math.random() * 3 + 1,
-        dx: (Math.random() - 0.5) * 0.8,
-        dy: Math.random() * 1.2 + 0.5,
-        opacity: Math.random() * 0.7 + 0.2,
-        rot: Math.random() * Math.PI * 2,
-        rotSpeed: (Math.random() - 0.5) * 0.02
-      });
+    // 6. Copy Rekening Bank
+    function copyRek(num, btn) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(num).then(() => {
+          const old = btn.innerHTML;
+          btn.innerHTML = '<i class="fas fa-check"></i> Disalin!';
+          setTimeout(() => { btn.innerHTML = old; }, 2000);
+        });
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = num;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        const old = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-check"></i> Disalin!';
+        setTimeout(() => { btn.innerHTML = old; }, 2000);
+      }
     }
 
-    function render() {
-      ctx.clearRect(0, 0, width, height);
-      particles.forEach(p => {
-        p.x += p.dx;
-        p.y += p.dy;
-        p.rot += p.rotSpeed;
+    
+    // 7. Lightweight HTML5 Canvas Particle Engine
+    (function initCanvasParticles() {
+      const canvas = document.getElementById('canvasParticles');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let width = canvas.width = window.innerWidth;
+      let height = canvas.height = window.innerHeight;
 
-        if (p.y > height) { p.y = -10; p.x = Math.random() * width; }
-        if (p.x > width) p.x = 0;
-        if (p.x < 0) p.x = width;
-
-        ctx.save();
-        ctx.translate(p.x, p.y);
-        ctx.rotate(p.rot);
-        ctx.globalAlpha = p.opacity;
-
-        
-          // Gold Stardust
-          ctx.fillStyle = '#D4AF37';
-          ctx.shadowBlur = 6;
-          ctx.shadowColor = '#D4AF37';
-          ctx.beginPath();
-          ctx.arc(0, 0, p.r * 1.4, 0, Math.PI * 2);
-          ctx.fill();
-        
-        ctx.restore();
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
       });
-      requestAnimationFrame(render);
-    }
-    render();
-  })();
 
+      const particles = [];
+      const count = window.innerWidth < 600 ? 25 : 45;
+
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          r: Math.random() * 2.2 + 1,
+          dx: (Math.random() - 0.5) * 0.6,
+          dy: Math.random() * 1.0 + 0.3,
+          opacity: Math.random() * 0.7 + 0.2,
+          rot: Math.random() * Math.PI * 2,
+          rotSpeed: (Math.random() - 0.5) * 0.02,
+          isPetal: i % 3 === 0
+        });
+      }
+
+      function render() {
+        ctx.clearRect(0, 0, width, height);
+        particles.forEach(p => {
+          p.x += p.dx;
+          p.y += p.dy;
+          p.rot += p.rotSpeed;
+
+          if (p.y > height) { p.y = -10; p.x = Math.random() * width; }
+          if (p.x > width) p.x = 0;
+          if (p.x < 0) p.x = width;
+
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.rot);
+          ctx.globalAlpha = p.opacity;
+
+          if (p.isPetal) {
+            ctx.fillStyle = '#FFF9F0';
+            ctx.shadowBlur = 3;
+            ctx.shadowColor = 'rgba(197, 160, 89, 0.3)';
+            ctx.beginPath();
+            ctx.ellipse(0, 0, p.r * 2.2, p.r * 1.2, 0, 0, Math.PI * 2);
+            ctx.fill();
+          } else {
+            ctx.fillStyle = '#E5C378';
+            ctx.shadowBlur = 5;
+            ctx.shadowColor = '#C5A059';
+            ctx.beginPath();
+            ctx.arc(0, 0, p.r * 1.2, 0, Math.PI * 2);
+            ctx.fill();
+          }
+          ctx.restore();
+        });
+        requestAnimationFrame(render);
+      }
+      render();
+    })();
+    
   </script>
 </body>
 </html>
