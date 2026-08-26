@@ -3,256 +3,223 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Wedding of Oliver &amp; Sophia - Rustic Botanical</title>
-  <meta name="description" content="Rustic Boho Wedding of Oliver &amp; Sophia">
+  <title>The Wedding of Samuel &amp; Jessica</title>
+  <meta name="description" content="Rustic Botanical Wedding Invitation - Standar Clean Edition">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     :root {
-      --terracotta: #C36B4E;
-      --sand: #E8D8C8;
-      --dark-wood: #4A3528;
-      --forest: #3A5A3C;
-      --bg-cream: #FAF6F0;
-      --text: #2D231E;
-      --muted: #726259;
-      --white: #FFFFFF;
-      --shadow: 0 10px 30px rgba(195, 107, 78, 0.12);
-      --border: 1px solid rgba(195, 107, 78, 0.3);
+      --primary: #B36B4C;
+      --primary-dark: #7A3F27;
+      --olive: #738276;
+      --bg: #FAF6F0;
+      --card-bg: #FFFFFF;
+      --text: #3D2B24;
+      --muted: #736159;
+      --shadow: 0 8px 25px rgba(179, 107, 76, 0.08);
+      --border: 1px solid rgba(179, 107, 76, 0.25);
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
-    body { background-color: var(--bg-cream); color: var(--text); line-height: 1.7; overflow-x: hidden; }
-    h1, h2, h3, h4, .cover-title { font-family: 'Cormorant Garamond', serif; color: var(--terracotta); }
-    .container { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+    body { background-color: var(--bg); color: var(--text); line-height: 1.7; overflow-x: hidden; }
+    h1, h2, h3, h4, .serif { font-family: 'Cinzel', serif; color: var(--primary); }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 20px; }
     .text-center { text-align: center; }
 
-    /* ANIMATIONS */
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(35px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes spin { 100% { transform: rotate(360deg); } }
     .animate { opacity: 0; }
-    .animate.visible { animation: fadeInUp 0.8s ease forwards; }
+    .animate.visible { animation: fadeInUp 0.7s ease forwards; }
     .animate-delay-1 { animation-delay: 0.15s; }
     .animate-delay-2 { animation-delay: 0.3s; }
     .spin { animation: spin 4s linear infinite; }
 
-    /* COVER */
     .cover-section {
       position: fixed; inset: 0;
-      background: radial-gradient(circle at center, #543425 0%, #2A170F 100%);
+      background: linear-gradient(135deg, #2E1A12 0%, #4D2D20 100%);
       color: #FFF; display: flex; justify-content: center; align-items: center;
       z-index: 999; transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
       padding: 20px; text-align: center;
     }
     .cover-section.hide { transform: translateY(-100%); pointer-events: none; }
     .cover-card {
-      border: 2px solid var(--terracotta); padding: 45px 28px; border-radius: 90px 90px 24px 24px; max-width: 460px;
-      background: rgba(42, 23, 15, 0.9); backdrop-filter: blur(12px); box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+      border: 1.5px solid var(--primary); padding: 40px 24px; border-radius: 24px; max-width: 420px; width: 100%;
+      background: rgba(46, 26, 18, 0.92); backdrop-filter: blur(10px); box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+    }
+    .cover-badge { font-size: 11px; letter-spacing: 3px; color: #E8A88A; font-weight: 700; text-transform: uppercase; }
+    .cover-title { font-size: 32px; color: #FFF; margin: 10px 0; font-style: italic; }
+    .cover-date { font-size: 13.5px; color: #E0CECE; }
+    .guest-box {
+      background: rgba(0,0,0,0.3); border: 1px dashed var(--primary);
+      padding: 14px; border-radius: 14px; margin: 20px 0;
     }
     .btn-buka {
-      background: linear-gradient(135deg, var(--terracotta) 0%, #A04D33 100%);
-      color: #FFF; border: none; padding: 13px 34px; font-size: 13px; font-weight: 700;
-      letter-spacing: 2px; text-transform: uppercase; border-radius: 30px; cursor: pointer;
-      display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(195, 107, 78, 0.4);
-      margin-top: 15px; transition: transform 0.3s;
+      background: linear-gradient(135deg, var(--primary) 0%, #8A462A 100%);
+      color: #FFF; border: none; padding: 12px 32px; font-size: 14px; font-weight: 800;
+      border-radius: 25px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
+      box-shadow: 0 4px 15px rgba(179, 107, 76, 0.4); transition: transform 0.2s;
     }
+    .btn-buka:hover { transform: translateY(-2px); }
 
-    /* MAIN */
-    .main-content { display: none; opacity: 0; transition: opacity 0.8s ease; padding-bottom: 80px; }
+    .main-content { display: none; opacity: 0; transition: opacity 0.8s ease; padding-bottom: 70px; }
     .main-content.show { display: block; opacity: 1; }
-    section { padding: 65px 0; position: relative; }
-    .section-heading { margin-bottom: 35px; }
-    .section-heading .sub-title { text-transform: uppercase; letter-spacing: 3px; font-size: 11px; color: var(--terracotta); font-weight: 700; }
-    .section-heading h2 { font-size: 32px; margin: 5px 0 10px; }
-    .heading-line { width: 45px; height: 2px; background: var(--terracotta); margin: 0 auto; }
+    section { padding: 60px 0; }
+    .section-heading { margin-bottom: 30px; }
+    .section-heading .sub-title { text-transform: uppercase; letter-spacing: 3px; font-size: 11px; color: var(--primary); font-weight: 700; }
+    .section-heading h2 { font-size: 26px; margin: 4px 0 8px; }
+    .heading-line { width: 45px; height: 3px; background: var(--primary); margin: 0 auto; border-radius: 2px; }
 
-    /* ORGANIC BLOB MEMPELAI */
-    .mempelai-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 20px; }
-    .organic-card {
-      background: var(--white); border: var(--border); padding: 30px 20px;
-      border-radius: 40px 10px 40px 10px; width: 280px; text-align: center; box-shadow: var(--shadow);
+    .mempelai-grid { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-top: 20px; }
+    .mempelai-card {
+      background: var(--card-bg); border: var(--border); padding: 28px 20px;
+      border-radius: 20px; width: 280px; text-align: center; box-shadow: var(--shadow);
     }
-    .organic-photo {
-      width: 150px; height: 190px; margin: 0 auto 15px; overflow: hidden;
-      border-radius: 60% 40% 50% 50% / 55% 45% 55% 45%; border: 3px solid var(--terracotta);
+    .mempelai-photo {
+      width: 140px; height: 180px; margin: 0 auto 15px; overflow: hidden;
+      border-radius: 16px; border: 2.5px solid var(--primary);
     }
-    .organic-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .mempelai-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .mempelai-divider { font-size: 28px; color: var(--primary); align-self: center; padding-top: 40px; }
 
-    /* TIMELINE */
-    .timeline { position: relative; max-width: 540px; margin: 30px auto 0; padding-left: 30px; border-left: 2px dashed var(--terracotta); text-align: left; }
-    .timeline-item { position: relative; margin-bottom: 25px; }
-    .timeline-item::before { content: ''; position: absolute; left: -37px; top: 5px; width: 12px; height: 12px; border-radius: 50%; background: var(--terracotta); }
-    .timeline-date { font-size: 11px; font-weight: 700; color: var(--terracotta); text-transform: uppercase; }
-    .timeline-title { font-size: 16px; font-weight: 700; margin: 2px 0; }
+    .acara-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+    .acara-card { background: var(--card-bg); border: var(--border); border-radius: 20px; padding: 28px 20px; text-align: center; box-shadow: var(--shadow); }
+    .acara-icon {
+      width: 48px; height: 48px; background: #F7EAE3; color: var(--primary);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 20px; margin: 0 auto 14px;
+    }
+    .btn-maps {
+      display: inline-flex; align-items: center; gap: 6px; background: var(--primary);
+      color: #FFF; padding: 8px 20px; border-radius: 20px; text-decoration: none;
+      font-size: 12px; font-weight: 700; margin-top: 14px;
+    }
 
-    /* ACARA */
-    .acara-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-    .acara-card { background: var(--white); border: var(--border); border-radius: 20px; padding: 30px 20px; text-align: center; box-shadow: var(--shadow); }
-    .btn-maps { display: inline-flex; align-items: center; gap: 6px; background: var(--terracotta); color: #FFF; padding: 8px 18px; border-radius: 20px; text-decoration: none; font-size: 12px; font-weight: 700; margin-top: 15px; }
+    .countdown-container { display: flex; justify-content: center; gap: 12px; margin: 20px 0; }
+    .count-box {
+      background: var(--primary); color: #FFF; width: 64px; padding: 12px 4px;
+      border-radius: 12px; text-align: center; border: 1px solid var(--primary-dark);
+    }
+    .count-num { font-size: 20px; font-weight: 800; font-family: 'Cinzel', serif; }
+    .count-label { font-size: 9.5px; text-transform: uppercase; }
 
-    /* COUNTDOWN */
-    .countdown-container { display: flex; justify-content: center; gap: 15px; margin: 25px 0; }
-    .count-box { background: var(--terracotta); color: #FFF; width: 68px; padding: 12px 5px; border-radius: 14px; text-align: center; }
-    .count-num { font-size: 22px; font-weight: 800; font-family: 'Cormorant Garamond', serif; }
-    .count-label { font-size: 10px; text-transform: uppercase; }
+    .galeri-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .galeri-item { border-radius: 14px; overflow: hidden; height: 160px; border: 1.5px solid var(--primary); }
+    .galeri-item img { width: 100%; height: 100%; object-fit: cover; }
 
-    /* GALERI */
-    .galeri-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-    .galeri-item { border-radius: 14px; overflow: hidden; height: 160px; border: 1.5px solid var(--sand); cursor: pointer; }
-    .galeri-item.span-2 { grid-column: span 2; }
-    .galeri-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
-    .galeri-item:hover img { transform: scale(1.06); }
-
-    /* RSVP */
-    .form-box { background: var(--white); border: var(--border); border-radius: 24px; padding: 30px 25px; box-shadow: var(--shadow); max-width: 540px; margin: 0 auto; }
-    .form-group { margin-bottom: 16px; text-align: left; }
-    .form-group label { display: block; font-size: 12px; font-weight: 700; color: var(--terracotta); margin-bottom: 6px; }
-    .form-control { width: 100%; padding: 12px; border: 1px solid #E2D5C8; border-radius: 10px; font-size: 13px; }
-    .btn-submit { width: 100%; background: var(--terracotta); color: #FFF; padding: 13px; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; font-size: 14px; }
-    .wishes-feed { max-height: 250px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; margin-top: 25px; }
-    .wish-card { background: #F6EEE6; padding: 12px 16px; border-radius: 12px; font-size: 13px; border-left: 3px solid var(--terracotta); }
-
-    /* AMPLOP */
-    .gift-card { background: var(--white); border: var(--border); border-radius: 20px; padding: 25px; max-width: 440px; margin: 0 auto; text-align: center; }
-    .btn-copy { background: #F6EEE6; border: 1px solid var(--terracotta); color: var(--terracotta); padding: 6px 14px; border-radius: 16px; font-weight: 700; font-size: 12px; cursor: pointer; margin-top: 10px; }
-
-    /* MUSIC */
-    .music-toggle { position: fixed; bottom: 25px; left: 25px; width: 48px; height: 48px; background: var(--terracotta); color: #FFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; z-index: 998; cursor: pointer; box-shadow: var(--shadow); }
-  
-  /* CANVAS TEXTURE BACKGROUND */
-  .canvas-texture {
-    background-image: 
-      radial-gradient(rgba(212, 175, 55, 0.06) 1px, transparent 0),
-      radial-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 0);
-    background-size: 24px 24px, 12px 12px;
-    background-position: 0 0, 12px 12px;
-  }
-  #canvasParticles {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    pointer-events: none;
-    z-index: 10;
-  }
-  .ornament-corner {
-    position: absolute;
-    width: 45px; height: 45px;
-    pointer-events: none;
-    opacity: 0.75;
-  }
-  .ornament-tl { top: 12px; left: 12px; }
-  .ornament-tr { top: 12px; right: 12px; transform: scaleX(-1); }
-  .ornament-bl { bottom: 12px; left: 12px; transform: scaleY(-1); }
-  .ornament-br { bottom: 12px; right: 12px; transform: scale(-1); }
-
+    .music-toggle {
+      position: fixed; bottom: 25px; left: 25px; width: 44px; height: 44px;
+      background: var(--primary); color: #FFF; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; font-size: 18px;
+      z-index: 998; cursor: pointer; border: 1.5px solid var(--primary-dark); box-shadow: var(--shadow);
+    }
   </style>
 </head>
-<body class="canvas-texture">
-  <canvas id="canvasParticles"></canvas>
+<body>
   <audio id="bgMusic" loop>
     <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mp3">
   </audio>
-
-  <div class="music-toggle" id="musicToggle" onclick="toggleMusic()" style="display:none;">
+  <div class="music-toggle" id="musicToggle" onclick="toggleMusic()" style="display:none">
     <i class="fas fa-compact-disc spin" id="musicIcon"></i>
   </div>
 
   <div class="cover-section" id="cover">
     <div class="cover-card">
-      <div style="font-size:36px; color:var(--sand); margin-bottom:8px;"><i class="fas fa-leaf"></i></div>
-      <p style="font-size:11px; letter-spacing:4px; color:var(--sand); font-weight:700;">THE WEDDING OF</p>
-      <h1 class="cover-title" style="color:#FFF; font-size:34px; margin:8px 0;">Oliver &amp; Sophia</h1>
-      <p style="font-size:13px; color:#E8D8C8;">Saturday, November 21st, 2026</p>
-      <div style="margin:18px 0; padding:12px; background:rgba(0,0,0,0.4); border:1px dashed var(--terracotta); border-radius:12px;">
-        <p style="font-size:11px; color:#DDD;">Warmly Invited:</p>
-        <h3 style="font-size:18px; color:var(--sand);" id="namaTamuCover">Dear Guests</h3>
+      <div style="font-size:36px; color:#E8A88A; margin-bottom:10px;"><i class="fas fa-feather"></i></div>
+      <p class="cover-badge">Rustic Botanical Wedding</p>
+      <h1 class="cover-title">Samuel &amp; Jessica</h1>
+      <p class="cover-date">Saturday, November 21, 2026</p>
+      <div class="guest-box">
+        <p style="font-size:11px; color:#E0CECE;">Cordially Invited:</p>
+        <h3 style="font-size:19px; color:#E8A88A; margin:3px 0;" id="namaTamuCover">Tamu Undangan Yang Berbahagia</h3>
+        <p style="font-size:10.5px; color:#BFA69B;">At Bali Botanical Garden</p>
       </div>
-      <button class="btn-buka" onclick="bukaUndangan()"><i class="fas fa-envelope-open"></i> Open Invitation</button>
+      <button class="btn-buka" onclick="bukaUndangan()">
+        <i class="fas fa-envelope-open"></i> Open Invitation
+      </button>
     </div>
   </div>
 
   <main class="main-content" id="mainContent">
-    <section style="background:linear-gradient(180deg, #F5ECE1 0%, var(--bg-cream) 100%);">
+    <section style="background:linear-gradient(180deg, #F7EAE3 0%, var(--bg) 100%)">
       <div class="container text-center">
-        <span class="animate" style="background:var(--terracotta); color:#FFF; padding:5px 16px; border-radius:20px; font-size:11px; font-weight:700; letter-spacing:2px;">RUSTIC BOHO WEDDING</span>
-        <h2 class="animate animate-delay-1" style="font-size:30px; margin:15px 0 8px;">Together is a Beautiful Place to Be</h2>
-        <p class="animate animate-delay-2" style="font-style:italic; max-width:600px; margin:0 auto; font-size:14px; color:var(--muted);">
-          "I have found the one whom my soul loves. We invite you to share our joy as we begin our new chapter together."
+        <div class="animate" style="display:inline-block; background:var(--primary); color:#FFF; padding:5px 16px; border-radius:15px; font-size:11px; font-weight:700;">
+          Together with our families
+        </div>
+        <h2 class="animate animate-delay-1" style="font-size:24px; margin:14px 0 6px;">Holy Matrimony</h2>
+        <p class="animate animate-delay-2" style="font-size:13.5px; color:var(--muted); max-width:580px; margin:0 auto; font-style:italic;">
+          "Two souls with but a single thought, two hearts that beat as one."<br>
+          <small style="font-size:11.5px; color:var(--primary);">(1 Corinthians 13:4-8)</small>
         </p>
       </div>
     </section>
 
-    <!-- MEMPELAI -->
     <section>
       <div class="container">
         <div class="section-heading text-center">
-          <span class="sub-title">Bride &amp; Groom</span>
-          <h2>The Happy Couple</h2>
+          <span class="sub-title">The Happy Couple</span>
+          <h2>The Bride &amp; Groom</h2>
           <div class="heading-line"></div>
         </div>
         <div class="mempelai-grid">
-          <div class="organic-card animate">
-            <div class="organic-photo">
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=80" alt="Oliver">
+          <div class="mempelai-card animate">
+            <div class="mempelai-photo">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80" alt="Samuel">
             </div>
-            <h3 style="font-size:22px;">Oliver Pratama, B.A.</h3>
-            <p style="font-size:12px; color:var(--terracotta); font-weight:700;">The Groom</p>
-            <p style="font-size:13px; color:var(--muted);">Son of Mr. Robert &amp; Mrs. Diana</p>
+            <h3 style="font-size:18px; margin-bottom:3px;">Samuel Pratama, B.A.</h3>
+            <p style="font-size:11.5px; color:var(--primary); font-weight:700;">The Groom</p>
+            <p style="font-size:11.5px; color:var(--muted); margin-top:4px;">Son of Mr. Hendra Pratama &amp; Mrs. Linda Wijaya</p>
+            <p style="font-size:11.5px; color:var(--muted);">Jakarta</p>
           </div>
-          <div class="organic-card animate animate-delay-1">
-            <div class="organic-photo">
-              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&auto=format&fit=crop&q=80" alt="Sophia">
+          <div class="mempelai-divider animate animate-delay-1">&amp;</div>
+          <div class="mempelai-card animate animate-delay-2">
+            <div class="mempelai-photo">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&auto=format&fit=crop&q=80" alt="Jessica">
             </div>
-            <h3 style="font-size:22px;">Sophia Lestari, B.Des.</h3>
-            <p style="font-size:12px; color:var(--terracotta); font-weight:700;">The Bride</p>
-            <p style="font-size:13px; color:var(--muted);">Daughter of Mr. Hendra &amp; Mrs. Sarah</p>
-          </div>
-        </div>
-
-        <!-- LOVE STORY -->
-        <div class="timeline animate">
-          <div class="timeline-item">
-            <div class="timeline-date">Spring 2021</div>
-            <div class="timeline-title">First Met in Bandung</div>
-            <p style="font-size:13px; color:var(--muted);">A chance coffee shop encounter that turned into endless midnight conversations.</p>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-date">Autumn 2024</div>
-            <div class="timeline-title">The Proposal in Bali</div>
-            <p style="font-size:13px; color:var(--muted);">Under a sunset cliff in Uluwatu, she said yes to a lifetime together.</p>
+            <h3 style="font-size:18px; margin-bottom:3px;">Jessica Tanujaya, B.Des.</h3>
+            <p style="font-size:11.5px; color:var(--primary); font-weight:700;">The Bride</p>
+            <p style="font-size:11.5px; color:var(--muted); margin-top:4px;">Daughter of Mr. Robert Tanujaya &amp; Mrs. Christine Natalie</p>
+            <p style="font-size:11.5px; color:var(--muted);">Surabaya</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ACARA -->
-    <section style="background:#F5ECE1;">
+    <section style="background:#F7EAE3;">
       <div class="container">
         <div class="section-heading text-center">
-          <span class="sub-title">Save the Date</span>
-          <h2>Celebration Moments</h2>
+          <span class="sub-title">Save The Date</span>
+          <h2>Wedding Events</h2>
           <div class="heading-line"></div>
         </div>
         <div class="acara-grid">
           <div class="acara-card animate">
-            <div style="font-size:28px; color:var(--terracotta); margin-bottom:10px;"><i class="fas fa-ring"></i></div>
-            <h3 style="font-size:20px; color:var(--terracotta);">Holy Matrimony</h3>
-            <p><i class="far fa-calendar-alt"></i> Saturday, 21 November 2026</p>
-            <p style="font-size:14px; font-weight:700; color:var(--dark-wood); margin:6px 0;"><i class="far fa-clock"></i> 10.00 - 11.30 WIB</p>
-            <p style="font-size:12px; color:var(--muted);">Pine Forest Camp, Lembang, Bandung</p>
-            <a href="https://maps.google.com" target="_blank" class="btn-maps"><i class="fas fa-map-marker-alt"></i> Google Maps</a>
+            <div class="acara-icon"><i class="fas fa-church"></i></div>
+            <h3 style="font-size:17px; color:var(--primary);">Holy Matrimony</h3>
+            <p style="font-size:12.5px;"><i class="far fa-calendar-alt"></i> Saturday, Nov 21, 2026</p>
+            <p style="font-size:13.5px; font-weight:700; color:var(--primary-dark); margin:5px 0;"><i class="far fa-clock"></i> 10.00 - 11.30 WITA</p>
+            <p style="font-size:11.5px; color:var(--muted);">The Glass House Chapel, Bali</p>
+            <a href="https://maps.google.com" target="_blank" class="btn-maps"><i class="fas fa-map-marker-alt"></i> View Google Maps</a>
           </div>
           <div class="acara-card animate animate-delay-1">
-            <div style="font-size:28px; color:var(--terracotta); margin-bottom:10px;"><i class="fas fa-glass-cheers"></i></div>
-            <h3 style="font-size:20px; color:var(--terracotta);">Rustic Dinner Reception</h3>
-            <p><i class="far fa-calendar-alt"></i> Saturday, 21 November 2026</p>
-            <p style="font-size:14px; font-weight:700; color:var(--dark-wood); margin:6px 0;"><i class="far fa-clock"></i> 17.00 - 21.00 WIB</p>
-            <p style="font-size:12px; color:var(--muted);">Pine Forest Glass House, Lembang</p>
-            <a href="https://maps.google.com" target="_blank" class="btn-maps"><i class="fas fa-map-marker-alt"></i> Google Maps</a>
+            <div class="acara-icon"><i class="fas fa-cocktail"></i></div>
+            <h3 style="font-size:17px; color:var(--primary);">Sunset Dinner Reception</h3>
+            <p style="font-size:12.5px;"><i class="far fa-calendar-alt"></i> Saturday, Nov 21, 2026</p>
+            <p style="font-size:13.5px; font-weight:700; color:var(--primary-dark); margin:5px 0;"><i class="far fa-clock"></i> 17.00 - 21.00 WITA</p>
+            <p style="font-size:11.5px; color:var(--muted);">Plataran Canggu Resort &amp; Spa, Bali</p>
+            <a href="https://maps.google.com" target="_blank" class="btn-maps"><i class="fas fa-map-marker-alt"></i> View Google Maps</a>
           </div>
         </div>
+      </div>
+    </section>
 
+    <section>
+      <div class="container text-center">
+        <div class="section-heading">
+          <span class="sub-title">Countdown</span>
+          <h2>The Big Day</h2>
+          <div class="heading-line"></div>
+        </div>
         <div class="countdown-container animate">
           <div class="count-box"><div class="count-num" id="days">00</div><div class="count-label">Days</div></div>
           <div class="count-box"><div class="count-num" id="hours">00</div><div class="count-label">Hours</div></div>
@@ -262,84 +229,28 @@
       </div>
     </section>
 
-    <!-- GALERI -->
-    <section>
+    <section style="background:#F7EAE3;">
       <div class="container">
         <div class="section-heading text-center">
-          <span class="sub-title">Moments</span>
-          <h2>Captured Memories</h2>
+          <span class="sub-title">Memories</span>
+          <h2>Photo Gallery</h2>
           <div class="heading-line"></div>
         </div>
         <div class="galeri-grid">
-          <div class="galeri-item span-2 animate"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80" alt="1"></div>
+          <div class="galeri-item animate"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=500&auto=format&fit=crop&q=80" alt="1"></div>
           <div class="galeri-item animate animate-delay-1"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=500&auto=format&fit=crop&q=80" alt="2"></div>
           <div class="galeri-item animate animate-delay-2"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=500&auto=format&fit=crop&q=80" alt="3"></div>
           <div class="galeri-item animate animate-delay-3"><img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=500&auto=format&fit=crop&q=80" alt="4"></div>
-          <div class="galeri-item span-2 animate"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=600&auto=format&fit=crop&q=80" alt="5"></div>
         </div>
       </div>
     </section>
 
-    <!-- RSVP -->
-    <section style="background:#F5ECE1;">
-      <div class="container text-center">
-        <div class="section-heading">
-          <span class="sub-title">RSVP</span>
-          <h2>Will You Attend?</h2>
-          <div class="heading-line"></div>
-        </div>
-        <div class="form-box animate">
-          <form onsubmit="handleRSVP(event)">
-            <div class="form-group">
-              <label>Full Name:</label>
-              <input type="text" id="nama" class="form-control" placeholder="e.g. Rachel Adams" required>
-            </div>
-            <div class="form-group">
-              <label>Attendance:</label>
-              <select id="kehadiran" class="form-control">
-                <option value="Joyfully Accept">Joyfully Accept</option>
-                <option value="Regretfully Decline">Regretfully Decline</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Wishes for the Couple:</label>
-              <textarea id="ucapan" class="form-control" rows="3" placeholder="Write your heartfelt blessing..." required></textarea>
-            </div>
-            <button type="submit" class="btn-submit">Send RSVP</button>
-          </form>
-          <div class="wishes-feed" id="messagesContainer">
-            <div class="wish-card">
-              <strong>Emily &amp; Liam</strong> <span style="font-size:11px; color:var(--terracotta); font-weight:700;">(Attending)</span>
-              <p>So thrilled for both of you! Wishing you endless adventures, laughter, and lifelong happiness.</p>
-            </div>
-          </div>
-        </div>
+    <footer style="padding:40px 0 20px; text-align:center; border-top:1px solid rgba(179, 107, 76, 0.2);">
+      <div class="container">
+        <h3 style="font-family:'Cinzel',serif; font-size:22px; color:var(--primary); margin-bottom:5px;">Samuel &amp; Jessica</h3>
+        <p style="font-size:12.5px; color:var(--muted);">Thank you for your love and warm wishes 🙏</p>
+        <p style="font-size:10.5px; color:#A18479; margin-top:15px;">Powered by <strong>UndangYuk</strong> (Standar Edition)</p>
       </div>
-    </section>
-
-    <!-- WEDDING GIFT -->
-    <section>
-      <div class="container text-center">
-        <div class="section-heading">
-          <span class="sub-title">Wedding Gift</span>
-          <h2>Registry &amp; Token of Love</h2>
-          <div class="heading-line"></div>
-        </div>
-        <div class="gift-card animate">
-          <p style="font-size:13px; color:var(--muted); margin-bottom:15px;">Your presence is our greatest gift. For cashless gifts:</p>
-          <div style="background:#F5ECE1; padding:15px; border-radius:12px;">
-            <p style="font-weight:800; color:var(--terracotta);">BANK BCA</p>
-            <p style="font-size:18px; font-weight:700; color:var(--text);" id="rekBca">5829104820</p>
-            <p style="font-size:12px; color:var(--muted);">a.n. Oliver Pratama</p>
-            <button class="btn-copy" onclick="copyRek('5829104820', this)"><i class="far fa-copy"></i> Copy Account Number</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer style="padding:40px 0 20px; text-align:center; font-size:12px; color:var(--muted);">
-      <h3 style="font-family:'Cormorant Garamond', serif; font-size:24px; color:var(--terracotta);">Oliver &amp; Sophia</h3>
-      <p>Thank you for celebrating our love story with us.</p>
     </footer>
   </main>
 
@@ -351,7 +262,7 @@
       if (guestParam && guestParam.trim().length > 0) {
         guestEl.textContent = guestParam.trim();
       } else {
-        guestEl.textContent = "Tamu Undangan";
+        guestEl.textContent = "Tamu Undangan Yang Berbahagia";
       }
     }
 
@@ -403,94 +314,6 @@
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.15 });
     document.querySelectorAll('.animate').forEach(el => obs.observe(el));
-
-    function handleRSVP(e) {
-      e.preventDefault();
-      const n = document.getElementById('nama').value;
-      const k = document.getElementById('kehadiran').value;
-      const u = document.getElementById('ucapan').value;
-      const feed = document.getElementById('messagesContainer');
-      if (feed) {
-        const div = document.createElement('div');
-        div.className = 'wish-card';
-        div.innerHTML = '<strong>' + esc(n) + '</strong> <span style="font-size:11px; font-weight:700;">(' + esc(k) + ')</span><p>' + esc(u) + '</p>';
-        feed.prepend(div);
-      }
-      alert('Thank you so much! Your RSVP has been received.');
-      e.target.reset();
-    }
-
-    function esc(t) {
-      return t.replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m]));
-    }
-
-    function copyRek(num, btn) {
-      navigator.clipboard.writeText(num).then(() => {
-        const old = btn.innerHTML;
-        btn.innerHTML = '<i class="fas fa-check"></i> Disalin!';
-        setTimeout(() => { btn.innerHTML = old; }, 2000);
-      });
-    }
-
-  // Full Canvas Particle Effect
-  (function initCanvasParticles() {
-    const canvas = document.getElementById('canvasParticles');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    let width = canvas.width = window.innerWidth;
-    let height = canvas.height = window.innerHeight;
-
-    window.addEventListener('resize', () => {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    });
-
-    const particles = [];
-    const count = window.innerWidth < 600 ? 25 : 45;
-
-    for (let i = 0; i < count; i++) {
-      particles.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        r: Math.random() * 3 + 1,
-        dx: (Math.random() - 0.5) * 0.8,
-        dy: Math.random() * 1.2 + 0.5,
-        opacity: Math.random() * 0.7 + 0.2,
-        rot: Math.random() * Math.PI * 2,
-        rotSpeed: (Math.random() - 0.5) * 0.02
-      });
-    }
-
-    function render() {
-      ctx.clearRect(0, 0, width, height);
-      particles.forEach(p => {
-        p.x += p.dx;
-        p.y += p.dy;
-        p.rot += p.rotSpeed;
-
-        if (p.y > height) { p.y = -10; p.x = Math.random() * width; }
-        if (p.x > width) p.x = 0;
-        if (p.x < 0) p.x = width;
-
-        ctx.save();
-        ctx.translate(p.x, p.y);
-        ctx.rotate(p.rot);
-        ctx.globalAlpha = p.opacity;
-
-        
-          // Petal Shape
-          ctx.fillStyle = '#E8A598';
-          ctx.beginPath();
-          ctx.ellipse(0, 0, p.r * 2, p.r * 1.2, 0, 0, Math.PI * 2);
-          ctx.fill();
-        
-        ctx.restore();
-      });
-      requestAnimationFrame(render);
-    }
-    render();
-  })();
-
   </script>
 </body>
 </html>

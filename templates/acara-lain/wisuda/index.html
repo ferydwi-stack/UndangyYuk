@@ -307,8 +307,11 @@
     const guestEl = document.getElementById('namaTamuCover');
     if (guestEl) {
       if (guestParam && guestParam.trim().length > 0) {
-        guestEl.textContent = guestParam.trim();
+        guestEl.textContent = decodeURIComponent(guestParam.trim());
       } else {
+        guestEl.textContent = "Tamu Undangan Yang Berbahagia";
+      }
+    } else {
         guestEl.textContent = "Tamu Undangan";
       }
     }
