@@ -11,7 +11,30 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
-  <script src="../../../firebase-rsvp.js"></script>
+  <script src="../../../firebase-rsvp.js">
+    function initScrollReveal() {
+      const reveals = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          } else {
+            entry.target.classList.remove('active');
+          }
+        });
+      }, { threshold: 0.15 });
+      reveals.forEach(el => observer.observe(el));
+    }
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.pageYOffset;
+      const leftOrn = document.querySelector('.side-canvas-ornament.left');
+      const rightOrn = document.querySelector('.side-canvas-ornament.right');
+      if (leftOrn) leftOrn.style.transform = 'translateY(' + (-50 + (scrollY % 100) * 0.08) + '%) rotate(' + (scrollY * 0.02) + 'deg)';
+      if (rightOrn) rightOrn.style.transform = 'translateY(' + (-50 + (scrollY % 100) * 0.08) + '%) scaleX(-1) rotate(' + (scrollY * 0.02) + 'deg)';
+    });
+  
+  </script>
 
   <style>
     :root {
@@ -135,9 +158,45 @@
       background: var(--party-purple); color: #FFF; border: none; padding: 6px 14px;
       border-radius: 8px; font-size: 11px; font-weight: 700; cursor: pointer; margin-top: 6px;
     }
+  
+    /* FLOATING CULTURAL ORNAMENTS (KANVAS KIRI & KANAN SESUAI ADAT) */
+    .side-canvas-ornament {
+      position: fixed; top: 50%; transform: translateY(-50%);
+      width: 140px; height: 380px; pointer-events: none; z-index: 5; opacity: 0.85;
+      transition: transform 0.2s ease-out;
+    }
+    .side-canvas-ornament.left { left: -20px; animation: floatSwayLeft 5s ease-in-out infinite alternate; }
+    .side-canvas-ornament.right { right: -20px; transform: translateY(-50%) scaleX(-1); animation: floatSwayRight 5s ease-in-out infinite alternate; }
+
+    @keyframes floatSwayLeft {
+      0% { transform: translateY(-50%) rotate(0deg) translateX(0px); }
+      100% { transform: translateY(-54%) rotate(3deg) translateX(8px); }
+    }
+    @keyframes floatSwayRight {
+      0% { transform: translateY(-50%) scaleX(-1) rotate(0deg) translateX(0px); }
+      100% { transform: translateY(-54%) scaleX(-1) rotate(3deg) translateX(8px); }
+    }
+
+    /* SCROLL ANIMATION */
+    .reveal {
+      opacity: 0;
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal-fade-up { transform: translateY(40px); }
+    .reveal-zoom { transform: scale(0.92); }
+    .reveal-slide-left { transform: translateX(-50px); }
+    .reveal-slide-right { transform: translateX(50px); }
+    .reveal.active { opacity: 1; transform: translate(0) scale(1); }
+  
   </style>
 </head>
 <body>
+
+  <!-- SIDE CANVAS ORNAMENTS -->
+  <svg class="side-canvas-ornament left" viewBox="0 0 100 200" fill="none"><path d="M10 10 L90 100 L10 190 Z" stroke="#E5C378" stroke-width="2" fill="none" opacity="0.4"/></svg>
+  <svg class="side-canvas-ornament right" viewBox="0 0 100 200" fill="none"><path d="M10 10 L90 100 L10 190 Z" stroke="#E5C378" stroke-width="2" fill="none" opacity="0.4"/></svg>
+  
 
   <canvas id="canvasParticles"></canvas>
 
@@ -174,7 +233,7 @@
     <!-- QUOTE -->
     <section>
       <div class="container text-center">
-        <div class="card-party">
+        <div class="card-party reveal reveal-fade-up">
           <p class="serif-title" style="font-size:18px; color:var(--party-purple); font-weight:800;">Cheers to 17!</p>
           <p style="font-size:13px; color:var(--muted); margin:15px 0;">
             <em>"Growing up, making memories, and dancing through the night. Join me for an unforgettable celebration of my 17th birthday!"</em>
@@ -186,7 +245,7 @@
     <!-- BIRTHDAY GIRL -->
     <section>
       <div class="container text-center">
-        <div class="card-party">
+        <div class="card-party reveal reveal-fade-up">
           <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--party-purple); text-transform:uppercase;">The Birthday Girl</p>
           <h2 class="serif-title" style="font-size:24px; color:var(--party-purple); margin:6px 0 15px;">Aurelia Jessica</h2>
 
@@ -201,7 +260,7 @@
     <!-- ACARA & LOKASI -->
     <section>
       <div class="container text-center">
-        <div class="card-party">
+        <div class="card-party reveal reveal-fade-up">
           <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--party-purple); text-transform:uppercase;">Party Schedule</p>
           <h2 class="serif-title" style="font-size:24px; color:var(--party-purple); margin:6px 0 20px;">Time &amp; Venue</h2>
 
@@ -230,7 +289,7 @@
     <!-- GALERI -->
     <section>
       <div class="container text-center">
-        <div class="card-party">
+        <div class="card-party reveal reveal-fade-up">
           <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--party-purple); text-transform:uppercase;">Photo Gallery</p>
           <h2 class="serif-title" style="font-size:22px; color:var(--party-purple); margin:6px 0 15px;">Glam Moments</h2>
           <div class="gallery-party-grid">
@@ -246,7 +305,7 @@
     <!-- RSVP & UCAPAN DOA (FIREBASE CLOUD) -->
     <section>
       <div class="container text-center">
-        <div class="card-party">
+        <div class="card-party reveal reveal-fade-up">
           <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--party-purple); text-transform:uppercase;">RSVP &amp; Birthday Wishes</p>
           <h2 class="serif-title" style="font-size:22px; color:var(--party-purple); margin:6px 0 15px;">Real-time Guestbook</h2>
           
@@ -274,7 +333,7 @@
     <!-- AMPLOP DIGITAL -->
     <section>
       <div class="container text-center">
-        <div class="card-party">
+        <div class="card-party reveal reveal-fade-up">
           <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--party-purple); text-transform:uppercase;">Birthday Gift</p>
           <h2 class="serif-title" style="font-size:22px; color:var(--party-purple); margin:6px 0 15px;">Digital Gift</h2>
           <p style="font-size:12.5px; color:var(--muted); margin-bottom:20px;">For friends wishing to send birthday presents digitally:</p>
@@ -333,6 +392,7 @@
         }).catch(e => console.log('Audio autoplay prevented:', e));
       }
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      initScrollReveal();
     }
 
     function toggleMusic() {

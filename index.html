@@ -3,862 +3,747 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UndangYuk - Platform Undangan Pernikahan Digital Nusantara &amp; Full Canvas Modern</title>
-  <meta name="description" content="Platform undangan pernikahan digital #1 di Indonesia. Tersedia 16 tema adat Nusantara, Full Canvas Edition, generator pesan WhatsApp instan, RSVP real-time, dan amplop digital. Mulai Rp 35.000.">
-  <meta name="keywords" content="undangan pernikahan digital, undangan adat jawa, undangan bali, undangan minang, undangan sundanese, undangan kanvas estetika, undangan website murah, undangyuk">
+  <title>UndangYuk - Platform Undangan Pernikahan Digital Adat &amp; Full Kanvas #1</title>
+  <meta name="description" content="Buat undangan pernikahan digital adat nusantara dan modern dengan desain full kanvas mewah, animasi elegan, generator link WhatsApp instan, dan RSVP real-time.">
   
-  <!-- Open Graph / SEO -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://undangy-yuk.vercel.app/">
-  <meta property="og:title" content="UndangYuk - Undangan Digital Nusantara &amp; Full Canvas">
-  <meta property="og:description" content="Rayakan momen sakral dengan 16 tema budaya Nusantara dan modern. Dilengkapi generator nama tamu WhatsApp instan.">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&auto=format&fit=crop&q=80">
-
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Font Awesome Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Great+Vibes&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <style>
     :root {
-      --primary: #B8860B;
-      --primary-dark: #8B6508;
-      --primary-light: #F4E2B7;
-      --secondary: #1E293B;
-      --accent: #D4AF37;
-      --bg-light: #FAF8F5;
+      --primary: #996515;
+      --primary-dark: #6E4506;
+      --primary-light: #FBF0D9;
+      --gold-accent: #D4AF37;
+      --gold-glow: rgba(212, 175, 55, 0.35);
+      --bg-light: #FAF7F2;
       --bg-card: #FFFFFF;
-      --text-dark: #1E293B;
+      --text-main: #1C1917;
       --text-muted: #64748B;
-      --border-light: 1px solid #E2E8F0;
-      --border-gold: 1.5px solid rgba(184, 134, 11, 0.35);
-      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
-      --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.08);
-      --shadow-lg: 0 20px 45px rgba(0, 0, 0, 0.12);
-      --shadow-gold: 0 8px 25px rgba(184, 134, 11, 0.25);
-      --radius-sm: 10px;
-      --radius-md: 16px;
-      --radius-lg: 24px;
-      --radius-full: 9999px;
+      --border-color: #E2D9CC;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
     html { scroll-behavior: smooth; }
-    body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.7; overflow-x: hidden; }
-    
-    h1, h2, h3, h4, .serif-font { font-family: 'Playfair Display', serif; }
-    .heading-gold { color: var(--primary); }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-    .text-center { text-align: center; }
-
-    /* TOAST NOTIFIKASI */
-    .main-toast {
-      position: fixed; bottom: 30px; right: 30px;
-      background: var(--secondary); color: #FFF;
-      padding: 14px 24px; border-radius: var(--radius-md);
-      box-shadow: var(--shadow-lg); z-index: 10000;
-      display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600;
-      transform: translateY(100px); opacity: 0; transition: transform 0.3s ease, opacity 0.3s ease;
-      border-left: 4px solid var(--accent);
+    body {
+      background-color: var(--bg-light);
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(153, 101, 21, 0.06) 0%, transparent 40%),
+        radial-gradient(rgba(153, 101, 21, 0.12) 1.2px, transparent 1.2px);
+      background-size: 100% 100%, 100% 100%, 24px 24px;
+      color: var(--text-main);
+      overflow-x: hidden;
+      line-height: 1.7;
     }
-    .main-toast.show { transform: translateY(0); opacity: 1; }
+
+    .serif-title { font-family: 'Playfair Display', serif; }
+    .gold-text {
+      background: linear-gradient(135deg, #B45309 0%, #D4AF37 50%, #996515 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .container { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 14px 28px; border-radius: 50px; font-weight: 700; font-size: 14px;
+      text-decoration: none; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer; border: none;
+    }
+    .btn-gold {
+      background: linear-gradient(135deg, #D4AF37 0%, #996515 100%);
+      color: #FFF; box-shadow: 0 10px 25px var(--gold-glow);
+    }
+    .btn-gold:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 16px 32px rgba(212, 175, 55, 0.45); }
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.9); color: var(--primary-dark);
+      border: 1.5px solid var(--primary); backdrop-filter: blur(8px);
+    }
+    .btn-outline:hover { background: var(--primary); color: #FFF; transform: translateY(-3px); }
 
     /* NAVBAR */
     .navbar {
-      position: fixed; top: 0; left: 0; right: 0; height: 75px;
-      background: rgba(250, 248, 245, 0.94); backdrop-filter: blur(14px);
-      border-bottom: var(--border-light); z-index: 1000; display: flex; align-items: center;
+      position: sticky; top: 0; z-index: 990;
+      background: rgba(250, 247, 242, 0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 18px 0;
     }
-    .nav-container { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .logo-mark { width: 40px; height: 40px; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: #FFF; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: var(--shadow-gold); }
-    .logo-text { font-size: 22px; font-weight: 800; color: var(--secondary); letter-spacing: -0.5px; }
-    .logo-text span { color: var(--primary); }
-    
-    .nav-links { display: flex; gap: 28px; }
-    .nav-links a { text-decoration: none; color: var(--text-dark); font-size: 14px; font-weight: 600; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--primary); }
-    .nav-actions { display: flex; align-items: center; gap: 14px; }
-    .btn-nav-wa {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-      color: #FFF; text-decoration: none; padding: 10px 22px; border-radius: 20px; font-size: 13.5px; font-weight: 700;
-      display: inline-flex; align-items: center; gap: 8px; box-shadow: var(--shadow-gold); transition: transform 0.2s;
+    .nav-container { display: flex; align-items: center; justify-content: space-between; }
+    .brand-logo {
+      display: flex; align-items: center; gap: 10px; text-decoration: none;
+      font-size: 24px; font-weight: 800; color: var(--text-main); font-family: 'Cinzel', serif;
     }
-    .btn-nav-wa:hover { transform: translateY(-2px); }
-    .mobile-menu-toggle { display: none; background: none; border: none; font-size: 24px; color: var(--secondary); cursor: pointer; }
+    .brand-logo i { color: var(--gold-accent); font-size: 26px; }
+    .nav-menu { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-link {
+      text-decoration: none; color: var(--text-main); font-size: 14px; font-weight: 600;
+      transition: color 0.2s; position: relative;
+    }
+    .nav-link:hover { color: var(--primary); }
 
     /* HERO SECTION */
-    .hero-section {
-      padding: 140px 0 80px; position: relative; overflow: hidden;
-      background: radial-gradient(circle at 10% 20%, rgba(251, 244, 230, 0.8) 0%, rgba(250, 248, 245, 1) 90%);
-    }
+    .hero-section { padding: 80px 0 60px; position: relative; }
     .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 50px; align-items: center; }
+    
     .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px; background: #FFF;
-      border: var(--border-gold); color: var(--primary-dark); padding: 8px 18px;
-      border-radius: 30px; font-size: 13px; font-weight: 700; margin-bottom: 20px; box-shadow: var(--shadow-sm);
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--primary-light); color: var(--primary-dark);
+      padding: 8px 18px; border-radius: 30px; font-size: 12.5px; font-weight: 700;
+      border: 1px solid rgba(212, 175, 55, 0.4); margin-bottom: 20px;
     }
-    .hero-title { font-size: 46px; line-height: 1.2; margin-bottom: 18px; color: var(--secondary); }
-    .hero-title span { color: var(--primary); font-style: italic; }
-    .hero-subtitle { font-size: 16px; color: var(--text-muted); margin-bottom: 28px; line-height: 1.8; }
+    .hero-title { font-size: 48px; line-height: 1.18; color: var(--text-main); margin-bottom: 20px; font-weight: 800; }
+    .hero-desc { font-size: 16px; color: var(--text-muted); margin-bottom: 35px; line-height: 1.8; max-width: 540px; }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 40px; }
     
-    .hero-cta-group { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 35px; }
-    .btn-hero-primary {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-      color: #FFF; text-decoration: none; padding: 14px 30px; border-radius: 30px; font-weight: 700; font-size: 15px;
-      display: inline-flex; align-items: center; gap: 8px; box-shadow: var(--shadow-gold); transition: transform 0.2s;
-    }
-    .btn-hero-primary:hover { transform: translateY(-2px); }
-    .btn-hero-secondary {
-      background: #FFF; color: var(--secondary); text-decoration: none; padding: 14px 26px; border-radius: 30px;
-      font-weight: 700; font-size: 15px; border: var(--border-light); display: inline-flex; align-items: center; gap: 8px;
-      box-shadow: var(--shadow-sm); transition: background 0.2s;
-    }
-    .btn-hero-secondary:hover { background: #F1F5F9; }
+    .hero-stats { display: flex; gap: 32px; border-top: 1px solid var(--border-color); padding-top: 24px; }
+    .stat-item h4 { font-size: 26px; font-weight: 800; color: var(--primary); }
+    .stat-item p { font-size: 12px; color: var(--text-muted); font-weight: 600; }
 
-    .hero-stats { display: flex; align-items: center; gap: 24px; }
-    .stat-item { display: flex; flex-direction: column; }
-    .stat-num { font-size: 24px; font-weight: 800; color: var(--primary-dark); font-family: 'Cinzel', serif; }
-    .stat-label { font-size: 12px; color: var(--text-muted); font-weight: 600; }
-    .stat-divider { width: 1px; height: 35px; background: #CBD5E1; }
-
-    /* PHONE MOCKUP HERO */
-    .phone-mockup-wrapper { position: relative; max-width: 320px; margin: 0 auto; }
+    /* PHONE MOCKUP WITH AMBIENT GLOW & FLOATING BADGES */
+    .mockup-wrapper { position: relative; display: flex; flex-direction: column; align-items: center; }
+    .mockup-glow {
+      position: absolute; width: 340px; height: 500px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, rgba(153, 101, 21, 0) 70%);
+      filter: blur(50px); z-index: 1; pointer-events: none;
+    }
     .phone-frame {
-      background: #000; border-radius: 40px; padding: 12px;
-      box-shadow: 0 25px 60px rgba(0,0,0,0.3), inset 0 0 0 2px #334155; position: relative;
+      position: relative; z-index: 2; width: 310px; height: 600px;
+      background: #18181B; border: 10px solid #27272A; border-radius: 46px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3), inset 0 0 10px rgba(255,255,255,0.2);
+      overflow: hidden;
     }
-    .phone-notch {
-      position: absolute; top: 18px; left: 50%; transform: translateX(-50%);
-      width: 100px; height: 18px; background: #000; border-radius: 10px; z-index: 10;
-    }
-    .phone-screen { border-radius: 30px; overflow: hidden; height: 560px; background: #FFF; position: relative; }
-    .phone-screen iframe { width: 100%; height: 100%; border: none; }
+    .phone-screen { width: 100%; height: 100%; border: none; background: #FFF; }
     
-    .hero-switcher {
-      background: #FFF; border: var(--border-light); border-radius: 20px;
-      padding: 14px 18px; margin-top: 20px; box-shadow: var(--shadow-sm); text-align: center;
+    /* FLOATING PILLS AROUND MOCKUP */
+    .floating-pill {
+      position: absolute; z-index: 3; background: rgba(255, 255, 255, 0.95);
+      border: 1px solid var(--border-color); border-radius: 16px; padding: 10px 16px;
+      display: flex; align-items: center; gap: 10px; box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+      backdrop-filter: blur(10px); animation: floatPill 4s ease-in-out infinite alternate;
     }
-    .switcher-label { font-size: 12px; font-weight: 700; color: var(--text-muted); margin-bottom: 8px; display: block; }
-    .switcher-buttons { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; }
-    .btn-switch {
-      background: #F1F5F9; border: none; padding: 6px 14px; border-radius: 15px; font-size: 12px; font-weight: 700;
-      color: var(--secondary); cursor: pointer; transition: all 0.2s;
+    .pill-1 { top: 60px; left: -25px; }
+    .pill-2 { bottom: 90px; right: -25px; animation-delay: 2s; }
+    @keyframes floatPill {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-8px); }
     }
-    .btn-switch.active, .btn-switch:hover { background: var(--primary); color: #FFF; }
 
-    /* SECTION HEADERS */
-    section { padding: 90px 0; }
-    .section-badge {
-      display: inline-flex; align-items: center; gap: 6px; background: var(--primary-light);
-      color: var(--primary-dark); font-size: 12px; font-weight: 800; padding: 6px 16px; border-radius: 20px; margin-bottom: 12px;
+    /* THEME SWITCHER CONTROLS */
+    .mockup-switcher {
+      position: relative; z-index: 3; margin-top: 20px;
+      background: rgba(255, 255, 255, 0.95); border: 1px solid var(--border-color);
+      border-radius: 40px; padding: 6px; display: flex; gap: 6px; box-shadow: 0 8px 25px rgba(0,0,0,0.06);
     }
-    .section-header h2 { font-size: 36px; color: var(--secondary); margin-bottom: 12px; }
-    .section-header p { font-size: 16px; color: var(--text-muted); max-width: 620px; margin: 0 auto; }
+    .switch-btn {
+      padding: 8px 16px; border-radius: 30px; border: none; background: transparent;
+      font-size: 12px; font-weight: 700; color: var(--text-muted); cursor: pointer;
+      transition: all 0.25s;
+    }
+    .switch-btn.active {
+      background: var(--primary); color: #FFF;
+      box-shadow: 0 4px 12px rgba(153, 101, 21, 0.3);
+    }
 
-    /* KATALOG TEMPLATE */
-    .katalog-filter { display: flex; justify-content: center; gap: 10px; margin: 35px 0 45px; flex-wrap: wrap; }
-    .tab-btn {
-      background: #FFF; border: var(--border-light); padding: 10px 22px; border-radius: 25px;
-      font-size: 13.5px; font-weight: 700; color: var(--text-muted); cursor: pointer; transition: all 0.2s; box-shadow: var(--shadow-sm);
-    }
-    .tab-btn.active, .tab-btn:hover { background: var(--primary); color: #FFF; border-color: var(--primary); box-shadow: var(--shadow-gold); }
+    /* CATALOG SECTION */
+    .section-header { text-align: center; max-width: 680px; margin: 0 auto 50px; }
+    .section-header h2 { font-size: 38px; font-weight: 800; color: var(--text-main); margin-bottom: 12px; }
+    .section-header p { font-size: 15px; color: var(--text-muted); }
 
-    .catalog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 28px; }
-    .catalog-card {
-      background: #FFF; border-radius: var(--radius-md); border: var(--border-light);
-      overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column;
+    .catalog-filter {
+      display: flex; justify-content: center; gap: 10px; margin-bottom: 40px; flex-wrap: wrap;
     }
-    .catalog-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
-    .card-thumb { position: relative; height: 320px; overflow: hidden; background: #E2E8F0; }
-    .card-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
-    .catalog-card:hover .card-thumb img { transform: scale(1.05); }
+    .filter-btn {
+      padding: 10px 22px; border-radius: 30px; border: 1.5px solid var(--border-color);
+      background: #FFF; font-size: 13.5px; font-weight: 700; color: var(--text-muted);
+      cursor: pointer; transition: all 0.25s;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--primary); color: #FFF; border-color: var(--primary);
+    }
+
+    .templates-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 30px; margin-bottom: 60px;
+    }
+    .card-theme {
+      background: #FFF; border: 1px solid var(--border-color); border-radius: 24px;
+      overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column;
+    }
+    .card-theme:hover { transform: translateY(-8px); box-shadow: 0 20px 45px rgba(153, 101, 21, 0.15); border-color: var(--gold-accent); }
+    
+    .card-preview-box {
+      height: 240px; position: relative; overflow: hidden; background: #F3ECE1;
+    }
+    .card-preview-box img {
+      width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;
+    }
+    .card-theme:hover .card-preview-box img { transform: scale(1.08); }
     .badge-tier {
-      position: absolute; top: 14px; left: 14px; padding: 5px 12px; border-radius: 12px;
-      font-size: 11px; font-weight: 800; z-index: 2; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      position: absolute; top: 16px; left: 16px; padding: 6px 14px; border-radius: 20px;
+      font-size: 11.5px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
-    .badge-premium { background: linear-gradient(135deg, #C5A059 0%, #8C6A28 100%); color: #FFF; }
-    .badge-standar { background: #334155; color: #FFF; }
-    .badge-custom { background: #7C3AED; color: #FFF; }
+    .tier-premium { background: linear-gradient(135deg, #D4AF37, #996515); color: #FFF; }
+    .tier-standar { background: linear-gradient(135deg, #10B981, #047857); color: #FFF; }
+    .tier-custom { background: linear-gradient(135deg, #6366F1, #4338CA); color: #FFF; }
+    .tier-acara { background: linear-gradient(135deg, #EC4899, #BE185D); color: #FFF; }
+
+    .card-body { padding: 24px; flex-grow: 1; display: flex; flex-direction: column; }
+    .card-title { font-size: 20px; font-weight: 800; color: var(--text-main); margin-bottom: 6px; }
+    .card-features { list-style: none; margin: 16px 0 20px; flex-grow: 1; }
+    .card-features li {
+      font-size: 12.5px; color: var(--text-muted); margin-bottom: 6px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .card-features li i { color: #10B981; font-size: 13px; }
     
-    .thumb-overlay {
-      position: absolute; inset: 0; background: rgba(0,0,0,0.4);
-      display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s;
+    .card-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid #F1ECE4; padding-top: 18px; margin-top: auto;
     }
-    .catalog-card:hover .thumb-overlay { opacity: 1; }
-    .btn-preview-modal {
-      background: #FFF; color: var(--secondary); border: none; padding: 10px 22px; border-radius: 20px;
-      font-weight: 700; font-size: 13px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;
-      box-shadow: var(--shadow-md); transform: translateY(10px); transition: all 0.3s;
-    }
-    .catalog-card:hover .btn-preview-modal { transform: translateY(0); }
-
-    .card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
-    .card-meta { font-size: 11.5px; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
-    .card-title { font-size: 18px; font-weight: 700; color: var(--secondary); margin-bottom: 6px; }
-    .card-desc { font-size: 12.5px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; flex: 1; }
-    .card-actions { display: flex; gap: 8px; }
-    .btn-card-demo {
-      flex: 1; background: #F1F5F9; color: var(--secondary); border: none; padding: 10px;
-      border-radius: 10px; font-size: 12px; font-weight: 700; cursor: pointer; text-align: center;
-      display: flex; align-items: center; justify-content: center; gap: 6px; transition: background 0.2s;
-    }
-    .btn-card-demo:hover { background: #E2E8F0; }
-    .btn-card-order {
-      background: var(--primary); color: #FFF; border: none; padding: 10px 14px;
-      border-radius: 10px; font-size: 12px; font-weight: 700; cursor: pointer; text-decoration: none;
-      display: flex; align-items: center; justify-content: center; gap: 6px; transition: background 0.2s;
-    }
-    .btn-card-order:hover { background: var(--primary-dark); }
-
-    /* GENERATOR WA */
-    .generator-box {
-      background: #FFF; border-radius: var(--radius-lg); border: var(--border-gold);
-      padding: 40px; box-shadow: var(--shadow-md); margin-top: 30px;
-    }
-    .generator-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px; align-items: flex-start; }
-    .form-group { margin-bottom: 18px; text-align: left; }
-    .form-group label { display: block; font-size: 13px; font-weight: 700; color: var(--secondary); margin-bottom: 6px; }
-    .form-control {
-      width: 100%; padding: 12px 14px; border: var(--border-light); border-radius: var(--radius-sm);
-      font-size: 14px; background: #F8FAFC; color: var(--secondary);
-    }
-    .wa-preview-wrapper {
-      background: #E5DDD5; border-radius: var(--radius-md); padding: 20px;
-      background-image: radial-gradient(#D1C7BD 1px, transparent 0); background-size: 16px 16px;
-    }
-    .wa-bubble {
-      background: #FFF; border-radius: 14px 14px 14px 0; padding: 16px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1); font-size: 13.5px; line-height: 1.6; white-space: pre-line;
-      color: #111B21; position: relative;
-    }
-    .wa-actions { display: flex; gap: 10px; margin-top: 16px; }
-    .btn-wa-copy {
-      flex: 1; background: #075E54; color: #FFF; border: none; padding: 12px;
-      border-radius: 20px; font-weight: 700; font-size: 13.5px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
-    }
-    .btn-wa-send {
-      flex: 1; background: #25D366; color: #FFF; border: none; padding: 12px;
-      border-radius: 20px; font-weight: 700; font-size: 13.5px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
-    }
-
-    /* BULK GENERATOR */
-    .bulk-results { max-height: 250px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; margin-top: 15px; }
-    .bulk-item {
-      background: #F8FAFC; border: var(--border-light); border-radius: 10px; padding: 10px 14px;
-      display: flex; justify-content: space-between; align-items: center; font-size: 12.5px;
-    }
-    .bulk-btn-copy { background: var(--primary); color: #FFF; border: none; padding: 5px 12px; border-radius: 8px; font-size: 11px; font-weight: 700; cursor: pointer; }
-
-    /* TABEL KOMPARASI FITUR */
-    .table-responsive { overflow-x: auto; margin-top: 35px; }
-    .compare-table {
-      width: 100%; border-collapse: collapse; background: #FFF; border-radius: var(--radius-md);
-      overflow: hidden; box-shadow: var(--shadow-md); border: var(--border-light); text-align: left;
-    }
-    .compare-table th, .compare-table td { padding: 16px 20px; font-size: 13.5px; border-bottom: var(--border-light); }
-    .compare-table th { background: #F8FAFC; color: var(--secondary); font-weight: 800; }
-    .compare-table th.highlight { background: var(--primary-light); color: var(--primary-dark); }
-    .compare-table td.highlight { background: #FDFBF7; font-weight: 600; }
-    .check-yes { color: #16A34A; font-size: 16px; font-weight: 800; }
-    .check-no { color: #94A3B8; font-size: 16px; }
-
-    /* PRICING GRID */
-    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 40px; }
-    .pricing-card {
-      background: #FFF; border-radius: var(--radius-lg); border: var(--border-light);
-      padding: 35px 28px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; position: relative;
-    }
-    .pricing-card.popular {
-      border: 2px solid var(--primary); box-shadow: var(--shadow-lg); transform: scale(1.03);
-    }
-    .popular-tag {
-      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-      color: #FFF; font-size: 11px; font-weight: 800; padding: 4px 18px; border-radius: 20px; letter-spacing: 1px;
-    }
-    .pricing-badge { font-size: 11px; font-weight: 800; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; }
-    .plan-name { font-size: 22px; color: var(--secondary); margin: 6px 0 4px; }
-    .plan-subtitle { font-size: 12.5px; color: var(--text-muted); margin-bottom: 18px; }
-    .price-box { display: flex; align-items: baseline; gap: 4px; margin-bottom: 24px; }
-    .price-box .currency { font-size: 18px; font-weight: 700; color: var(--primary); }
-    .price-box .amount { font-size: 42px; font-weight: 800; color: var(--secondary); font-family: 'Cinzel', serif; }
-    .price-box .period { font-size: 12px; color: var(--text-muted); font-weight: 600; }
-    .plan-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; flex: 1; }
-    .plan-features li { font-size: 13px; display: flex; align-items: flex-start; gap: 10px; }
-    .plan-features li i { color: #16A34A; margin-top: 4px; }
-    .plan-features li.disabled { color: #94A3B8; }
-    .plan-features li.disabled i { color: #CBD5E1; }
-    .btn-plan {
-      width: 100%; background: #F1F5F9; color: var(--secondary); border: none; padding: 14px;
-      border-radius: 20px; font-weight: 700; font-size: 14px; cursor: pointer; text-align: center; transition: all 0.2s;
-    }
-    .btn-plan:hover { background: #E2E8F0; }
-    .btn-gold-plan {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-      color: #FFF; box-shadow: var(--shadow-gold);
-    }
-    .btn-gold-plan:hover { background: var(--primary-dark); }
-
-    /* TESTIMONIALS */
-    .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 35px; }
-    .testi-card {
-      background: #FFF; border-radius: var(--radius-md); border: var(--border-light);
-      padding: 28px 22px; box-shadow: var(--shadow-sm);
-    }
-    .testi-stars { color: #F59E0B; font-size: 13px; margin-bottom: 12px; }
-    .testi-text { font-size: 13.5px; color: var(--secondary); font-style: italic; line-height: 1.7; margin-bottom: 16px; }
-    .testi-author { display: flex; align-items: center; gap: 12px; }
-    .testi-avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary-light); }
-    .testi-name { font-size: 13.5px; font-weight: 700; color: var(--secondary); }
-    .testi-role { font-size: 11.5px; color: var(--text-muted); }
-
-    /* FAQ */
-    .faq-list { max-width: 780px; margin: 35px auto 0; display: flex; flex-direction: column; gap: 14px; }
-    .faq-item { background: #FFF; border: var(--border-light); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); }
-    .faq-question {
-      width: 100%; padding: 18px 22px; background: none; border: none; font-size: 14.5px; font-weight: 700;
-      color: var(--secondary); display: flex; justify-content: space-between; align-items: center; cursor: pointer; text-align: left;
-    }
-    .faq-answer { padding: 0 22px 18px; font-size: 13.5px; color: var(--text-muted); line-height: 1.7; display: none; }
-    .faq-item.active .faq-answer { display: block; }
-    .faq-item.active .faq-question i { transform: rotate(180deg); }
-
-    /* MODAL PREVIEW & ORDER */
-    .demo-modal, .order-modal {
-      position: fixed; inset: 0; background: rgba(0,0,0,0.75); backdrop-filter: blur(8px);
-      z-index: 9999; display: none; align-items: center; justify-content: center; padding: 20px;
-    }
-    .demo-modal.show, .order-modal.show { display: flex; }
-    .demo-modal-content {
-      background: #000; width: 100%; max-width: 420px; height: 90vh; border-radius: 30px;
-      overflow: hidden; position: relative; box-shadow: 0 25px 70px rgba(0,0,0,0.8); display: flex; flex-direction: column;
-    }
-    .demo-modal-header {
-      background: #1E293B; color: #FFF; padding: 14px 20px; display: flex; justify-content: space-between; align-items: center;
-    }
-    .demo-modal-body { flex: 1; background: #000; position: relative; }
-    .demo-modal-body iframe { width: 100%; height: 100%; border: none; }
+    .card-price { font-size: 22px; font-weight: 800; color: var(--primary); }
+    .card-price span { font-size: 12px; color: var(--text-muted); font-weight: 500; }
     
-    .order-modal-content {
-      background: #FFF; width: 100%; max-width: 520px; border-radius: var(--radius-lg);
-      padding: 30px 28px; box-shadow: var(--shadow-lg); max-height: 90vh; overflow-y: auto; position: relative;
+    .card-btns { display: flex; gap: 8px; }
+    .btn-sm-preview {
+      padding: 8px 14px; border-radius: 12px; background: #F4EBE0; color: var(--primary-dark);
+      text-decoration: none; font-size: 12px; font-weight: 700; transition: background 0.2s;
     }
-    .order-modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-    .btn-close-modal { background: none; border: none; font-size: 24px; color: #94A3B8; cursor: pointer; }
+    .btn-sm-preview:hover { background: var(--primary); color: #FFF; }
+    .btn-sm-order {
+      padding: 8px 16px; border-radius: 12px; background: #25D366; color: #FFF;
+      text-decoration: none; font-size: 12px; font-weight: 700; display: inline-flex; align-items: center; gap: 6px;
+    }
+    .btn-sm-order:hover { background: #1EBE5D; }
 
-    /* FOOTER */
-    .footer { background: #0F172A; color: #E2E8F0; padding: 70px 0 30px; border-top: 1px solid #1E293B; }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 45px; }
-    .footer-title { font-size: 15px; font-weight: 700; color: #FFF; margin-bottom: 18px; }
-    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 13px; }
-    .footer-links a { color: #94A3B8; text-decoration: none; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--primary-light); }
-    .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid #1E293B; font-size: 12px; color: #64748B; }
+    /* GENERATOR WA SECTION */
+    .generator-section {
+      background: linear-gradient(135deg, #FAF4EB 0%, #F5E8D3 100%);
+      border: 2px solid var(--border-color); border-radius: 32px; padding: 60px 40px; margin: 60px 0;
+    }
+    .gen-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+    .form-group { margin-bottom: 18px; }
+    .form-label { display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px; color: var(--text-main); }
+    .gen-input {
+      width: 100%; padding: 14px 16px; border: 1.5px solid var(--border-color); border-radius: 14px;
+      font-size: 14px; background: #FFF; color: var(--text-main);
+    }
+    .result-box {
+      background: #FFF; border: 1.5px solid var(--border-color); border-radius: 20px;
+      padding: 24px; display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .generated-text {
+      background: #F8FAFC; border-radius: 12px; padding: 16px; font-size: 13px;
+      color: #334155; line-height: 1.7; height: 180px; overflow-y: auto; white-space: pre-wrap;
+    }
 
+    /* TOAST LIVE NOTIFICATION */
+    .live-toast {
+      position: fixed; bottom: 30px; left: 30px; z-index: 999;
+      background: rgba(255, 255, 255, 0.95); border: 1px solid var(--gold-accent);
+      padding: 14px 20px; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+      display: flex; align-items: center; gap: 14px; backdrop-filter: blur(10px);
+      transform: translateY(120px); opacity: 0; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .live-toast.show { transform: translateY(0); opacity: 1; }
+    .toast-icon { width: 40px; height: 40px; border-radius: 50%; background: var(--primary-light); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 18px; }
+    
     @media (max-width: 900px) {
-      .hero-grid, .generator-grid, .pricing-grid, .testi-grid, .footer-grid { grid-template-columns: 1fr; }
-      .hero-title { font-size: 34px; }
-      .pricing-card.popular { transform: none; }
-      .nav-links, .nav-actions { display: none; }
-      .nav-links.mobile-open, .nav-actions.mobile-open { display: flex; flex-direction: column; }
-      .mobile-menu-toggle { display: block; }
+      .hero-grid { grid-template-columns: 1fr; text-align: center; }
+      .hero-desc { margin: 0 auto 30px; }
+      .hero-actions { justify-content: center; }
+      .hero-stats { justify-content: center; }
+      .gen-grid { grid-template-columns: 1fr; }
+      .nav-menu { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- TOAST NOTIFIKASI -->
-  <div id="mainToast" class="main-toast">
-    <i class="fas fa-check-circle" style="color:#25D366;"></i>
-    <span id="toastMsg">Teks berhasil disalin ke clipboard!</span>
+  <!-- LIVE TOAST NOTIFICATION -->
+  <div id="liveToast" class="live-toast">
+    <div class="toast-icon"><i class="fas fa-bell"></i></div>
+    <div>
+      <p style="font-size:13px; font-weight:800; color:var(--text-main);" id="toastTitle">Pemesanan Baru!</p>
+      <p style="font-size:11.5px; color:var(--text-muted);" id="toastDesc">Bpk. Hendra memesan Adat Jawa Kasultanan (1 menit lalu)</p>
+    </div>
   </div>
 
   <!-- NAVBAR -->
-  <header class="navbar">
-    <div class="nav-container">
-      <a href="#" class="logo">
-        <div class="logo-mark"><i class="fas fa-heart"></i></div>
-        <span class="logo-text">Undang<span>Yuk</span></span>
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="brand-logo"><i class="fas fa-gem"></i> UndangYuk</a>
+      <ul class="nav-menu">
+        <li><a href="#katalog" class="nav-link">16 Koleksi Tema</a></li>
+        <li><a href="#generator" class="nav-link">Generator WA</a></li>
+        <li><a href="#paket" class="nav-link">Perbandingan Paket</a></li>
+        <li><a href="#testimoni" class="nav-link">Testimoni</a></li>
+      </ul>
+      <a href="https://wa.me/6281234567890?text=Halo%20Admin%20UndangYuk,%20saya%20ingin%20membuat%20undangan%20digital" target="_blank" class="btn btn-gold">
+        <i class="fab fa-whatsapp"></i> Pesan Undangan
       </a>
-
-      <nav class="nav-links">
-        <a href="#how">Cara Kerja</a>
-        <a href="#katalog">16 Koleksi Tema</a>
-        <a href="#generator">Generator WA</a>
-        <a href="#komparasi">Perbandingan Paket</a>
-        <a href="#harga">Paket Harga</a>
-        <a href="#testimoni">Testimoni</a>
-        <a href="#faq">FAQ</a>
-      </nav>
-
-      <div class="nav-actions">
-        <a href="#harga" class="btn-nav-wa" onclick="openOrderModal('Premium Full Canvas (Rp 75.000)', 'Adat Jawa')">
-          <i class="fab fa-whatsapp"></i> Buat Undangan
-        </a>
-      </div>
-
-      <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
-        <i class="fas fa-bars"></i>
-      </button>
     </div>
-  </header>
+  </nav>
 
   <!-- HERO SECTION -->
   <section class="hero-section">
-    <div class="container hero-grid">
-      
-      <div class="hero-content">
-        <div class="hero-badge">
-          <i class="fas fa-crown" style="color:#B8860B;"></i> #1 Platform Undangan Adat Nusantara &amp; Full Canvas
-        </div>
-        <h1 class="hero-title">
-          Undangan Digital Sakral, Anggun &amp; <span>Penuh Seni Kanvas</span>
-        </h1>
-        <p class="hero-subtitle">
-          Wujudkan pernikahan impian dengan 16 tema adat budaya Nusantara berbalut estetika lukisan kanvas (*Full Canvas Edition*). Dilengkapi generator nama tamu WhatsApp instan, alunan musik adat sakral, dan integrasi peta lokasi real-time.
-        </p>
-
-        <div class="hero-cta-group">
-          <a href="#katalog" class="btn-hero-primary">
-            <i class="fas fa-eye"></i> Lihat 16 Koleksi Tema
-          </a>
-          <a href="#generator" class="btn-hero-secondary">
-            <i class="fas fa-magic"></i> Coba Generator Tamu Gratis
-          </a>
-        </div>
-
-        <div class="hero-stats">
-          <div class="stat-item">
-            <span class="stat-num">16+</span>
-            <span class="stat-label">Tema Adat &amp; Modern</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat-item">
-            <span class="stat-num">Mulai 35k</span>
-            <span class="stat-label">Paket Hemat Terjangkau</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat-item">
-            <span class="stat-num">Instant</span>
-            <span class="stat-label">Sebar via WhatsApp</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- HERO VISUAL PHONE MOCKUP -->
-      <div class="hero-visual">
-        <div class="phone-mockup-wrapper">
-          <div class="phone-frame">
-            <div class="phone-notch"></div>
-            <div class="phone-screen">
-              <iframe id="heroPhoneIframe" src="templates/nikah/premium/jawa/index.html?to=Bpk.+Anang+dan+Keluarga" title="Live Preview Undangan"></iframe>
-            </div>
-          </div>
-        </div>
-
-        <!-- HERO LIVE SWITCHER -->
-        <div class="hero-switcher">
-          <span class="switcher-label"><i class="fas fa-palette"></i> Coba Ganti Tema di Layar Ponsel:</span>
-          <div class="switcher-buttons">
-            <button class="btn-switch active" onclick="switchHeroTheme('jawa', this)">Jawa (Full Canvas)</button>
-            <button class="btn-switch" onclick="switchHeroTheme('bali', this)">Bali (Prada)</button>
-            <button class="btn-switch" onclick="switchHeroTheme('minang', this)">Minang (Gonjong)</button>
-            <button class="btn-switch" onclick="switchHeroTheme('sunda', this)">Sunda (Standar)</button>
-            <button class="btn-switch" onclick="switchHeroTheme('modern', this)">Modern VIP</button>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- CARA KERJA -->
-  <section class="section-how" id="how" style="background:#FFF;">
     <div class="container">
-      <div class="section-header text-center">
-        <div class="section-badge"><i class="fas fa-lightbulb"></i> Panduan Praktis</div>
-        <h2>Bagaimana Cara Sebar Undangan?</h2>
-        <p>Proses sangat mudah bagi calon pengantin untuk menyebarkan link personal ke ribuan tamu tanpa batas.</p>
-      </div>
-
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:24px; margin-top:40px;">
-        <div style="background:#FAF8F5; padding:28px 22px; border-radius:20px; border:var(--border-light); text-align:center;">
-          <div style="width:50px; height:50px; background:var(--primary-light); color:var(--primary-dark); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:20px; margin:0 auto 16px; font-weight:800;">1</div>
-          <h3 style="font-size:18px; color:var(--secondary); margin-bottom:8px;">Pilih Desain Tema</h3>
-          <p style="font-size:13px; color:var(--text-muted);">Pilih salah satu dari 16 tema adat atau modern sesuai konsep pernikahan Anda.</p>
-        </div>
-        <div style="background:#FAF8F5; padding:28px 22px; border-radius:20px; border:var(--border-light); text-align:center;">
-          <div style="width:50px; height:50px; background:var(--primary-light); color:var(--primary-dark); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:20px; margin:0 auto 16px; font-weight:800;">2</div>
-          <h3 style="font-size:18px; color:var(--secondary); margin-bottom:8px;">Ketik Nama Tamu</h3>
-          <p style="font-size:13px; color:var(--text-muted);">Ketik nama tamu di Generator. Sistem otomatis membuat link personal unik (contoh: <code>?to=Bpk.+Anang</code>).</p>
-        </div>
-        <div style="background:#FAF8F5; padding:28px 22px; border-radius:20px; border:var(--border-light); text-align:center;">
-          <div style="width:50px; height:50px; background:var(--primary-light); color:var(--primary-dark); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:20px; margin:0 auto 16px; font-weight:800;">3</div>
-          <h3 style="font-size:18px; color:var(--secondary); margin-bottom:8px;">Kirim via WhatsApp</h3>
-          <p style="font-size:13px; color:var(--text-muted);">Salin teks pesan sopan lalu kirim ke kontak atau grup WhatsApp dalam 1 detik.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- KATALOG 16 TEMA -->
-  <section class="section-katalog" id="katalog">
-    <div class="container">
-      <div class="section-header text-center">
-        <div class="section-badge"><i class="fas fa-layer-group"></i> Koleksi Lengkap</div>
-        <h2>16 Koleksi Tema Undangan</h2>
-        <p>Pilih tema adat Nusantara atau gaya modern dengan sentuhan seni kanvas lukisan.</p>
-      </div>
-
-      <!-- FILTER TABS -->
-      <div class="katalog-filter">
-        <button class="tab-btn active" onclick="filterCatalog('all', this)">Semua (16)</button>
-        <button class="tab-btn" onclick="filterCatalog('premium', this)">👑 Full Canvas (Rp 75k)</button>
-        <button class="tab-btn" onclick="filterCatalog('standar', this)">🥉 Standar (Rp 35k)</button>
-        <button class="tab-btn" onclick="filterCatalog('custom', this)">💎 Modern &amp; Acara Lain</button>
-      </div>
-
-      <!-- CATALOG CARDS GRID -->
-      <div class="catalog-grid" id="catalogGrid">
-        
-        <!-- 1. JAWA KASULTANAN (PREMIUM) -->
-        <div class="catalog-card" data-category="premium">
-          <div class="card-thumb">
-            <span class="badge-tier badge-premium">👑 Full Canvas 75k</span>
-            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80" alt="Jawa">
-            <div class="thumb-overlay">
-              <button class="btn-preview-modal" onclick="openDemoModal('templates/nikah/premium/jawa/index.html?to=Bpk.+Anang+dan+Keluarga', 'Jawa Kasultanan')">
-                <i class="fas fa-play"></i> Pratinjau Demo
-              </button>
-            </div>
+      <div class="hero-grid">
+        <div>
+          <div class="hero-badge">
+            <i class="fas fa-crown text-warning"></i> #1 Platform Undangan Adat Nusantara &amp; Full Kanvas
           </div>
-          <div class="card-body">
-            <span class="card-meta">Adat Jawa &bull; Simanten Quality</span>
-            <h3 class="card-title">Jawa Kasultanan</h3>
-            <p class="card-desc">Latar kanvas Joglo, siluet Gunungan Wayang Kulit, partikel debu emas &amp; kelopak melati melayang.</p>
-            <div class="card-actions">
-              <button class="btn-card-demo" onclick="openDemoModal('templates/nikah/premium/jawa/index.html?to=Bpk.+Anang+dan+Keluarga', 'Jawa Kasultanan')"><i class="fas fa-mobile-alt"></i> Demo</button>
-              <button class="btn-card-order" onclick="openOrderModal('Premium Full Canvas (Rp 75.000)', 'Adat Jawa')"><i class="fab fa-whatsapp"></i> Pesan</button>
-            </div>
+          <h1 class="hero-title serif-title">
+            Undangan Digital Sakral, Anggun &amp; <span class="gold-text">Penuh Seni Kanvas</span>
+          </h1>
+          <p class="hero-desc">
+            Wujudkan pernikahan impian dengan 16 tema adat budaya Nusantara berbalut estetika lukisan kanvas (*Full Canvas Edition*). Dilengkapi generator nama tamu WhatsApp instan, alunan musik adat sakral, dan integrasi RSVP real-time.
+          </p>
+          <div class="hero-actions">
+            <a href="#katalog" class="btn btn-gold"><i class="fas fa-layer-group"></i> Lihat 16 Koleksi Tema</a>
+            <a href="#generator" class="btn btn-outline"><i class="fas fa-magic"></i> Coba Generator Tamu Gratis</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item"><h4>16+</h4><p>Tema Adat &amp; Modern</p></div>
+            <div class="stat-item"><h4>MULAI 35K</h4><p>Paket Hemat Terjangkau</p></div>
+            <div class="stat-item"><h4>INSTANT</h4><p>Sebar via WhatsApp</p></div>
           </div>
         </div>
 
-        <!-- 2. BALI PAWIWAHAN (PREMIUM) -->
-        <div class="catalog-card" data-category="premium">
-          <div class="card-thumb">
-            <span class="badge-tier badge-premium">👑 Full Canvas 75k</span>
-            <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&auto=format&fit=crop&q=80" alt="Bali">
-            <div class="thumb-overlay">
-              <button class="btn-preview-modal" onclick="openDemoModal('templates/nikah/premium/bali/index.html?to=Bpk.+Anang+dan+Keluarga', 'Bali Pawiwahan')">
-                <i class="fas fa-play"></i> Pratinjau Demo
-              </button>
-            </div>
-          </div>
-          <div class="card-body">
-            <span class="card-meta">Adat Bali &bull; Kori Agung</span>
-            <h3 class="card-title">Bali Pawiwahan</h3>
-            <p class="card-desc">Gapura Kori Agung ganda, ornamen Prada Emas Dewata, doa Rgveda suci &amp; ritus Makala-kalaan.</p>
-            <div class="card-actions">
-              <button class="btn-card-demo" onclick="openDemoModal('templates/nikah/premium/bali/index.html?to=Bpk.+Anang+dan+Keluarga', 'Bali Pawiwahan')"><i class="fas fa-mobile-alt"></i> Demo</button>
-              <button class="btn-card-order" onclick="openOrderModal('Premium Full Canvas (Rp 75.000)', 'Adat Bali')"><i class="fab fa-whatsapp"></i> Pesan</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- 3. MINANG RUMAH GADANG (PREMIUM) -->
-        <div class="catalog-card" data-category="premium">
-          <div class="card-thumb">
-            <span class="badge-tier badge-premium">👑 Full Canvas 75k</span>
-            <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=600&auto=format&fit=crop&q=80" alt="Minang">
-            <div class="thumb-overlay">
-              <button class="btn-preview-modal" onclick="openDemoModal('templates/nikah/premium/minang/index.html?to=Bpk.+Anang+dan+Keluarga', 'Minangkabau')">
-                <i class="fas fa-play"></i> Pratinjau Demo
-              </button>
-            </div>
-          </div>
-          <div class="card-body">
-            <span class="card-meta">Adat Minang &bull; Songket Marawa</span>
-            <h3 class="card-title">Minang Rumah Gadang</h3>
-            <p class="card-desc">Puncak atap Gonjong runcing, kain Songket Pandai Sikek, dan garis Marawa Triwarna khas Ranah Minang.</p>
-            <div class="card-actions">
-              <button class="btn-card-demo" onclick="openDemoModal('templates/nikah/premium/minang/index.html?to=Bpk.+Anang+dan+Keluarga', 'Minangkabau')"><i class="fas fa-mobile-alt"></i> Demo</button>
-              <button class="btn-card-order" onclick="openOrderModal('Premium Full Canvas (Rp 75.000)', 'Adat Minangkabau')"><i class="fab fa-whatsapp"></i> Pesan</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- 4. BATAK TOBA GORGA (PREMIUM) -->
-        <div class="catalog-card" data-category="premium">
-          <div class="card-thumb">
-            <span class="badge-tier badge-premium">👑 Full Canvas 75k</span>
-            <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600&auto=format&fit=crop&q=80" alt="Batak">
-            <div class="thumb-overlay">
-              <button class="btn-preview-modal" onclick="openDemoModal('templates/nikah/premium/batak/index.html?to=Bpk.+Anang+dan+Keluarga', 'Batak Toba')">
-                <i class="fas fa-play"></i> Pratinjau Demo
-              </button>
-            </div>
-          </div>
-          <div class="card-body">
-            <span class="card-meta">Adat Batak &bull; Gorga &amp; Ulos</span>
-            <h3 class="card-title">Batak Toba Gorga</h3>
-            <p class="card-desc">Motif ukiran Gorga Ipon-Ipon triwarna (merah, hitam, putih) dan bingkai kain tenun Ulos sakral.</p>
-            <div class="card-actions">
-              <button class="btn-card-demo" onclick="openDemoModal('templates/nikah/premium/batak/index.html?to=Bpk.+Anang+dan+Keluarga', 'Batak Toba')"><i class="fas fa-mobile-alt"></i> Demo</button>
-              <button class="btn-card-order" onclick="openOrderModal('Premium Full Canvas (Rp 75.000)', 'Adat Batak Toba')"><i class="fab fa-whatsapp"></i> Pesan</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- 5. SUNDA PRIANGAN (STANDAR) -->
-        <div class="catalog-card" data-category="standar">
-          <div class="card-thumb">
-            <span class="badge-tier badge-standar">🥉 Standar 35k</span>
-            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80" alt="Sunda">
-            <div class="thumb-overlay">
-              <button class="btn-preview-modal" onclick="openDemoModal('templates/nikah/standar/sunda/index.html?to=Bpk.+Anang+dan+Keluarga', 'Sunda Priangan')">
-                <i class="fas fa-play"></i> Pratinjau Demo
-              </button>
-            </div>
-          </div>
-          <div class="card-body">
-            <span class="card-meta">Adat Sunda &bull; Clean Minimalist</span>
-            <h3 class="card-title">Sunda Priangan</h3>
-            <p class="card-desc">Desain simpel bersih tanpa form RSVP dan tanpa rekening bank. Cocok untuk sebar cepat &amp; hemat.</p>
-            <div class="card-actions">
-              <button class="btn-card-demo" onclick="openDemoModal('templates/nikah/standar/sunda/index.html?to=Bpk.+Anang+dan+Keluarga', 'Sunda Priangan')"><i class="fas fa-mobile-alt"></i> Demo</button>
-              <button class="btn-card-order" onclick="openOrderModal('Standar (Rp 35.000)', 'Adat Sunda')"><i class="fab fa-whatsapp"></i> Pesan</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- 6. BETAWI PALANG PINTU (STANDAR) -->
-        <div class="catalog-card" data-category="standar">
-          <div class="card-thumb">
-            <span class="badge-tier badge-standar">🥉 Standar 35k</span>
-            <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=600&auto=format&fit=crop&q=80" alt="Betawi">
-            <div class="thumb-overlay">
-              <button class="btn-preview-modal" onclick="openDemoModal('templates/nikah/standar/betawi/index.html?to=Bpk.+Anang+dan+Keluarga', 'Betawi Palang Pintu')">
-                <i class="fas fa-play"></i> Pratinjau Demo
-              </button>
-            </div>
-          </div>
-          <div class="card-body">
-            <span class="card-meta">Adat Betawi &bull; Clean Minimalist</span>
-            <h3 class="card-title">Betawi Palang Pintu</h3>
-            <p class="card-desc">Format polaroid miring 5° dan pantun adat Betawi. Hemat &amp; ringkas tanpa fitur RSVP/Bank.</p>
-            <div class="card-actions">
-              <button class="btn-card-demo" onclick="openDemoModal('templates/nikah/standar/betawi/index.html?to=Bpk.+Anang+dan+Keluarga', 'Betawi Palang Pintu')"><i class="fas fa-mobile-alt"></i> Demo</button>
-              <button class="btn-card-order" onclick="openOrderModal('Standar (Rp 35.000)', 'Adat Betawi')"><i class="fab fa-whatsapp"></i> Pesan</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- 7. RUSTIC BOHO (STANDAR) -->
-        <div class="catalog-card" data-category="standar">
-          <div class="card-thumb">
-            <span class="badge-tier badge-standar">🥉 Standar 35k</span>
-            <img src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=600&auto=format&fit=crop&q=80" alt="Rustic">
-            <div class="thumb-overlay">
-              <button class="btn-preview-modal" onclick="openDemoModal('templates/nikah/standar/rustic/index.html?to=Bpk.+Anang+dan+Keluarga', 'Rustic Botanical')">
-                <i class="fas fa-play"></i> Pratinjau Demo
-              </button>
-            </div>
-          </div>
-          <div class="card-body">
-            <span class="card-meta">Rustic &bull; Clean Minimalist</span>
-            <h3 class="card-title">Rustic Botanical</h3>
-            <p class="card-desc">Nuansa terracotta &amp; botanical eucalyptus hangat. Paket hemat tanpa form RSVP/Bank.</p>
-            <div class="card-actions">
-              <button class="btn-card-demo" onclick="openDemoModal('templates/nikah/standar/rustic/index.html?to=Bpk.+Anang+dan+Keluarga', 'Rustic Botanical')"><i class="fas fa-mobile-alt"></i> Demo</button>
-              <button class="btn-card-order" onclick="openOrderModal('Standar (Rp 35.000)', 'Rustic Boho')"><i class="fab fa-whatsapp"></i> Pesan</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- 8. MODERN LUXURY (CUSTOM VIP) -->
-        <div class="catalog-card" data-category="custom">
-          <div class="card-thumb">
-            <span class="badge-tier badge-custom">💎 Custom VIP</span>
-            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&auto=format&fit=crop&q=80" alt="Modern">
-            <div class="thumb-overlay">
-              <button class="btn-preview-modal" onclick="openDemoModal('templates/nikah/custom/modern/index.html?to=Bpk.+Anang+dan+Keluarga', 'Modern Luxury VIP')">
-                <i class="fas fa-play"></i> Pratinjau Demo
-              </button>
-            </div>
-          </div>
-          <div class="card-body">
-            <span class="card-meta">Editorial VIP &bull; Glassmorphism</span>
-            <h3 class="card-title">Modern Luxury VIP</h3>
-            <p class="card-desc">Dark indigo frosted glassmorphism, tipografi editorial majalah, dan layout lookbook eksklusif.</p>
-            <div class="card-actions">
-              <button class="btn-card-demo" onclick="openDemoModal('templates/nikah/custom/modern/index.html?to=Bpk.+Anang+dan+Keluarga', 'Modern Luxury VIP')"><i class="fas fa-mobile-alt"></i> Demo</button>
-              <button class="btn-card-order" onclick="openOrderModal('Custom / VIP (Sesuai Kebutuhan)', 'Modern Luxury')"><i class="fab fa-whatsapp"></i> Pesan</button>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- GENERATOR PESAN WHATSAPP -->
-  <section class="section-generator" id="generator" style="background:#FFF;">
-    <div class="container">
-      <div class="section-header text-center">
-        <div class="section-badge"><i class="fas fa-magic"></i> Fitur Andalan Pengantin</div>
-        <h2>Generator Pesan WhatsApp Instan</h2>
-        <p>Ketik nama tamu dan pilihan gaya bahasa, teks undangan sopan siap kirim dalam hitungan detik!</p>
-      </div>
-
-      <div class="generator-box">
-        <div class="generator-grid">
+        <!-- PHONE PREVIEW MOCKUP WITH THEME SWITCHER -->
+        <div class="mockup-wrapper">
+          <div class="mockup-glow"></div>
           
-          <div class="generator-form">
-            <div class="form-group">
-              <label><i class="fas fa-user-friends"></i> Nama Pasangan Mempelai:</label>
-              <input type="text" id="inputNamaMempelai" class="form-control" value="Danang &amp; Sekar" oninput="updateWAPreview()">
-            </div>
-            <div class="form-group">
-              <label><i class="fas fa-user"></i> Nama Tamu Undangan:</label>
-              <input type="text" id="inputNamaTamu" class="form-control" value="Bpk. Anang dan Keluarga" oninput="updateWAPreview()">
-            </div>
-            <div class="form-group">
-              <label><i class="fas fa-palette"></i> Pilihan Desain Tema:</label>
-              <select id="selectTema" class="form-control" onchange="updateWAPreview()">
-                <option value="jawa">Adat Jawa Kasultanan (Full Canvas)</option>
-                <option value="bali">Adat Bali Pawiwahan (Full Canvas)</option>
-                <option value="minang">Adat Minang Rumah Gadang (Full Canvas)</option>
-                <option value="batak">Adat Batak Toba Gorga (Full Canvas)</option>
-                <option value="sunda">Adat Sunda Priangan (Standar)</option>
-                <option value="betawi">Adat Betawi (Standar)</option>
-                <option value="rustic">Rustic Botanical (Standar)</option>
-                <option value="modern">Modern Luxury VIP (Custom)</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label><i class="fas fa-comment-dots"></i> Gaya Bahasa / Nada Bicara:</label>
-              <select id="selectTone" class="form-control" onchange="updateWAPreview()">
-                <option value="formal">Sopan &amp; Formal (Bapak/Ibu/Saudara/i)</option>
-                <option value="islami">Islami &amp; Khidmat (Assalamu'alaikum)</option>
-                <option value="santai">Akrab &amp; Santai (Teman/Sahabat)</option>
-                <option value="singkat">Singkat &amp; Padat</option>
-              </select>
-            </div>
-            <div style="display:flex; gap:18px; margin-top:10px;">
-              <label style="font-size:13px; font-weight:600; cursor:pointer;"><input type="checkbox" id="checkDoa" checked onchange="updateWAPreview()"> Tambah Doa Restu</label>
-              <label style="font-size:13px; font-weight:600; cursor:pointer;"><input type="checkbox" id="checkProkes" checked onchange="updateWAPreview()"> Tambah Ayat / Kutipan</label>
+          <div class="floating-pill pill-1">
+            <i class="fas fa-music" style="color:var(--primary);"></i>
+            <div>
+              <p style="font-size:12px; font-weight:800;">Gamelan Tradisional</p>
+              <p style="font-size:10px; color:var(--text-muted);">Musik Adat Sakral Play</p>
             </div>
           </div>
 
-          <!-- WA CHAT PREVIEW -->
-          <div class="wa-preview-side">
-            <span style="font-size:12px; font-weight:700; color:var(--text-muted); margin-bottom:8px; display:block;"><i class="fab fa-whatsapp" style="color:#25D366;"></i> Pratinjau Tampilan Pesan WhatsApp:</span>
-            <div class="wa-preview-wrapper">
-              <div class="wa-bubble" id="waPreviewText">Memuat teks pesan...</div>
-            </div>
-            <div class="wa-actions">
-              <button class="btn-wa-copy" onclick="copyWAText()"><i class="far fa-copy"></i> Salin Teks Pesan</button>
-              <button class="btn-wa-send" onclick="sendViaWA()"><i class="fab fa-whatsapp"></i> Sebar ke WA</button>
+          <div class="floating-pill pill-2">
+            <i class="fas fa-cloud-upload-alt" style="color:#10B981;"></i>
+            <div>
+              <p style="font-size:12px; font-weight:800;">Firebase Sync</p>
+              <p style="font-size:10px; color:var(--text-muted);">RSVP Real-time Cloud</p>
             </div>
           </div>
 
+          <div class="phone-frame">
+            <iframe id="heroIframe" src="./templates/nikah/premium/jawa/index.html?to=Bpk.+Anang+dan+Keluarga" class="phone-screen"></iframe>
+          </div>
+
+          <!-- THEME SWITCHER BUTTONS -->
+          <div class="mockup-switcher">
+            <button class="switch-btn active" onclick="switchHeroMockup('./templates/nikah/premium/jawa/index.html?to=Bpk.+Anang+dan+Keluarga', this)">Jawa (Kanvas)</button>
+            <button class="switch-btn" onclick="switchHeroMockup('./templates/nikah/premium/bali/index.html?to=Bpk.+Anang+dan+Keluarga', this)">Bali (Prada)</button>
+            <button class="switch-btn" onclick="switchHeroMockup('./templates/nikah/premium/minang/index.html?to=Bpk.+Anang+dan+Keluarga', this)">Minang</button>
+            <button class="switch-btn" onclick="switchHeroMockup('./templates/nikah/standar/sunda/index.html?to=Bpk.+Anang+dan+Keluarga', this)">Sunda 35k</button>
+            <button class="switch-btn" onclick="switchHeroMockup('./templates/nikah/custom/modern/index.html?to=Bpk.+Anang+dan+Keluarga', this)">Modern VIP</button>
+          </div>
         </div>
       </div>
-
-      <!-- BULK GENERATOR BOX -->
-      <div style="background:#FAF8F5; border:var(--border-light); border-radius:20px; padding:30px; margin-top:35px;" id="bulk">
-        <h3 style="font-size:18px; color:var(--secondary); margin-bottom:8px;"><i class="fas fa-users" style="color:var(--primary);"></i> Sebar ke Banyak Tamu Sekaligus (Bulk Generator)</h3>
-        <p style="font-size:13px; color:var(--text-muted); margin-bottom:15px;">Tempel daftar nama tamu di bawah (satu nama per baris), sistem membuat link unik untuk setiap tamu secara otomatis.</p>
-        <textarea id="bulkNames" class="form-control" rows="3" placeholder="Contoh:&#10;Bpk. H. Sukamto &amp; Ibu&#10;Ibu Hj. Siti Maryam&#10;Sahabat Andi &amp; Pasangan" oninput="generateBulkLinks()"></textarea>
-        <div class="bulk-results" id="bulkResultsContainer"></div>
-      </div>
-
     </div>
   </section>
 
-  <!-- TABEL KOMPARASI FITUR -->
-  <section class="section-komparasi" id="komparasi">
+  <!-- KATALOG TEMPLATE (16 TEMA) -->
+  <section id="katalog" style="padding: 80px 0;">
     <div class="container">
-      <div class="section-header text-center">
-        <div class="section-badge"><i class="fas fa-balance-scale"></i> Transparan &amp; Jelas</div>
-        <h2>Perbandingan Fasilitas Paket</h2>
-        <p>Bandingkan fitur setiap paket secara transparan sesuai kebutuhan acara Anda.</p>
+      <div class="section-header">
+        <p style="font-size:12px; letter-spacing:3px; color:var(--primary); font-weight:800; text-transform:uppercase;">Koleksi Mahakarya</p>
+        <h2 class="serif-title">16 Pilihan Template Undangan</h2>
+        <p>Pilih tema sakral adat nusantara atau modern sesuai selera dan konsep pernikahan Anda.</p>
       </div>
 
-      <div class="table-responsive">
-        <table class="compare-table">
+      <!-- FILTER BUTTONS -->
+      <div class="catalog-filter">
+        <button class="filter-btn active" onclick="filterCatalog('all', this)">Semua (16)</button>
+        <button class="filter-btn" onclick="filterCatalog('premium', this)">✨ Full Kanvas Premium 75k</button>
+        <button class="filter-btn" onclick="filterCatalog('standar', this)">⚡ Standar 35k</button>
+        <button class="filter-btn" onclick="filterCatalog('custom', this)">💎 Custom VIP</button>
+        <button class="filter-btn" onclick="filterCatalog('acara-lain', this)">🎉 Acara Lainnya</button>
+      </div>
+
+      <!-- TEMPLATES GRID -->
+      <div class="templates-grid" id="templatesGrid">
+        
+        <!-- 1. JAWA KASULTANAN -->
+        <div class="card-theme" data-category="premium">
+          <div class="card-preview-box">
+            <span class="badge-tier tier-premium">Full Kanvas 75k</span>
+            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=500&auto=format&fit=crop&q=80" alt="Jawa">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Adat Jawa Kasultanan</h3>
+            <ul class="card-features">
+              <li><i class="fas fa-check-circle"></i> Siluet Lengkung Kubah Joglo Royal</li>
+              <li><i class="fas fa-check-circle"></i> Partikel Kelopak Melati &amp; Emas</li>
+              <li><i class="fas fa-check-circle"></i> Real-time Firebase RSVP &amp; Amplop</li>
+            </ul>
+            <div class="card-footer">
+              <div class="card-price">Rp 75.000 <span>/ tema</span></div>
+              <div class="card-btns">
+                <a href="./templates/nikah/premium/jawa/index.html?to=Nama+Tamu" target="_blank" class="btn-sm-preview"><i class="fas fa-eye"></i> Preview</a>
+                <a href="https://wa.me/6281234567890?text=Halo%20Admin,%20saya%20mau%20pesan%20undangan%20Adat%20Jawa%20Kasultanan%20(75k)" target="_blank" class="btn-sm-order"><i class="fab fa-whatsapp"></i> Pesan</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. BALI PAWIWAHAN -->
+        <div class="card-theme" data-category="premium">
+          <div class="card-preview-box">
+            <span class="badge-tier tier-premium">Full Kanvas 75k</span>
+            <img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=500&auto=format&fit=crop&q=80" alt="Bali">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Adat Bali Pawiwahan</h3>
+            <ul class="card-features">
+              <li><i class="fas fa-check-circle"></i> Siluet Gapura Candi Kori Agung</li>
+              <li><i class="fas fa-check-circle"></i> Diptych Split Photo Prada Gold</li>
+              <li><i class="fas fa-check-circle"></i> Bunga Kamboja &amp; Prada Dust</li>
+            </ul>
+            <div class="card-footer">
+              <div class="card-price">Rp 75.000 <span>/ tema</span></div>
+              <div class="card-btns">
+                <a href="./templates/nikah/premium/bali/index.html?to=Nama+Tamu" target="_blank" class="btn-sm-preview"><i class="fas fa-eye"></i> Preview</a>
+                <a href="https://wa.me/6281234567890?text=Halo%20Admin,%20saya%20mau%20pesan%20undangan%20Adat%20Bali%20Pawiwahan%20(75k)" target="_blank" class="btn-sm-order"><i class="fab fa-whatsapp"></i> Pesan</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. MINANGKABAU -->
+        <div class="card-theme" data-category="premium">
+          <div class="card-preview-box">
+            <span class="badge-tier tier-premium">Full Kanvas 75k</span>
+            <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=500&auto=format&fit=crop&q=80" alt="Minang">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Adat Minangkabau</h3>
+            <ul class="card-features">
+              <li><i class="fas fa-check-circle"></i> 5 Puncak Atap Gonjong Runcing</li>
+              <li><i class="fas fa-check-circle"></i> Belah Ketupat (Rhombus Songket)</li>
+              <li><i class="fas fa-check-circle"></i> Partikel Triwarna Marawa Gold</li>
+            </ul>
+            <div class="card-footer">
+              <div class="card-price">Rp 75.000 <span>/ tema</span></div>
+              <div class="card-btns">
+                <a href="./templates/nikah/premium/minang/index.html?to=Nama+Tamu" target="_blank" class="btn-sm-preview"><i class="fas fa-eye"></i> Preview</a>
+                <a href="https://wa.me/6281234567890?text=Halo%20Admin,%20saya%20mau%20pesan%20undangan%20Adat%20Minang%20(75k)" target="_blank" class="btn-sm-order"><i class="fab fa-whatsapp"></i> Pesan</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. BATAK TOBA -->
+        <div class="card-theme" data-category="premium">
+          <div class="card-preview-box">
+            <span class="badge-tier tier-premium">Full Kanvas 75k</span>
+            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=500&auto=format&fit=crop&q=80" alt="Batak">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Adat Batak Toba</h3>
+            <ul class="card-features">
+              <li><i class="fas fa-check-circle"></i> Pelana Rumah Bolon + Border Gorga</li>
+              <li><i class="fas fa-check-circle"></i> Woven Ulos Staggered Grid Frame</li>
+              <li><i class="fas fa-check-circle"></i> Real-time Tumpak &amp; Buku Tamu</li>
+            </ul>
+            <div class="card-footer">
+              <div class="card-price">Rp 75.000 <span>/ tema</span></div>
+              <div class="card-btns">
+                <a href="./templates/nikah/premium/batak/index.html?to=Nama+Tamu" target="_blank" class="btn-sm-preview"><i class="fas fa-eye"></i> Preview</a>
+                <a href="https://wa.me/6281234567890?text=Halo%20Admin,%20saya%20mau%20pesan%20undangan%20Adat%20Batak%20(75k)" target="_blank" class="btn-sm-order"><i class="fab fa-whatsapp"></i> Pesan</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. BUGIS MAKASSAR -->
+        <div class="card-theme" data-category="premium">
+          <div class="card-preview-box">
+            <span class="badge-tier tier-premium">Full Kanvas 75k</span>
+            <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=500&auto=format&fit=crop&q=80" alt="Bugis">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Adat Bugis Makassar</h3>
+            <ul class="card-features">
+              <li><i class="fas fa-check-circle"></i> Balla Lompoa Trapezoid Roof Card</li>
+              <li><i class="fas fa-check-circle"></i> Mosaik Sutra Saqbe Diamond</li>
+              <li><i class="fas fa-check-circle"></i> Kilau Zamrud &amp; Emas Sutra</li>
+            </ul>
+            <div class="card-footer">
+              <div class="card-price">Rp 75.000 <span>/ tema</span></div>
+              <div class="card-btns">
+                <a href="./templates/nikah/premium/bugis/index.html?to=Nama+Tamu" target="_blank" class="btn-sm-preview"><i class="fas fa-eye"></i> Preview</a>
+                <a href="https://wa.me/6281234567890?text=Halo%20Admin,%20saya%20mau%20pesan%20undangan%20Adat%20Bugis%20(75k)" target="_blank" class="btn-sm-order"><i class="fab fa-whatsapp"></i> Pesan</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. DAYAK BORNEO -->
+        <div class="card-theme" data-category="premium">
+          <div class="card-preview-box">
+            <span class="badge-tier tier-premium">Full Kanvas 75k</span>
+            <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=500&auto=format&fit=crop&q=80" alt="Dayak">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Adat Dayak Borneo</h3>
+            <ul class="card-features">
+              <li><i class="fas fa-check-circle"></i> Siluet Perisai Heksagonal Talawang</li>
+              <li><i class="fas fa-check-circle"></i> Plakat Kayu Huma Betang Frame</li>
+              <li><i class="fas fa-check-circle"></i> Partikel Spora Rimba Hijau &amp; Oker</li>
+            </ul>
+            <div class="card-footer">
+              <div class="card-price">Rp 75.000 <span>/ tema</span></div>
+              <div class="card-btns">
+                <a href="./templates/nikah/premium/dayak/index.html?to=Nama+Tamu" target="_blank" class="btn-sm-preview"><i class="fas fa-eye"></i> Preview</a>
+                <a href="https://wa.me/6281234567890?text=Halo%20Admin,%20saya%20mau%20pesan%20undangan%20Adat%20Dayak%20(75k)" target="_blank" class="btn-sm-order"><i class="fab fa-whatsapp"></i> Pesan</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. SUNDA PRIANGAN (STANDAR 35K) -->
+        <div class="card-theme" data-category="standar">
+          <div class="card-preview-box">
+            <span class="badge-tier tier-standar">Standar 35k</span>
+            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=500&auto=format&fit=crop&q=80" alt="Sunda">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Sunda Priangan (Standar)</h3>
+            <ul class="card-features">
+              <li><i class="fas fa-check-circle"></i> Desain Arch Dome Sage Green</li>
+              <li><i class="fas fa-check-circle"></i> Galeri 4 Foto &amp; Countdown Waktu</li>
+              <li><i class="fas fa-check-circle"></i> Petunjuk Rute Google Maps</li>
+            </ul>
+            <div class="card-footer">
+              <div class="card-price">Rp 35.000 <span>/ tema</span></div>
+              <div class="card-btns">
+                <a href="./templates/nikah/standar/sunda/index.html?to=Nama+Tamu" target="_blank" class="btn-sm-preview"><i class="fas fa-eye"></i> Preview</a>
+                <a href="https://wa.me/6281234567890?text=Halo%20Admin,%20saya%20mau%20pesan%20undangan%20Standar%20Sunda%20(35k)" target="_blank" class="btn-sm-order"><i class="fab fa-whatsapp"></i> Pesan</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. BETAWI PALANG PINTU (STANDAR 35K) -->
+        <div class="card-theme" data-category="standar">
+          <div class="card-preview-box">
+            <span class="badge-tier tier-standar">Standar 35k</span>
+            <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=500&auto=format&fit=crop&q=80" alt="Betawi">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Betawi Palang Pintu</h3>
+            <ul class="card-features">
+              <li><i class="fas fa-check-circle"></i> Scrapbook Polaroid 5° Washi Tape</li>
+              <li><i class="fas fa-check-circle"></i> Pantun Palang Pintu Tradisional</li>
+              <li><i class="fas fa-check-circle"></i> Ringan &amp; Cepat Dibuka</li>
+            </ul>
+            <div class="card-footer">
+              <div class="card-price">Rp 35.000 <span>/ tema</span></div>
+              <div class="card-btns">
+                <a href="./templates/nikah/standar/betawi/index.html?to=Nama+Tamu" target="_blank" class="btn-sm-preview"><i class="fas fa-eye"></i> Preview</a>
+                <a href="https://wa.me/6281234567890?text=Halo%20Admin,%20saya%20mau%20pesan%20undangan%20Standar%20Betawi%20(35k)" target="_blank" class="btn-sm-order"><i class="fab fa-whatsapp"></i> Pesan</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9. MODERN LUXURY VIP -->
+        <div class="card-theme" data-category="custom">
+          <div class="card-preview-box">
+            <span class="badge-tier tier-custom">VIP Custom</span>
+            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=500&auto=format&fit=crop&q=80" alt="Modern">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Modern Luxury Editorial</h3>
+            <ul class="card-features">
+              <li><i class="fas fa-check-circle"></i> Dark Indigo Glassmorphism 20px</li>
+              <li><i class="fas fa-check-circle"></i> Editorial Magazine Lookbook Layout</li>
+              <li><i class="fas fa-check-circle"></i> VIP Guest Pass &amp; Multi-Currency</li>
+            </ul>
+            <div class="card-footer">
+              <div class="card-price">Custom <span>VIP</span></div>
+              <div class="card-btns">
+                <a href="./templates/nikah/custom/modern/index.html?to=Nama+Tamu" target="_blank" class="btn-sm-preview"><i class="fas fa-eye"></i> Preview</a>
+                <a href="https://wa.me/6281234567890?text=Halo%20Admin,%20saya%20mau%20konsultasi%20paket%20Modern%20Luxury%20VIP" target="_blank" class="btn-sm-order"><i class="fab fa-whatsapp"></i> Tanya</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10. TASYAKURAN KHITAN -->
+        <div class="card-theme" data-category="acara-lain">
+          <div class="card-preview-box">
+            <span class="badge-tier tier-acara">Acara Lain</span>
+            <img src="https://images.unsplash.com/photo-1543332164-6e82f355badc?w=500&auto=format&fit=crop&q=80" alt="Khitan">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Tasyakuran Khitanan</h3>
+            <ul class="card-features">
+              <li><i class="fas fa-check-circle"></i> Tema Islami Kubah Bulan Sabit</li>
+              <li><i class="fas fa-check-circle"></i> Amplop Digital &amp; RSVP Real-time</li>
+              <li><i class="fas fa-check-circle"></i> Doa Restu &amp; Santunan</li>
+            </ul>
+            <div class="card-footer">
+              <div class="card-price">Rp 50.000 <span>/ tema</span></div>
+              <div class="card-btns">
+                <a href="./templates/acara-lain/khitan/index.html?to=Nama+Tamu" target="_blank" class="btn-sm-preview"><i class="fas fa-eye"></i> Preview</a>
+                <a href="https://wa.me/6281234567890?text=Halo%20Admin,%20saya%20mau%20pesan%20undangan%20Khitanan" target="_blank" class="btn-sm-order"><i class="fab fa-whatsapp"></i> Pesan</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 11. TASYAKURAN AQIQAH -->
+        <div class="card-theme" data-category="acara-lain">
+          <div class="card-preview-box">
+            <span class="badge-tier tier-acara">Acara Lain</span>
+            <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?w=500&auto=format&fit=crop&q=80" alt="Aqiqah">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Tasyakuran Aqiqah</h3>
+            <ul class="card-features">
+              <li><i class="fas fa-check-circle"></i> Desain Awan Bayi Pastel Lembut</li>
+              <li><i class="fas fa-check-circle"></i> Frame Foto Bundar Buah Hati</li>
+              <li><i class="fas fa-check-circle"></i> Kado Digital &amp; Buku Tamu</li>
+            </ul>
+            <div class="card-footer">
+              <div class="card-price">Rp 50.000 <span>/ tema</span></div>
+              <div class="card-btns">
+                <a href="./templates/acara-lain/aqiqah/index.html?to=Nama+Tamu" target="_blank" class="btn-sm-preview"><i class="fas fa-eye"></i> Preview</a>
+                <a href="https://wa.me/6281234567890?text=Halo%20Admin,%20saya%20mau%20pesan%20undangan%20Aqiqah" target="_blank" class="btn-sm-order"><i class="fab fa-whatsapp"></i> Pesan</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 12. BIRTHDAY PARTY -->
+        <div class="card-theme" data-category="acara-lain">
+          <div class="card-preview-box">
+            <span class="badge-tier tier-acara">Acara Lain</span>
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80" alt="Birthday">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Sweet 17th Birthday</h3>
+            <ul class="card-features">
+              <li><i class="fas fa-check-circle"></i> Glam Neon Party &amp; Confetti Popper</li>
+              <li><i class="fas fa-check-circle"></i> Form Presensi Kehadiran Teman</li>
+              <li><i class="fas fa-check-circle"></i> Kado Digital &amp; Countdown</li>
+            </ul>
+            <div class="card-footer">
+              <div class="card-price">Rp 50.000 <span>/ tema</span></div>
+              <div class="card-btns">
+                <a href="./templates/acara-lain/birthday/index.html?to=Nama+Tamu" target="_blank" class="btn-sm-preview"><i class="fas fa-eye"></i> Preview</a>
+                <a href="https://wa.me/6281234567890?text=Halo%20Admin,%20saya%20mau%20pesan%20undangan%20Birthday%20Party" target="_blank" class="btn-sm-order"><i class="fab fa-whatsapp"></i> Pesan</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- GENERATOR WA SECTION -->
+  <section id="generator" class="container">
+    <div class="generator-section">
+      <div class="section-header" style="margin-bottom: 30px;">
+        <p style="font-size:12px; letter-spacing:3px; color:var(--primary); font-weight:800; text-transform:uppercase;">Alat Bantu Gratis</p>
+        <h2 class="serif-title">Generator Pesan Sebar WhatsApp</h2>
+        <p>Ketik nama tamu undangan Anda dan dapatkan teks pesan WhatsApp resmi yang rapi dan personal dalam 1 detik.</p>
+      </div>
+
+      <div class="gen-grid">
+        <div>
+          <div class="form-group">
+            <label class="form-label">Nama Tamu / Gelar:</label>
+            <input type="text" id="guestInput" class="gen-input" placeholder="Contoh: Bpk. H. Anang &amp; Keluarga" value="Bpk. H. Anang &amp; Keluarga" oninput="generateWAMessage()">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Nama Mempelai:</label>
+            <input type="text" id="coupleInput" class="gen-input" placeholder="Contoh: Danang &amp; Sekar" value="Danang &amp; Sekar" oninput="generateWAMessage()">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Pilih Tema Undangan:</label>
+            <select id="themeSelect" class="gen-input" onchange="generateWAMessage()">
+              <option value="https://undangy-yuk.vercel.app/templates/nikah/premium/jawa/">Adat Jawa Kasultanan</option>
+              <option value="https://undangy-yuk.vercel.app/templates/nikah/premium/bali/">Adat Bali Pawiwahan</option>
+              <option value="https://undangy-yuk.vercel.app/templates/nikah/premium/minang/">Adat Minangkabau</option>
+              <option value="https://undangy-yuk.vercel.app/templates/nikah/standar/sunda/">Adat Sunda Priangan (35k)</option>
+              <option value="https://undangy-yuk.vercel.app/fery-girls/">Order Fery &amp; Pasangan</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="result-box">
+          <label class="form-label">Hasil Pesan WhatsApp (Siap Kirim):</label>
+          <div id="waOutput" class="generated-text"></div>
+          <button class="btn btn-gold" onclick="copyWAMessage()" style="margin-top:15px; width:100%;">
+            <i class="far fa-copy"></i> Salin Pesan WhatsApp
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERBANDINGAN PAKET HARGA -->
+  <section id="paket" style="padding: 60px 0 80px;">
+    <div class="container">
+      <div class="section-header">
+        <p style="font-size:12px; letter-spacing:3px; color:var(--primary); font-weight:800; text-transform:uppercase;">Transparan &amp; Terjangkau</p>
+        <h2 class="serif-title">Perbandingan Paket Undangan</h2>
+        <p>Pilih paket yang paling sesuai dengan kebutuhan dan anggaran pernikahan Anda.</p>
+      </div>
+
+      <div style="background:#FFF; border:1px solid var(--border-color); border-radius:24px; overflow-x:auto; box-shadow:0 10px 30px rgba(0,0,0,0.05);">
+        <table style="width:100%; border-collapse:collapse; text-align:left; min-width:650px;">
           <thead>
-            <tr>
-              <th style="width:35%;">Fitur &amp; Spesifikasi</th>
-              <th style="width:20%;">🥉 Standar (Rp 35.000)</th>
-              <th style="width:25%;" class="highlight">👑 Premium Full Canvas (Rp 75.000)</th>
-              <th style="width:20%;">💎 Custom VIP (Mulai 150k)</th>
+            <tr style="background:#FAF4EB; border-bottom:2px solid var(--border-color);">
+              <th style="padding:20px; font-size:14px; font-weight:800; color:var(--text-main);">Fitur &amp; Fasilitas</th>
+              <th style="padding:20px; font-size:14px; font-weight:800; color:#047857;">Standar (35k)</th>
+              <th style="padding:20px; font-size:14px; font-weight:800; color:var(--primary);">✨ Full Kanvas (75k)</th>
+              <th style="padding:20px; font-size:14px; font-weight:800; color:#4338CA;">💎 Custom VIP</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td><strong>Konsep Desain</strong></td>
-              <td>Clean Minimalist</td>
-              <td class="highlight"><strong>Full Hand-Painted Canvas Art</strong></td>
-              <td>100% Bebas Request dari Nol</td>
+            <tr style="border-bottom:1px solid #F1ECE4;">
+              <td style="padding:16px 20px; font-size:13.5px; font-weight:600;">Desain Visual Kanvas Adat</td>
+              <td style="padding:16px 20px; font-size:13px; color:#475569;">Standar Clean</td>
+              <td style="padding:16px 20px; font-size:13px; font-weight:700; color:var(--primary);">Full Kanvas &amp; Ornamen</td>
+              <td style="padding:16px 20px; font-size:13px; font-weight:700; color:#4338CA;">Eksklusif Custom</td>
+            </tr>
+            <tr style="border-bottom:1px solid #F1ECE4;">
+              <td style="padding:16px 20px; font-size:13.5px; font-weight:600;">Efek Animasi Partikel &amp; Gerakan</td>
+              <td style="padding:16px 20px; font-size:13px; color:#94A3B8;">-</td>
+              <td style="padding:16px 20px; font-size:13px; color:#10B981;"><i class="fas fa-check-circle"></i> Melati/Kamboja/Emas</td>
+              <td style="padding:16px 20px; font-size:13px; color:#10B981;"><i class="fas fa-check-circle"></i> Custom 3D Motion</td>
+            </tr>
+            <tr style="border-bottom:1px solid #F1ECE4;">
+              <td style="padding:16px 20px; font-size:13.5px; font-weight:600;">Buku Tamu &amp; RSVP Real-time Cloud</td>
+              <td style="padding:16px 20px; font-size:13px; color:#94A3B8;">- (Sesuai Paket)</td>
+              <td style="padding:16px 20px; font-size:13px; color:#10B981;"><i class="fas fa-check-circle"></i> Firebase Firestore</td>
+              <td style="padding:16px 20px; font-size:13px; color:#10B981;"><i class="fas fa-check-circle"></i> Firebase + QR Code</td>
+            </tr>
+            <tr style="border-bottom:1px solid #F1ECE4;">
+              <td style="padding:16px 20px; font-size:13.5px; font-weight:600;">Kado Digital / Nomor Rekening</td>
+              <td style="padding:16px 20px; font-size:13px; color:#94A3B8;">- (Sesuai Paket)</td>
+              <td style="padding:16px 20px; font-size:13px; color:#10B981;"><i class="fas fa-check-circle"></i> Mandiri, BCA, dll.</td>
+              <td style="padding:16px 20px; font-size:13px; color:#10B981;"><i class="fas fa-check-circle"></i> Multi-Bank &amp; E-Wallet</td>
             </tr>
             <tr>
-              <td><strong>Latar Belakang Lukisan Kanvas &amp; Ornamen Etnik</strong></td>
-              <td><span class="check-no"><i class="fas fa-times"></i></span></td>
-              <td class="highlight"><span class="check-yes"><i class="fas fa-check"></i> Ya (Joglo/Kori/Gonjong/Ulos)</span></td>
-              <td><span class="check-yes"><i class="fas fa-check"></i> Ya (Full Kustom)</span></td>
-            </tr>
-            <tr>
-              <td><strong>Animasi Partikel Melayang (Debu Emas &amp; Melati)</strong></td>
-              <td><span class="check-no"><i class="fas fa-times"></i></span></td>
-              <td class="highlight"><span class="check-yes"><i class="fas fa-check"></i> Ya (HTML5 Canvas Physics)</span></td>
-              <td><span class="check-yes"><i class="fas fa-check"></i> Ya</span></td>
-            </tr>
-            <tr>
-              <td><strong>Unlimited Nama Tamu WhatsApp</strong></td>
-              <td><span class="check-yes"><i class="fas fa-check"></i></span></td>
-              <td class="highlight"><span class="check-yes"><i class="fas fa-check"></i></span></td>
-              <td><span class="check-yes"><i class="fas fa-check"></i></span></td>
-            </tr>
-            <tr>
-              <td><strong>Form RSVP &amp; Buku Tamu Interaktif Real-Time</strong></td>
-              <td><span class="check-no"><i class="fas fa-times"></i> (Hanya Info)</span></td>
-              <td class="highlight"><span class="check-yes"><i class="fas fa-check"></i> Ya (Live Feed Ucapan)</span></td>
-              <td><span class="check-yes"><i class="fas fa-check"></i> Ya + WA Notif Admin</span></td>
-            </tr>
-            <tr>
-              <td><strong>Amplop Digital &amp; Salin No. Rekening 1-Klik</strong></td>
-              <td><span class="check-no"><i class="fas fa-times"></i></span></td>
-              <td class="highlight"><span class="check-yes"><i class="fas fa-check"></i> Ya (Multi-Bank + QRIS)</span></td>
-              <td><span class="check-yes"><i class="fas fa-check"></i> Ya + Payment Gateway</span></td>
-            </tr>
-            <tr>
-              <td><strong>Galeri Foto Prewedding</strong></td>
-              <td>Maksimal 4 Foto Grid</td>
-              <td class="highlight">Maksimal 10 Foto Lightbox + Video</td>
-              <td>Unlimited Foto + Video Teaser</td>
-            </tr>
-            <tr>
-              <td><strong>Sistem QR Code Check-in Meja Resepsi</strong></td>
-              <td><span class="check-no"><i class="fas fa-times"></i></span></td>
-              <td class="highlight"><span class="check-no"><i class="fas fa-times"></i></span></td>
-              <td><span class="check-yes"><i class="fas fa-check"></i> Ya (Scanner Digital)</span></td>
-            </tr>
-            <tr>
-              <td><strong>Custom Domain (.com / .id)</strong></td>
-              <td><span class="check-no"><i class="fas fa-times"></i></span></td>
-              <td class="highlight"><span class="check-no"><i class="fas fa-times"></i></span></td>
-              <td><span class="check-yes"><i class="fas fa-check"></i> Ya (nama-pasangan.com)</span></td>
-            </tr>
-            <tr>
-              <td><strong>Masa Aktif Undangan</strong></td>
-              <td>3 Bulan</td>
-              <td class="highlight">1 Tahun Penuh</td>
-              <td>Selamanya (Lifetime)</td>
+              <td style="padding:16px 20px; font-size:13.5px; font-weight:600;">Revisi &amp; Masa Aktif</td>
+              <td style="padding:16px 20px; font-size:13px; color:#475569;">1x Revisi / 6 Bulan</td>
+              <td style="padding:16px 20px; font-size:13px; font-weight:700; color:var(--primary);">Revisi Unlimited / Selamanya</td>
+              <td style="padding:16px 20px; font-size:13px; font-weight:700; color:#4338CA;">Prioritas VIP / Selamanya</td>
             </tr>
           </tbody>
         </table>
@@ -866,639 +751,94 @@
     </div>
   </section>
 
-  <!-- PAKET HARGA -->
-  <section class="section-harga" id="harga" style="background:#FFF;">
-    <div class="container">
-      <div class="section-header text-center">
-        <div class="section-badge"><i class="fas fa-tag"></i> Investasi Terjangkau</div>
-        <h2>Pilihan Paket Undangan</h2>
-        <p>Satu kali bayar tanpa biaya tersembunyi. Proses cepat 1x24 jam siap sebar.</p>
-      </div>
-
-      <div class="pricing-grid">
-        
-        <!-- STANDAR -->
-        <div class="pricing-card">
-          <span class="pricing-badge">HEMAT ESENSIAL</span>
-          <h3 class="plan-name">Paket Standar</h3>
-          <p class="plan-subtitle">Pilihan tepat untuk acara simpel, bersih &amp; praktis</p>
-          <div class="price-box">
-            <span class="currency">Rp</span>
-            <span class="amount">35</span>
-            <span class="period">.000 / acara</span>
-          </div>
-          <ul class="plan-features">
-            <li><i class="fas fa-check-circle"></i> Pilihan 1 Tema Standar (Clean Mobile)</li>
-            <li><i class="fas fa-check-circle"></i> Unlimited Nama Tamu WhatsApp</li>
-            <li><i class="fas fa-check-circle"></i> Cover Personal Nama Tamu Dinamis</li>
-            <li><i class="fas fa-check-circle"></i> Countdown Timer Real-Time</li>
-            <li><i class="fas fa-check-circle"></i> Petunjuk Rute Google Maps</li>
-            <li><i class="fas fa-check-circle"></i> Galeri Foto (Maks 4 Foto)</li>
-            <li><i class="fas fa-check-circle"></i> Masa Aktif 3 Bulan</li>
-            <li class="disabled"><i class="fas fa-times-circle"></i> Form RSVP &amp; Buku Tamu</li>
-            <li class="disabled"><i class="fas fa-times-circle"></i> Amplop Digital / Rekening Bank</li>
-          </ul>
-          <button class="btn-plan" onclick="openOrderModal('Standar (Rp 35.000)', 'Adat Sunda')">Pilih Paket Standar</button>
-        </div>
-
-        <!-- PREMIUM (FULL CANVAS) -->
-        <div class="pricing-card popular">
-          <div class="popular-tag">PALING LARIS &bull; FULL CANVAS</div>
-          <span class="pricing-badge">BEST VALUE</span>
-          <h3 class="plan-name">Paket Premium (Full Canvas)</h3>
-          <p class="plan-subtitle">Desain kaya elemen kanvas lukisan &amp; ornamen etnik nusantara</p>
-          <div class="price-box">
-            <span class="currency">Rp</span>
-            <span class="amount">75</span>
-            <span class="period">.000 / acara</span>
-          </div>
-          <ul class="plan-features">
-            <li><i class="fas fa-check-circle"></i> <strong>Full Canvas Textured Background</strong></li>
-            <li><i class="fas fa-check-circle"></i> <strong>Animasi Partikel Stardust/Kelopak Bunga</strong></li>
-            <li><i class="fas fa-check-circle"></i> Bebas Pilih Semua 16 Tema Adat &amp; Modern</li>
-            <li><i class="fas fa-check-circle"></i> Unlimited Nama Tamu WhatsApp &amp; Cover</li>
-            <li><i class="fas fa-check-circle"></i> Bingkai Khusus Khas Adat (Joglo/Gonjong/Kori)</li>
-            <li><i class="fas fa-check-circle"></i> Galeri Full Lightbox (Maks 10 Foto)</li>
-            <li><i class="fas fa-check-circle"></i> Amplop Digital Multi-Rekening + QRIS</li>
-            <li><i class="fas fa-check-circle"></i> Buku Tamu &amp; RSVP Real-Time</li>
-            <li><i class="fas fa-check-circle"></i> Musik Tradisional Khas Adat</li>
-            <li><i class="fas fa-check-circle"></i> Masa Aktif 1 Tahun Penuh</li>
-          </ul>
-          <button class="btn-plan btn-gold-plan" onclick="openOrderModal('Premium Full Canvas (Rp 75.000)', 'Adat Jawa')">
-            <i class="fab fa-whatsapp"></i> Pesan Premium Full Canvas
-          </button>
-        </div>
-
-        <!-- CUSTOM VIP -->
-        <div class="pricing-card">
-          <span class="pricing-badge">VIP 100% CUSTOM</span>
-          <h3 class="plan-name">Paket Custom VIP</h3>
-          <p class="plan-subtitle">Desain eksklusif dari nol sesuai konsep impian pengantin</p>
-          <div class="price-box">
-            <span class="currency">Mulai</span>
-            <span class="amount">150</span>
-            <span class="period">.000 / custom</span>
-          </div>
-          <ul class="plan-features">
-            <li><i class="fas fa-check-circle"></i> <strong>Semua Fitur Premium Full Canvas</strong></li>
-            <li><i class="fas fa-check-circle"></i> <strong>Desain 100% Bebas Request dari Nol</strong></li>
-            <li><i class="fas fa-check-circle"></i> <strong>Custom Domain Pribadi (.com / .id)</strong></li>
-            <li><i class="fas fa-check-circle"></i> <strong>Sistem QR Code Check-in Meja Resepsi</strong></li>
-            <li><i class="fas fa-check-circle"></i> Live Streaming Player Embed (YouTube/Zoom)</li>
-            <li><i class="fas fa-check-circle"></i> Filter Instagram Story AR Wedding Custom</li>
-            <li><i class="fas fa-check-circle"></i> Dedicated Designer VIP &amp; Unlimited Revisi</li>
-            <li><i class="fas fa-check-circle"></i> Masa Aktif Selamanya (Lifetime)</li>
-          </ul>
-          <button class="btn-plan" onclick="openOrderModal('Custom / VIP (Sesuai Kebutuhan)', 'Modern Luxury')">Konsultasi Paket Custom</button>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONI PENGANTIN -->
-  <section class="section-testimoni" id="testimoni">
-    <div class="container">
-      <div class="section-header text-center">
-        <div class="section-badge"><i class="fas fa-heart"></i> Cerita Bahagia</div>
-        <h2>Apa Kata Pasangan Pengantin?</h2>
-        <p>Ribuan pasangan telah mempercayakan undangan pernikahan digital mereka bersama UndangYuk.</p>
-      </div>
-
-      <div class="testi-grid">
-        <div class="testi-card">
-          <div class="testi-stars">★★★★★</div>
-          <p class="testi-text">"Tema Jawa Kasultanan beneran bagus banget! Latar lukisan kanvas sama kelopak melati yang jatuh bikin tamu-tamu kami pada takjub. Buka undangannya berasa sakral banget!"</p>
-          <div class="testi-author">
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Sekar" class="testi-avatar">
-            <div>
-              <div class="testi-name">Sekar &amp; Danang</div>
-              <div class="testi-role">Tema Adat Jawa Kasultanan</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="testi-card">
-          <div class="testi-stars">★★★★★</div>
-          <p class="testi-text">"Fitur sebar banyak tamu di WhatsApp nolong banget. Cukup sekali tempel nama, 300 link tamu langsung jadi dalam 1 detik. Tamu seneng namanya terpampang rapi di cover."</p>
-          <div class="testi-author">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" alt="Made" class="testi-avatar">
-            <div>
-              <div class="testi-name">Made &amp; Gayatri</div>
-              <div class="testi-role">Tema Adat Bali Pawiwahan</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="testi-card">
-          <div class="testi-stars">★★★★★</div>
-          <p class="testi-text">"Harga 35k buat paket Standar sangat worth it! Desainnya bersih, buka di HP cepet banget, gak ada lemot sama sekali. Sangat direkomendasikan buat yang mau hemat."</p>
-          <div class="testi-author">
-            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80" alt="Nenden" class="testi-avatar">
-            <div>
-              <div class="testi-name">Nenden &amp; Cecep</div>
-              <div class="testi-role">Tema Adat Sunda Standar</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="section-faq" id="faq" style="background:#FFF;">
-    <div class="container">
-      <div class="section-header text-center">
-        <div class="section-badge"><i class="fas fa-question-circle"></i> Bantuan &amp; Tanya Jawab</div>
-        <h2>Pertanyaan yang Sering Diajukan</h2>
-        <p>Informasi seputar cara pemesanan, proses pembuatan, dan masa aktif undangan digital Anda.</p>
-      </div>
-
-      <div class="faq-list">
-        <div class="faq-item">
-          <button class="faq-question" onclick="toggleFAQ(this)">
-            <span>Berapa lama proses pembuatan undangan digital?</span>
-            <i class="fas fa-chevron-down"></i>
-          </button>
-          <div class="faq-answer">
-            Proses pembuatan sangat cepat, yaitu 1x24 jam setelah data calon pengantin, jadwal acara, dan foto prewedding kami terima secara lengkap melalui WhatsApp.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" onclick="toggleFAQ(this)">
-            <span>Apa bedanya Paket Standar (Rp 35k) dan Paket Premium (Rp 75k)?</span>
-            <i class="fas fa-chevron-down"></i>
-          </button>
-          <div class="faq-answer">
-            Paket Standar (Rp 35.000) didesain simpel &amp; bersih tanpa form RSVP dan tanpa rekening bank untuk keperluan sebar cepat. Paket Premium (Rp 75.000) adalah Full Canvas Edition dengan lukisan seni kanvas, animasi partikel melayang, buku tamu RSVP real-time, dan amplop digital multi-rekening + QRIS.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" onclick="toggleFAQ(this)">
-            <span>Bagaimana cara menyebarkan nama tamu yang berbeda-beda?</span>
-            <i class="fas fa-chevron-down"></i>
-          </button>
-          <div class="faq-answer">
-            Gunakan fitur <strong>Generator Pesan WhatsApp</strong> atau <strong>Bulk Generator</strong> di atas. Cukup masukkan nama tamu, sistem otomatis membuat link khusus (contoh: <code>?to=Bpk.+Anang</code>). Saat dibuka, nama tamu langsung muncul di cover depan!
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- FOOTER -->
-  <footer class="footer">
+  <footer style="background:#1C1917; color:#FFF; padding:60px 0 30px; text-align:center;">
     <div class="container">
-      <div class="footer-grid">
-        <div>
-          <div class="logo" style="margin-bottom:14px;">
-            <div class="logo-mark"><i class="fas fa-heart"></i></div>
-            <span class="logo-text" style="color:#FFF;">Undang<span>Yuk</span></span>
-          </div>
-          <p style="font-size:13px; color:#94A3B8; line-height:1.7;">
-            Platform undangan pernikahan digital Nusantara &amp; modern terdepan. Mengabadikan momen sakral penuh cinta dan nilai luhur budaya Indonesia.
-          </p>
-        </div>
-        <div>
-          <h4 class="footer-title">Koleksi Adat</h4>
-          <ul class="footer-links">
-            <li><a href="#katalog">Adat Jawa Kasultanan</a></li>
-            <li><a href="#katalog">Adat Bali Pawiwahan</a></li>
-            <li><a href="#katalog">Adat Minang Kabau</a></li>
-            <li><a href="#katalog">Adat Batak Toba</a></li>
-            <li><a href="#katalog">Adat Sunda Priangan</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="footer-title">Paket Layanan</h4>
-          <ul class="footer-links">
-            <li><a href="#harga">Paket Standar (35k)</a></li>
-            <li><a href="#harga">Paket Premium Full Canvas (75k)</a></li>
-            <li><a href="#harga">Paket Custom VIP (150k+)</a></li>
-            <li><a href="#komparasi">Matriks Komparasi</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="footer-title">Hubungi Kami</h4>
-          <ul class="footer-links">
-            <li><a href="https://api.whatsapp.com/send?phone=6281234567890" target="_blank"><i class="fab fa-whatsapp"></i> +62 812-3456-7890</a></li>
-            <li><a href="#"><i class="fas fa-envelope"></i> halo@undangyuk.com</a></li>
-            <li><a href="#"><i class="fas fa-shield-alt"></i> 100% Garansi Uptime</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        &copy; 2026 <strong>UndangYuk</strong>. All Rights Reserved. Platform Undangan Digital Nusantara &amp; Full Canvas Modern.
-      </div>
+      <h3 style="font-size:26px; font-weight:800; font-family:'Cinzel', serif; color:var(--gold-accent); margin-bottom:10px;">UndangYuk</h3>
+      <p style="font-size:14px; color:#A1A1AA; max-width:500px; margin:0 auto 25px;">
+        Solusi undangan pernikahan digital adat nusantara dan modern terpercaya dengan sentuhan seni lukisan kanvas.
+      </p>
+      <p style="font-size:12px; color:#71717A;">&copy; 2026 UndangYuk Platform. All Rights Reserved.</p>
     </div>
   </footer>
 
-  <!-- MODAL PREVIEW DEMO -->
-  <div id="demoModal" class="demo-modal" onclick="closeDemoModalOnBackdrop(event)">
-    <div class="demo-modal-content">
-      <div class="demo-modal-header">
-        <span id="modalThemeTitle" style="font-weight:700; font-size:14px;">Pratinjau Undangan</span>
-        <button class="btn-close-modal" onclick="closeDemoModal()">&times;</button>
-      </div>
-      <div class="demo-modal-body">
-        <iframe id="demoIframe" src="" title="Demo View"></iframe>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL ORDER WHATSAPP -->
-  <div id="orderModal" class="order-modal" onclick="closeOrderModalOnBackdrop(event)">
-    <div class="order-modal-content">
-      <div class="order-modal-header">
-        <h3 style="font-size:18px; color:var(--secondary);"><i class="fas fa-shopping-cart" style="color:var(--primary);"></i> Formulir Pesan Undangan</h3>
-        <button class="btn-close-modal" onclick="closeOrderModal()">&times;</button>
-      </div>
-      <form id="orderForm" onsubmit="submitOrderForm(event)">
-        <div class="form-group">
-          <label>Pilihan Paket:</label>
-          <input type="text" id="orderPaket" class="form-control" readonly style="background:#F1F5F9; font-weight:700; color:var(--primary);">
-        </div>
-        <div class="form-group">
-          <label>Pilihan Tema:</label>
-          <select id="orderTema" class="form-control">
-            <option value="Adat Jawa (Kasultanan)">Adat Jawa (Kasultanan - Full Canvas)</option>
-            <option value="Adat Bali (Pawiwahan)">Adat Bali (Pawiwahan - Full Canvas)</option>
-            <option value="Adat Minangkabau">Adat Minangkabau (Full Canvas)</option>
-            <option value="Adat Batak Toba">Adat Batak Toba (Full Canvas)</option>
-            <option value="Adat Bugis Makassar">Adat Bugis Makassar (Full Canvas)</option>
-            <option value="Adat Dayak Borneo">Adat Dayak Borneo (Full Canvas)</option>
-            <option value="Adat Madura">Adat Madura (Full Canvas)</option>
-            <option value="Adat Palembang">Adat Palembang (Full Canvas)</option>
-            <option value="Adat Sunda (Priangan)">Adat Sunda (Priangan - Standar)</option>
-            <option value="Adat Betawi">Adat Betawi (Standar)</option>
-            <option value="Rustic Boho">Rustic Boho (Standar)</option>
-            <option value="Modern Luxury VIP">Modern Luxury (Custom VIP)</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Nama Pasangan (Pria &amp; Wanita):</label>
-          <input type="text" id="orderMempelai" class="form-control" placeholder="Contoh: Danang &amp; Sekar" required>
-        </div>
-        <div class="form-group">
-          <label>Perkiraan Tanggal Acara:</label>
-          <input type="date" id="orderTanggal" class="form-control" required>
-        </div>
-        <div class="form-group">
-          <label>Nomor WhatsApp Anda:</label>
-          <input type="tel" id="orderNomorWA" class="form-control" placeholder="Contoh: 081234567890" required>
-        </div>
-        <div class="form-group">
-          <label>Pilihan Add-On Tambahan (Opsional):</label>
-          <div style="display:flex; flex-direction:column; gap:6px; font-size:13px; margin-top:4px;">
-            <label><input type="checkbox" id="addonDomain"> [+ Rp 50.000] Tambah Custom Domain (.com / .id)</label>
-            <label><input type="checkbox" id="addonKilat"> [+ Rp 25.000] Layanan Kilat Selesai 6 Jam</label>
-            <label><input type="checkbox" id="addonFilter"> [+ Rp 30.000] Filter Instagram AR Story Custom</label>
-          </div>
-        </div>
-        <div class="form-group">
-          <label>Catatan Khusus (Opsional):</label>
-          <textarea id="orderCatatan" class="form-control" rows="2" placeholder="Contoh: Tambah lagu gending Kebo Giro, hitung mundur, dll."></textarea>
-        </div>
-        <button type="submit" class="btn-plan btn-gold-plan" style="margin-top:10px;">
-          <i class="fab fa-whatsapp"></i> Kirim Order ke WhatsApp Admin
-        </button>
-      </form>
-    </div>
-  </div>
-
   <script>
-    const ADMIN_WA = '6281234567890';
-    const SITE_DOMAIN = 'https://undangy-yuk.vercel.app';
-
-    const THEME_PATHS = {
-      'sunda': 'templates/nikah/standar/sunda/index.html',
-      'betawi': 'templates/nikah/standar/betawi/index.html',
-      'rustic': 'templates/nikah/standar/rustic/index.html',
-      'jawa': 'templates/nikah/premium/jawa/index.html',
-      'minang': 'templates/nikah/premium/minang/index.html',
-      'batak': 'templates/nikah/premium/batak/index.html',
-      'bali': 'templates/nikah/premium/bali/index.html',
-      'bugis': 'templates/nikah/premium/bugis/index.html',
-      'dayak': 'templates/nikah/premium/dayak/index.html',
-      'madura': 'templates/nikah/premium/madura/index.html',
-      'palembang': 'templates/nikah/premium/palembang/index.html',
-      'modern': 'templates/nikah/custom/modern/index.html',
-      'khitan': 'templates/acara-lain/khitan/index.html',
-      'aqiqah': 'templates/acara-lain/aqiqah/index.html',
-      'birthday': 'templates/acara-lain/birthday/index.html',
-      'wisuda': 'templates/acara-lain/wisuda/index.html'
-    };
-
-    function getSiteOrigin() {
-      if (window.location.origin && window.location.origin !== 'null' && window.location.origin.startsWith('http')) {
-        return window.location.origin;
-      }
-      return SITE_DOMAIN;
-    }
-
-    function getTemplatePath(themeKey) {
-      return THEME_PATHS[themeKey] || 'templates/nikah/premium/jawa/index.html';
-    }
-
-    // 1. UPDATE LIVE WHATSAPP MESSAGE PREVIEW
-    function updateWAPreview() {
-      const mempelai = document.getElementById('inputNamaMempelai').value.trim() || 'Danang & Sekar';
-      const tamu = document.getElementById('inputNamaTamu').value.trim() || 'Bpk. Anang dan Keluarga';
-      const tema = document.getElementById('selectTema').value;
-      const tone = document.getElementById('selectTone').value;
-      const withProkes = document.getElementById('checkProkes').checked;
-      const withDoa = document.getElementById('checkDoa').checked;
-
-      const currentOrigin = getSiteOrigin();
-      const encodedTamu = encodeURIComponent(tamu);
-      const relPath = getTemplatePath(tema);
-      const inviteUrl = `${currentOrigin}/${relPath}?to=${encodedTamu}`;
-
-      let message = "";
-
-      if (tone === 'formal') {
-        message = `Kepada Yth.\nBapak/Ibu/Saudara/i *${tamu}*\n\n` +
-          `Tanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami:\n\n` +
-          `*${mempelai}*\n\n` +
-          `Berikut link undangan kami untuk info lengkap mengenai waktu dan lokasi acara:\n` +
-          `${inviteUrl}\n\n`;
-        if (withDoa) {
-          message += `Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir serta memberikan doa restu.\n\n`;
-        }
-        if (withProkes) {
-          message += `Semoga senantiasa sehat dan dapat hadir pada waktu yang telah ditentukan.\n\n`;
-        }
-        message += `Terima kasih banyak atas perhatian dan doa restunya.\n\n` +
-          `Salam hangat,\n*${mempelai}*`;
-
-      } else if (tone === 'islami') {
-        message = `Assalamu'alaikum Warahmatullahi Wabarakatuh\n\n` +
-          `Kepada Yth. Bapak/Ibu/Saudara/i *${tamu}*\n\n` +
-          `Dengan memohon rahmat dan ridho Allah Subhanahu Wa Ta'ala, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami:\n\n` +
-          `*${mempelai}*\n\n` +
-          `Detail rangkaian acara dan lokasi dapat dilihat pada link undangan berikut:\n` +
-          `${inviteUrl}\n\n`;
-        if (withDoa) {
-          message += `Ungkapan terima kasih yang tulus kami sampaikan atas kehadiran serta doa restu yang Bapak/Ibu/Saudara/i berikan.\n\n`;
-        }
-        if (withProkes) {
-          message += `_"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya..." (QS. Ar-Rum: 21)_\n\n`;
-        }
-        message += `Wassalamu'alaikum Warahmatullahi Wabarakatuh\n\n` +
-          `Kami yang berbahagia,\n*${mempelai}*`;
-
-      } else if (tone === 'santai') {
-        message = `Halo *${tamu}*! 👋\n\n` +
-          `Kabar bahagia! Kami ingin mengundang kamu untuk hadir dan merayakan momen pernikahan kami:\n\n` +
-          `💍 *${mempelai}*\n\n` +
-          `Buka link undangan digital di bawah ini ya untuk cek jadwal acara, peta lokasi, dan galeri foto:\n` +
-          `${inviteUrl}\n\n`;
-        if (withDoa) {
-          message += `Kehadiran dan doa restu kamu bakal bikin hari bahagia kami makin lengkap!\n\n`;
-        }
-        message += `Sampai ketemu di hari H ya! ✨\n\n` +
-          `Salam hangat,\n*${mempelai}*`;
-
-      } else if (tone === 'singkat') {
-        message = `Yth. *${tamu}*\n\n` +
-          `Kami mengundang Anda pada acara pernikahan *${mempelai}*.\n\n` +
-          `Info lengkap & RSVP:\n` +
-          `${inviteUrl}\n\n` +
-          `Terima kasih atas doa & kehadirannya! 🙏`;
-      }
-
-      const previewBox = document.getElementById('waPreviewText');
-      if (previewBox) {
-        previewBox.innerText = message;
-      }
-    }
-
-    function copyToClipboard(text) {
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        return navigator.clipboard.writeText(text);
-      }
-      return new Promise((resolve, reject) => {
-        const ta = document.createElement('textarea');
-        ta.value = text;
-        ta.style.position = 'fixed';
-        ta.style.left = '-9999px';
-        document.body.appendChild(ta);
-        ta.select();
-        try { document.execCommand('copy'); resolve(); } catch(e) { reject(e); } finally { document.body.removeChild(ta); }
-      });
-    }
-
-    function copyWAText() {
-      const text = document.getElementById('waPreviewText').innerText;
-      copyToClipboard(text).then(() => {
-        showToast('Teks undangan WhatsApp berhasil disalin!');
-      });
-    }
-
-    function sendViaWA() {
-      const text = document.getElementById('waPreviewText').innerText;
-      const encoded = encodeURIComponent(text);
-      window.open(`https://api.whatsapp.com/send?text=${encoded}`, '_blank');
-    }
-
-    // 2. BULK GUEST GENERATOR
-    function generateBulkLinks() {
-      const rawText = document.getElementById('bulkNames').value.trim();
-      const tema = document.getElementById('selectTema').value;
-      const container = document.getElementById('bulkResultsContainer');
-
-      if (!rawText) {
-        container.innerHTML = '<p style="padding:15px; font-size:12px; color:#94A3B8; text-align:center;">Ketik atau tempel daftar nama tamu di atas untuk menghasilkan link per tamu.</p>';
-        return;
-      }
-
-      const names = rawText.split('\n').map(n => n.trim()).filter(n => n.length > 0);
-      const currentOrigin = getSiteOrigin();
-      const relPath = getTemplatePath(tema);
-
-      let html = '';
-      names.forEach((name, idx) => {
-        const encoded = encodeURIComponent(name);
-        const link = `${currentOrigin}/${relPath}?to=${encoded}`;
-        html += `
-          <div class="bulk-item">
-            <div>
-              <strong>${idx + 1}. ${escapeHtml(name)}</strong>
-              <div style="font-size:11px; color:#64748B;">${link}</div>
-            </div>
-            <button class="bulk-btn-copy" onclick="copyBulkLink('${link.replace(/'/g, "\\'")}', this)">
-              <i class="far fa-copy"></i> Salin Link
-            </button>
-          </div>
-        `;
-      });
-      container.innerHTML = html;
-    }
-
-    function copyBulkLink(link, btn) {
-      copyToClipboard(link).then(() => {
-        const old = btn.innerHTML;
-        btn.innerHTML = '<i class="fas fa-check"></i> Disalin!';
-        showToast('Link tamu berhasil disalin!');
-        setTimeout(() => { btn.innerHTML = old; }, 2000);
-      });
-    }
-
-    function showToast(msg) {
-      const toast = document.getElementById('mainToast');
-      const toastMsg = document.getElementById('toastMsg');
-      if (toast && toastMsg) {
-        toastMsg.innerText = msg;
-        toast.classList.add('show');
-        setTimeout(() => { toast.classList.remove('show'); }, 3000);
-      }
-    }
-
-    // 3. HERO PHONE SWITCHER
-    function switchHeroTheme(themeName, btn) {
-      const iframe = document.getElementById('heroPhoneIframe');
-      if (iframe) {
-        const relPath = getTemplatePath(themeName);
-        iframe.src = `${relPath}?to=Bpk.+Anang+dan+Keluarga`;
-      }
-      document.querySelectorAll('.btn-switch').forEach(b => b.classList.remove('active'));
+    // 1. Mockup Switcher
+    function switchHeroMockup(url, btn) {
+      const iframe = document.getElementById('heroIframe');
+      if (iframe) iframe.src = url;
+      document.querySelectorAll('.switch-btn').forEach(b => b.classList.remove('active'));
       if (btn) btn.classList.add('active');
     }
 
-    // 4. FILTER KATALOG
+    // 2. Catalog Filter
     function filterCatalog(category, btn) {
-      const cards = document.querySelectorAll('.catalog-card');
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      const cards = document.querySelectorAll('#templatesGrid .card-theme');
       cards.forEach(card => {
-        if (category === 'all') {
-          card.style.display = 'flex';
-        } else if (card.getAttribute('data-category') === category) {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
           card.style.display = 'flex';
         } else {
           card.style.display = 'none';
         }
       });
-      if (btn) {
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-      }
     }
 
-    // 5. DEMO MODAL
-    let currentDemoTheme = "";
-    function openDemoModal(url, themeTitle) {
-      const modal = document.getElementById('demoModal');
-      const iframe = document.getElementById('demoIframe');
-      const title = document.getElementById('modalThemeTitle');
-      currentDemoTheme = themeTitle || "Undangan Pilihan";
-      if (iframe) iframe.src = url;
-      if (title) title.innerText = currentDemoTheme;
-      if (modal) modal.classList.add('show');
-      document.body.style.overflow = 'hidden';
+    // 3. WA Message Generator
+    function generateWAMessage() {
+      const guest = document.getElementById('guestInput').value.trim() || 'Bpk/Ibu/Saudara/i';
+      const couple = document.getElementById('coupleInput').value.trim() || 'Mempelai';
+      const themeUrl = document.getElementById('themeSelect').value;
+      const finalLink = themeUrl + '?to=' + encodeURIComponent(guest);
+
+      const msg = 
+`Kepada Yth.
+${guest}
+
+Tanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami:
+
+*Pernikahan ${couple}*
+
+Berikut tautan undangan digital kami:
+${finalLink}
+
+Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir serta memberikan doa restu.
+
+Terima kasih,
+Salam hangat,
+${couple}`;
+
+      document.getElementById('waOutput').textContent = msg;
+    }
+    generateWAMessage();
+
+    function copyWAMessage() {
+      const text = document.getElementById('waOutput').textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Pesan WhatsApp berhasil disalin!');
+      });
     }
 
-    function closeDemoModal() {
-      const modal = document.getElementById('demoModal');
-      const iframe = document.getElementById('demoIframe');
-      if (iframe) iframe.src = '';
-      if (modal) modal.classList.remove('show');
-      document.body.style.overflow = 'auto';
-    }
+    // 4. Live Toast Social Proof Simulation
+    const toastData = [
+      { title: "Pemesanan Baru!", desc: "Bpk. Hendra memesan Adat Jawa Kasultanan (1 menit lalu)" },
+      { title: "Pemesanan Baru!", desc: "Ibu Ni Wayan memesan Adat Bali Pawiwahan (3 menit lalu)" },
+      { title: "Pemesanan Baru!", desc: "Sdr. Fikri memesan Adat Minangkabau (5 menit lalu)" },
+      { title: "Pemesanan Baru!", desc: "Dimas memesan Undangan Wisuda Syukuran (7 menit lalu)" }
+    ];
+    let toastIdx = 0;
 
-    function closeDemoModalOnBackdrop(e) {
-      if (e.target.id === 'demoModal') closeDemoModal();
-    }
-
-    // 6. ORDER MODAL & WHATSAPP CHECKOUT
-    function openOrderModal(paketName, temaName) {
-      const modal = document.getElementById('orderModal');
-      const inputPaket = document.getElementById('orderPaket');
-      const selectTema = document.getElementById('orderTema');
-      if (inputPaket) inputPaket.value = paketName || 'Premium Full Canvas (Rp 75.000)';
-      if (selectTema && temaName) {
-        for (let opt of selectTema.options) {
-          if (opt.value.toLowerCase().includes(temaName.toLowerCase()) || temaName.toLowerCase().includes(opt.value.toLowerCase())) {
-            selectTema.value = opt.value;
-            break;
-          }
-        }
-      }
-      if (modal) modal.classList.add('show');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeOrderModal() {
-      const modal = document.getElementById('orderModal');
-      if (modal) modal.classList.remove('show');
-      document.body.style.overflow = 'auto';
-    }
-
-    function closeOrderModalOnBackdrop(e) {
-      if (e.target.id === 'orderModal') closeOrderModal();
-    }
-
-    function submitOrderForm(e) {
-      e.preventDefault();
-      const paket = document.getElementById('orderPaket').value;
-      const tema = document.getElementById('orderTema').value;
-      const mempelai = document.getElementById('orderMempelai').value.trim();
-      const tanggal = document.getElementById('orderTanggal').value;
-      const waUser = document.getElementById('orderNomorWA').value.trim();
-      const catatan = document.getElementById('orderCatatan').value.trim() || '-';
-      
-      const addDomain = document.getElementById('addonDomain').checked ? 'Ya (+Domain .com)' : 'Tidak';
-      const addKilat = document.getElementById('addonKilat').checked ? 'Ya (+Proses 6 Jam)' : 'Tidak';
-      const addFilter = document.getElementById('addonFilter').checked ? 'Ya (+Filter IG Story)' : 'Tidak';
-
-      if (!mempelai) { showToast('Silakan isi nama pasangan.'); return; }
-      if (!tanggal) { showToast('Silakan isi tanggal acara.'); return; }
-      if (!waUser || waUser.length < 10) { showToast('Nomor WhatsApp tidak valid.'); return; }
-
-      const normalizedWA = waUser.replace(/[^0-9]/g, '');
-
-      const orderMsg = 
-        `*FORMULIR PEMESANAN UNDANGYUK.COM*\n` +
-        `=============================\n` +
-        `*Paket:* ${paket}\n` +
-        `*Pilihan Tema:* ${tema}\n` +
-        `*Nama Mempelai:* ${mempelai}\n` +
-        `*Tanggal Acara:* ${tanggal}\n` +
-        `*No. WhatsApp:* ${normalizedWA}\n` +
-        `*Add-on Domain .com:* ${addDomain}\n` +
-        `*Add-on Kilat 6 Jam:* ${addKilat}\n` +
-        `*Add-on Filter IG:* ${addFilter}\n` +
-        `*Catatan Khusus:* ${catatan}\n` +
-        `=============================\n\n` +
-        `Halo Admin UndangYuk, saya ingin memesan undangan digital dengan rincian data di atas. Mohon info nomor rekening pembayaran dan proses pembuatan draft-nya. Terima kasih!`;
-
-      const encoded = encodeURIComponent(orderMsg);
-      window.open(`https://api.whatsapp.com/send?phone=${ADMIN_WA}&text=${encoded}`, '_blank');
-      closeOrderModal();
-    }
-
-    function toggleFAQ(button) {
-      const item = button.parentElement;
-      const isActive = item.classList.contains('active');
-      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-      if (!isActive) item.classList.add('active');
-    }
-
-    function toggleMobileMenu() {
-      const navLinks = document.querySelector('.nav-links');
-      const navActions = document.querySelector('.nav-actions');
-      navLinks.classList.toggle('mobile-open');
-      navActions.classList.toggle('mobile-open');
-    }
-
-    function escapeHtml(text) {
-      return text.replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m]));
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      updateWAPreview();
-      generateBulkLinks();
-    });
+    setInterval(() => {
+      const toast = document.getElementById('liveToast');
+      const item = toastData[toastIdx % toastData.length];
+      document.getElementById('toastTitle').textContent = item.title;
+      document.getElementById('toastDesc').textContent = item.desc;
+      toast.classList.add('show');
+      setTimeout(() => { toast.classList.remove('show'); }, 4000);
+      toastIdx++;
+    }, 9000);
   </script>
 </body>
 </html>

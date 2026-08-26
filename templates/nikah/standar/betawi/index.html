@@ -125,9 +125,45 @@
       width: 100%; background: var(--betawi-orange); color: #FFF; border: none;
       padding: 14px; border-radius: 12px; font-weight: 700; font-size: 14px; cursor: pointer;
     }
+  
+    /* FLOATING CULTURAL ORNAMENTS (KANVAS KIRI & KANAN SESUAI ADAT) */
+    .side-canvas-ornament {
+      position: fixed; top: 50%; transform: translateY(-50%);
+      width: 140px; height: 380px; pointer-events: none; z-index: 5; opacity: 0.85;
+      transition: transform 0.2s ease-out;
+    }
+    .side-canvas-ornament.left { left: -20px; animation: floatSwayLeft 5s ease-in-out infinite alternate; }
+    .side-canvas-ornament.right { right: -20px; transform: translateY(-50%) scaleX(-1); animation: floatSwayRight 5s ease-in-out infinite alternate; }
+
+    @keyframes floatSwayLeft {
+      0% { transform: translateY(-50%) rotate(0deg) translateX(0px); }
+      100% { transform: translateY(-54%) rotate(3deg) translateX(8px); }
+    }
+    @keyframes floatSwayRight {
+      0% { transform: translateY(-50%) scaleX(-1) rotate(0deg) translateX(0px); }
+      100% { transform: translateY(-54%) scaleX(-1) rotate(3deg) translateX(8px); }
+    }
+
+    /* SCROLL ANIMATION */
+    .reveal {
+      opacity: 0;
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal-fade-up { transform: translateY(40px); }
+    .reveal-zoom { transform: scale(0.92); }
+    .reveal-slide-left { transform: translateX(-50px); }
+    .reveal-slide-right { transform: translateX(50px); }
+    .reveal.active { opacity: 1; transform: translate(0) scale(1); }
+  
   </style>
 </head>
 <body>
+
+  <!-- SIDE CANVAS ORNAMENTS -->
+  <svg class="side-canvas-ornament left" viewBox="0 0 100 200" fill="none"><rect x="20" y="40" width="60" height="120" stroke="#EA580C" stroke-width="3" fill="none" opacity="0.4"/></svg>
+  <svg class="side-canvas-ornament right" viewBox="0 0 100 200" fill="none"><rect x="20" y="40" width="60" height="120" stroke="#EA580C" stroke-width="3" fill="none" opacity="0.4"/></svg>
+  
 
   <!-- AUDIO -->
   <audio id="bgMusic" loop preload="auto">
@@ -161,7 +197,7 @@
     <!-- PANTUN BETAWI -->
     <section>
       <div class="container text-center">
-        <div class="card-scrapbook">
+        <div class="card-scrapbook reveal reveal-fade-up">
           <p class="serif-title" style="font-size:18px; color:var(--betawi-orange); font-weight:800;">Pantun Palang Pintu</p>
           <p style="font-size:13px; color:var(--muted); margin:15px 0;">
             <em>"Kagak ade ujan kagak ade angin, pohon kelapa di pinggir rawa.<br>Niat hati udah kepingin, ngajak idup bareng seia sekata."</em>
@@ -174,17 +210,17 @@
     <!-- PROFIL MEMPELAI (POLAROID 5°) -->
     <section>
       <div class="container text-center">
-        <div class="card-scrapbook">
+        <div class="card-scrapbook reveal reveal-fade-up">
           <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--betawi-orange); text-transform:uppercase;">Calon Penganten</p>
           <h2 class="serif-title" style="font-size:24px; color:var(--betawi-orange); margin:6px 0 15px;">Mempelai Pengantin</h2>
 
           <div class="polaroid-photo-grid">
-            <div class="polaroid-photo-card">
+            <div class="polaroid-photo-card reveal reveal-zoom">
               <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=350&auto=format&fit=crop&q=80" alt="Jampang" class="polaroid-photo-img">
               <h3 style="font-size:15px; color:var(--betawi-orange); font-weight:800; margin-top:8px;">Babeh Jampang, S.E.</h3>
               <p style="font-size:11px; color:var(--muted);">Putra dari Babeh Sabeni &amp; Nyak Rodiah</p>
             </div>
-            <div class="polaroid-photo-card">
+            <div class="polaroid-photo-card reveal reveal-zoom">
               <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=350&auto=format&fit=crop&q=80" alt="Zaenab" class="polaroid-photo-img">
               <h3 style="font-size:15px; color:var(--betawi-orange); font-weight:800; margin-top:8px;">Mpok Siti Zaenab, S.Hum.</h3>
               <p style="font-size:11px; color:var(--muted);">Putri dari Bang Rohim &amp; Mpok Leha</p>
@@ -197,7 +233,7 @@
     <!-- ACARA & LOKASI -->
     <section>
       <div class="container text-center">
-        <div class="card-scrapbook">
+        <div class="card-scrapbook reveal reveal-fade-up">
           <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--betawi-orange); text-transform:uppercase;">Rundown Acara</p>
           <h2 class="serif-title" style="font-size:24px; color:var(--betawi-orange); margin:6px 0 20px;">Waktu &amp; Tempat Hajatan</h2>
 
@@ -233,7 +269,7 @@
     <!-- GALERI FOTO (4 FOTO POLAROID) -->
     <section>
       <div class="container text-center">
-        <div class="card-scrapbook">
+        <div class="card-scrapbook reveal reveal-fade-up">
           <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--betawi-orange); text-transform:uppercase;">Galeri Momen</p>
           <h2 class="serif-title" style="font-size:22px; color:var(--betawi-orange); margin:6px 0 15px;">Kenangan Kasih Betawi</h2>
           <div class="gallery-polaroid-grid">
@@ -288,6 +324,7 @@
         }).catch(e => console.log('Audio autoplay prevented:', e));
       }
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      initScrollReveal();
     }
 
     function toggleMusic() {
@@ -318,6 +355,29 @@
         if (s) s.innerText = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
       }
     }, 1000);
+  
+    function initScrollReveal() {
+      const reveals = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          } else {
+            entry.target.classList.remove('active');
+          }
+        });
+      }, { threshold: 0.15 });
+      reveals.forEach(el => observer.observe(el));
+    }
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.pageYOffset;
+      const leftOrn = document.querySelector('.side-canvas-ornament.left');
+      const rightOrn = document.querySelector('.side-canvas-ornament.right');
+      if (leftOrn) leftOrn.style.transform = 'translateY(' + (-50 + (scrollY % 100) * 0.08) + '%) rotate(' + (scrollY * 0.02) + 'deg)';
+      if (rightOrn) rightOrn.style.transform = 'translateY(' + (-50 + (scrollY % 100) * 0.08) + '%) scaleX(-1) rotate(' + (scrollY * 0.02) + 'deg)';
+    });
+  
   </script>
 </body>
 </html>

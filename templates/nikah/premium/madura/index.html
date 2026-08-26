@@ -11,7 +11,30 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
-  <script src="../../../../firebase-rsvp.js"></script>
+  <script src="../../../../firebase-rsvp.js">
+    function initScrollReveal() {
+      const reveals = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          } else {
+            entry.target.classList.remove('active');
+          }
+        });
+      }, { threshold: 0.15 });
+      reveals.forEach(el => observer.observe(el));
+    }
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.pageYOffset;
+      const leftOrn = document.querySelector('.side-canvas-ornament.left');
+      const rightOrn = document.querySelector('.side-canvas-ornament.right');
+      if (leftOrn) leftOrn.style.transform = 'translateY(' + (-50 + (scrollY % 100) * 0.08) + '%) rotate(' + (scrollY * 0.02) + 'deg)';
+      if (rightOrn) rightOrn.style.transform = 'translateY(' + (-50 + (scrollY % 100) * 0.08) + '%) scaleX(-1) rotate(' + (scrollY * 0.02) + 'deg)';
+    });
+  
+  </script>
 
   <style>
     :root {
@@ -141,9 +164,45 @@
       background: var(--madura-crimson); color: #FFF; border: none; padding: 6px 14px;
       border-radius: 8px; font-size: 11px; font-weight: 700; cursor: pointer; margin-top: 6px;
     }
+  
+    /* FLOATING CULTURAL ORNAMENTS (KANVAS KIRI & KANAN SESUAI ADAT) */
+    .side-canvas-ornament {
+      position: fixed; top: 50%; transform: translateY(-50%);
+      width: 140px; height: 380px; pointer-events: none; z-index: 5; opacity: 0.85;
+      transition: transform 0.2s ease-out;
+    }
+    .side-canvas-ornament.left { left: -20px; animation: floatSwayLeft 5s ease-in-out infinite alternate; }
+    .side-canvas-ornament.right { right: -20px; transform: translateY(-50%) scaleX(-1); animation: floatSwayRight 5s ease-in-out infinite alternate; }
+
+    @keyframes floatSwayLeft {
+      0% { transform: translateY(-50%) rotate(0deg) translateX(0px); }
+      100% { transform: translateY(-54%) rotate(3deg) translateX(8px); }
+    }
+    @keyframes floatSwayRight {
+      0% { transform: translateY(-50%) scaleX(-1) rotate(0deg) translateX(0px); }
+      100% { transform: translateY(-54%) scaleX(-1) rotate(3deg) translateX(8px); }
+    }
+
+    /* SCROLL ANIMATION */
+    .reveal {
+      opacity: 0;
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal-fade-up { transform: translateY(40px); }
+    .reveal-zoom { transform: scale(0.92); }
+    .reveal-slide-left { transform: translateX(-50px); }
+    .reveal-slide-right { transform: translateX(50px); }
+    .reveal.active { opacity: 1; transform: translate(0) scale(1); }
+  
   </style>
 </head>
 <body>
+
+  <!-- SIDE CANVAS ORNAMENTS -->
+  <svg class="side-canvas-ornament left" viewBox="0 0 100 200" fill="none"><path d="M10 50 L90 10 L50 100 L90 190 L10 150 Z" fill="#7F1D1D" opacity="0.4"/></svg>
+  <svg class="side-canvas-ornament right" viewBox="0 0 100 200" fill="none"><path d="M10 50 L90 10 L50 100 L90 190 L10 150 Z" fill="#7F1D1D" opacity="0.4"/></svg>
+  
 
   <canvas id="canvasParticles"></canvas>
 
@@ -180,7 +239,7 @@
     <!-- AYAT SUCI -->
     <section>
       <div class="container text-center">
-        <div class="card-madura">
+        <div class="card-madura reveal reveal-fade-up">
           <p class="serif-title" style="font-size:18px; color:var(--madura-crimson); font-weight:800;">Bismillahirrohmanirrohim</p>
           <p style="font-size:13px; color:var(--muted); margin:15px 0;">
             <em>"Mon aeng ta' kereng, mon taresna ta' lebur. Mugi Gusti Allah pareng barokah monggo ka panganten se kadhuwa."</em>
@@ -193,17 +252,17 @@
     <!-- PROFIL MEMPELAI (VELVET SHADOW) -->
     <section>
       <div class="container text-center">
-        <div class="card-madura">
+        <div class="card-madura reveal reveal-fade-up">
           <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--madura-gold); text-transform:uppercase;">Panganten Anyar</p>
           <h2 class="serif-title" style="font-size:24px; color:var(--madura-crimson); margin:6px 0 15px;">Mempelai Pengantin</h2>
 
           <div class="velvet-photo-grid">
-            <div class="velvet-photo-card">
+            <div class="velvet-photo-card reveal reveal-zoom">
               <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=350&auto=format&fit=crop&q=80" alt="Sakera" class="velvet-photo-img">
               <h3 style="font-size:15px; color:var(--madura-crimson); font-weight:800; margin-top:8px;">H. Achmad Sakera, S.E.</h3>
               <p style="font-size:11px; color:var(--muted);">Putra dari H. Rasyidi &amp; Hj. Maimunah</p>
             </div>
-            <div class="velvet-photo-card">
+            <div class="velvet-photo-card reveal reveal-zoom">
               <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=350&auto=format&fit=crop&q=80" alt="Marlena" class="velvet-photo-img">
               <h3 style="font-size:15px; color:var(--madura-crimson); font-weight:800; margin-top:8px;">Siti Marlena Dewi, S.Pd.</h3>
               <p style="font-size:11px; color:var(--muted);">Putri dari Bpk. H. Syafi'i &amp; Ibu Hj. Khodijah</p>
@@ -216,7 +275,7 @@
     <!-- ACARA & LOKASI -->
     <section>
       <div class="container text-center">
-        <div class="card-madura">
+        <div class="card-madura reveal reveal-fade-up">
           <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--madura-gold); text-transform:uppercase;">Susunan Acara</p>
           <h2 class="serif-title" style="font-size:24px; color:var(--madura-crimson); margin:6px 0 20px;">Bakte &amp; Kennengngan</h2>
 
@@ -252,7 +311,7 @@
     <!-- GALERI VELVET -->
     <section>
       <div class="container text-center">
-        <div class="card-madura">
+        <div class="card-madura reveal reveal-fade-up">
           <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--madura-gold); text-transform:uppercase;">Galeri Momen</p>
           <h2 class="serif-title" style="font-size:22px; color:var(--madura-crimson); margin:6px 0 15px;">Kenangan Kasih Panganten</h2>
           <div class="gallery-velvet-grid">
@@ -268,7 +327,7 @@
     <!-- RSVP & UCAPAN DOA (FIREBASE CLOUD) -->
     <section>
       <div class="container text-center">
-        <div class="card-madura">
+        <div class="card-madura reveal reveal-fade-up">
           <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--madura-gold); text-transform:uppercase;">Buku Tamu Real-time</p>
           <h2 class="serif-title" style="font-size:22px; color:var(--madura-crimson); margin:6px 0 15px;">Konfirmasi &amp; Doa Restu</h2>
           
@@ -296,7 +355,7 @@
     <!-- AMPLOP DIGITAL -->
     <section>
       <div class="container text-center">
-        <div class="card-madura">
+        <div class="card-madura reveal reveal-fade-up">
           <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--madura-gold); text-transform:uppercase;">Tanda Kasih</p>
           <h2 class="serif-title" style="font-size:22px; color:var(--madura-crimson); margin:6px 0 15px;">Kado Digital</h2>
           <p style="font-size:12.5px; color:var(--muted); margin-bottom:20px;">Bagi keluarga dan kerabat yang ingin memberikan tanda kasih secara digital:</p>
@@ -362,6 +421,7 @@
         }).catch(e => console.log('Audio autoplay prevented:', e));
       }
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      initScrollReveal();
     }
 
     function toggleMusic() {

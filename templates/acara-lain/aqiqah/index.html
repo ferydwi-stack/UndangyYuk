@@ -11,7 +11,30 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
-  <script src="../../../firebase-rsvp.js"></script>
+  <script src="../../../firebase-rsvp.js">
+    function initScrollReveal() {
+      const reveals = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          } else {
+            entry.target.classList.remove('active');
+          }
+        });
+      }, { threshold: 0.15 });
+      reveals.forEach(el => observer.observe(el));
+    }
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.pageYOffset;
+      const leftOrn = document.querySelector('.side-canvas-ornament.left');
+      const rightOrn = document.querySelector('.side-canvas-ornament.right');
+      if (leftOrn) leftOrn.style.transform = 'translateY(' + (-50 + (scrollY % 100) * 0.08) + '%) rotate(' + (scrollY * 0.02) + 'deg)';
+      if (rightOrn) rightOrn.style.transform = 'translateY(' + (-50 + (scrollY % 100) * 0.08) + '%) scaleX(-1) rotate(' + (scrollY * 0.02) + 'deg)';
+    });
+  
+  </script>
 
   <style>
     :root {
@@ -135,9 +158,45 @@
       background: var(--baby-pink); color: #FFF; border: none; padding: 6px 14px;
       border-radius: 8px; font-size: 11px; font-weight: 700; cursor: pointer; margin-top: 6px;
     }
+  
+    /* FLOATING CULTURAL ORNAMENTS (KANVAS KIRI & KANAN SESUAI ADAT) */
+    .side-canvas-ornament {
+      position: fixed; top: 50%; transform: translateY(-50%);
+      width: 140px; height: 380px; pointer-events: none; z-index: 5; opacity: 0.85;
+      transition: transform 0.2s ease-out;
+    }
+    .side-canvas-ornament.left { left: -20px; animation: floatSwayLeft 5s ease-in-out infinite alternate; }
+    .side-canvas-ornament.right { right: -20px; transform: translateY(-50%) scaleX(-1); animation: floatSwayRight 5s ease-in-out infinite alternate; }
+
+    @keyframes floatSwayLeft {
+      0% { transform: translateY(-50%) rotate(0deg) translateX(0px); }
+      100% { transform: translateY(-54%) rotate(3deg) translateX(8px); }
+    }
+    @keyframes floatSwayRight {
+      0% { transform: translateY(-50%) scaleX(-1) rotate(0deg) translateX(0px); }
+      100% { transform: translateY(-54%) scaleX(-1) rotate(3deg) translateX(8px); }
+    }
+
+    /* SCROLL ANIMATION */
+    .reveal {
+      opacity: 0;
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal-fade-up { transform: translateY(40px); }
+    .reveal-zoom { transform: scale(0.92); }
+    .reveal-slide-left { transform: translateX(-50px); }
+    .reveal-slide-right { transform: translateX(50px); }
+    .reveal.active { opacity: 1; transform: translate(0) scale(1); }
+  
   </style>
 </head>
 <body>
+
+  <!-- SIDE CANVAS ORNAMENTS -->
+  <svg class="side-canvas-ornament left" viewBox="0 0 100 200" fill="none"><path d="M20 180 C 20 80, 80 80, 80 20 C 80 120, 20 120, 20 180 Z" fill="#3F6212" opacity="0.4"/></svg>
+  <svg class="side-canvas-ornament right" viewBox="0 0 100 200" fill="none"><path d="M20 180 C 20 80, 80 80, 80 20 C 80 120, 20 120, 20 180 Z" fill="#3F6212" opacity="0.4"/></svg>
+  
 
   <canvas id="canvasParticles"></canvas>
 
@@ -174,7 +233,7 @@
     <!-- DOA -->
     <section>
       <div class="container text-center">
-        <div class="card-cloud">
+        <div class="card-cloud reveal reveal-fade-up">
           <p class="serif-title" style="font-size:18px; color:var(--baby-pink); font-weight:800;">Doa Aqiqah</p>
           <p style="font-size:13px; color:var(--muted); margin:15px 0;">
             <em>"Semoga ananda tumbuh menjadi putri yang sholehah, cerdas, berhati mulia, serta senantiasa dalam lindungan Allah SWT."</em>
@@ -186,7 +245,7 @@
     <!-- PROFIL BABY -->
     <section>
       <div class="container text-center">
-        <div class="card-cloud">
+        <div class="card-cloud reveal reveal-fade-up">
           <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--baby-pink); text-transform:uppercase;">Putri Tercinta</p>
           <h2 class="serif-title" style="font-size:24px; color:var(--baby-pink); margin:6px 0 15px;">Arsyila Putri Kirana</h2>
 
@@ -201,7 +260,7 @@
     <!-- ACARA & LOKASI -->
     <section>
       <div class="container text-center">
-        <div class="card-cloud">
+        <div class="card-cloud reveal reveal-fade-up">
           <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--baby-pink); text-transform:uppercase;">Rundown Acara</p>
           <h2 class="serif-title" style="font-size:24px; color:var(--baby-pink); margin:6px 0 20px;">Waktu &amp; Tempat</h2>
 
@@ -237,7 +296,7 @@
     <!-- GALERI -->
     <section>
       <div class="container text-center">
-        <div class="card-cloud">
+        <div class="card-cloud reveal reveal-fade-up">
           <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--baby-pink); text-transform:uppercase;">Galeri Momen</p>
           <h2 class="serif-title" style="font-size:22px; color:var(--baby-pink); margin:6px 0 15px;">Momen Manis</h2>
           <div class="gallery-baby-grid">
@@ -253,7 +312,7 @@
     <!-- RSVP & UCAPAN DOA (FIREBASE CLOUD) -->
     <section>
       <div class="container text-center">
-        <div class="card-cloud">
+        <div class="card-cloud reveal reveal-fade-up">
           <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--baby-pink); text-transform:uppercase;">Buku Tamu Real-time</p>
           <h2 class="serif-title" style="font-size:22px; color:var(--baby-pink); margin:6px 0 15px;">Konfirmasi &amp; Doa Restu</h2>
           
@@ -281,7 +340,7 @@
     <!-- AMPLOP DIGITAL -->
     <section>
       <div class="container text-center">
-        <div class="card-cloud">
+        <div class="card-cloud reveal reveal-fade-up">
           <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--baby-pink); text-transform:uppercase;">Tanda Kasih</p>
           <h2 class="serif-title" style="font-size:22px; color:var(--baby-pink); margin:6px 0 15px;">Kado Digital untuk Baby</h2>
           <p style="font-size:12.5px; color:var(--muted); margin-bottom:20px;">Bagi keluarga dan kerabat yang ingin memberikan tanda kasih secara digital:</p>
@@ -340,6 +399,7 @@
         }).catch(e => console.log('Audio autoplay prevented:', e));
       }
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      initScrollReveal();
     }
 
     function toggleMusic() {
