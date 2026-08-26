@@ -216,6 +216,19 @@
       box-shadow: 0 18px 40px rgba(180, 83, 9, 0.6) !important;
     }
   
+  
+    /* HIDE SCROLLBAR ACROSS ALL BROWSERS */
+    html, body { scrollbar-width: none !important; -ms-overflow-style: none !important; }
+    html::-webkit-scrollbar, body::-webkit-scrollbar, *::-webkit-scrollbar { display: none !important; width: 0 !important; height: 0 !important; }
+  
+    /* COVER OPEN/HIDE ANIMATION */
+    .cover-section.hide, #cover.hide, .cover.hide {
+      transform: translateY(-100%) scale(1.05) !important;
+      opacity: 0 !important;
+      filter: blur(8px) !important;
+      pointer-events: none !important;
+      visibility: hidden !important;
+    }
   </style>
 </head>
 <body>

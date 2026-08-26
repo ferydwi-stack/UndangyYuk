@@ -369,6 +369,10 @@
 
     .main-wrapper { opacity: 0; transition: opacity 1s ease; }
     .main-wrapper.show { opacity: 1; }
+  
+    /* HIDE SCROLLBAR ACROSS ALL BROWSERS */
+    html, body { scrollbar-width: none !important; -ms-overflow-style: none !important; }
+    html::-webkit-scrollbar, body::-webkit-scrollbar, *::-webkit-scrollbar { display: none !important; width: 0 !important; height: 0 !important; }
   </style>
 </head>
 <body>
