@@ -3,104 +3,138 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Undangan Pernikahan Adat Betawi - Bang Udin &amp; Mpok Zaenab</title>
+  <title>Undangan Pernikahan Adat Betawi - Bang Zaenal &amp; Mpok Rodiah</title>
+  <meta name="description" content="Walimatul 'Ursy Adat Betawi Palang Pintu - Bang Zaenal &amp; Mpok Rodiah">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Playfair+Display:wght@700;800&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     :root {
-      --primary: #B22222;       /* Merah Palang Pintu */
-      --secondary: #E5A93C;     /* Kuning Kunyit Betawi */
-      --dark: #1A3026;          /* Hijau Daun Betawi */
-      --bg: #FDFBF7;
-      --card-bg: #FFFFFF;
-      --shadow: 0 10px 25px rgba(178, 34, 34, 0.15);
+      --scarlet: #B22222;
+      --gold-yellow: #E5A93C;
+      --dark-red: #6D071A;
+      --jade-green: #2D6A4F;
+      --bg-cream: #FFFDF9;
+      --text: #241416;
+      --muted: #6B5558;
+      --white: #FFFFFF;
+      --shadow: 0 10px 30px rgba(178, 34, 34, 0.15);
+      --border: 1.5px solid rgba(229, 169, 60, 0.4);
     }
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-    body { background-color: var(--bg); color: #2D3748; line-height: 1.6; }
-    h1, h2, h3, .cover-title { font-family: 'Playfair Display', serif; color: var(--primary); }
+    body { background-color: var(--bg-cream); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+    h1, h2, h3, h4, .cover-title, .nama-mempelai { font-family: 'Fredoka', cursive; color: var(--scarlet); }
     .container { max-width: 860px; margin: 0 auto; padding: 0 20px; }
     .text-center { text-align: center; }
 
-    /* GIGI BALANG BORDER ACCENT */
+    /* GIGI BALANG BORDER PATTERN */
     .gigi-balang {
-      height: 14px;
-      background: repeating-linear-gradient(45deg, var(--secondary), var(--secondary) 10px, var(--primary) 10px, var(--primary) 20px);
+      height: 16px;
+      background: repeating-linear-gradient(45deg, var(--gold-yellow), var(--gold-yellow) 10px, var(--scarlet) 10px, var(--scarlet) 20px);
+      width: 100%;
     }
+
+    /* ANIMATIONS */
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(35px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+    .animate { opacity: 0; }
+    .animate.visible { animation: fadeInUp 0.8s ease forwards; }
+    .animate-delay-1 { animation-delay: 0.15s; }
+    .animate-delay-2 { animation-delay: 0.3s; }
+    .spin { animation: spin 4s linear infinite; }
 
     /* COVER BETAWI */
     .cover-section {
       position: fixed; inset: 0;
-      background: linear-gradient(135deg, #8B0000 0%, #B22222 50%, #4A0E0E 100%);
+      background: linear-gradient(135deg, #6D071A 0%, #B22222 50%, #3D040E 100%);
       color: #FFF; display: flex; justify-content: center; align-items: center;
-      z-index: 999; transition: transform 0.8s ease; padding: 20px; text-align: center;
+      z-index: 999; transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+      padding: 20px; text-align: center;
     }
     .cover-section.hide { transform: translateY(-100%); pointer-events: none; }
-    .cover-content {
-      max-width: 460px; border: 3px solid var(--secondary); padding: 35px 25px;
-      border-radius: 24px; background: rgba(26, 48, 38, 0.92); box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+    .cover-card {
+      border: 3px solid var(--gold-yellow); padding: 40px 25px; border-radius: 24px; max-width: 460px;
+      background: rgba(45, 5, 12, 0.94); backdrop-filter: blur(12px); box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+      position: relative;
     }
-    .kembang-kelapa-icon { font-size: 38px; color: var(--secondary); margin-bottom: 10px; }
-    .cover-title { font-size: 34px; color: #FFF; margin: 8px 0; font-style: italic; }
-    .cover-guest-box { background: rgba(0,0,0,0.4); border: 2px dashed var(--secondary); padding: 14px; border-radius: 12px; margin: 20px 0; }
     .btn-buka {
-      background: var(--secondary); color: #4A0E0E; border: none; padding: 12px 30px;
-      font-size: 15px; font-weight: 800; border-radius: 30px; cursor: pointer;
-      box-shadow: 0 6px 20px rgba(229, 169, 60, 0.4); transition: transform 0.3s;
+      background: linear-gradient(135deg, var(--gold-yellow) 0%, #D48806 100%);
+      color: #3D040E; border: none; padding: 13px 34px; font-size: 14px; font-weight: 800;
+      border-radius: 30px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
+      box-shadow: 0 4px 15px rgba(229, 169, 60, 0.4); margin-top: 15px; transition: transform 0.3s;
     }
     .btn-buka:hover { transform: translateY(-2px); }
 
     /* MAIN CONTENT */
-    .main-content { display: none; opacity: 0; transition: opacity 0.6s ease; padding-bottom: 70px; }
+    .main-content { display: none; opacity: 0; transition: opacity 0.8s ease; padding-bottom: 80px; }
     .main-content.show { display: block; opacity: 1; }
-    section { padding: 60px 0; position: relative; }
-    .section-heading h2 { font-size: 28px; margin-bottom: 8px; }
-    .heading-line { width: 60px; height: 3px; background: var(--secondary); margin: 0 auto 30px; }
+    section { padding: 65px 0; position: relative; }
+    .section-heading { margin-bottom: 35px; }
+    .section-heading .sub-title { text-transform: uppercase; letter-spacing: 3px; font-size: 11px; color: var(--scarlet); font-weight: 700; }
+    .section-heading h2 { font-size: 28px; margin: 5px 0 10px; }
+    .heading-line { width: 50px; height: 3px; background: var(--gold-yellow); margin: 0 auto; border-radius: 2px; }
 
-    /* HERO */
-    .section-hero { background: linear-gradient(180deg, #FDE8E8 0%, var(--bg) 100%); text-align: center; padding: 70px 0 40px; }
-    .betawi-badge { display: inline-block; background: var(--primary); color: #FFF; font-size: 12px; padding: 6px 16px; border-radius: 20px; font-weight: 700; margin-bottom: 15px; }
-
-    /* PANTUN BETAWI BOX */
-    .pantun-box {
-      background: #FFF8E7; border-left: 5px solid var(--secondary); border-radius: 14px;
-      padding: 20px; margin: 25px auto; max-width: 600px; font-style: italic; color: #553C10; text-align: center;
-    }
-
-    /* POLAROID MEMPELAI */
-    .mempelai-grid { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
+    /* POLAROID ANGLED MEMPELAI */
+    .mempelai-grid { display: flex; justify-content: center; gap: 35px; flex-wrap: wrap; margin-top: 20px; }
     .polaroid-card {
-      background: var(--card-bg); padding: 16px 16px 25px; border-radius: 12px;
-      box-shadow: var(--shadow); width: 280px; text-align: center; border: 1px solid #E2E8F0;
-      transform: rotate(-1.5deg); transition: transform 0.3s;
+      background: var(--white); padding: 18px 18px 25px; border-radius: 6px; width: 280px;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.12); border: 1px solid #EFE4DC;
+      position: relative; text-align: center;
     }
-    .polaroid-card:nth-child(2) { transform: rotate(1.5deg); }
-    .polaroid-card:hover { transform: rotate(0) scale(1.03); }
-    .polaroid-img { width: 100%; height: 260px; object-fit: cover; border-radius: 8px; margin-bottom: 12px; }
+    .polaroid-card.tilt-left { transform: rotate(-3deg); }
+    .polaroid-card.tilt-right { transform: rotate(3deg); }
+    .polaroid-card::before {
+      content: ''; position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+      width: 70px; height: 22px; background: rgba(229, 169, 60, 0.65); border-radius: 2px;
+    }
+    .polaroid-img { width: 100%; height: 240px; object-fit: cover; border-radius: 4px; margin-bottom: 15px; }
+
+    /* PANTUN BOX */
+    .pantun-box {
+      background: #FFF3E0; border: 2px dashed var(--scarlet); border-radius: 20px;
+      padding: 25px; margin: 30px auto 0; max-width: 620px; text-align: center;
+    }
 
     /* ACARA */
     .acara-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-    .acara-card { background: var(--card-bg); border-top: 4px solid var(--primary); padding: 25px 20px; border-radius: 16px; box-shadow: var(--shadow); text-align: center; }
+    .acara-card { background: var(--white); border: var(--border); border-radius: 20px; padding: 30px 20px; text-align: center; box-shadow: var(--shadow); }
+    .acara-icon { width: 50px; height: 50px; background: #FFE8E8; color: var(--scarlet); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; margin: 0 auto 15px; }
+    .btn-maps { display: inline-flex; align-items: center; gap: 6px; background: var(--scarlet); color: #FFF; padding: 8px 18px; border-radius: 20px; text-decoration: none; font-size: 12px; font-weight: 700; margin-top: 15px; }
 
     /* COUNTDOWN */
-    .countdown { display: flex; justify-content: center; gap: 12px; margin: 25px 0; }
-    .count-box { background: var(--primary); color: #FFF; width: 65px; padding: 10px; border-radius: 10px; text-align: center; }
-    .count-num { font-size: 22px; font-weight: 800; }
+    .countdown-container { display: flex; justify-content: center; gap: 15px; margin: 25px 0; }
+    .count-box { background: var(--scarlet); color: #FFF; width: 68px; padding: 12px 5px; border-radius: 14px; text-align: center; border: 1.5px solid var(--gold-yellow); }
+    .count-num { font-size: 22px; font-weight: 800; font-family: 'Fredoka', cursive; }
+    .count-label { font-size: 10px; text-transform: uppercase; }
 
-    /* GALERI 6 FOTO SCRAPBOOK */
-    .galeri-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-    .galeri-grid img { width: 100%; height: 140px; object-fit: cover; border-radius: 10px; border: 2px solid var(--secondary); }
+    /* GALERI */
+    .galeri-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .galeri-item { border-radius: 14px; overflow: hidden; height: 160px; border: 2px solid var(--gold-yellow); cursor: pointer; }
+    .galeri-item.span-2 { grid-column: span 2; }
+    .galeri-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+    .galeri-item:hover img { transform: scale(1.06); }
 
-    /* FLOATING MUSIC */
-    .music-toggle { position: fixed; bottom: 25px; left: 25px; width: 45px; height: 45px; background: var(--primary); color: #FFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; z-index: 998; cursor: pointer; border: 2px solid var(--secondary); }
-    .spin { animation: spin 4s linear infinite; }
-    @keyframes spin { 100% { transform: rotate(360deg); } }
+    /* RSVP & GUESTBOOK */
+    .form-box { background: var(--white); border: var(--border); border-radius: 24px; padding: 30px 25px; box-shadow: var(--shadow); max-width: 540px; margin: 0 auto; }
+    .form-group { margin-bottom: 16px; text-align: left; }
+    .form-group label { display: block; font-size: 12px; font-weight: 700; color: var(--scarlet); margin-bottom: 6px; }
+    .form-control { width: 100%; padding: 12px; border: 1px solid #E2D5C8; border-radius: 10px; font-size: 13px; }
+    .btn-submit { width: 100%; background: var(--scarlet); color: #FFF; padding: 13px; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; font-size: 14px; }
+    .wishes-feed { max-height: 250px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; margin-top: 25px; }
+    .wish-card { background: #FFF3E0; padding: 12px 16px; border-radius: 12px; font-size: 13px; border-left: 3px solid var(--scarlet); }
+
+    /* AMPLOP */
+    .gift-card { background: var(--white); border: var(--border); border-radius: 20px; padding: 25px; max-width: 440px; margin: 0 auto; text-align: center; }
+    .btn-copy { background: #FFE8E8; border: 1px solid var(--scarlet); color: var(--scarlet); padding: 6px 14px; border-radius: 16px; font-weight: 700; font-size: 12px; cursor: pointer; margin-top: 10px; }
+
+    /* MUSIC */
+    .music-toggle { position: fixed; bottom: 25px; left: 25px; width: 48px; height: 48px; background: var(--scarlet); color: var(--gold-yellow); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; z-index: 998; cursor: pointer; border: 2px solid var(--gold-yellow); box-shadow: var(--shadow); }
   </style>
 </head>
 <body>
   <audio id="bgMusic" loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=traditional-asian-melody-113337.mp3" type="audio/mp3">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3" type="audio/mp3">
   </audio>
 
   <div class="music-toggle" id="musicToggle" onclick="toggleMusic()" style="display:none;">
@@ -108,133 +142,187 @@
   </div>
 
   <div class="cover-section" id="cover">
-    <div class="cover-content">
-      <div class="kembang-kelapa-icon"><i class="fas fa-crown"></i></div>
-      <p style="font-size:12px; letter-spacing:2px; color:var(--secondary); font-weight:700;">WALIMATUL 'URSY ADAT BETAWI</p>
-      <h1 class="cover-title">Bang Udin &amp; Mpok Zaenab</h1>
-      <p style="font-size:13px; color:#FDE8E8;">Minggu, 18 Oktober 2026</p>
-      <div class="cover-guest-box">
-        <p style="font-size:11px; color:#DDD;">Kagak Mengurangi Rasa Hormat, Kpd Yth:</p>
-        <h3 style="font-size:20px; color:var(--secondary); font-weight:700;" id="namaTamuCover">Tamu Undangan</h3>
-        <p style="font-size:11px; color:#DDD;">Ditunggu Sangat Kehadiran &amp; Doa Restunye</p>
+    <div class="cover-card">
+      <div style="font-size:36px; color:var(--gold-yellow); margin-bottom:8px;"><i class="fas fa-drum"></i></div>
+      <p style="font-size:11px; letter-spacing:3px; color:var(--gold-yellow); font-weight:700;">WALIMATUL 'URSY ADAT BETAWI</p>
+      <h1 class="cover-title" style="color:#FFF; font-size:32px; margin:8px 0;">Zaenal &amp; Rodiah</h1>
+      <p style="font-size:13px; color:#FFE0B2;">Ahad, 27 Desember 2026</p>
+      <div style="margin:18px 0; padding:12px; background:rgba(0,0,0,0.4); border:1px dashed var(--gold-yellow); border-radius:12px;">
+        <p style="font-size:11px; color:#DDD;">Kpd Yth Encang/Encing/Bpk/Ibu:</p>
+        <h3 style="font-size:18px; color:var(--gold-yellow);" id="namaTamuCover">Tamu Undangan</h3>
       </div>
-      <button class="btn-buka" onclick="bukaUndangan()"><i class="fas fa-envelope-open-text"></i> Buka Undangan</button>
+      <button class="btn-buka" onclick="bukaUndangan()"><i class="fas fa-envelope-open"></i> Buka Undangan</button>
     </div>
   </div>
 
   <main class="main-content" id="mainContent">
     <div class="gigi-balang"></div>
-    <section class="section-hero">
-      <div class="container">
-        <div class="betawi-badge">Adat Betawi Asli &bull; Buka Palang Pintu</div>
-        <p style="font-family:'Playfair Display', serif; font-size:22px; color:var(--primary); margin-bottom:6px;">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p>
-        <p style="font-weight:700; color:var(--primary);">Assalamu’alaikum Warahmatullahi Wabarakatuh</p>
-        
-        <div class="pantun-box">
-          "Buah manggis buah pepaye, pohon cemare di pinggir kali..<br>
-          Kite berdua udeh sehati sejiwe, mohon doa restu di hari yang suci ini."
-        </div>
+    <section style="background:linear-gradient(180deg, #FFE8E8 0%, var(--bg-cream) 100%);">
+      <div class="container text-center">
+        <span class="animate" style="background:var(--scarlet); color:#FFF; padding:5px 16px; border-radius:20px; font-size:11px; font-weight:700;">Adat Betawi &bull; Palang Pintu</span>
+        <h2 class="animate animate-delay-1" style="font-size:24px; margin:15px 0 8px;">Bismillahirrahmannirrahim</h2>
+        <p class="animate animate-delay-2" style="font-style:italic; max-width:600px; margin:0 auto; font-size:13px; color:#555;">
+          "Buah mangga buah kweni, dibeli encing di pasar kranji.. Niat ati sunnah nabi, nyatuin cinta abadi di pelaminan ini."
+        </p>
       </div>
     </section>
 
-    <!-- MEMPELAI -->
+    <!-- MEMPELAI POLAROID -->
     <section>
-      <div class="container text-center">
-        <div class="section-heading">
-          <h2>Penganten Berbahagie</h2>
+      <div class="container">
+        <div class="section-heading text-center">
+          <span class="sub-title">Penganten Lanang &amp; Wadon</span>
+          <h2>Mempelai Berbahagia</h2>
           <div class="heading-line"></div>
         </div>
         <div class="mempelai-grid">
-          <div class="polaroid-card">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=80" class="polaroid-img" alt="Bang Udin">
-            <h3 style="font-size:18px;">Udin Syarifuddin, S.Kom.</h3>
-            <p style="font-size:12px; color:var(--primary); font-weight:700;">Penganten Laki (Abang)</p>
-            <p style="font-size:12px; color:#666;">Putra ti Bpk. H. Rojali &amp; Ibu Hj. Munaroh<br>Condet, Jakarta Timur</p>
+          <div class="polaroid-card tilt-left animate">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=80" class="polaroid-img" alt="Zaenal">
+            <h3 style="font-size:18px;">Bang Zaenal Abidin, S.T.</h3>
+            <p style="font-size:12px; color:var(--scarlet); font-weight:700;">Penganten Lanang</p>
+            <p style="font-size:12px; color:#666;">Putra dr Babeh H. Rahmat &amp; Nyak Hj. Rogayah<br><small>Rawabelong, Jakarta Barat</small></p>
           </div>
-          <div class="polaroid-card">
-            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&auto=format&fit=crop&q=80" class="polaroid-img" alt="Mpok Zaenab">
-            <h3 style="font-size:18px;">Zaenab Mardhiah, S.E.</h3>
-            <p style="font-size:12px; color:var(--primary); font-weight:700;">Penganten Perempuan (None)</p>
-            <p style="font-size:12px; color:#666;">Putri ti Bpk. H. Sabeni &amp; Ibu Hj. Halimah<br>Rawa Belong, Jakarta Barat</p>
+          <div class="polaroid-card tilt-right animate animate-delay-1">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&auto=format&fit=crop&q=80" class="polaroid-img" alt="Rodiah">
+            <h3 style="font-size:18px;">Mpok Siti Rodiah, S.E.</h3>
+            <p style="font-size:12px; color:var(--scarlet); font-weight:700;">Penganten Wadon</p>
+            <p style="font-size:12px; color:#666;">Putri dr Babeh H. Mansyur &amp; Nyak Hj. Aminah<br><small>Condet, Jakarta Timur</small></p>
           </div>
+        </div>
+
+        <div class="pantun-box animate">
+          <h4 style="font-size:15px; color:var(--scarlet); margin-bottom:8px;"><i class="fas fa-theater-masks"></i> Sautan Palang Pintu Betawi:</h4>
+          <p style="font-size:13px; font-style:italic; color:#444;">
+            "Kalo jalan ke pasar senen, jangan lupa beli roti buaya..<br>
+            Niat abang udah lempeng beneran, mau minang mpok rodiah pujaan jiwa!"
+          </p>
         </div>
       </div>
     </section>
 
     <!-- ACARA -->
-    <section style="background:#FFF9F5;">
+    <section style="background:#FFF3E0;">
       <div class="container">
         <div class="section-heading text-center">
-          <h2>Waktu &amp; Tempat Hajatan</h2>
+          <span class="sub-title">Waktu &amp; Lokasi</span>
+          <h2>Rangkaian Hajatan</h2>
           <div class="heading-line"></div>
         </div>
         <div class="acara-grid">
-          <div class="acara-card">
-            <i class="fas fa-ring" style="font-size:24px; color:var(--primary); margin-bottom:10px;"></i>
-            <h3 style="font-size:18px;">Akad Nikah &amp; Palang Pintu</h3>
-            <p><i class="far fa-calendar-alt"></i> Minggu, 18 Oktober 2026</p>
-            <p style="font-weight:700; color:var(--primary); margin:6px 0;">Pukul 08.00 - 10.00 WIB</p>
-            <p style="font-size:12px; color:#666;">Kediaman Mempelai Wanita (Rawa Belong)</p>
+          <div class="acara-card animate">
+            <div class="acara-icon"><i class="fas fa-ring"></i></div>
+            <h3 style="font-size:18px; color:var(--scarlet);">Akad Nikah</h3>
+            <p><i class="far fa-calendar-alt"></i> Ahad, 27 Desember 2026</p>
+            <p style="font-size:14px; font-weight:700; color:var(--dark-red); margin:6px 0;"><i class="far fa-clock"></i> 08.30 - 10.00 WIB</p>
+            <p style="font-size:12px; color:var(--muted);">Masjid Jami At-Taqwa, Condet, Jakarta Timur</p>
+            <a href="https://maps.google.com" target="_blank" class="btn-maps"><i class="fas fa-map-marker-alt"></i> Buka Google Maps</a>
           </div>
-          <div class="acara-card">
-            <i class="fas fa-utensils" style="font-size:24px; color:var(--primary); margin-bottom:10px;"></i>
-            <h3 style="font-size:18px;">Resepsi Hajatan Betawi</h3>
-            <p><i class="far fa-calendar-alt"></i> Minggu, 18 Oktober 2026</p>
-            <p style="font-weight:700; color:var(--primary); margin:6px 0;">Pukul 11.00 - 16.00 WIB</p>
-            <p style="font-size:12px; color:#666;">Gedung Sasana Budaya Betawi Setu Babakan</p>
+          <div class="acara-card animate animate-delay-1">
+            <div class="acara-icon"><i class="fas fa-glass-cheers"></i></div>
+            <h3 style="font-size:18px; color:var(--scarlet);">Resepsi Palang Pintu</h3>
+            <p><i class="far fa-calendar-alt"></i> Ahad, 27 Desember 2026</p>
+            <p style="font-size:14px; font-weight:700; color:var(--dark-red); margin:6px 0;"><i class="far fa-clock"></i> 11.00 - 16.00 WIB</p>
+            <p style="font-size:12px; color:var(--muted);">Gedung Balai Budaya Betawi, Condet</p>
+            <a href="https://maps.google.com" target="_blank" class="btn-maps"><i class="fas fa-map-marker-alt"></i> Buka Google Maps</a>
           </div>
         </div>
 
-        <div class="countdown">
-          <div class="count-box"><div class="count-num" id="days">00</div><small>Hari</small></div>
-          <div class="count-box"><div class="count-num" id="hours">00</div><small>Jam</small></div>
-          <div class="count-box"><div class="count-num" id="minutes">00</div><small>Menit</small></div>
-          <div class="count-box"><div class="count-num" id="seconds">00</div><small>Detik</small></div>
+        <div class="countdown-container animate">
+          <div class="count-box"><div class="count-num" id="days">00</div><div class="count-label">Hari</div></div>
+          <div class="count-box"><div class="count-num" id="hours">00</div><div class="count-label">Jam</div></div>
+          <div class="count-box"><div class="count-num" id="minutes">00</div><div class="count-label">Menit</div></div>
+          <div class="count-box"><div class="count-num" id="seconds">00</div><div class="count-label">Detik</div></div>
         </div>
       </div>
     </section>
 
     <!-- GALERI -->
     <section>
-      <div class="container text-center">
-        <div class="section-heading">
-          <h2>Galeri Poto Kenangan</h2>
+      <div class="container">
+        <div class="section-heading text-center">
+          <span class="sub-title">Dokumentasi</span>
+          <h2>Galeri Poto Prewed</h2>
           <div class="heading-line"></div>
         </div>
         <div class="galeri-grid">
-          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=500&auto=format&fit=crop&q=80" alt="G1">
-          <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=500&auto=format&fit=crop&q=80" alt="G2">
-          <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=500&auto=format&fit=crop&q=80" alt="G3">
-          <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=500&auto=format&fit=crop&q=80" alt="G4">
-          <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=500&auto=format&fit=crop&q=80" alt="G5">
-          <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?w=500&auto=format&fit=crop&q=80" alt="G6">
+          <div class="galeri-item span-2 animate"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80" alt="1"></div>
+          <div class="galeri-item animate animate-delay-1"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=500&auto=format&fit=crop&q=80" alt="2"></div>
+          <div class="galeri-item animate animate-delay-2"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=500&auto=format&fit=crop&q=80" alt="3"></div>
+          <div class="galeri-item animate animate-delay-3"><img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=500&auto=format&fit=crop&q=80" alt="4"></div>
+          <div class="galeri-item span-2 animate"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=600&auto=format&fit=crop&q=80" alt="5"></div>
         </div>
       </div>
     </section>
 
-    <!-- AMPLOP DIGITAL -->
-    <section style="background:#FFF9F5;">
+    <!-- RSVP -->
+    <section style="background:#FFE8E8;">
       <div class="container text-center">
         <div class="section-heading">
-          <h2>Tande Kasih / Amplop</h2>
+          <span class="sub-title">Buku Tamu</span>
+          <h2>Doa &amp; Restu</h2>
           <div class="heading-line"></div>
         </div>
-        <div style="background:#FFF; border:2px solid var(--secondary); padding:25px; border-radius:16px; max-width:400px; margin:0 auto; box-shadow:var(--shadow);">
-          <p style="font-weight:800; color:var(--primary);">BANK MANDIRI</p>
-          <p style="font-size:20px; font-weight:700; margin:6px 0;">123-00-9876543-2</p>
-          <p style="font-size:12px; color:#666;">a.n. Udin Syarifuddin</p>
-          <button onclick="navigator.clipboard.writeText('1230098765432'); alert('No Rekening disalin!');" style="margin-top:12px; background:var(--primary); color:#FFF; border:none; padding:8px 18px; border-radius:20px; font-weight:700; cursor:pointer;"><i class="far fa-copy"></i> Salin Rekening</button>
+        <div class="form-box animate">
+          <form onsubmit="handleRSVP(event)">
+            <div class="form-group">
+              <label>Nama Lengkap:</label>
+              <input type="text" id="nama" class="form-control" placeholder="Contoh: Bang Sabeni" required>
+            </div>
+            <div class="form-group">
+              <label>Kehadiran:</label>
+              <select id="kehadiran" class="form-control">
+                <option value="Hadir">Insya Allah Hadir</option>
+                <option value="Tidak Hadir">Maaf Belom Bisa Hadir</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Ucapan &amp; Doa:</label>
+              <textarea id="ucapan" class="form-control" rows="3" placeholder="Tulis doa restu buat mempelai..." required></textarea>
+            </div>
+            <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Kirim Doa Restu</button>
+          </form>
+          <div class="wishes-feed" id="messagesContainer">
+            <div class="wish-card">
+              <strong>Mpok Hindun &amp; Keluarga</strong> <span style="font-size:11px; color:var(--scarlet); font-weight:700;">(Hadir)</span>
+              <p>Selamat ya bang Zaenal &amp; mpok Rodiah! Semoga sakinah mawaddah warahmah, cepet dapet momongan cakep!</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
-    
+
+    <!-- AMPLOP -->
+    <section>
+      <div class="container text-center">
+        <div class="section-heading">
+          <span class="sub-title">Amplop Digital</span>
+          <h2>Tanda Kasih</h2>
+          <div class="heading-line"></div>
+        </div>
+        <div class="gift-card animate">
+          <p style="font-size:13px; color:var(--muted); margin-bottom:15px;">Kalo mau kirim tanda kasih secara cashless:</p>
+          <div style="background:#FFF3E0; padding:15px; border-radius:12px;">
+            <p style="font-weight:800; color:var(--scarlet);">BANK MANDIRI</p>
+            <p style="font-size:18px; font-weight:700; color:var(--text);" id="rekMandiri">1370012345678</p>
+            <p style="font-size:12px; color:var(--muted);">a.n. Zaenal Abidin</p>
+            <button class="btn-copy" onclick="copyRek('1370012345678', this)"><i class="far fa-copy"></i> Salin No. Rekening</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <div class="gigi-balang"></div>
+    <footer style="padding:40px 0 20px; text-align:center; font-size:12px; color:var(--muted);">
+      <h3 style="font-family:'Fredoka', cursive; font-size:22px; color:var(--scarlet);">Zaenal &amp; Rodiah</h3>
+      <p>Terima Kasih Banyak Atas Doa &amp; Restunya Encang Encing Semuanya</p>
+    </footer>
   </main>
 
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     const guestParam = urlParams.get('to') || urlParams.get('p') || 'Tamu Undangan';
-    document.getElementById('namaTamuCover').textContent = guestParam;
+    const guestEl = document.getElementById('namaTamuCover');
+    if (guestEl) guestEl.textContent = guestParam;
 
     const bgMusic = document.getElementById('bgMusic');
     const musicToggle = document.getElementById('musicToggle');
@@ -244,27 +332,74 @@
     function bukaUndangan() {
       document.getElementById('cover').classList.add('hide');
       document.getElementById('mainContent').classList.add('show');
-      musicToggle.style.display = 'flex';
-      bgMusic.play().then(() => { isPlaying = true; }).catch(e => console.log(e));
+      if (musicToggle) musicToggle.style.display = 'flex';
+      if (bgMusic) {
+        bgMusic.play().then(() => { isPlaying = true; }).catch(e => console.log(e));
+      }
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function toggleMusic() {
-      if (isPlaying) { bgMusic.pause(); musicIcon.classList.remove('spin'); isPlaying = false; }
-      else { bgMusic.play(); musicIcon.classList.add('spin'); isPlaying = true; }
+      if (!bgMusic) return;
+      if (isPlaying) {
+        bgMusic.pause();
+        if (musicIcon) musicIcon.classList.remove('spin');
+        isPlaying = false;
+      } else {
+        bgMusic.play();
+        if (musicIcon) musicIcon.classList.add('spin');
+        isPlaying = true;
+      }
     }
 
-    const weddingDate = new Date('October 18, 2026 08:00:00').getTime();
+    const targetDate = new Date('December 27, 2026 08:30:00').getTime();
     setInterval(() => {
       const now = new Date().getTime();
-      const diff = weddingDate - now;
+      const diff = targetDate - now;
       if (diff > 0) {
-        document.getElementById('days').innerText = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
-        document.getElementById('hours').innerText = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
-        document.getElementById('minutes').innerText = String(Math.floor((diff % (1000 * 60)) / (1000 * 60))).padStart(2, '0');
-        document.getElementById('seconds').innerText = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
+        const d = document.getElementById('days');
+        const h = document.getElementById('hours');
+        const m = document.getElementById('minutes');
+        const s = document.getElementById('seconds');
+        if (d) d.innerText = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
+        if (h) h.innerText = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+        if (m) m.innerText = String(Math.floor((diff % (1000 * 60)) / (1000 * 60))).padStart(2, '0');
+        if (s) s.innerText = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
       }
     }, 1000);
-  </script>
+
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.animate').forEach(el => obs.observe(el));
+
+    function handleRSVP(e) {
+      e.preventDefault();
+      const n = document.getElementById('nama').value;
+      const k = document.getElementById('kehadiran').value;
+      const u = document.getElementById('ucapan').value;
+      const feed = document.getElementById('messagesContainer');
+      if (feed) {
+        const div = document.createElement('div');
+        div.className = 'wish-card';
+        div.innerHTML = '<strong>' + esc(n) + '</strong> <span style="font-size:11px; font-weight:700;">(' + esc(k) + ')</span><p>' + esc(u) + '</p>';
+        feed.prepend(div);
+      }
+      alert('Terima kasih banyak atas doa restunya!');
+      e.target.reset();
+    }
+
+    function esc(t) {
+      return t.replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m]));
+    }
+
+    function copyRek(num, btn) {
+      navigator.clipboard.writeText(num).then(() => {
+        const old = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-check"></i> Disalin!';
+        setTimeout(() => { btn.innerHTML = old; }, 2000);
+      });
+    }
+</script>
 </body>
 </html>

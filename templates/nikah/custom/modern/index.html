@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VIP Wedding Celebration - Alexander &amp; Jennifer</title>
+  <meta name="description" content="VIP Modern Luxury Wedding Experience">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -19,17 +20,27 @@
       --border-glass: 1px solid rgba(229, 168, 148, 0.25);
     }
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-    body { background-color: var(--dark); color: var(--text); line-height: 1.6; }
-    h1, h2, h3, .cover-title { font-family: 'Cormorant Garamond', serif; color: var(--rose-light); }
+    body { background-color: var(--dark); color: var(--text); line-height: 1.7; overflow-x: hidden; }
+    h1, h2, h3, h4, .cover-title { font-family: 'Cormorant Garamond', serif; color: var(--rose-light); }
     .container { max-width: 860px; margin: 0 auto; padding: 0 20px; }
     .text-center { text-align: center; }
 
-    /* COVER GLASS */
+    /* ANIMATIONS */
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(35px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+    .animate { opacity: 0; }
+    .animate.visible { animation: fadeInUp 0.8s ease forwards; }
+    .animate-delay-1 { animation-delay: 0.15s; }
+    .animate-delay-2 { animation-delay: 0.3s; }
+    .spin { animation: spin 4s linear infinite; }
+
+    /* COVER */
     .cover-section {
       position: fixed; inset: 0;
       background: radial-gradient(circle at center, #1E293B 0%, #0A0F1D 100%);
-      color: #FFF; display: flex; justify-content: center; align-items: center; z-index: 999;
-      transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1); padding: 20px; text-align: center;
+      color: #FFF; display: flex; justify-content: center; align-items: center;
+      z-index: 999; transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+      padding: 20px; text-align: center;
     }
     .cover-section.hide { transform: translateY(-100%); pointer-events: none; }
     .cover-card {
@@ -38,37 +49,72 @@
     }
     .btn-buka {
       background: linear-gradient(135deg, var(--rose) 0%, #C77D67 100%);
-      color: #0A0F1D; border: none; padding: 12px 36px; font-size: 13px; font-weight: 800;
-      letter-spacing: 2px; text-transform: uppercase; border-radius: 30px; cursor: pointer; margin-top: 20px;
+      color: #0A0F1D; border: none; padding: 13px 36px; font-size: 13px; font-weight: 800;
+      letter-spacing: 2px; text-transform: uppercase; border-radius: 30px; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(229, 168, 148, 0.4);
+      margin-top: 20px; transition: transform 0.3s;
     }
 
     /* MAIN */
-    .main-content { display: none; opacity: 0; transition: opacity 0.6s ease; padding-bottom: 70px; }
+    .main-content { display: none; opacity: 0; transition: opacity 0.8s ease; padding-bottom: 80px; }
     .main-content.show { display: block; opacity: 1; }
-    section { padding: 65px 0; text-align: center; }
+    section { padding: 65px 0; position: relative; }
+    .section-heading { margin-bottom: 35px; }
+    .section-heading .sub-title { text-transform: uppercase; letter-spacing: 3px; font-size: 11px; color: var(--rose); font-weight: 700; }
+    .section-heading h2 { font-size: 34px; margin: 5px 0 10px; }
+    .heading-line { width: 45px; height: 2px; background: var(--rose); margin: 0 auto; }
 
-    /* GLASS CARDS */
-    .mempelai-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 30px; }
+    /* FLOATING GLASS CARDS */
+    .mempelai-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 20px; }
     .glass-card {
       background: var(--card-glass); border: var(--border-glass); backdrop-filter: blur(15px);
-      padding: 30px 20px; border-radius: 24px; width: 280px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      padding: 30px 20px; border-radius: 24px; width: 280px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
-    .glass-img { width: 150px; height: 200px; object-fit: cover; border-radius: 18px; border: 2px solid var(--rose); margin-bottom: 15px; }
+    .glass-photo { width: 150px; height: 200px; margin: 0 auto 15px; border-radius: 18px; border: 2px solid var(--rose); overflow: hidden; }
+    .glass-photo img { width: 100%; height: 100%; object-fit: cover; }
 
-    /* GALERI LOOKBOOK */
-    .lookbook-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 25px; }
-    .lookbook-grid img { width: 100%; height: 160px; object-fit: cover; border-radius: 14px; border: var(--border-glass); }
+    /* ACARA */
+    .acara-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .acara-card { background: var(--card-glass); border: var(--border-glass); backdrop-filter: blur(15px); border-radius: 20px; padding: 30px 20px; text-align: center; }
+    .btn-maps { display: inline-flex; align-items: center; gap: 6px; background: var(--rose); color: #0A0F1D; padding: 8px 18px; border-radius: 20px; text-decoration: none; font-size: 12px; font-weight: 700; margin-top: 15px; }
 
-    .music-toggle { position: fixed; bottom: 25px; left: 25px; width: 45px; height: 45px; background: var(--card-glass); color: var(--rose); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; z-index: 998; cursor: pointer; border: var(--border-glass); backdrop-filter: blur(10px); }
+    /* COUNTDOWN */
+    .countdown-container { display: flex; justify-content: center; gap: 15px; margin: 25px 0; }
+    .count-box { background: rgba(255,255,255,0.06); border: var(--border-glass); color: #FFF; width: 68px; padding: 12px 5px; border-radius: 14px; text-align: center; }
+    .count-num { font-size: 22px; font-weight: 800; font-family: 'Cormorant Garamond', serif; color: var(--rose); }
+    .count-label { font-size: 10px; text-transform: uppercase; color: var(--text-muted); }
+
+    /* EDITORIAL LOOKBOOK GALERI */
+    .galeri-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .galeri-item { border-radius: 14px; overflow: hidden; height: 160px; border: var(--border-glass); cursor: pointer; }
+    .galeri-item.span-2 { grid-column: span 2; }
+    .galeri-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+    .galeri-item:hover img { transform: scale(1.06); }
+
+    /* RSVP */
+    .form-box { background: var(--card-glass); border: var(--border-glass); backdrop-filter: blur(15px); border-radius: 24px; padding: 30px 25px; max-width: 540px; margin: 0 auto; }
+    .form-group { margin-bottom: 16px; text-align: left; }
+    .form-group label { display: block; font-size: 12px; font-weight: 700; color: var(--rose); margin-bottom: 6px; }
+    .form-control { width: 100%; padding: 12px; border: 1px solid rgba(255,255,255,0.15); background: rgba(0,0,0,0.3); color: #FFF; border-radius: 10px; font-size: 13px; }
+    .btn-submit { width: 100%; background: linear-gradient(135deg, var(--rose) 0%, #C77D67 100%); color: #0A0F1D; padding: 13px; border: none; border-radius: 12px; font-weight: 800; cursor: pointer; font-size: 14px; }
+    .wishes-feed { max-height: 250px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; margin-top: 25px; }
+    .wish-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 12px 16px; border-radius: 12px; font-size: 13px; border-left: 3px solid var(--rose); }
+
+    /* AMPLOP */
+    .gift-card { background: var(--card-glass); border: var(--border-glass); backdrop-filter: blur(15px); border-radius: 20px; padding: 25px; max-width: 440px; margin: 0 auto; text-align: center; }
+    .btn-copy { background: rgba(229,168,148,0.1); border: 1px solid var(--rose); color: var(--rose); padding: 6px 14px; border-radius: 16px; font-weight: 700; font-size: 12px; cursor: pointer; margin-top: 10px; }
+
+    /* MUSIC */
+    .music-toggle { position: fixed; bottom: 25px; left: 25px; width: 48px; height: 48px; background: var(--card-glass); color: var(--rose); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; z-index: 998; cursor: pointer; border: var(--border-glass); backdrop-filter: blur(10px); }
   </style>
 </head>
 <body>
   <audio id="bgMusic" loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=traditional-asian-melody-113337.mp3" type="audio/mp3">
+    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mp3">
   </audio>
 
   <div class="music-toggle" id="musicToggle" onclick="toggleMusic()" style="display:none;">
-    <i class="fas fa-play"></i>
+    <i class="fas fa-compact-disc spin" id="musicIcon"></i>
   </div>
 
   <div class="cover-section" id="cover">
@@ -86,61 +132,243 @@
 
   <main class="main-content" id="mainContent">
     <section>
-      <div class="container">
-        <span style="background:rgba(229,168,148,0.1); border:1px solid var(--rose); color:var(--rose-light); padding:5px 18px; border-radius:20px; font-size:11px; font-weight:700; letter-spacing:2px;">THE CELEBRATION</span>
-        <h2 style="font-size:34px; margin:15px 0 8px;">Two Hearts, Infinite Possibilities</h2>
-        <p style="font-style:italic; max-width:560px; margin:0 auto; font-size:14px; color:var(--text-muted);">
+      <div class="container text-center">
+        <span class="animate" style="background:rgba(229,168,148,0.1); border:1px solid var(--rose); color:var(--rose-light); padding:5px 18px; border-radius:20px; font-size:11px; font-weight:700; letter-spacing:2px;">THE CELEBRATION</span>
+        <h2 class="animate animate-delay-1" style="font-size:34px; margin:15px 0 8px;">Two Hearts, Infinite Possibilities</h2>
+        <p class="animate animate-delay-2" style="font-style:italic; max-width:560px; margin:0 auto; font-size:14px; color:var(--text-muted);">
           "In all the world, there is no heart for me like yours. In all the world, there is no love for you like mine."
         </p>
+      </div>
+    </section>
 
+    <!-- MEMPELAI -->
+    <section>
+      <div class="container">
+        <div class="section-heading text-center">
+          <span class="sub-title">The Couple</span>
+          <h2>The Bride &amp; Groom</h2>
+          <div class="heading-line"></div>
+        </div>
         <div class="mempelai-grid">
-          <div class="glass-card">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=80" class="glass-img" alt="Alex">
+          <div class="glass-card animate">
+            <div class="glass-photo">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=80" alt="Alex">
+            </div>
             <h3 style="font-size:22px;">Alexander Hartanto, B.B.A.</h3>
             <p style="font-size:12px; color:var(--rose);">The Groom</p>
+            <p style="font-size:12px; color:var(--text-muted);">Son of Mr. Michael Hartanto &amp; Mrs. Linda</p>
           </div>
-          <div class="glass-card">
-            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&auto=format&fit=crop&q=80" class="glass-img" alt="Jennifer">
+          <div class="glass-card animate animate-delay-1">
+            <div class="glass-photo">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&auto=format&fit=crop&q=80" alt="Jennifer">
+            </div>
             <h3 style="font-size:22px;">Jennifer Wijaya, B.Des.</h3>
             <p style="font-size:12px; color:var(--rose);">The Bride</p>
+            <p style="font-size:12px; color:var(--text-muted);">Daughter of Mr. David Wijaya &amp; Mrs. Catherine</p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACARA -->
+    <section style="background:rgba(255,255,255,0.02);">
+      <div class="container">
+        <div class="section-heading text-center">
+          <span class="sub-title">Event Schedule</span>
+          <h2>Celebration Times</h2>
+          <div class="heading-line"></div>
+        </div>
+        <div class="acara-grid">
+          <div class="acara-card animate">
+            <div style="font-size:28px; color:var(--rose); margin-bottom:10px;"><i class="fas fa-ring"></i></div>
+            <h3 style="font-size:20px;">Holy Matrimony</h3>
+            <p><i class="far fa-calendar-alt"></i> Saturday, 19 Dec 2026</p>
+            <p style="font-size:14px; font-weight:700; color:var(--rose); margin:6px 0;"><i class="far fa-clock"></i> 10.00 - 11.30 WIB</p>
+            <p style="font-size:12px; color:var(--text-muted);">St. Mary of the Angels Cathedral, Jakarta</p>
+            <a href="https://maps.google.com" target="_blank" class="btn-maps"><i class="fas fa-map-marker-alt"></i> Google Maps</a>
+          </div>
+          <div class="acara-card animate animate-delay-1">
+            <div style="font-size:28px; color:var(--rose); margin-bottom:10px;"><i class="fas fa-glass-cheers"></i></div>
+            <h3 style="font-size:20px;">Grand Ballroom Gala</h3>
+            <p><i class="far fa-calendar-alt"></i> Saturday, 19 Dec 2026</p>
+            <p style="font-size:14px; font-weight:700; color:var(--rose); margin:6px 0;"><i class="far fa-clock"></i> 18.30 - 22.00 WIB</p>
+            <p style="font-size:12px; color:var(--text-muted);">The Ritz-Carlton Mega Kuningan, Jakarta</p>
+            <a href="https://maps.google.com" target="_blank" class="btn-maps"><i class="fas fa-map-marker-alt"></i> Google Maps</a>
+          </div>
+        </div>
+
+        <div class="countdown-container animate">
+          <div class="count-box"><div class="count-num" id="days">00</div><div class="count-label">Days</div></div>
+          <div class="count-box"><div class="count-num" id="hours">00</div><div class="count-label">Hours</div></div>
+          <div class="count-box"><div class="count-num" id="minutes">00</div><div class="count-label">Mins</div></div>
+          <div class="count-box"><div class="count-num" id="seconds">00</div><div class="count-label">Secs</div></div>
         </div>
       </div>
     </section>
 
     <!-- GALERI LOOKBOOK -->
-    <section style="background:rgba(255,255,255,0.02);">
+    <section>
       <div class="container">
-        <h2>Editorial Lookbook</h2>
-        <div class="lookbook-grid">
-          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=500&auto=format&fit=crop&q=80" alt="1">
-          <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=500&auto=format&fit=crop&q=80" alt="2">
-          <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=500&auto=format&fit=crop&q=80" alt="3">
-          <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=500&auto=format&fit=crop&q=80" alt="4">
-          <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=500&auto=format&fit=crop&q=80" alt="5">
-          <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=500&auto=format&fit=crop&q=80" alt="6">
+        <div class="section-heading text-center">
+          <span class="sub-title">Lookbook</span>
+          <h2>Editorial Gallery</h2>
+          <div class="heading-line"></div>
+        </div>
+        <div class="galeri-grid">
+          <div class="galeri-item span-2 animate"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80" alt="1"></div>
+          <div class="galeri-item animate animate-delay-1"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=500&auto=format&fit=crop&q=80" alt="2"></div>
+          <div class="galeri-item animate animate-delay-2"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=500&auto=format&fit=crop&q=80" alt="3"></div>
+          <div class="galeri-item animate animate-delay-3"><img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=500&auto=format&fit=crop&q=80" alt="4"></div>
+          <div class="galeri-item span-2 animate"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=600&auto=format&fit=crop&q=80" alt="5"></div>
         </div>
       </div>
     </section>
+
+    <!-- RSVP -->
+    <section style="background:rgba(255,255,255,0.02);">
+      <div class="container text-center">
+        <div class="section-heading">
+          <span class="sub-title">Guestbook</span>
+          <h2>RSVP &amp; Best Wishes</h2>
+          <div class="heading-line"></div>
+        </div>
+        <div class="form-box animate">
+          <form onsubmit="handleRSVP(event)">
+            <div class="form-group">
+              <label>Full Name:</label>
+              <input type="text" id="nama" class="form-control" placeholder="e.g. Christian Davies" required>
+            </div>
+            <div class="form-group">
+              <label>Attendance Status:</label>
+              <select id="kehadiran" class="form-control">
+                <option value="Delighted to Attend">Delighted to Attend</option>
+                <option value="Regretfully Decline">Regretfully Decline</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Personal Message:</label>
+              <textarea id="ucapan" class="form-control" rows="3" placeholder="Write your heartfelt blessing..." required></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Confirm Attendance</button>
+          </form>
+          <div class="wishes-feed" id="messagesContainer">
+            <div class="wish-card">
+              <strong>Marcus &amp; Serena</strong> <span style="font-size:11px; color:var(--rose); font-weight:700;">(Attending)</span>
+              <p>Heartiest congratulations to the power couple Alex and Jen! Looking forward to an extraordinary evening.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WEDDING GIFT -->
+    <section>
+      <div class="container text-center">
+        <div class="section-heading">
+          <span class="sub-title">Wedding Gift</span>
+          <h2>Digital Registry</h2>
+          <div class="heading-line"></div>
+        </div>
+        <div class="gift-card animate">
+          <p style="font-size:13px; color:var(--text-muted); margin-bottom:15px;">For our honored guests wishing to send a digital gift:</p>
+          <div style="background:rgba(255,255,255,0.03); padding:15px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+            <p style="font-weight:800; color:var(--rose);">BANK CENTRAL ASIA</p>
+            <p style="font-size:18px; font-weight:700; color:#FFF;" id="rekBcaVip">8802910482</p>
+            <p style="font-size:12px; color:var(--text-muted);">a.n. Alexander Hartanto</p>
+            <button class="btn-copy" onclick="copyRek('8802910482', this)"><i class="far fa-copy"></i> Copy Account Number</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer style="padding:40px 0 20px; text-align:center; font-size:12px; color:var(--text-muted); border-top:1px solid rgba(255,255,255,0.06);">
+      <h3 style="font-family:'Cormorant Garamond', serif; font-size:24px; color:var(--rose);">Alexander &amp; Jennifer</h3>
+      <p>Thank you for being part of our unforgettable journey.</p>
+    </footer>
   </main>
 
   <script>
     const urlParams = new URLSearchParams(window.location.search);
-    document.getElementById('namaTamuCover').textContent = urlParams.get('to') || 'Distinguished Guest';
+    const guestParam = urlParams.get('to') || urlParams.get('p') || 'Tamu Undangan';
+    const guestEl = document.getElementById('namaTamuCover');
+    if (guestEl) guestEl.textContent = guestParam;
+
     const bgMusic = document.getElementById('bgMusic');
     const musicToggle = document.getElementById('musicToggle');
+    const musicIcon = document.getElementById('musicIcon');
     let isPlaying = false;
+
     function bukaUndangan() {
       document.getElementById('cover').classList.add('hide');
       document.getElementById('mainContent').classList.add('show');
-      musicToggle.style.display = 'flex';
-      bgMusic.play().then(() => { isPlaying = true; }).catch(e => console.log(e));
+      if (musicToggle) musicToggle.style.display = 'flex';
+      if (bgMusic) {
+        bgMusic.play().then(() => { isPlaying = true; }).catch(e => console.log(e));
+      }
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+
     function toggleMusic() {
-      if (isPlaying) { bgMusic.pause(); isPlaying = false; }
-      else { bgMusic.play(); isPlaying = true; }
+      if (!bgMusic) return;
+      if (isPlaying) {
+        bgMusic.pause();
+        if (musicIcon) musicIcon.classList.remove('spin');
+        isPlaying = false;
+      } else {
+        bgMusic.play();
+        if (musicIcon) musicIcon.classList.add('spin');
+        isPlaying = true;
+      }
     }
-  </script>
+
+    const targetDate = new Date('December 19, 2026 10:00:00').getTime();
+    setInterval(() => {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+      if (diff > 0) {
+        const d = document.getElementById('days');
+        const h = document.getElementById('hours');
+        const m = document.getElementById('minutes');
+        const s = document.getElementById('seconds');
+        if (d) d.innerText = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
+        if (h) h.innerText = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+        if (m) m.innerText = String(Math.floor((diff % (1000 * 60)) / (1000 * 60))).padStart(2, '0');
+        if (s) s.innerText = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
+      }
+    }, 1000);
+
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.animate').forEach(el => obs.observe(el));
+
+    function handleRSVP(e) {
+      e.preventDefault();
+      const n = document.getElementById('nama').value;
+      const k = document.getElementById('kehadiran').value;
+      const u = document.getElementById('ucapan').value;
+      const feed = document.getElementById('messagesContainer');
+      if (feed) {
+        const div = document.createElement('div');
+        div.className = 'wish-card';
+        div.innerHTML = '<strong>' + esc(n) + '</strong> <span style="font-size:11px; font-weight:700;">(' + esc(k) + ')</span><p>' + esc(u) + '</p>';
+        feed.prepend(div);
+      }
+      alert('Thank you! Your RSVP has been confirmed.');
+      e.target.reset();
+    }
+
+    function esc(t) {
+      return t.replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m]));
+    }
+
+    function copyRek(num, btn) {
+      navigator.clipboard.writeText(num).then(() => {
+        const old = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-check"></i> Disalin!';
+        setTimeout(() => { btn.innerHTML = old; }, 2000);
+      });
+    }
+</script>
 </body>
 </html>

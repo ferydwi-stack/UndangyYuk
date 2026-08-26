@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
@@ -2665,7 +2665,7 @@ function updateWAPreview() {
       `Salam hangat,\n*${mempelai}*`;
 
   } else if (tone === 'islami') {
-    message = `Assalamuâ€™alaikum Warahmatullahi Wabarakatuh\n\n` +
+    message = `Assalamu'alaikum Warahmatullahi Wabarakatuh\n\n` +
       `Kepada Yth. Bapak/Ibu/Saudara/i *${tamu}*\n\n` +
       `Dengan memohon rahmat dan ridho Allah Subhanahu Wa Ta'ala, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara ${eventLabel} kami:\n\n` +
       `*${mempelai}*\n\n` +
@@ -2675,21 +2675,21 @@ function updateWAPreview() {
       message += `Ungkapan terima kasih yang tulus kami sampaikan atas kehadiran serta doa restu yang Bapak/Ibu/Saudara/i berikan.\n\n`;
     }
     if (withProkes) {
-      message += `_â€œDan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya...â€ (QS. Ar-Rum: 21)_\n\n`;
+      message += `_"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya..." (QS. Ar-Rum: 21)_\n\n`;
     }
-    message += `Wassalamuâ€™alaikum Warahmatullahi Wabarakatuh\n\n` +
+    message += `Wassalamu'alaikum Warahmatullahi Wabarakatuh\n\n` +
       `Kami yang berbahagia,\n*${mempelai}*`;
 
   } else if (tone === 'santai') {
-    message = `Halo *${tamu}*! ðŸ‘‹\n\n` +
+    message = `Halo *${tamu}*! 👋\n\n` +
       `Kabar bahagia! Kami ingin mengundang kamu untuk hadir dan merayakan momen ${eventLabel} kami:\n\n` +
-      `ðŸ’ *${mempelai}*\n\n` +
+      `💍 *${mempelai}*\n\n` +
       `Buka link undangan digital di bawah ini ya untuk cek jadwal acara, peta lokasi, dan galeri foto:\n` +
       `${inviteUrl}\n\n`;
     if (withDoa) {
       message += `Kehadiran dan doa restu kamu bakal bikin hari bahagia kami makin lengkap!\n\n`;
     }
-    message += `Sampai ketemu di hari H ya! âœ¨\n\n` +
+    message += `Sampai ketemu di hari H ya! ✨\n\n` +
       `Salam hangat,\n*${mempelai}*`;
 
   } else if (tone === 'singkat') {
@@ -2697,7 +2697,7 @@ function updateWAPreview() {
       `Kami mengundang Anda pada acara ${eventLabel} *${mempelai}*.\n\n` +
       `Info lengkap & RSVP:\n` +
       `${inviteUrl}\n\n` +
-      `Terima kasih atas doa & kehadirannya! ðŸ™`;
+      `Terima kasih atas doa & kehadirannya! 🙏`;
   }
 
   const previewBox = document.getElementById('waPreviewText');
