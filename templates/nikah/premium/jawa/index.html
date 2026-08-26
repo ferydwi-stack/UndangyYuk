@@ -30,7 +30,7 @@
       --wood: #1C1108;
       --cream: #FAF5EB;
       --sogan: #5D4037;
-      --glass-bg: rgba(255, 253, 248, 0.88);
+      --glass-bg: rgba(255, 253, 248, 0.90);
       --glass-border: rgba(197, 155, 39, 0.45);
       --glass-shadow: 0 16px 40px rgba(28, 17, 8, 0.12);
 
@@ -59,6 +59,28 @@
     .text-center { text-align: center; }
     .serif-royal { font-family: 'Marcellus', 'Cinzel', serif; letter-spacing: 1.5px; }
     .script-royal { font-family: 'Great Vibes', cursive; font-weight: normal; }
+
+    /* ================================================================
+       GERBANG GAPURA KASULTANAN (OPENING INTRO CANVAS)
+       ================================================================ */
+    .gapura-wrap { position: fixed; inset: 0; z-index: 1200; pointer-events: none; }
+    .gapura-panel {
+      position: absolute; top: 0; bottom: 0; width: 51%;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.4)),
+        linear-gradient(160deg, #B8892A 0%, #7A5714 55%, #2A1B10 100%);
+      display: flex; align-items: center;
+      transition: transform 1.4s cubic-bezier(0.87,0,0.13,1);
+      box-shadow: 0 0 60px rgba(0,0,0,.5);
+    }
+    .gapura-panel.l { left: 0; justify-content: flex-end; border-right: 2px solid rgba(247,236,200,.4); }
+    .gapura-panel.r { right: 0; justify-content: flex-start; border-left: 2px solid rgba(247,236,200,.4); }
+    .gapura-panel svg { height: 48vh; max-height: 400px; width: auto; opacity: .95; }
+    .gapura-panel.l svg { margin-right: -2px; }
+    .gapura-panel.r svg { margin-left: -2px; transform: scaleX(-1); }
+    .gapura-open .gapura-panel.l { transform: translateX(-102%); }
+    .gapura-open .gapura-panel.r { transform: translateX(102%); }
+    .gapura-wrap.done { display: none; }
 
     /* SCROLL ANIMATION */
     .reveal { opacity: 0; transition: opacity 1s cubic-bezier(.16,1,.3,1), transform 1s cubic-bezier(.16,1,.3,1); transition-delay: var(--reveal-delay,0s); will-change: opacity,transform; }
@@ -108,8 +130,15 @@
 
     .cover-anim { opacity: 0; transform: translateY(22px); animation: coverIn 1s cubic-bezier(.16,1,.3,1) forwards; }
     @keyframes coverIn { to { opacity: 1; transform: translateY(0); } }
-    .cover-anim.d1{animation-delay:.2s}.cover-anim.d2{animation-delay:.4s}.cover-anim.d3{animation-delay:.6s}
-    .cover-anim.d4{animation-delay:.8s}.cover-anim.d5{animation-delay:1.0s}.cover-anim.d6{animation-delay:1.2s}
+    .cover-anim.d1{animation-delay:1.5s}.cover-anim.d2{animation-delay:1.7s}.cover-anim.d3{animation-delay:1.9s}
+    .cover-anim.d4{animation-delay:2.1s}.cover-anim.d5{animation-delay:2.3s}.cover-anim.d6{animation-delay:2.5s}
+
+    .gunungan-mini {
+      width: 95px; height: auto; margin-bottom: 8px;
+      filter: drop-shadow(0 6px 18px rgba(0,0,0,.5));
+      animation: floatGunungan 3.5s ease-in-out infinite alternate;
+    }
+    @keyframes floatGunungan { 0%{transform:translateY(0) scale(1)} 100%{transform:translateY(-6px) scale(1.04)} }
 
     .cover-sub-header { font-size: clamp(10px,2.6vw,12px); letter-spacing: 5px; font-weight: 800; color: var(--gold-light); text-transform: uppercase; margin-bottom: 8px; text-shadow: 0 2px 8px rgba(0,0,0,.6); }
     .cover-couple-name { font-family:'Great Vibes',cursive; font-size: clamp(56px,17vw,88px); line-height: 1.05; color: #FFF9E9; margin: 4px 0 10px; text-shadow: 0 6px 26px rgba(0,0,0,.65); }
@@ -136,7 +165,7 @@
     }
     .btn-buka-undangan:hover { transform: translateY(-2px) scale(1.05); box-shadow: 0 18px 40px rgba(197,155,39,.6); }
 
-    /* FLOATING OPEN PANELS (NOT SINGLE CONFINED CARD) */
+    /* FLOATING OPEN PANELS */
     .floating-glass-panel {
       background: var(--glass-bg);
       backdrop-filter: blur(12px);
@@ -156,7 +185,7 @@
     }
     .floating-glass-panel.dark h2, .floating-glass-panel.dark h3 { color: #FFF9E9; }
 
-    /* MEMPELAI SECTION: OPEN FLOATING PORTRAITS (NOT BOXED IN ONE CARD) */
+    /* MEMPELAI SECTION */
     .mempelai-open-grid {
       display: flex; flex-direction: column; align-items: center; gap: 40px; margin-top: 30px; position: relative; z-index: 2;
     }
@@ -262,6 +291,24 @@
 </head>
 <body>
 
+  <!-- GERBANG GAPURA KRATON OPENING INTRO CANVAS -->
+  <div class="gapura-wrap" id="gapuraWrap">
+    <div class="gapura-panel l">
+      <svg viewBox="0 0 200 400" xmlns="http://www.w3.org/2000/svg">
+        <path d="M195,400 L195,140 C195,60 150,10 100,5 L100,395 Z" fill="#1C1108" stroke="#F7ECC8" stroke-width="2" opacity="0.35"/>
+        <path d="M180,400 L180,150 C180,75 145,25 108,20 L108,395 Z" fill="none" stroke="#E7C158" stroke-width="1.5" opacity="0.6"/>
+        <circle cx="150" cy="90" r="5" fill="#E7C158" opacity="0.8"/>
+      </svg>
+    </div>
+    <div class="gapura-panel r">
+      <svg viewBox="0 0 200 400" xmlns="http://www.w3.org/2000/svg">
+        <path d="M195,400 L195,140 C195,60 150,10 100,5 L100,395 Z" fill="#1C1108" stroke="#F7ECC8" stroke-width="2" opacity="0.35"/>
+        <path d="M180,400 L180,150 C180,75 145,25 108,20 L108,395 Z" fill="none" stroke="#E7C158" stroke-width="1.5" opacity="0.6"/>
+        <circle cx="150" cy="90" r="5" fill="#E7C158" opacity="0.8"/>
+      </svg>
+    </div>
+  </div>
+
   <!-- tsParticles Golden Petals Background -->
   <div id="tsparticles-bg"></div>
 
@@ -273,9 +320,15 @@
     <i id="musicIcon" class="fas fa-compact-disc"></i>
   </button>
 
-  <!-- COVER SECTION (FULL BLEED PREWEDDING PHOTO BACKDROP) -->
+  <!-- COVER SECTION (FULL BLEED PREWEDDING PHOTO BACKDROP + GOLDEN GUNUNGAN) -->
   <div class="cover-section" id="cover">
     <div class="cover-photo-layer"></div>
+
+    <!-- GOLDEN GUNUNGAN WAYANG EMBLEM -->
+    <svg class="gunungan-mini cover-anim d1" viewBox="0 0 100 130" xmlns="http://www.w3.org/2000/svg">
+      <defs><linearGradient id="gunGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F7ECC8"/><stop offset="100%" stop-color="#C59B27"/></linearGradient></defs>
+      <path d="M50 4 C55 20 48 26 60 34 C74 24 78 40 66 48 C84 46 86 62 70 66 C90 68 90 86 68 88 C90 96 84 116 60 112 C64 122 50 128 50 128 C50 128 36 122 40 112 C16 116 10 96 32 88 C10 86 10 68 30 66 C14 62 16 46 34 48 C22 40 26 24 40 34 C52 26 45 20 50 4 Z" fill="url(#gunGrad)" stroke="#8C6A1A" stroke-width="1"/>
+    </svg>
 
     <p class="aksara-jawa-badge cover-anim d1" style="font-size:12px; letter-spacing:4px; color:var(--gold-light); font-weight:700; margin-bottom:6px;">ꦱꦒꦼꦢ꧀ꦲꦤꦶꦤ꧀ꦝꦏꦶ</p>
     <p class="cover-sub-header cover-anim d2">Pawartos Dhapur Palakrama</p>
@@ -493,6 +546,17 @@
   </main>
 
   <script>
+    // Gerbang gapura kraton intro animation
+    window.addEventListener('DOMContentLoaded', () => {
+      const wrap = document.getElementById('gapuraWrap');
+      if (wrap) {
+        setTimeout(() => {
+          wrap.classList.add('gapura-open');
+          setTimeout(() => { wrap.classList.add('done'); }, 1400);
+        }, 300);
+      }
+    });
+
     const urlParams = new URLSearchParams(window.location.search);
     const guestParam = urlParams.get('to') || urlParams.get('p') || urlParams.get('guest');
     const guestEl = document.getElementById('namaTamuCover');
