@@ -111,9 +111,37 @@
 
     /* MUSIC */
     .music-toggle { position: fixed; bottom: 25px; left: 25px; width: 48px; height: 48px; background: var(--pink); color: #FFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; z-index: 998; cursor: pointer; box-shadow: 0 0 15px var(--pink); }
+  
+  /* CANVAS TEXTURE BACKGROUND */
+  .canvas-texture {
+    background-image: 
+      radial-gradient(rgba(212, 175, 55, 0.06) 1px, transparent 0),
+      radial-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 0);
+    background-size: 24px 24px, 12px 12px;
+    background-position: 0 0, 12px 12px;
+  }
+  #canvasParticles {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    pointer-events: none;
+    z-index: 10;
+  }
+  .ornament-corner {
+    position: absolute;
+    width: 45px; height: 45px;
+    pointer-events: none;
+    opacity: 0.75;
+  }
+  .ornament-tl { top: 12px; left: 12px; }
+  .ornament-tr { top: 12px; right: 12px; transform: scaleX(-1); }
+  .ornament-bl { bottom: 12px; left: 12px; transform: scaleY(-1); }
+  .ornament-br { bottom: 12px; right: 12px; transform: scale(-1); }
+
   </style>
 </head>
-<body>
+<body class="canvas-texture">
+  <canvas id="canvasParticles"></canvas>
   <audio id="bgMusic" loop>
     <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3" type="audio/mp3">
   </audio>
@@ -273,9 +301,15 @@
 
   <script>
     const urlParams = new URLSearchParams(window.location.search);
-    const guestParam = urlParams.get('to') || urlParams.get('p') || 'Tamu Undangan';
+    const guestParam = urlParams.get('to') || urlParams.get('p') || urlParams.get('guest');
     const guestEl = document.getElementById('namaTamuCover');
-    if (guestEl) guestEl.textContent = guestParam;
+    if (guestEl) {
+      if (guestParam && guestParam.trim().length > 0) {
+        guestEl.textContent = guestParam.trim();
+      } else {
+        guestEl.textContent = "Tamu Undangan";
+      }
+    }
 
     const bgMusic = document.getElementById('bgMusic');
     const musicToggle = document.getElementById('musicToggle');
@@ -353,6 +387,68 @@
         setTimeout(() => { btn.innerHTML = old; }, 2000);
       });
     }
-</script>
+
+  // Full Canvas Particle Effect
+  (function initCanvasParticles() {
+    const canvas = document.getElementById('canvasParticles');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
+
+    const particles = [];
+    const count = window.innerWidth < 600 ? 25 : 45;
+
+    for (let i = 0; i < count; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        r: Math.random() * 3 + 1,
+        dx: (Math.random() - 0.5) * 0.8,
+        dy: Math.random() * 1.2 + 0.5,
+        opacity: Math.random() * 0.7 + 0.2,
+        rot: Math.random() * Math.PI * 2,
+        rotSpeed: (Math.random() - 0.5) * 0.02
+      });
+    }
+
+    function render() {
+      ctx.clearRect(0, 0, width, height);
+      particles.forEach(p => {
+        p.x += p.dx;
+        p.y += p.dy;
+        p.rot += p.rotSpeed;
+
+        if (p.y > height) { p.y = -10; p.x = Math.random() * width; }
+        if (p.x > width) p.x = 0;
+        if (p.x < 0) p.x = width;
+
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot);
+        ctx.globalAlpha = p.opacity;
+
+        
+          // Neon Pink Glitter
+          ctx.fillStyle = '#E01A7E';
+          ctx.shadowBlur = 10;
+          ctx.shadowColor = '#E01A7E';
+          ctx.beginPath();
+          ctx.arc(0, 0, p.r * 1.6, 0, Math.PI * 2);
+          ctx.fill();
+        
+        ctx.restore();
+      });
+      requestAnimationFrame(render);
+    }
+    render();
+  })();
+
+  </script>
 </body>
 </html>
