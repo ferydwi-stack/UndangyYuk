@@ -134,6 +134,7 @@
   .ornament-br { bottom: 12px; right: 12px; transform: scale(-1); }
 
   </style>
+  <script src="../../../../firebase-rsvp.js"></script>
 </head>
 <body class="canvas-texture">
   <canvas id="canvasParticles"></canvas>
@@ -376,11 +377,35 @@
     }, { threshold: 0.15 });
     document.querySelectorAll('.animate').forEach(el => obs.observe(el));
 
-    function handleRSVP(e) {
+    const THEME_CLOUD_ID = 'madura_panganten';
+
+    function renderCloudWishes(wishes) {
+      const feed = document.getElementById('messagesContainer');
+      if (!feed || !wishes || !wishes.length) return;
+      feed.innerHTML = '';
+      wishes.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'wish-card';
+        div.innerHTML = '<strong>' + esc(item.nama || 'Tamu') + '</strong> <span style="font-size:11px; font-weight:700;">(' + esc(item.kehadiran || 'Hadir') + ')</span><p>' + esc(item.ucapan || '') + '</p>';
+        feed.appendChild(div);
+      });
+    }
+
+    // Connect real-time Firebase listener
+    if (window.listenRSVPFromCloud) {
+      window.listenRSVPFromCloud(THEME_CLOUD_ID, renderCloudWishes);
+    }
+
+    async function handleRSVP(e) {
       e.preventDefault();
-      const n = document.getElementById('nama').value;
+      const n = document.getElementById('nama').value.trim();
       const k = document.getElementById('kehadiran').value;
-      const u = document.getElementById('ucapan').value;
+      const u = document.getElementById('ucapan').value.trim();
+      
+      if (window.submitRSVPToCloud) {
+        await window.submitRSVPToCloud(THEME_CLOUD_ID, { nama: n, kehadiran: k, ucapan: u });
+      }
+
       const feed = document.getElementById('messagesContainer');
       if (feed) {
         const div = document.createElement('div');
@@ -388,7 +413,7 @@
         div.innerHTML = '<strong>' + esc(n) + '</strong> <span style="font-size:11px; font-weight:700;">(' + esc(k) + ')</span><p>' + esc(u) + '</p>';
         feed.prepend(div);
       }
-      alert('Mator sakalangkong! Doa restu Anda telah kami terima.');
+      alert('Terima kasih banyak! Konfirmasi RSVP & Doa Restu Anda telah tersimpan secara real-time.');
       e.target.reset();
     }
 
