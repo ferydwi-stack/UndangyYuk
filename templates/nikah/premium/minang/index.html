@@ -3,338 +3,357 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Baralek Gadang Adat Minangkabau - Sutan Fahmi &amp; Puti Rahma</title>
-  <meta name="description" content="Baralek Gadang Rumah Gadang Minangkabau">
+  <title>Pernikahan Adat Minangkabau - Gonjong Marawa Edition</title>
+  <meta name="description" content="Baralek Gadang Sutan Rasyid & Puti Puan Mayang.">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Firebase RSVP Sync -->
+  <script src="../../../../firebase-rsvp.js"></script>
+
   <style>
     :root {
-      --maroon: #800000;
-      --maroon-dark: #4A0000;
-      --gold: #D4AF37;
-      --gold-light: #F7E7CE;
-      --black: #111111;
-      --bg: #FBF8F2;
-      --text: #222222;
-      --muted: #665555;
-      --white: #FFFFFF;
-      --shadow: 0 10px 30px rgba(128, 0, 0, 0.15);
-      --border: 1.5px solid rgba(212, 175, 55, 0.4);
+      --marawa-red: #8B0000;
+      --marawa-gold: #D4AF37;
+      --marawa-gold-light: #FDE047;
+      --marawa-black: #1A1A1A;
+      --cream: #FAF6EF;
+      --cream-bg: #F8F1E3;
+      --text: #221815;
+      --muted: #6B574E;
     }
+
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-    body { background-color: var(--bg); color: var(--text); line-height: 1.7; overflow-x: hidden; }
-    h1, h2, h3, h4, .cover-title { font-family: 'Cinzel', serif; color: var(--maroon); }
-    .container { max-width: 860px; margin: 0 auto; padding: 0 20px; }
-    .text-center { text-align: center; }
-
-    /* MARAWA STRIPE */
-    .marawa-stripe { height: 10px; background: linear-gradient(90deg, #111 33.3%, #C00 33.3%, #C00 66.6%, #D4AF37 66.6%); }
-
-    /* ANIMATIONS */
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(35px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes spin { 100% { transform: rotate(360deg); } }
-    .animate { opacity: 0; }
-    .animate.visible { animation: fadeInUp 0.8s ease forwards; }
-    .animate-delay-1 { animation-delay: 0.15s; }
-    .animate-delay-2 { animation-delay: 0.3s; }
-    .spin { animation: spin 4s linear infinite; }
-
-    /* COVER */
-    .cover-section {
-      position: fixed; inset: 0;
-      background: linear-gradient(135deg, #4A0000 0%, #800000 50%, #1A0000 100%);
-      color: #FFF; display: flex; justify-content: center; align-items: center;
-      z-index: 999; transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
-      padding: 20px; text-align: center;
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--cream-bg);
+      background-image: 
+        radial-gradient(rgba(212, 175, 55, 0.15) 1px, transparent 1px),
+        linear-gradient(180deg, #FAF4E6 0%, #F8F1E3 50%, #ECE0CB 100%);
+      background-size: 20px 20px, 100% 100%;
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.8;
     }
-    .cover-section.hide { transform: translateY(-100%); pointer-events: none; }
-    .cover-card {
-      border: 2px solid var(--gold); padding: 40px 25px; border-radius: 40px 40px 16px 16px; max-width: 460px;
-      background: rgba(20, 0, 0, 0.94); backdrop-filter: blur(12px); box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+
+    #canvasParticles { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 999; }
+    .container { max-width: 650px; margin: 0 auto; padding: 0 20px; position: relative; }
+    .text-center { text-align: center; }
+    .cursive-font { font-family: 'Great Vibes', cursive; }
+    .serif-title { font-family: 'Cinzel', serif; letter-spacing: 2px; }
+
+    /* COVER MINANG - GONJONG PEAKS */
+    .cover-section {
+      min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+      text-align: center; padding: 40px 20px; position: fixed; inset: 0; z-index: 1000;
+      background: radial-gradient(circle at 50% 30%, #FFFDF7 0%, #F5E5CE 60%, #DFC196 100%);
+      transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
+    }
+    .cover-section.hide { transform: translateY(-100%); opacity: 0; pointer-events: none; }
+    
+    .gonjong-icon { width: 105px; height: auto; margin-bottom: 12px; filter: drop-shadow(0 4px 10px rgba(139, 0, 0, 0.3)); }
+    .cover-couple { font-size: 52px; line-height: 1.1; color: var(--marawa-red); margin: 15px 0 8px; text-shadow: 0 2px 8px rgba(212, 175, 55, 0.35); }
+    
+    .guest-badge {
+      background: rgba(255, 255, 255, 0.92); border: 2px solid var(--marawa-gold);
+      padding: 16px 28px; border-radius: 18px; margin: 22px 0;
+      box-shadow: 0 10px 25px rgba(139, 0, 0, 0.08); max-width: 380px; width: 100%;
+    }
+
+    .btn-seal {
+      background: linear-gradient(135deg, #8B0000 0%, #D4AF37 100%);
+      color: #FFF; border: none; padding: 15px 36px; border-radius: 30px; font-size: 14px; font-weight: 700;
+      letter-spacing: 1.5px; cursor: pointer; box-shadow: 0 10px 25px rgba(139, 0, 0, 0.35);
+      display: inline-flex; align-items: center; gap: 10px; transition: transform 0.2s;
+      animation: pulseMarawa 2s infinite;
+    }
+    .btn-seal:hover { transform: scale(1.05); }
+    @keyframes pulseMarawa {
+      0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+      70% { box-shadow: 0 0 0 14px rgba(212, 175, 55, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+    }
+
+    /* MAIN CONTENT */
+    .main-wrapper { opacity: 0; transition: opacity 1s ease; }
+    .main-wrapper.show { opacity: 1; }
+
+    .music-btn {
+      position: fixed; bottom: 25px; right: 25px; width: 48px; height: 48px;
+      background: var(--marawa-red); color: var(--marawa-gold-light); border-radius: 50%;
+      display: none; align-items: center; justify-content: center; font-size: 18px;
+      z-index: 998; border: 2px solid var(--marawa-gold); box-shadow: 0 5px 20px rgba(0,0,0,0.25); cursor: pointer;
+    }
+    .spin { animation: spinDisc 4s linear infinite; }
+    @keyframes spinDisc { 100% { transform: rotate(360deg); } }
+
+    section { padding: 60px 0; position: relative; }
+
+    /* CARD GONJONG PEAK SILHOUETTE */
+    .card-gonjong {
+      background: rgba(255, 255, 255, 0.92);
+      border: 2px solid rgba(212, 175, 55, 0.5);
+      border-radius: 36px 36px 20px 20px;
+      padding: 45px 24px 35px;
+      box-shadow: 0 15px 35px rgba(139, 0, 0, 0.08);
+      margin-bottom: 30px;
       position: relative;
     }
-    .cover-card::before { content: '▲'; position: absolute; top: -14px; left: 50%; transform: translateX(-50%); color: var(--gold); font-size: 18px; }
-    .btn-buka {
-      background: linear-gradient(135deg, var(--gold) 0%, #B8860B 100%);
-      color: #4A0000; border: none; padding: 13px 34px; font-size: 14px; font-weight: 800;
-      border-radius: 30px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
-      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4); margin-top: 15px; transition: transform 0.3s;
+    .card-gonjong::before {
+      content: ""; position: absolute; top: 0; left: 0; right: 0; height: 5px;
+      background: linear-gradient(90deg, #1A1A1A 33.3%, #8B0000 33.3% 66.6%, #D4AF37 66.6%);
+      border-radius: 36px 36px 0 0;
     }
 
-    /* MAIN */
-    .main-content { display: none; opacity: 0; transition: opacity 0.8s ease; padding-bottom: 80px; }
-    .main-content.show { display: block; opacity: 1; }
-    section { padding: 65px 0; position: relative; }
-    .section-heading { margin-bottom: 35px; }
-    .section-heading .sub-title { text-transform: uppercase; letter-spacing: 3px; font-size: 11px; color: var(--maroon); font-weight: 700; }
-    .section-heading h2 { font-size: 28px; margin: 5px 0 10px; }
-    .heading-line { width: 50px; height: 3px; background: var(--gold); margin: 0 auto; border-radius: 2px; }
-
-    /* GONJONG BENTO CARDS */
-    .mempelai-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 20px; }
-    .gonjong-card {
-      background: var(--white); border: 2px solid var(--gold); padding: 30px 20px;
-      border-radius: 40px 40px 16px 16px; width: 280px; text-align: center; box-shadow: var(--shadow); position: relative;
+    /* RHOMBUS DIAMOND PHOTO GEOMETRY */
+    .rhombus-frame-wrapper {
+      display: flex; justify-content: center; align-items: center; margin: 25px 0 10px;
     }
-    .gonjong-card::before { content: '▲'; position: absolute; top: -14px; left: 50%; transform: translateX(-50%); color: var(--gold); font-size: 16px; }
-    .gonjong-img { width: 140px; height: 180px; object-fit: cover; border-radius: 20px; border: 3px solid var(--maroon); margin-bottom: 15px; }
+    .rhombus-photo-frame {
+      width: 140px; height: 140px; transform: rotate(45deg);
+      border: 3.5px solid var(--marawa-gold); border-radius: 20px;
+      overflow: hidden; box-shadow: 0 10px 25px rgba(139, 0, 0, 0.15);
+    }
+    .rhombus-photo-frame img {
+      width: 142%; height: 142%; object-fit: cover; transform: rotate(-45deg) translate(-15%, -15%);
+    }
 
-    /* RUNDOWN */
-    .adat-box { background: #F5EAE1; border-radius: 16px; padding: 25px; max-width: 600px; margin: 25px auto 0; text-align: left; border-left: 4px solid var(--maroon); }
-    .adat-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 13px; }
-    .adat-box li i { color: var(--gold); margin-right: 8px; }
+    /* GALLERY SONGKET MOSAIC */
+    .gallery-songket-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 20px; }
+    .gallery-songket-item {
+      height: 180px; border-radius: 18px; border: 2px solid var(--marawa-gold); overflow: hidden;
+    }
+    .gallery-songket-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+    .gallery-songket-item:hover img { transform: scale(1.08); }
 
-    /* ACARA */
-    .acara-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-    .acara-card { background: var(--white); border: var(--border); border-radius: 20px; padding: 30px 20px; text-align: center; box-shadow: var(--shadow); }
-    .btn-maps { display: inline-flex; align-items: center; gap: 6px; background: var(--maroon); color: #FFF; padding: 8px 18px; border-radius: 20px; text-decoration: none; font-size: 12px; font-weight: 700; margin-top: 15px; }
+    .countdown-grid { display: flex; justify-content: center; gap: 10px; margin: 25px 0; }
+    .countdown-box {
+      background: var(--marawa-red); color: var(--marawa-gold-light); border-radius: 14px;
+      padding: 12px; width: 66px; text-align: center; border: 1px solid var(--marawa-gold);
+    }
+    .countdown-num { font-size: 22px; font-weight: 800; font-family: 'Cinzel', serif; }
+    .countdown-lbl { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; }
 
-    /* COUNTDOWN */
-    .countdown-container { display: flex; justify-content: center; gap: 15px; margin: 25px 0; }
-    .count-box { background: var(--maroon); color: #FFF; width: 68px; padding: 12px 5px; border-radius: 14px; text-align: center; border: 1.5px solid var(--gold); }
-    .count-num { font-size: 22px; font-weight: 800; font-family: 'Cinzel', serif; }
-    .count-label { font-size: 10px; text-transform: uppercase; }
-
-    /* GALERI */
-    .galeri-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-    .galeri-item { border-radius: 16px; overflow: hidden; height: 160px; border: 2px solid var(--gold); cursor: pointer; }
-    .galeri-item.span-2 { grid-column: span 2; }
-    .galeri-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
-    .galeri-item:hover img { transform: scale(1.06); }
-
-    /* RSVP */
-    .form-box { background: var(--white); border: var(--border); border-radius: 24px; padding: 30px 25px; box-shadow: var(--shadow); max-width: 540px; margin: 0 auto; }
-    .form-group { margin-bottom: 16px; text-align: left; }
-    .form-group label { display: block; font-size: 12px; font-weight: 700; color: var(--maroon); margin-bottom: 6px; }
-    .form-control { width: 100%; padding: 12px; border: 1px solid #E2D5C8; border-radius: 10px; font-size: 13px; }
-    .btn-submit { width: 100%; background: var(--maroon); color: #FFF; padding: 13px; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; font-size: 14px; }
-    .wishes-feed { max-height: 250px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; margin-top: 25px; }
-    .wish-card { background: #F5EAE1; padding: 12px 16px; border-radius: 12px; font-size: 13px; border-left: 3px solid var(--gold); }
-
-    /* AMPLOP */
-    .gift-card { background: var(--white); border: var(--border); border-radius: 20px; padding: 25px; max-width: 440px; margin: 0 auto; text-align: center; }
-    .btn-copy { background: #F5EAE1; border: 1px solid var(--maroon); color: var(--maroon); padding: 6px 14px; border-radius: 16px; font-weight: 700; font-size: 12px; cursor: pointer; margin-top: 10px; }
-
-    /* MUSIC */
-    .music-toggle { position: fixed; bottom: 25px; left: 25px; width: 48px; height: 48px; background: var(--maroon); color: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; z-index: 998; cursor: pointer; border: 2px solid var(--gold); box-shadow: var(--shadow); }
-  
-  /* CANVAS TEXTURE BACKGROUND */
-  .canvas-texture {
-    background-image: 
-      radial-gradient(rgba(212, 175, 55, 0.06) 1px, transparent 0),
-      radial-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 0);
-    background-size: 24px 24px, 12px 12px;
-    background-position: 0 0, 12px 12px;
-  }
-  #canvasParticles {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    pointer-events: none;
-    z-index: 10;
-  }
-  .ornament-corner {
-    position: absolute;
-    width: 45px; height: 45px;
-    pointer-events: none;
-    opacity: 0.75;
-  }
-  .ornament-tl { top: 12px; left: 12px; }
-  .ornament-tr { top: 12px; right: 12px; transform: scaleX(-1); }
-  .ornament-bl { bottom: 12px; left: 12px; transform: scaleY(-1); }
-  .ornament-br { bottom: 12px; right: 12px; transform: scale(-1); }
-
+    .form-control {
+      width: 100%; padding: 12px 14px; border: 1px solid #D4C3A3; border-radius: 10px;
+      font-size: 14px; background: #FFFDF9; color: var(--text); margin-bottom: 14px;
+    }
+    .btn-submit {
+      width: 100%; background: var(--marawa-red); color: var(--marawa-gold-light); border: none;
+      padding: 14px; border-radius: 12px; font-weight: 700; font-size: 14px; cursor: pointer;
+    }
+    .wish-card {
+      background: #FFFDF9; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 12px;
+      padding: 14px; margin-top: 10px; text-align: left; font-size: 13px;
+    }
+    .btn-copy {
+      background: var(--marawa-red); color: #FFF; border: none; padding: 6px 14px;
+      border-radius: 8px; font-size: 11px; font-weight: 700; cursor: pointer; margin-top: 6px;
+    }
   </style>
-  <script src="../../../../firebase-rsvp.js"></script>
 </head>
-<body class="canvas-texture">
+<body>
+
+  <!-- HTML5 Particle Canvas (Gold Marawa Shimmer) -->
   <canvas id="canvasParticles"></canvas>
-  <audio id="bgMusic" loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mp3">
+
+  <!-- BACKGROUND MUSIC -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=gamelan-traditional-10515.mp3" type="audio/mp3">
   </audio>
 
-  <div class="music-toggle" id="musicToggle" onclick="toggleMusic()" style="display:none;">
-    <i class="fas fa-compact-disc spin" id="musicIcon"></i>
-  </div>
+  <!-- FLOATING MUSIC BUTTON -->
+  <button id="musicToggle" class="music-btn" onclick="toggleMusic()" aria-label="Toggle Audio">
+    <i id="musicIcon" class="fas fa-compact-disc"></i>
+  </button>
 
+  <!-- COVER SECTION -->
   <div class="cover-section" id="cover">
-    <div class="cover-card">
-      <div style="font-size:36px; color:var(--gold); margin-bottom:8px;"><i class="fas fa-campground"></i></div>
-      <p style="font-size:11px; letter-spacing:4px; color:var(--gold); font-weight:700;">BARALEK GADANG ADAT MINANG</p>
-      <h1 class="cover-title" style="color:#FFF; font-size:30px; margin:8px 0;">Sutan Fahmi &amp; Puti Rahma</h1>
-      <p style="font-size:13px; color:#F0D0D0;">Ahad, 15 November 2026</p>
-      <div style="margin:18px 0; padding:12px; background:rgba(0,0,0,0.5); border:1px dashed var(--gold); border-radius:12px;">
-        <p style="font-size:11px; color:#DDD;">Japuik Tabang Kpd Yth:</p>
-        <h3 style="font-size:18px; color:var(--gold);" id="namaTamuCover">Tamu Undangan</h3>
-      </div>
-      <button class="btn-buka" onclick="bukaUndangan()"><i class="fas fa-envelope-open"></i> Buka Undangan</button>
+    <svg class="gonjong-icon" viewBox="0 0 120 70" fill="#D4AF37">
+      <path d="M5 60 L25 15 L40 45 L60 5 L80 45 L95 15 L115 60 Z" stroke="#8B0000" stroke-width="2.5"/>
+    </svg>
+    <p style="font-size:12px; letter-spacing:3px; color:var(--marawa-gold); font-weight:800; text-transform:uppercase;">Baralek Gadang</p>
+    <h1 class="cursive-font cover-couple">Rasyid &amp; Mayang</h1>
+    <p style="font-size:13px; color:var(--muted); font-weight:600;">Ahad, 20 Desember 2026</p>
+
+    <div class="guest-badge">
+      <p style="font-size:11.5px; color:var(--muted); margin-bottom:4px;">Kepada Yth. Datuak / Mamak / Saudara:</p>
+      <h3 style="font-size:17px; color:var(--marawa-red); font-weight:800;" id="namaTamuCover">Tamu Undangan Yang Berbahagia</h3>
     </div>
+
+    <button class="btn-seal" onclick="bukaUndangan()">
+      <i class="fas fa-envelope-open-text"></i> BUKA UNDANGAN
+    </button>
   </div>
 
-  <main class="main-content" id="mainContent">
-    <div class="marawa-stripe"></div>
-    <section style="background:linear-gradient(180deg, #F9EBEA 0%, var(--bg) 100%);">
-      <div class="container text-center">
-        <span class="animate" style="background:var(--maroon); color:var(--gold); padding:5px 16px; border-radius:20px; font-size:11px; font-weight:700;">Adat Minangkabau &bull; Rumah Gadang</span>
-        <p class="animate animate-delay-1" style="font-family:'Cinzel', serif; font-size:22px; margin:15px 0 8px; color:var(--maroon);">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p>
-        <p class="animate animate-delay-2" style="font-style:italic; max-width:600px; margin:0 auto; font-size:13px; color:#555;">
-          "Anak urang Koto Gadang, manjalin kain di tangah rimbo.. Hati sanang badan tak bimbang, kasiah batamu di palaminan."
-        </p>
-      </div>
-    </section>
-
-    <!-- MEMPELAI -->
+  <!-- MAIN INVITATION CONTENT -->
+  <main class="main-wrapper" id="mainContent">
+    
+    <!-- PEPATAH ADAT MINANG -->
     <section>
-      <div class="container">
-        <div class="section-heading text-center">
-          <span class="sub-title">Anak Daro &amp; Marapulai</span>
-          <h2>Mempelai Berbahagia</h2>
-          <div class="heading-line"></div>
-        </div>
-        <div class="mempelai-grid">
-          <div class="gonjong-card animate">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=80" class="gonjong-img" alt="Fahmi">
-            <h3 style="font-size:18px;">Fahmi Al-Farizi, S.T.</h3>
-            <p style="font-size:12px; color:var(--maroon); font-weight:700;">Gelar: Sutan Pamuncak</p>
-            <p style="font-size:12px; color:var(--muted);">Suku: Chaniago &bull; Bukittinggi</p>
-          </div>
-          <div class="gonjong-card animate animate-delay-1">
-            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&auto=format&fit=crop&q=80" class="gonjong-img" alt="Rahma">
-            <h3 style="font-size:18px;">Rahma Az-Zahra, S.Farm.</h3>
-            <p style="font-size:12px; color:var(--maroon); font-weight:700;">Gelar: Puti Reno Nilam</p>
-            <p style="font-size:12px; color:var(--muted);">Suku: Koto &bull; Padang Panjang</p>
-          </div>
-        </div>
-
-        <div class="adat-box animate">
-          <h4 style="font-size:15px; color:var(--maroon); margin-bottom:10px;"><i class="fas fa-scroll"></i> Rangkaian Alek Adat Minang:</h4>
-          <ul>
-            <li><i class="fas fa-check-circle"></i> <strong>Malam Bainai:</strong> Sabtu Malam, 14 November 2026 (Rumah Gadang Padang Panjang)</li>
-            <li><i class="fas fa-check-circle"></i> <strong>Akad Nikah:</strong> Ahad, 15 November 2026 | 08.30 WIB (Masjid Raya Islamic Center)</li>
-            <li><i class="fas fa-check-circle"></i> <strong>Baralek Gadang &amp; Manjapuik Marapulai:</strong> Ahad, 15 November 2026 | 11.00 - 16.00 WIB</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- ACARA -->
-    <section style="background:#F5EAE1;">
-      <div class="container">
-        <div class="section-heading text-center">
-          <span class="sub-title">Waktu &amp; Tempat</span>
-          <h2>Alek &amp; Ijab Qobul</h2>
-          <div class="heading-line"></div>
-        </div>
-        <div class="acara-grid">
-          <div class="acara-card animate">
-            <div style="font-size:28px; color:var(--maroon); margin-bottom:10px;"><i class="fas fa-ring"></i></div>
-            <h3 style="font-size:18px; color:var(--maroon);">Akad Nikah</h3>
-            <p><i class="far fa-calendar-alt"></i> Ahad, 15 November 2026</p>
-            <p style="font-size:14px; font-weight:700; color:var(--maroon-dark); margin:6px 0;"><i class="far fa-clock"></i> 08.30 - 10.00 WIB</p>
-            <p style="font-size:12px; color:var(--muted);">Masjid Raya Islamic Center Padang Panjang</p>
-            <a href="https://maps.google.com" target="_blank" class="btn-maps"><i class="fas fa-map-marker-alt"></i> Google Maps</a>
-          </div>
-          <div class="acara-card animate animate-delay-1">
-            <div style="font-size:28px; color:var(--maroon); margin-bottom:10px;"><i class="fas fa-glass-cheers"></i></div>
-            <h3 style="font-size:18px; color:var(--maroon);">Baralek Gadang (Resepsi)</h3>
-            <p><i class="far fa-calendar-alt"></i> Ahad, 15 November 2026</p>
-            <p style="font-size:14px; font-weight:700; color:var(--maroon-dark); margin:6px 0;"><i class="far fa-clock"></i> 11.00 - 16.00 WIB</p>
-            <p style="font-size:12px; color:var(--muted);">Rumah Gadang Puti Reno, Padang Panjang</p>
-            <a href="https://maps.google.com" target="_blank" class="btn-maps"><i class="fas fa-map-marker-alt"></i> Google Maps</a>
-          </div>
-        </div>
-
-        <div class="countdown-container animate">
-          <div class="count-box"><div class="count-num" id="days">00</div><div class="count-label">Hari</div></div>
-          <div class="count-box"><div class="count-num" id="hours">00</div><div class="count-label">Jam</div></div>
-          <div class="count-box"><div class="count-num" id="minutes">00</div><div class="count-label">Menit</div></div>
-          <div class="count-box"><div class="count-num" id="seconds">00</div><div class="count-label">Detik</div></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- GALERI -->
-    <section>
-      <div class="container">
-        <div class="section-heading text-center">
-          <span class="sub-title">Dokumentasi</span>
-          <h2>Galeri Foto Alek</h2>
-          <div class="heading-line"></div>
-        </div>
-        <div class="galeri-grid">
-          <div class="galeri-item span-2 animate"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80" alt="1"></div>
-          <div class="galeri-item animate animate-delay-1"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=500&auto=format&fit=crop&q=80" alt="2"></div>
-          <div class="galeri-item animate animate-delay-2"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=500&auto=format&fit=crop&q=80" alt="3"></div>
-          <div class="galeri-item animate animate-delay-3"><img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=500&auto=format&fit=crop&q=80" alt="4"></div>
-          <div class="galeri-item span-2 animate"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=600&auto=format&fit=crop&q=80" alt="5"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- RSVP -->
-    <section style="background:#F5EAE1;">
       <div class="container text-center">
-        <div class="section-heading">
-          <span class="sub-title">Konfirmasi Kahadiran</span>
-          <h2>Buku Tamu &amp; Doa Restu</h2>
-          <div class="heading-line"></div>
+        <div class="card-gonjong">
+          <p class="cursive-font" style="font-size:30px; color:var(--marawa-gold);">Bismillahirrohmanirrohim</p>
+          <p style="font-size:13px; color:var(--muted); margin:15px 0;">
+            <em>"Kemenakan barajo ka mamak, mamak barajo ka panghulu, panghulu barajo ka mufakat, mufakat barajo ka nan bana, nan bana tagak sandirinyo."</em>
+          </p>
+          <p style="font-size:12px; color:var(--muted);">"Maha Suci Allah yang telah mempertemukan dua hati dalam ikatan suci pernikahan nan sakral."</p>
         </div>
-        <div class="form-box animate">
+      </div>
+    </section>
+
+    <!-- PROFIL MEMPELAI (RHOMBUS DIAMOND GEOMETRY) -->
+    <section>
+      <div class="container text-center">
+        <div class="card-gonjong">
+          <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--marawa-gold); text-transform:uppercase;">Anak Daro &amp; Marapulai</p>
+          <h2 class="serif-title" style="font-size:26px; color:var(--marawa-red); margin:6px 0 25px;">Mempelai Pengantin</h2>
+
+          <!-- Marapulai -->
+          <div style="margin-bottom:35px;">
+            <div class="rhombus-frame-wrapper">
+              <div class="rhombus-photo-frame">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=350&auto=format&fit=crop&q=80" alt="Rasyid">
+              </div>
+            </div>
+            <h3 style="font-size:19px; color:var(--marawa-red); font-weight:800; margin-top:15px;">Ahmad Rasyid Sutan Mudo, S.T.</h3>
+            <p style="font-size:12px; color:var(--muted);">Putra pertama dari Bpk. Syamsul Bahri &amp; Ibu Nurhasanah</p>
+          </div>
+
+          <div class="cursive-font" style="font-size:36px; color:var(--marawa-gold); margin:10px 0;">&amp;</div>
+
+          <!-- Anak Daro -->
+          <div>
+            <div class="rhombus-frame-wrapper">
+              <div class="rhombus-photo-frame">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=350&auto=format&fit=crop&q=80" alt="Mayang">
+              </div>
+            </div>
+            <h3 style="font-size:19px; color:var(--marawa-red); font-weight:800; margin-top:15px;">Puti Puan Mayang Sari, S.Pd.</h3>
+            <p style="font-size:12px; color:var(--muted);">Putri kedua dari Bpk. Dt. Bandaro Kayo &amp; Ibu Rosmawati</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACARA & LOKASI -->
+    <section>
+      <div class="container text-center">
+        <div class="card-gonjong">
+          <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--marawa-gold); text-transform:uppercase;">Rangkaian Acara</p>
+          <h2 class="serif-title" style="font-size:26px; color:var(--marawa-red); margin:6px 0 20px;">Waktu &amp; Tampek Baralek</h2>
+
+          <div style="background:#FAF4E8; padding:20px; border-radius:18px; margin-bottom:16px; border:1px solid rgba(212, 175, 55, 0.4);">
+            <h3 style="font-size:18px; color:var(--marawa-red);"><i class="fas fa-ring" style="color:var(--marawa-gold);"></i> Akad Nikah &amp; Malam Bainai</h3>
+            <p style="font-size:13.5px; font-weight:700; color:var(--text); margin:6px 0;">Ahad, 20 Desember 2026</p>
+            <p style="font-size:12.5px; color:var(--muted);">Pukul 08.00 - 10.00 WIB</p>
+            <p style="font-size:12px; color:var(--muted); margin-top:4px;">Rumah Gadang Rangkiang, Bukittinggi, Sumatera Barat</p>
+          </div>
+
+          <div style="background:#FAF4E8; padding:20px; border-radius:18px; border:1px solid rgba(212, 175, 55, 0.4);">
+            <h3 style="font-size:18px; color:var(--marawa-red);"><i class="fas fa-glass-cheers" style="color:var(--marawa-gold);"></i> Baralek Gadang (Resepsi)</h3>
+            <p style="font-size:13.5px; font-weight:700; color:var(--text); margin:6px 0;">Ahad, 20 Desember 2026</p>
+            <p style="font-size:12.5px; color:var(--muted);">Pukul 11.00 - 17.00 WIB</p>
+            <p style="font-size:12px; color:var(--muted); margin-top:4px;">Rumah Gadang Rangkiang, Bukittinggi, Sumatera Barat</p>
+          </div>
+
+          <!-- Countdown -->
+          <div class="countdown-grid">
+            <div class="countdown-box"><div class="countdown-num" id="days">00</div><div class="countdown-lbl">Hari</div></div>
+            <div class="countdown-box"><div class="countdown-num" id="hours">00</div><div class="countdown-lbl">Jam</div></div>
+            <div class="countdown-box"><div class="countdown-num" id="minutes">00</div><div class="countdown-lbl">Menit</div></div>
+            <div class="countdown-box"><div class="countdown-num" id="seconds">00</div><div class="countdown-lbl">Detik</div></div>
+          </div>
+
+          <a href="https://maps.google.com" target="_blank" class="btn-submit" style="display:inline-block; text-decoration:none; margin-top:10px;">
+            <i class="fas fa-map-marker-alt"></i> Petunjuk Rute Google Maps
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERI SONGKET MOSAIC -->
+    <section>
+      <div class="container text-center">
+        <div class="card-gonjong">
+          <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--marawa-gold); text-transform:uppercase;">Galeri Momen</p>
+          <h2 class="serif-title" style="font-size:24px; color:var(--marawa-red); margin:6px 0 15px;">Kenangan Kasih Minang</h2>
+          <div class="gallery-songket-grid">
+            <div class="gallery-songket-item"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=500&auto=format&fit=crop&q=80" alt="Gallery 1"></div>
+            <div class="gallery-songket-item"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=500&auto=format&fit=crop&q=80" alt="Gallery 2"></div>
+            <div class="gallery-songket-item"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=500&auto=format&fit=crop&q=80" alt="Gallery 3"></div>
+            <div class="gallery-songket-item"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=500&auto=format&fit=crop&q=80" alt="Gallery 4"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP & UCAPAN DOA (FIREBASE CLOUD) -->
+    <section>
+      <div class="container text-center">
+        <div class="card-gonjong">
+          <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--marawa-gold); text-transform:uppercase;">Buku Tamu Real-time</p>
+          <h2 class="serif-title" style="font-size:24px; color:var(--marawa-red); margin:6px 0 15px;">Konfirmasi &amp; Doa Restu</h2>
+          
           <form onsubmit="handleRSVP(event)">
-            <div class="form-group">
-              <label>Namo Lengkok:</label>
-              <input type="text" id="nama" class="form-control" placeholder="Contoh: Mak Datuk Maringgai" required>
-            </div>
-            <div class="form-group">
-              <label>Kahadiran:</label>
-              <select id="kehadiran" class="form-control">
-                <option value="Hadir">Insya Allah Hadir</option>
-                <option value="Indak Hadir">Mohon Maaf Indak Mandapek Hadir</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Doa &amp; Pasapah:</label>
-              <textarea id="ucapan" class="form-control" rows="3" placeholder="Tulis doa restu untuak kaduo marapulai..." required></textarea>
-            </div>
-            <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Kirim Doa Restu</button>
+            <input type="text" id="nama" class="form-control" placeholder="Nama Anda / Gelar Sutan" required>
+            <select id="kehadiran" class="form-control">
+              <option value="Hadir">Insya Allah Hadir</option>
+              <option value="Ragu-ragu">Masih Ragu-ragu</option>
+              <option value="Tidak Hadir">Mohon Maaf Belum Bisa Hadir</option>
+            </select>
+            <textarea id="ucapan" class="form-control" rows="3" placeholder="Tuliskan ucapan dan doa restu untuak Rasyid & Mayang..." required></textarea>
+            <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Kirim Konfirmasi &amp; Doa</button>
           </form>
-          <div class="wishes-feed" id="messagesContainer">
+
+          <div id="messagesContainer" style="max-height:280px; overflow-y:auto; margin-top:20px;">
             <div class="wish-card">
-              <strong>Angku Dt. Bandaro Basa</strong> <span style="font-size:11px; color:var(--maroon); font-weight:700;">(Hadir)</span>
-              <p>Salamaik manjalang baralek gadang kando Fahmi jo dinda Rahma. Sakinah mawaddah warahmah hendaknya.</p>
+              <strong>Dt. Bandaro Kayo</strong> <span style="font-size:11px; font-weight:700; color:var(--marawa-gold);">(Hadir)</span>
+              <p>Selamat baralek gadang untuak Rasyid &amp; Mayang. Samoga manjadi kaluarga sakinah mawaddah warahmah di dunia jo akhirat.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- AMPLOP -->
+    <!-- AMPLOP DIGITAL -->
     <section>
       <div class="container text-center">
-        <div class="section-heading">
-          <span class="sub-title">Tando Kasiah</span>
-          <h2>Kado &amp; Kado Digital</h2>
-          <div class="heading-line"></div>
-        </div>
-        <div class="gift-card animate">
-          <p style="font-size:13px; color:var(--muted); margin-bottom:15px;">Untuak kaba baiak nan nio mangirimkan tando kasiah sacara digital:</p>
-          <div style="background:#F5EAE1; padding:15px; border-radius:12px;">
-            <p style="font-weight:800; color:var(--maroon);">BANK NAGARI</p>
-            <p style="font-size:18px; font-weight:700; color:var(--text);" id="rekNagari">2100020194820</p>
-            <p style="font-size:12px; color:var(--muted);">a.n. Fahmi Al-Farizi</p>
-            <button class="btn-copy" onclick="copyRek('2100020194820', this)"><i class="far fa-copy"></i> Salin No. Rekening</button>
+        <div class="card-gonjong">
+          <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--marawa-gold); text-transform:uppercase;">Tanda Kasih</p>
+          <h2 class="serif-title" style="font-size:24px; color:var(--marawa-red); margin:6px 0 15px;">Kado Digital</h2>
+          <p style="font-size:12.5px; color:var(--muted); margin-bottom:20px;">Bagi Datuak, Mamak, sarato dunsanak nan baparadok kersa maringankan langkah mambarikan tando kasiah digital:</p>
+
+          <div style="background:#FAF4E8; padding:18px; border-radius:16px; margin-bottom:14px; border:1px solid rgba(212, 175, 55, 0.4);">
+            <p style="font-weight:800; color:var(--marawa-red);">BANK NAGARI</p>
+            <p style="font-size:20px; font-weight:700; letter-spacing:2px; color:var(--text);" id="rekNagari">110029384756</p>
+            <p style="font-size:12px; color:var(--muted);">a.n. Ahmad Rasyid</p>
+            <button class="btn-copy" onclick="copyRek('110029384756', this)"><i class="far fa-copy"></i> Salin No. Rekening</button>
+          </div>
+
+          <div style="background:#FAF4E8; padding:18px; border-radius:16px; border:1px solid rgba(212, 175, 55, 0.4);">
+            <p style="font-weight:800; color:var(--marawa-red);">BANK MANDIRI</p>
+            <p style="font-size:20px; font-weight:700; letter-spacing:2px; color:var(--text);" id="rekMandiri">1370098765432</p>
+            <p style="font-size:12px; color:var(--muted);">a.n. Puti Puan Mayang Sari</p>
+            <button class="btn-copy" onclick="copyRek('1370098765432', this)"><i class="far fa-copy"></i> Salin No. Rekening</button>
           </div>
         </div>
       </div>
     </section>
 
-    <div class="marawa-stripe"></div>
-    <footer style="padding:40px 0 20px; text-align:center; font-size:12px; color:var(--muted);">
-      <h3 style="font-family:'Cinzel', serif; font-size:22px; color:var(--maroon);">Sutan Fahmi &amp; Puti Rahma</h3>
-      <p>Tarimo Kasih Banyak Ateh Sadonyo Doa &amp; Restu</p>
+    <!-- FOOTER -->
+    <footer style="padding:40px 0 25px; text-align:center; border-top:1px solid rgba(212, 175, 55, 0.3);">
+      <div class="container">
+        <p style="font-size:11px; color:var(--marawa-gold); font-weight:700; letter-spacing:2px;">TARIMO KASIH BANYAK &bull; SALAM ADAT</p>
+        <h3 class="serif-title" style="font-size:22px; color:var(--marawa-red); margin:6px 0;">Rasyid &amp; Mayang</h3>
+        <p style="font-size:12.5px; color:var(--muted);">Tarimo kasih sabana gadang ateh doa sarato karilaan dunsanak kasadonyo 🙏</p>
+        <p style="font-size:11px; color:#A48B77; margin-top:20px;">Undangan Digital by <strong>UndangYuk</strong></p>
+      </div>
     </footer>
+
   </main>
 
   <script>
@@ -384,8 +403,8 @@
       }
     }
 
-    // 3. Countdown Timer
-    const targetDate = new Date('December 05, 2026 08:00:00').getTime();
+    // 3. Countdown Timer (20 Dec 2026)
+    const targetDate = new Date('December 20, 2026 08:00:00').getTime();
     setInterval(() => {
       const now = new Date().getTime();
       const diff = targetDate - now;
@@ -401,15 +420,7 @@
       }
     }, 1000);
 
-    // 4. Scroll Reveal Animations
-    if ('IntersectionObserver' in window) {
-      const obs = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-      }, { threshold: 0.1 });
-      document.querySelectorAll('.animate').forEach(el => obs.observe(el));
-    }
-
-    // 5. Firebase Cloud Firestore RSVP & Real-time Guestbook
+    // 4. Firebase Cloud Firestore RSVP (Collection: rsvp_minang_rumah_gadang)
     const THEME_CLOUD_ID = 'minang_rumah_gadang';
 
     function esc(t) {
@@ -423,7 +434,7 @@
       wishes.forEach(item => {
         const div = document.createElement('div');
         div.className = 'wish-card';
-        div.innerHTML = '<strong>' + esc(item.nama || 'Tamu') + '</strong> <span style="font-size:11px; font-weight:700;">(' + esc(item.kehadiran || 'Hadir') + ')</span><p>' + esc(item.ucapan || '') + '</p>';
+        div.innerHTML = '<strong>' + esc(item.nama || 'Tamu') + '</strong> <span style="font-size:11px; font-weight:700; color:var(--marawa-gold);">(' + esc(item.kehadiran || 'Hadir') + ')</span><p>' + esc(item.ucapan || '') + '</p>';
         feed.appendChild(div);
       });
     }
@@ -446,36 +457,23 @@
       if (feed) {
         const div = document.createElement('div');
         div.className = 'wish-card';
-        div.innerHTML = '<strong>' + esc(n) + '</strong> <span style="font-size:11px; font-weight:700;">(' + esc(k) + ')</span><p>' + esc(u) + '</p>';
+        div.innerHTML = '<strong>' + esc(n) + '</strong> <span style="font-size:11px; font-weight:700; color:var(--marawa-gold);">(' + esc(k) + ')</span><p>' + esc(u) + '</p>';
         feed.prepend(div);
       }
-      alert('Terima kasih banyak! Konfirmasi RSVP & Doa Restu Anda telah tersimpan secara real-time.');
+      alert('Tarimo kasih banyak! Doa restu Anda telah tersimpan secara real-time.');
       e.target.reset();
     }
 
-    // 6. Copy Rekening Bank
+    // 5. Copy Rekening
     function copyRek(num, btn) {
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(num).then(() => {
-          const old = btn.innerHTML;
-          btn.innerHTML = '<i class="fas fa-check"></i> Disalin!';
-          setTimeout(() => { btn.innerHTML = old; }, 2000);
-        });
-      } else {
-        const ta = document.createElement('textarea');
-        ta.value = num;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand('copy');
-        document.body.removeChild(ta);
+      navigator.clipboard.writeText(num).then(() => {
         const old = btn.innerHTML;
         btn.innerHTML = '<i class="fas fa-check"></i> Disalin!';
         setTimeout(() => { btn.innerHTML = old; }, 2000);
-      }
+      });
     }
 
-    
-    // 7. Lightweight HTML5 Canvas Particle Engine
+    // 6. Particle Engine (Gold Marawa Shimmer)
     (function initCanvasParticles() {
       const canvas = document.getElementById('canvasParticles');
       if (!canvas) return;
@@ -500,8 +498,7 @@
           dy: Math.random() * 1.0 + 0.3,
           opacity: Math.random() * 0.7 + 0.2,
           rot: Math.random() * Math.PI * 2,
-          rotSpeed: (Math.random() - 0.5) * 0.02,
-          isPetal: i % 3 === 0
+          rotSpeed: (Math.random() - 0.5) * 0.02
         });
       }
 
@@ -521,28 +518,18 @@
           ctx.rotate(p.rot);
           ctx.globalAlpha = p.opacity;
 
-          if (p.isPetal) {
-            ctx.fillStyle = '#FFF9F0';
-            ctx.shadowBlur = 3;
-            ctx.shadowColor = 'rgba(197, 160, 89, 0.3)';
-            ctx.beginPath();
-            ctx.ellipse(0, 0, p.r * 2.2, p.r * 1.2, 0, 0, Math.PI * 2);
-            ctx.fill();
-          } else {
-            ctx.fillStyle = '#E5C378';
-            ctx.shadowBlur = 5;
-            ctx.shadowColor = '#C5A059';
-            ctx.beginPath();
-            ctx.arc(0, 0, p.r * 1.2, 0, Math.PI * 2);
-            ctx.fill();
-          }
+          ctx.fillStyle = '#D4AF37';
+          ctx.shadowBlur = 6;
+          ctx.shadowColor = '#8B0000';
+          ctx.beginPath();
+          ctx.arc(0, 0, p.r * 1.3, 0, Math.PI * 2);
+          ctx.fill();
           ctx.restore();
         });
         requestAnimationFrame(render);
       }
       render();
     })();
-    
   </script>
 </body>
 </html>

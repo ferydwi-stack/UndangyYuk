@@ -3,420 +3,311 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dhaup Ageng Kasultanan - Raden Bagus Danang &amp; Raden Ajeng Sekar</title>
-  <meta name="description" content="Undangan Pawiwahan Ageng Adat Jawa Kasultanan - Full Canvas &amp; Wayang Edition">
+  <title>Pernikahan Adat Jawa Kasultanan - Full Canvas Edition</title>
+  <meta name="description" content="Pawartos Palakrama Raden Danang & Raden Ajeng Sekar.">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Firebase RSVP Sync -->
+  <script src="../../../../firebase-rsvp.js"></script>
+
   <style>
     :root {
-      --sogan: #3E2413;
-      --sogan-dark: #221207;
+      --sogan: #3A2312;
+      --sogan-dark: #241408;
       --gold: #C5A059;
-      --gold-bright: #E5C378;
-      --gold-light: #F7EBD2;
-      --canvas-bg: #FBF7F0;
-      --canvas-card: #FFFFFF;
-      --text: #2B1D14;
-      --muted: #6B5546;
-      --shadow-luxury: 0 15px 40px rgba(62, 36, 19, 0.12);
-      --border-gold: 1.5px solid rgba(197, 160, 89, 0.45);
-      --border-double: 4px double #C5A059;
+      --gold-light: #E5C378;
+      --gold-dark: #8C6A28;
+      --cream: #FAF5EA;
+      --cream-bg: #F3E7D3;
+      --text: #2C1A0E;
+      --muted: #6E5849;
     }
+
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-    body { background-color: var(--canvas-bg); color: var(--text); line-height: 1.75; overflow-x: hidden; }
-    h1, h2, h3, h4, .serif-font { font-family: 'Cinzel', serif; color: var(--sogan); }
-    .script-quote { font-family: 'Playfair Display', serif; }
-    .container { max-width: 860px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; }
-    .text-center { text-align: center; }
-
-    /* CANVAS TEXTURE & PARTICLES */
-    .canvas-texture {
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--cream-bg);
       background-image: 
-        radial-gradient(rgba(197, 160, 89, 0.08) 1.5px, transparent 0),
-        radial-gradient(rgba(43, 29, 20, 0.03) 1px, transparent 0);
-      background-size: 28px 28px, 14px 14px;
-      background-position: 0 0, 14px 14px;
-    }
-    #canvasParticles {
-      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-      pointer-events: none; z-index: 10;
+        radial-gradient(rgba(197, 160, 89, 0.15) 1px, transparent 1px),
+        linear-gradient(180deg, #FAF4E8 0%, #F3E7D3 50%, #EAD8BD 100%);
+      background-size: 20px 20px, 100% 100%;
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.8;
     }
 
-    /* GUNUNGAN & CORNER ORNAMENTS */
-    .gunungan-svg {
-      width: 75px; height: 95px; margin: 0 auto 12px; display: block;
-      filter: drop-shadow(0 4px 10px rgba(197, 160, 89, 0.3));
-    }
-    .ornament-corner {
-      position: absolute; width: 45px; height: 45px; pointer-events: none; opacity: 0.8; color: var(--gold);
-    }
-    .ornament-tl { top: 12px; left: 12px; }
-    .ornament-tr { top: 12px; right: 12px; transform: scaleX(-1); }
-    .ornament-bl { bottom: 12px; left: 12px; transform: scaleY(-1); }
-    .ornament-br { bottom: 12px; right: 12px; transform: scale(-1); }
+    #canvasParticles { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 999; }
+    .container { max-width: 650px; margin: 0 auto; padding: 0 20px; position: relative; }
+    .text-center { text-align: center; }
+    .cursive-font { font-family: 'Great Vibes', cursive; }
+    .serif-title { font-family: 'Cinzel', serif; letter-spacing: 2px; }
 
-    /* ANIMATIONS */
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(35px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes spin { 100% { transform: rotate(360deg); } }
-    @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 15px rgba(197, 160, 89, 0.4); } 50% { box-shadow: 0 0 30px rgba(197, 160, 89, 0.8); } }
-    .animate { opacity: 0; }
-    .animate.visible { animation: fadeInUp 0.8s ease forwards; }
-    .animate-delay-1 { animation-delay: 0.15s; }
-    .animate-delay-2 { animation-delay: 0.3s; }
-    .animate-delay-3 { animation-delay: 0.45s; }
-    .spin { animation: spin 4s linear infinite; }
-
-    /* COVER */
+    /* COVER JAWA - JOGLO ARCH WITH ROYAL WAX SEAL */
     .cover-section {
-      position: fixed; inset: 0;
-      background: radial-gradient(circle at center, #2E170A 0%, #150903 100%);
-      color: #FFF; display: flex; justify-content: center; align-items: center;
-      z-index: 999; transition: transform 0.9s cubic-bezier(0.77, 0, 0.175, 1);
-      padding: 20px; text-align: center;
+      min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+      text-align: center; padding: 40px 20px; position: fixed; inset: 0; z-index: 1000;
+      background: radial-gradient(circle at 50% 30%, #FFFDF9 0%, #F5E8D0 60%, #E3CCA0 100%);
+      transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
     }
-    .cover-section.hide { transform: translateY(-100%); pointer-events: none; }
-    .cover-card {
-      border: 2px solid var(--gold); padding: 45px 30px;
-      border-radius: 130px 130px 28px 28px; max-width: 480px; width: 100%;
-      background: rgba(26, 13, 6, 0.94); backdrop-filter: blur(14px);
-      box-shadow: 0 25px 70px rgba(0,0,0,0.9); position: relative;
-    }
-    .cover-badge {
-      font-size: 11px; letter-spacing: 4px; color: var(--gold-bright);
-      font-weight: 700; text-transform: uppercase; margin-bottom: 6px;
-    }
-    .cover-title {
-      font-size: 32px; color: #FFF; margin: 8px 0; font-style: italic; line-height: 1.25;
-    }
-    .cover-date { font-size: 14px; color: var(--gold-light); }
-    .cover-divider {
-      display: flex; align-items: center; justify-content: center; gap: 12px;
-      margin: 18px 0; color: var(--gold);
-    }
-    .cover-divider span { height: 1px; width: 45px; background: var(--gold); opacity: 0.5; }
-    .guest-box {
-      background: rgba(0,0,0,0.45); border: 1px dashed var(--gold);
-      padding: 15px; border-radius: 16px; margin-bottom: 22px;
-    }
+    .cover-section.hide { transform: translateY(-100%); opacity: 0; pointer-events: none; }
     
-    /* ROYAL WAX SEAL BUTTON */
-    .btn-buka {
-      background: linear-gradient(135deg, var(--gold-bright) 0%, #9B782E 100%);
-      color: #1A0D06; border: none; padding: 14px 36px; font-size: 14px; font-weight: 800;
-      border-radius: 30px; cursor: pointer; display: inline-flex; align-items: center; gap: 10px;
-      box-shadow: 0 6px 20px rgba(197, 160, 89, 0.45); transition: transform 0.3s, box-shadow 0.3s;
-      animation: pulseGlow 3s infinite;
+    .joglo-silhouette { width: 110px; height: auto; margin-bottom: 10px; filter: drop-shadow(0 4px 10px rgba(140, 106, 40, 0.35)); }
+    .cover-couple { font-size: 54px; line-height: 1.1; color: var(--sogan); margin: 15px 0 8px; text-shadow: 0 2px 10px rgba(197, 160, 89, 0.3); }
+    
+    .guest-badge {
+      background: rgba(255, 255, 255, 0.9); border: 1.5px solid var(--gold);
+      padding: 16px 28px; border-radius: 20px; margin: 22px 0;
+      box-shadow: 0 10px 25px rgba(58, 35, 18, 0.08); max-width: 380px; width: 100%;
     }
-    .btn-buka:hover { transform: translateY(-2px); }
+
+    .btn-seal {
+      background: linear-gradient(135deg, #C5A059 0%, #8C6A28 100%);
+      color: #FFF; border: none; padding: 15px 36px; border-radius: 30px; font-size: 14px; font-weight: 700;
+      letter-spacing: 1.5px; cursor: pointer; box-shadow: 0 10px 25px rgba(140, 106, 40, 0.35);
+      display: inline-flex; align-items: center; gap: 10px; transition: transform 0.2s;
+      animation: pulseGold 2s infinite;
+    }
+    .btn-seal:hover { transform: scale(1.05); }
+    @keyframes pulseGold {
+      0% { box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.6); }
+      70% { box-shadow: 0 0 0 14px rgba(197, 160, 89, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(197, 160, 89, 0); }
+    }
 
     /* MAIN CONTENT */
-    .main-content { display: none; opacity: 0; transition: opacity 0.8s ease; padding-bottom: 80px; }
-    .main-content.show { display: block; opacity: 1; }
-    section { padding: 70px 0; position: relative; }
-    .section-heading { margin-bottom: 35px; }
-    .section-heading .sub-title { text-transform: uppercase; letter-spacing: 3px; font-size: 11px; color: var(--sogan); font-weight: 700; }
-    .section-heading h2 { font-size: 28px; margin: 6px 0 10px; }
-    .heading-line { width: 55px; height: 3px; background: var(--gold); margin: 0 auto; border-radius: 2px; }
+    .main-wrapper { opacity: 0; transition: opacity 1s ease; }
+    .main-wrapper.show { opacity: 1; }
 
-    /* MEMPELAI JOGLO ARCH */
-    .mempelai-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 25px; }
-    .joglo-card {
-      background: var(--canvas-card); border: var(--border-gold); padding: 35px 22px;
-      border-radius: 110px 110px 24px 24px; width: 290px; text-align: center;
-      box-shadow: var(--shadow-luxury); position: relative;
+    .music-btn {
+      position: fixed; bottom: 25px; right: 25px; width: 48px; height: 48px;
+      background: var(--sogan); color: var(--gold-light); border-radius: 50%;
+      display: none; align-items: center; justify-content: center; font-size: 18px;
+      z-index: 998; border: 2px solid var(--gold); box-shadow: 0 5px 20px rgba(0,0,0,0.25); cursor: pointer;
     }
-    .joglo-card::before {
-      content: ''; position: absolute; top: -7px; left: 50%; transform: translateX(-50%);
-      width: 36px; height: 14px; background: var(--gold); border-radius: 0 0 18px 18px;
-    }
-    .joglo-photo {
-      width: 155px; height: 210px; margin: 0 auto 18px; overflow: hidden;
-      border-radius: 90px 90px 18px 18px; border: 3px solid var(--gold);
-      box-shadow: 0 10px 25px rgba(62, 36, 19, 0.18);
-    }
-    .joglo-photo img { width: 100%; height: 100%; object-fit: cover; }
-    .mempelai-divider { font-size: 32px; color: var(--gold); align-self: center; padding-top: 60px; font-family: 'Cinzel', serif; }
+    .spin { animation: spinDisc 4s linear infinite; }
+    @keyframes spinDisc { 100% { transform: rotate(360deg); } }
 
-    /* ACARA & RUNDOWN ADAT */
-    .acara-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-    .acara-card {
-      background: var(--canvas-card); border: var(--border-gold); border-radius: 24px;
-      padding: 35px 22px; text-align: center; box-shadow: var(--shadow-luxury); position: relative;
-    }
-    .acara-icon {
-      width: 55px; height: 55px; background: var(--gold-light); color: var(--sogan);
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      font-size: 22px; margin: 0 auto 16px; border: 1px solid var(--gold);
-    }
-    .btn-maps {
-      display: inline-flex; align-items: center; gap: 8px; background: var(--sogan);
-      color: #FFF; padding: 9px 22px; border-radius: 20px; text-decoration: none;
-      font-size: 12px; font-weight: 700; margin-top: 15px; transition: opacity 0.2s;
-    }
-    .btn-maps:hover { opacity: 0.9; }
+    section { padding: 60px 0; position: relative; }
 
-    .jawa-rundown-box {
-      background: #F5ECDD; border-radius: 24px; padding: 28px; margin-top: 35px;
-      border-left: 5px solid var(--gold); text-align: left; box-shadow: var(--shadow-luxury);
-    }
-    .jawa-rundown-box ul { list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 13.5px; }
-    .jawa-rundown-box li i { color: var(--gold); margin-right: 8px; }
-
-    /* COUNTDOWN */
-    .countdown-container { display: flex; justify-content: center; gap: 16px; margin: 25px 0; }
-    .count-box {
-      background: var(--sogan); color: #FFF; width: 72px; padding: 14px 6px;
-      border-radius: 16px; text-align: center; border: 1.5px solid var(--gold);
-      box-shadow: 0 8px 20px rgba(62, 36, 19, 0.15);
-    }
-    .count-num { font-size: 24px; font-weight: 800; font-family: 'Cinzel', serif; }
-    .count-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; opacity: 0.85; }
-
-    /* GALERI */
-    .galeri-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-    .galeri-item { border-radius: 18px; overflow: hidden; height: 170px; border: 2px solid var(--gold); cursor: pointer; }
-    .galeri-item.span-2 { grid-column: span 2; }
-    .galeri-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
-    .galeri-item:hover img { transform: scale(1.08); }
-
-    /* RSVP & WISHES */
-    .form-box {
-      background: var(--canvas-card); border: var(--border-gold); border-radius: 28px;
-      padding: 35px 28px; box-shadow: var(--shadow-luxury); max-width: 560px; margin: 0 auto;
+    /* CARD JOGLO SILHOUETTE */
+    .card-joglo {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1.5px solid rgba(197, 160, 89, 0.45);
+      border-radius: 120px 120px 24px 24px;
+      padding: 50px 24px 35px;
+      box-shadow: 0 15px 35px rgba(58, 35, 18, 0.08);
+      margin-bottom: 30px;
       position: relative;
     }
-    .form-group { margin-bottom: 16px; text-align: left; }
-    .form-group label { display: block; font-size: 12px; font-weight: 700; color: var(--sogan); margin-bottom: 6px; }
-    .form-control { width: 100%; padding: 12px 14px; border: 1px solid #DFD2C4; border-radius: 12px; font-size: 13px; background: #FDFBF8; }
-    .btn-submit {
-      width: 100%; background: var(--sogan); color: #FFF; padding: 14px;
-      border: none; border-radius: 14px; font-weight: 700; cursor: pointer; font-size: 14px;
-      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    .card-joglo::before {
+      content: ""; position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
+      width: 50px; height: 3px; background: var(--gold); border-radius: 2px;
     }
-    .wishes-feed { max-height: 260px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; margin-top: 25px; }
-    .wish-card { background: #F5ECDD; padding: 14px 18px; border-radius: 14px; font-size: 13px; border-left: 4px solid var(--gold); text-align: left; }
 
-    /* AMPLOP DIGITAL */
-    .gift-card {
-      background: var(--canvas-card); border: var(--border-gold); border-radius: 24px;
-      padding: 30px; max-width: 460px; margin: 0 auto; text-align: center; box-shadow: var(--shadow-luxury);
+    /* ARCH WINDOW PHOTO GEOMETRY */
+    .arch-photo-frame {
+      width: 150px; height: 200px;
+      border-radius: 100px 100px 16px 16px;
+      border: 3.5px solid var(--gold);
+      overflow: hidden; margin: 0 auto 12px;
+      box-shadow: 0 10px 25px rgba(58, 35, 18, 0.15);
+    }
+    .arch-photo-frame img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* GALLERY ARCH MASONRY */
+    .gallery-arch-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 20px; }
+    .gallery-arch-item {
+      height: 210px; border-radius: 90px 90px 14px 14px;
+      border: 2px solid rgba(197, 160, 89, 0.5); overflow: hidden;
+    }
+    .gallery-arch-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+    .gallery-arch-item:hover img { transform: scale(1.08); }
+
+    /* COUNTDOWN */
+    .countdown-grid { display: flex; justify-content: center; gap: 10px; margin: 25px 0; }
+    .countdown-box {
+      background: var(--sogan); color: var(--gold-light); border-radius: 14px;
+      padding: 12px; width: 66px; text-align: center; border: 1px solid var(--gold);
+    }
+    .countdown-num { font-size: 22px; font-weight: 800; font-family: 'Cinzel', serif; }
+    .countdown-lbl { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; }
+
+    .form-control {
+      width: 100%; padding: 12px 14px; border: 1px solid #D4C3A3; border-radius: 10px;
+      font-size: 14px; background: #FFFDF9; color: var(--text); margin-bottom: 14px;
+    }
+    .btn-submit {
+      width: 100%; background: var(--sogan); color: var(--gold-light); border: none;
+      padding: 14px; border-radius: 12px; font-weight: 700; font-size: 14px; cursor: pointer;
+    }
+    .wish-card {
+      background: #FFFDF9; border: 1px solid rgba(197, 160, 89, 0.3); border-radius: 12px;
+      padding: 14px; margin-top: 10px; text-align: left; font-size: 13px;
     }
     .btn-copy {
-      background: #F5ECDD; border: 1px solid var(--sogan); color: var(--sogan);
-      padding: 7px 18px; border-radius: 18px; font-weight: 700; font-size: 12px; cursor: pointer; margin-top: 10px;
-    }
-
-    /* MUSIC CONTROLLER */
-    .music-toggle {
-      position: fixed; bottom: 25px; left: 25px; width: 50px; height: 50px;
-      background: var(--sogan); color: var(--gold-bright); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center; font-size: 22px;
-      z-index: 998; cursor: pointer; border: 2px solid var(--gold); box-shadow: var(--shadow-luxury);
+      background: var(--sogan); color: #FFF; border: none; padding: 6px 14px;
+      border-radius: 8px; font-size: 11px; font-weight: 700; cursor: pointer; margin-top: 6px;
     }
   </style>
-  <script src="../../../../firebase-rsvp.js"></script>
 </head>
-<body class="canvas-texture">
+<body>
+
+  <!-- HTML5 Particle Canvas -->
   <canvas id="canvasParticles"></canvas>
-  <audio id="bgMusic" loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mp3">
+
+  <!-- BACKGROUND MUSIC -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=gamelan-traditional-10515.mp3" type="audio/mp3">
   </audio>
-  <div class="music-toggle" id="musicToggle" onclick="toggleMusic()" style="display:none">
-    <i class="fas fa-compact-disc spin" id="musicIcon"></i>
-  </div>
 
-  <!-- COVER -->
+  <!-- FLOATING MUSIC BUTTON -->
+  <button id="musicToggle" class="music-btn" onclick="toggleMusic()" aria-label="Toggle Audio">
+    <i id="musicIcon" class="fas fa-compact-disc"></i>
+  </button>
+
+  <!-- COVER SECTION -->
   <div class="cover-section" id="cover">
-    <div class="cover-card">
-      
-  <svg class="gunungan-svg" viewBox="0 0 100 130" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M50 5 C50 5, 20 50, 10 90 C5 110, 20 120, 50 120 C80 120, 95 110, 90 90 C80 50, 50 5, 50 5 Z" stroke="#C5A059" stroke-width="2" fill="rgba(197, 160, 89, 0.08)"/>
-    <path d="M50 15 L50 115" stroke="#C5A059" stroke-width="1.5" stroke-dasharray="2 2"/>
-    <path d="M50 35 Q30 65 25 95 Q40 105 50 100 Q60 105 75 95 Q70 65 50 35 Z" stroke="#C5A059" stroke-width="1.2" fill="none"/>
-    <circle cx="50" cy="30" r="4" fill="#C5A059"/>
-    <circle cx="50" cy="65" r="6" stroke="#C5A059" stroke-width="1.5" fill="none"/>
-    <path d="M35 80 Q50 70 65 80" stroke="#C5A059" stroke-width="1.2" fill="none"/>
-    <path d="M30 95 Q50 85 70 95" stroke="#C5A059" stroke-width="1.2" fill="none"/>
-  </svg>
+    <svg class="joglo-silhouette" viewBox="0 0 100 100" fill="#C5A059">
+      <path d="M50 5 L70 35 L95 50 L70 65 L50 95 L30 65 L5 50 L30 35 Z" stroke="#8C6A28" stroke-width="2"/>
+    </svg>
+    <p style="font-size:12px; letter-spacing:3px; color:var(--gold-dark); font-weight:800; text-transform:uppercase;">Pawartos Palakrama</p>
+    <h1 class="cursive-font cover-couple">Danang &amp; Sekar</h1>
+    <p style="font-size:13px; color:var(--muted); font-weight:600;">Setu Pahing, 05 Desember 2026</p>
 
-      <p class="cover-badge">Paugeran Dhaup Ageng Kasultanan</p>
-      <h1 class="cover-title">Raden Danang &amp; Raden Sekar</h1>
-      <p class="cover-date">Setu Kliwon, 05 Desember 2026</p>
-      <div class="cover-divider"><span></span><i class="fas fa-gem"></i><span></span></div>
-      <div class="guest-box">
-        <p style="font-size:11.5px; color:#D4B89A;">Katur Dhumateng Panjenenganipun:</p>
-        <h3 style="font-size:20px; color:var(--gold-bright); margin:4px 0;" id="namaTamuCover">Tamu Undangan</h3>
-        <p style="font-size:11px; color:#BCA082;">Kanthi Bunteling Donga Pangestu</p>
-      </div>
-      <button class="btn-buka" onclick="bukaUndangan()">
-        <i class="fas fa-envelope-open"></i> Buka Undangan
-      </button>
+    <div class="guest-badge">
+      <p style="font-size:11.5px; color:var(--muted); margin-bottom:4px;">Katur Dhumateng Panjenenganipun:</p>
+      <h3 style="font-size:17px; color:var(--sogan); font-weight:800;" id="namaTamuCover">Tamu Undangan Yang Berbahagia</h3>
     </div>
+
+    <button class="btn-seal" onclick="bukaUndangan()">
+      <i class="fas fa-envelope-open-text"></i> BUKA UNDANGAN
+    </button>
   </div>
 
-  <!-- MAIN -->
-  <main class="main-content" id="mainContent">
+  <!-- MAIN INVITATION CONTENT -->
+  <main class="main-wrapper" id="mainContent">
     
-    <!-- PEMBUKA / AYAT & FILOSOFI JAWA -->
-    <section style="background:linear-gradient(180deg, #F5ECDD 0%, var(--canvas-bg) 100%)">
+    <!-- PEMBUKA & AYAT -->
+    <section>
       <div class="container text-center">
-        <div class="animate" style="display:inline-block; background:var(--sogan); color:var(--gold-bright); padding:6px 20px; border-radius:20px; font-size:11px; font-weight:700; border:1px solid var(--gold);">
-          Dhaup Ageng &bull; Sangkan Paraning Dumadi &bull; Kasultanan
+        <div class="card-joglo">
+          <p class="cursive-font" style="font-size:32px; color:var(--gold);">Bismillahirrohmanirrohim</p>
+          <p style="font-size:13px; color:var(--muted); margin:15px 0;">
+            <em>"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."</em>
+          </p>
+          <p style="font-size:11.5px; font-weight:700; color:var(--gold-dark);">(QS. Ar-Rum: 21)</p>
         </div>
-        <h2 class="animate animate-delay-1" style="font-size:28px; margin:16px 0 8px;">Matur Nuwun &amp; Rahayu</h2>
-        <p class="script-quote animate animate-delay-2" style="font-size:15px; color:var(--muted); max-width:640px; margin:0 auto; font-style:italic;">
-          "Mugi tansah rahayu wilujeng kalis ing sambikala, nglampahi gesang bebrayan kanthi tentrem, asih, lan kebak berkahing Gusti Kang Maha Agung."<br>
-          <small style="font-size:12px; font-weight:600; color:var(--sogan);">(QS. Ar-Rum: 21 &bull; Pepatah Luhur Jawa)</small>
-        </p>
       </div>
     </section>
 
-    <!-- MEMPELAI -->
+    <!-- PROFIL MEMPELAI (ARCH WINDOW GEOMETRY) -->
     <section>
-      <div class="container">
-        <div class="section-heading text-center">
-          <span class="sub-title">Sang Panganten</span>
-          <h2>Mempelai Berbahagia</h2>
-          <div class="heading-line"></div>
-        </div>
-        <div class="mempelai-grid">
-          <div class="joglo-card animate">
-            <div class="joglo-photo">
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=80" alt="Danang">
+      <div class="container text-center">
+        <div class="card-joglo">
+          <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--gold); text-transform:uppercase;">Mempelai Penganten</p>
+          <h2 class="serif-title" style="font-size:26px; color:var(--sogan); margin:6px 0 25px;">Ngunduh Mantu</h2>
+
+          <!-- Pria -->
+          <div style="margin-bottom:30px;">
+            <div class="arch-photo-frame">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80" alt="Danang">
             </div>
-            <h3 style="font-size:20px; margin-bottom:4px;">Raden Danang, S.T.</h3>
-            <p style="font-size:12px; color:var(--gold); font-weight:700;">Putra Kakung Kaping Kalih</p>
-            <p style="font-size:12px; color:var(--muted); margin-top:4px;">Putra saking Bpk. K.R.T. Hardjodipuro &amp; Ibu Nyi Mas Retno</p>
-            <p style="font-size:12px; color:var(--muted);">Kotagede, Yogyakarta</p>
+            <h3 style="font-size:20px; color:var(--sogan); font-weight:800;">Raden Danang Prasetyo, S.T.</h3>
+            <p style="font-size:12.5px; color:var(--muted);">Putra kapisan saking Bpk. H. Sukamto &amp; Ibu Hj. Sri Wahyuni</p>
           </div>
-          <div class="mempelai-divider animate animate-delay-1">&amp;</div>
-          <div class="joglo-card animate animate-delay-2">
-            <div class="joglo-photo">
-              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&auto=format&fit=crop&q=80" alt="Sekar">
+
+          <div class="cursive-font" style="font-size:36px; color:var(--gold); margin:10px 0;">&amp;</div>
+
+          <!-- Wanita -->
+          <div>
+            <div class="arch-photo-frame">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80" alt="Sekar">
             </div>
-            <h3 style="font-size:20px; margin-bottom:4px;">Raden Ajeng Sekar, S.Pd.</h3>
-            <p style="font-size:12px; color:var(--gold); font-weight:700;">Putri Pembayun</p>
-            <p style="font-size:12px; color:var(--muted); margin-top:4px;">Putri saking Bpk. K.P.H. Sasraningrat &amp; Ibu Hj. Endang Rahayu</p>
-            <p style="font-size:12px; color:var(--muted);">Sleman, D.I. Yogyakarta</p>
+            <h3 style="font-size:20px; color:var(--sogan); font-weight:800;">Raden Ajeng Sekar Ayu, S.Pd.</h3>
+            <p style="font-size:12.5px; color:var(--muted);">Putri kaping kalih saking Bpk. Bambang Purnomo &amp; Ibu Endang Susilowati</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ACARA -->
-    <section style="background:#F5ECDD;">
-      <div class="container">
-        <div class="section-heading text-center">
-          <span class="sub-title">Adicoro Pawiwahan</span>
-          <h2>Waktu &amp; Tempat Upacara</h2>
-          <div class="heading-line"></div>
-        </div>
-        <div class="acara-grid">
-          <div class="acara-card animate">
-            <div class="acara-icon"><i class="fas fa-handshake"></i></div>
-            <h3 style="font-size:18px; color:var(--sogan);">Akad Nikah / Ijab Kabul</h3>
-            <p style="font-size:13px;"><i class="far fa-calendar-alt"></i> Setu Kliwon, 05 Desember 2026</p>
-            <p style="font-size:14px; font-weight:700; color:var(--sogan-dark); margin:6px 0;"><i class="far fa-clock"></i> 08.00 - 10.00 WIB</p>
-            <p style="font-size:12px; color:var(--muted);">Pendopo Ndalem Ngabean, Yogyakarta</p>
-            <a href="https://maps.google.com" target="_blank" class="btn-maps"><i class="fas fa-map-marker-alt"></i> Buka Rute Maps</a>
-          </div>
-          <div class="acara-card animate animate-delay-1">
-            <div class="acara-icon"><i class="fas fa-crown"></i></div>
-            <h3 style="font-size:18px; color:var(--sogan);">Resepsi Dhaup Ageng</h3>
-            <p style="font-size:13px;"><i class="far fa-calendar-alt"></i> Setu Kliwon, 05 Desember 2026</p>
-            <p style="font-size:14px; font-weight:700; color:var(--sogan-dark); margin:6px 0;"><i class="far fa-clock"></i> 11.00 - 15.00 WIB</p>
-            <p style="font-size:12px; color:var(--muted);">Pendopo Agung Royal Ambarrukmo, Yogyakarta</p>
-            <a href="https://maps.google.com" target="_blank" class="btn-maps"><i class="fas fa-map-marker-alt"></i> Buka Rute Maps</a>
-          </div>
-        </div>
-
-        <div class="jawa-rundown-box animate">
-          <h4 style="font-size:16px; color:var(--sogan); margin-bottom:12px;"><i class="fas fa-feather-alt"></i> Tata Ritus Adat Ageng Jawa Kasultanan:</h4>
-          <ul>
-            <li><i class="fas fa-check-circle"></i> <strong>Siraman &amp; Midodareni:</strong> Ritus panyucen badan lan jiwa sadurunge dinten ijab kabul.</li>
-            <li><i class="fas fa-check-circle"></i> <strong>Upacara Panggih:</strong> Pepanggihan penganten kakung lan putri kanthi uncalan balangan suruh.</li>
-            <li><i class="fas fa-check-circle"></i> <strong>Kacar Kucur &amp; Dulang-dulangan:</strong> Lambang tanggung jawab nafkah lan karukunan bebrayan.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- COUNTDOWN -->
+    <!-- ACARA & LOKASI -->
     <section>
       <div class="container text-center">
-        <div class="section-heading">
-          <span class="sub-title">Adicoro Ingkang Celak</span>
-          <h2>Hitung Mundur Dinten Bahagia</h2>
-          <div class="heading-line"></div>
-        </div>
-        <div class="countdown-container animate">
-          <div class="count-box"><div class="count-num" id="days">00</div><div class="count-label">Dinten</div></div>
-          <div class="count-box"><div class="count-num" id="hours">00</div><div class="count-label">Jam</div></div>
-          <div class="count-box"><div class="count-num" id="minutes">00</div><div class="count-label">Menit</div></div>
-          <div class="count-box"><div class="count-num" id="seconds">00</div><div class="count-label">Detik</div></div>
+        <div class="card-joglo">
+          <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--gold); text-transform:uppercase;">Rundown Adat Kasultanan</p>
+          <h2 class="serif-title" style="font-size:26px; color:var(--sogan); margin:6px 0 20px;">Wektu &amp; Papan Palakrama</h2>
+
+          <div style="background:#FAF4E8; padding:20px; border-radius:18px; margin-bottom:16px; border:1px solid rgba(197, 160, 89, 0.4);">
+            <h3 style="font-size:18px; color:var(--sogan);"><i class="fas fa-ring" style="color:var(--gold);"></i> Ijab Qobul</h3>
+            <p style="font-size:13.5px; font-weight:700; color:var(--text); margin:6px 0;">Setu Pahing, 05 Desember 2026</p>
+            <p style="font-size:12.5px; color:var(--muted);">Tabuh 08.00 - 10.00 WIB</p>
+            <p style="font-size:12px; color:var(--muted); margin-top:4px;">Pendopo Agung Ndalem Ngabean, Yogyakarta</p>
+          </div>
+
+          <div style="background:#FAF4E8; padding:20px; border-radius:18px; border:1px solid rgba(197, 160, 89, 0.4);">
+            <h3 style="font-size:18px; color:var(--sogan);"><i class="fas fa-glass-cheers" style="color:var(--gold);"></i> Pawiwahan &amp; Panggih Penganten</h3>
+            <p style="font-size:13.5px; font-weight:700; color:var(--text); margin:6px 0;">Setu Pahing, 05 Desember 2026</p>
+            <p style="font-size:12.5px; color:var(--muted);">Tabuh 11.00 - 14.00 WIB</p>
+            <p style="font-size:12px; color:var(--muted); margin-top:4px;">Pendopo Agung Ndalem Ngabean, Yogyakarta</p>
+          </div>
+
+          <!-- Countdown -->
+          <div class="countdown-grid">
+            <div class="countdown-box"><div class="countdown-num" id="days">00</div><div class="countdown-lbl">Dina</div></div>
+            <div class="countdown-box"><div class="countdown-num" id="hours">00</div><div class="countdown-lbl">Jam</div></div>
+            <div class="countdown-box"><div class="countdown-num" id="minutes">00</div><div class="countdown-lbl">Menit</div></div>
+            <div class="countdown-box"><div class="countdown-num" id="seconds">00</div><div class="countdown-lbl">Detik</div></div>
+          </div>
+
+          <a href="https://maps.google.com" target="_blank" class="btn-submit" style="display:inline-block; text-decoration:none; margin-top:10px;">
+            <i class="fas fa-map-marker-alt"></i> Peta Lokasi Google Maps
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- GALERI -->
-    <section style="background:#F5ECDD;">
-      <div class="container">
-        <div class="section-heading text-center">
-          <span class="sub-title">Dokumentasi Endah</span>
-          <h2>Galeri Foto Prewedding</h2>
-          <div class="heading-line"></div>
-        </div>
-        <div class="galeri-grid">
-          <div class="galeri-item span-2 animate"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80" alt="1"></div>
-          <div class="galeri-item animate animate-delay-1"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=500&auto=format&fit=crop&q=80" alt="2"></div>
-          <div class="galeri-item animate animate-delay-2"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=500&auto=format&fit=crop&q=80" alt="3"></div>
-          <div class="galeri-item animate animate-delay-3"><img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=500&auto=format&fit=crop&q=80" alt="4"></div>
-          <div class="galeri-item span-2 animate"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=600&auto=format&fit=crop&q=80" alt="5"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- RSVP & BUKU TAMU -->
+    <!-- GALERI ARCH MASONRY -->
     <section>
       <div class="container text-center">
-        <div class="section-heading">
-          <span class="sub-title">Pratandha Rawuh</span>
-          <h2>RSVP &amp; Donga Pangestu</h2>
-          <div class="heading-line"></div>
+        <div class="card-joglo">
+          <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--gold); text-transform:uppercase;">Galeri Momen</p>
+          <h2 class="serif-title" style="font-size:24px; color:var(--sogan); margin:6px 0 15px;">Kenangan Kasih</h2>
+          <div class="gallery-arch-grid">
+            <div class="gallery-arch-item"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=500&auto=format&fit=crop&q=80" alt="Gallery 1"></div>
+            <div class="gallery-arch-item"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=500&auto=format&fit=crop&q=80" alt="Gallery 2"></div>
+            <div class="gallery-arch-item"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=500&auto=format&fit=crop&q=80" alt="Gallery 3"></div>
+            <div class="gallery-arch-item"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=500&auto=format&fit=crop&q=80" alt="Gallery 4"></div>
+          </div>
         </div>
-        <div class="form-box animate">
-          <svg class="ornament-corner ornament-tl" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3">
-            <path d="M5,95 L5,25 Q5,5 25,5 L95,5 M15,95 L15,30 Q15,15 30,15 L95,15 M25,95 L25,40 Q25,25 40,25 L95,25"/>
-            <circle cx="50" cy="50" r="8" fill="currentColor"/>
-          </svg>
-          <svg class="ornament-corner ornament-tr" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3">
-            <path d="M5,95 L5,25 Q5,5 25,5 L95,5 M15,95 L15,30 Q15,15 30,15 L95,15 M25,95 L25,40 Q25,25 40,25 L95,25"/>
-            <circle cx="50" cy="50" r="8" fill="currentColor"/>
-          </svg>
+      </div>
+    </section>
+
+    <!-- RSVP & UCAPAN DOA (FIREBASE CLOUD) -->
+    <section>
+      <div class="container text-center">
+        <div class="card-joglo">
+          <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--gold); text-transform:uppercase;">Buku Tamu Real-time</p>
+          <h2 class="serif-title" style="font-size:24px; color:var(--sogan); margin:6px 0 15px;">Konfirmasi &amp; Donga Pangestu</h2>
+          
           <form onsubmit="handleRSVP(event)">
-            <div class="form-group">
-              <label>Asma Jangkep (Nama Lengkap):</label>
-              <input type="text" id="nama" class="form-control" placeholder="Contoh: Bpk. H. Sukamto &amp; Ibu" required>
-            </div>
-            <div class="form-group">
-              <label>Pratandha Rawuh (Konfirmasi Kehadiran):</label>
-              <select id="kehadiran" class="form-control">
-                <option value="Hadir">Insya Allah Kula Rawuh (Hadir)</option>
-                <option value="Tidak Hadir">Nyuwun Pangapunten, Mboten Saged Rawuh</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Donga Pangestu (Ucapan Doa):</label>
-              <textarea id="ucapan" class="form-control" rows="3" placeholder="Serat donga pangestu kagem penganten kekalih..." required></textarea>
-            </div>
-            <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Kirim Donga Pangestu</button>
+            <input type="text" id="nama" class="form-control" placeholder="Asma Panjenengan" required>
+            <select id="kehadiran" class="form-control">
+              <option value="Hadir">Kula Badhe Rawuh</option>
+              <option value="Ragu-ragu">Taksih Rangu-rangu</option>
+              <option value="Tidak Hadir">Nyuwun Pangapunten Dereng Saged Rawuh</option>
+            </select>
+            <textarea id="ucapan" class="form-control" rows="3" placeholder="Serat donga pangestu panjenengan..." required></textarea>
+            <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Kirim Konfirmasi &amp; Donga</button>
           </form>
-          <div class="wishes-feed" id="messagesContainer">
+
+          <div id="messagesContainer" style="max-height:280px; overflow-y:auto; margin-top:20px;">
             <div class="wish-card">
-              <strong>Bpk. K.R.T. Wiryodiningrat &amp; Ibu</strong> <span style="font-size:11px; color:var(--sogan); font-weight:700;">(Rawuh)</span>
-              <p>Nderek mangayubagya.. Mugi penganten kekalih tansah pinaringan berkah, ayem tentrem, runtut atut ngantos kaken-kaken ninen-ninen. Rahayu 🙏</p>
+              <strong>Bpk. H. Sukamto</strong> <span style="font-size:11px; font-weight:700; color:var(--gold);">(Hadir)</span>
+              <p>Ndherek mangayubagya Mas Danang &amp; Mbak Sekar. Mugi dados keluarga ingkang sakinah mawaddah warahmah, tansah pinaringan berkah saking Gusti Allah.</p>
             </div>
           </div>
         </div>
@@ -424,25 +315,24 @@
     </section>
 
     <!-- AMPLOP DIGITAL -->
-    <section style="background:#F5ECDD;">
+    <section>
       <div class="container text-center">
-        <div class="section-heading">
-          <span class="sub-title">Tandha Katresnan</span>
-          <h2>Kado &amp; Amplop Digital</h2>
-          <div class="heading-line"></div>
-        </div>
-        <div class="gift-card animate">
-          <p style="font-size:13px; color:var(--muted); margin-bottom:15px;">Mboten ngirangi raos kurmat, kagem panjenengan ingkang kersa maringi tandha katresnan sacara digital:</p>
-          <div style="background:#EFE3D0; padding:18px; border-radius:16px; margin-bottom:14px; border:1px solid rgba(197, 160, 89, 0.5);">
+        <div class="card-joglo">
+          <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--gold); text-transform:uppercase;">Tandha Katresnan</p>
+          <h2 class="serif-title" style="font-size:24px; color:var(--sogan); margin:6px 0 15px;">Kado Digital</h2>
+          <p style="font-size:12.5px; color:var(--muted); margin-bottom:20px;">Donga pangestu panjenengan dados kanugrahan ingkang tanpa upami. Kangge panjenengan ingkang kersa maringi tandha katresnan sacara digital:</p>
+
+          <div style="background:#FAF4E8; padding:18px; border-radius:16px; margin-bottom:14px; border:1px solid rgba(197, 160, 89, 0.4);">
             <p style="font-weight:800; color:var(--sogan);">BANK MANDIRI</p>
-            <p style="font-size:20px; font-weight:700; letter-spacing:2px; color:var(--text);" id="rek1">1370019283741</p>
-            <p style="font-size:12px; color:var(--muted);">a.n. Raden Danang</p>
+            <p style="font-size:20px; font-weight:700; letter-spacing:2px; color:var(--text);" id="rekMandiri">1370019283741</p>
+            <p style="font-size:12px; color:var(--muted);">a.n. Raden Danang Prasetyo</p>
             <button class="btn-copy" onclick="copyRek('1370019283741', this)"><i class="far fa-copy"></i> Salin No. Rekening</button>
           </div>
-          <div style="background:#EFE3D0; padding:18px; border-radius:16px; border:1px solid rgba(197, 160, 89, 0.5);">
+
+          <div style="background:#FAF4E8; padding:18px; border-radius:16px; border:1px solid rgba(197, 160, 89, 0.4);">
             <p style="font-weight:800; color:var(--sogan);">BANK BCA</p>
-            <p style="font-size:20px; font-weight:700; letter-spacing:2px; color:var(--text);">8901234567</p>
-            <p style="font-size:12px; color:var(--muted);">a.n. Raden Ajeng Sekar</p>
+            <p style="font-size:20px; font-weight:700; letter-spacing:2px; color:var(--text);" id="rekBCA">8901234567</p>
+            <p style="font-size:12px; color:var(--muted);">a.n. Raden Ajeng Sekar Ayu</p>
             <button class="btn-copy" onclick="copyRek('8901234567', this)"><i class="far fa-copy"></i> Salin No. Rekening</button>
           </div>
         </div>
@@ -450,14 +340,15 @@
     </section>
 
     <!-- FOOTER -->
-    <footer style="padding:50px 0 25px; text-align:center; border-top:1px solid rgba(197, 160, 89, 0.3);">
+    <footer style="padding:40px 0 25px; text-align:center; border-top:1px solid rgba(197, 160, 89, 0.3);">
       <div class="container">
-        <p style="font-size:12px; color:var(--gold); font-weight:700; letter-spacing:2px; margin-bottom:8px;">MATUR NUWUN &bull; RAHAYU</p>
-        <h3 style="font-family:'Cinzel',serif; font-size:24px; color:var(--sogan); margin-bottom:6px;">Raden Danang &amp; Raden Sekar</h3>
-        <p style="font-size:13px; color:var(--muted);">Matur nuwun sanget awit saking rawuh lan donga pangestunipun panjenengan sedaya 🙏</p>
-        <p style="font-size:11px; color:#A48B77; margin-top:20px;">Powered by <strong>UndangYuk</strong></p>
+        <p style="font-size:11px; color:var(--gold); font-weight:700; letter-spacing:2px;">MATUR NUWUN &bull; RAHAYU</p>
+        <h3 class="serif-title" style="font-size:22px; color:var(--sogan); margin:6px 0;">Danang &amp; Sekar</h3>
+        <p style="font-size:12.5px; color:var(--muted);">Matur nuwun sanget awit saking rawuh lan donga pangestunipun panjenengan sedaya 🙏</p>
+        <p style="font-size:11px; color:#A48B77; margin-top:20px;">Undangan Digital by <strong>UndangYuk</strong></p>
       </div>
     </footer>
+
   </main>
 
   <script>
@@ -507,7 +398,7 @@
       }
     }
 
-    // 3. Countdown Timer
+    // 3. Countdown Timer (05 Dec 2026)
     const targetDate = new Date('December 05, 2026 08:00:00').getTime();
     setInterval(() => {
       const now = new Date().getTime();
@@ -524,15 +415,7 @@
       }
     }, 1000);
 
-    // 4. Scroll Reveal Animations
-    if ('IntersectionObserver' in window) {
-      const obs = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-      }, { threshold: 0.1 });
-      document.querySelectorAll('.animate').forEach(el => obs.observe(el));
-    }
-
-    // 5. Firebase Cloud Firestore RSVP & Real-time Guestbook
+    // 4. Firebase Cloud Firestore RSVP (Collection: rsvp_jawa_kasultanan)
     const THEME_CLOUD_ID = 'jawa_kasultanan';
 
     function esc(t) {
@@ -546,7 +429,7 @@
       wishes.forEach(item => {
         const div = document.createElement('div');
         div.className = 'wish-card';
-        div.innerHTML = '<strong>' + esc(item.nama || 'Tamu') + '</strong> <span style="font-size:11px; font-weight:700;">(' + esc(item.kehadiran || 'Hadir') + ')</span><p>' + esc(item.ucapan || '') + '</p>';
+        div.innerHTML = '<strong>' + esc(item.nama || 'Tamu') + '</strong> <span style="font-size:11px; font-weight:700; color:var(--gold);">(' + esc(item.kehadiran || 'Hadir') + ')</span><p>' + esc(item.ucapan || '') + '</p>';
         feed.appendChild(div);
       });
     }
@@ -569,36 +452,23 @@
       if (feed) {
         const div = document.createElement('div');
         div.className = 'wish-card';
-        div.innerHTML = '<strong>' + esc(n) + '</strong> <span style="font-size:11px; font-weight:700;">(' + esc(k) + ')</span><p>' + esc(u) + '</p>';
+        div.innerHTML = '<strong>' + esc(n) + '</strong> <span style="font-size:11px; font-weight:700; color:var(--gold);">(' + esc(k) + ')</span><p>' + esc(u) + '</p>';
         feed.prepend(div);
       }
-      alert('Terima kasih banyak! Konfirmasi RSVP & Doa Restu Anda telah tersimpan secara real-time.');
+      alert('Matur nuwun sanget! Konfirmasi & donga pangestu panjenengan sampun katampi kanthi sae.');
       e.target.reset();
     }
 
-    // 6. Copy Rekening Bank
+    // 5. Copy Rekening
     function copyRek(num, btn) {
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(num).then(() => {
-          const old = btn.innerHTML;
-          btn.innerHTML = '<i class="fas fa-check"></i> Disalin!';
-          setTimeout(() => { btn.innerHTML = old; }, 2000);
-        });
-      } else {
-        const ta = document.createElement('textarea');
-        ta.value = num;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand('copy');
-        document.body.removeChild(ta);
+      navigator.clipboard.writeText(num).then(() => {
         const old = btn.innerHTML;
         btn.innerHTML = '<i class="fas fa-check"></i> Disalin!';
         setTimeout(() => { btn.innerHTML = old; }, 2000);
-      }
+      });
     }
 
-    
-    // 7. Lightweight HTML5 Canvas Particle Engine
+    // 6. Particle Engine (Gold Stardust & Jasmine Petals)
     (function initCanvasParticles() {
       const canvas = document.getElementById('canvasParticles');
       if (!canvas) return;
@@ -665,7 +535,6 @@
       }
       render();
     })();
-    
   </script>
 </body>
 </html>
