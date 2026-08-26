@@ -12,30 +12,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <!-- Firebase RSVP Sync -->
-  <script src="../../../../firebase-rsvp.js">
-    function initScrollReveal() {
-      const reveals = document.querySelectorAll('.reveal');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-          } else {
-            entry.target.classList.remove('active');
-          }
-        });
-      }, { threshold: 0.15 });
-      reveals.forEach(el => observer.observe(el));
-    }
-
-    window.addEventListener('scroll', () => {
-      const scrollY = window.pageYOffset;
-      const leftOrn = document.querySelector('.side-canvas-ornament.left');
-      const rightOrn = document.querySelector('.side-canvas-ornament.right');
-      if (leftOrn) leftOrn.style.transform = 'translateY(' + (-50 + (scrollY % 100) * 0.08) + '%) rotate(' + (scrollY * 0.02) + 'deg)';
-      if (rightOrn) rightOrn.style.transform = 'translateY(' + (-50 + (scrollY % 100) * 0.08) + '%) scaleX(-1) rotate(' + (scrollY * 0.02) + 'deg)';
-    });
-  
-  </script>
+  <script src="../../../../firebase-rsvp.js"></script>
 
   <style>
     :root {
@@ -176,69 +153,9 @@
       background: var(--marawa-red); color: #FFF; border: none; padding: 6px 14px;
       border-radius: 8px; font-size: 11px; font-weight: 700; cursor: pointer; margin-top: 6px;
     }
-  
-    /* FLOATING CULTURAL ORNAMENTS (KANVAS KIRI & KANAN SESUAI ADAT) */
-    .side-canvas-ornament {
-      position: fixed; top: 50%; transform: translateY(-50%);
-      width: 140px; height: 380px; pointer-events: none; z-index: 5; opacity: 0.85;
-      transition: transform 0.2s ease-out;
-    }
-    .side-canvas-ornament.left { left: -20px; animation: floatSwayLeft 5s ease-in-out infinite alternate; }
-    .side-canvas-ornament.right { right: -20px; transform: translateY(-50%) scaleX(-1); animation: floatSwayRight 5s ease-in-out infinite alternate; }
-
-    @keyframes floatSwayLeft {
-      0% { transform: translateY(-50%) rotate(0deg) translateX(0px); }
-      100% { transform: translateY(-54%) rotate(3deg) translateX(8px); }
-    }
-    @keyframes floatSwayRight {
-      0% { transform: translateY(-50%) scaleX(-1) rotate(0deg) translateX(0px); }
-      100% { transform: translateY(-54%) scaleX(-1) rotate(3deg) translateX(8px); }
-    }
-
-    /* SCROLL ANIMATION */
-    .reveal {
-      opacity: 0;
-      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, transform;
-    }
-    .reveal-fade-up { transform: translateY(40px); }
-    .reveal-zoom { transform: scale(0.92); }
-    .reveal-slide-left { transform: translateX(-50px); }
-    .reveal-slide-right { transform: translateX(50px); }
-    .reveal.active { opacity: 1; transform: translate(0) scale(1); }
-  
-  
-    /* LUXURY FLOATING BOTTOM NAVIGATION DOCK */
-    .bottom-nav-dock {
-      position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(100px);
-      background: rgba(255, 255, 255, 0.88); backdrop-filter: blur(16px);
-      border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 40px;
-      padding: 8px 16px; display: flex; align-items: center; gap: 14px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.15); z-index: 995;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
-      opacity: 0; pointer-events: none;
-    }
-    .bottom-nav-dock.show {
-      transform: translateX(-50%) translateY(0); opacity: 1; pointer-events: auto;
-    }
-    .nav-dock-item {
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      color: #64748B; text-decoration: none; font-size: 10px; font-weight: 700;
-      padding: 6px 10px; border-radius: 20px; transition: all 0.25s;
-    }
-    .nav-dock-item i { font-size: 15px; margin-bottom: 2px; }
-    .nav-dock-item:hover, .nav-dock-item.active {
-      color: #996515; background: rgba(212, 175, 55, 0.15); transform: translateY(-2px);
-    }
-    
   </style>
 </head>
 <body>
-
-  <!-- SIDE CANVAS ORNAMENTS -->
-  <svg class="side-canvas-ornament left" viewBox="0 0 100 200" fill="none"><path d="M10 100 L90 20 L50 100 L90 180 Z" fill="#D97706" opacity="0.4"/></svg>
-  <svg class="side-canvas-ornament right" viewBox="0 0 100 200" fill="none"><path d="M10 100 L90 20 L50 100 L90 180 Z" fill="#D97706" opacity="0.4"/></svg>
-  
 
   <!-- HTML5 Particle Canvas (Gold Marawa Shimmer) -->
   <canvas id="canvasParticles"></canvas>
@@ -276,9 +193,9 @@
   <main class="main-wrapper" id="mainContent">
     
     <!-- PEPATAH ADAT MINANG -->
-    <section id="doa">
+    <section>
       <div class="container text-center">
-        <div class="card-gonjong reveal reveal-fade-up">
+        <div class="card-gonjong">
           <p class="cursive-font" style="font-size:30px; color:var(--marawa-gold);">Bismillahirrohmanirrohim</p>
           <p style="font-size:13px; color:var(--muted); margin:15px 0;">
             <em>"Kemenakan barajo ka mamak, mamak barajo ka panghulu, panghulu barajo ka mufakat, mufakat barajo ka nan bana, nan bana tagak sandirinyo."</em>
@@ -289,9 +206,9 @@
     </section>
 
     <!-- PROFIL MEMPELAI (RHOMBUS DIAMOND GEOMETRY) -->
-    <section id="mempelai">
+    <section>
       <div class="container text-center">
-        <div class="card-gonjong reveal reveal-fade-up">
+        <div class="card-gonjong">
           <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--marawa-gold); text-transform:uppercase;">Anak Daro &amp; Marapulai</p>
           <h2 class="serif-title" style="font-size:26px; color:var(--marawa-red); margin:6px 0 25px;">Mempelai Pengantin</h2>
 
@@ -323,9 +240,9 @@
     </section>
 
     <!-- ACARA & LOKASI -->
-    <section id="acara">
+    <section>
       <div class="container text-center">
-        <div class="card-gonjong reveal reveal-fade-up">
+        <div class="card-gonjong">
           <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--marawa-gold); text-transform:uppercase;">Rangkaian Acara</p>
           <h2 class="serif-title" style="font-size:26px; color:var(--marawa-red); margin:6px 0 20px;">Waktu &amp; Tampek Baralek</h2>
 
@@ -359,9 +276,9 @@
     </section>
 
     <!-- GALERI SONGKET MOSAIC -->
-    <section id="galeri">
+    <section>
       <div class="container text-center">
-        <div class="card-gonjong reveal reveal-fade-up">
+        <div class="card-gonjong">
           <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--marawa-gold); text-transform:uppercase;">Galeri Momen</p>
           <h2 class="serif-title" style="font-size:24px; color:var(--marawa-red); margin:6px 0 15px;">Kenangan Kasih Minang</h2>
           <div class="gallery-songket-grid">
@@ -375,9 +292,9 @@
     </section>
 
     <!-- RSVP & UCAPAN DOA (FIREBASE CLOUD) -->
-    <section id="rsvp">
+    <section>
       <div class="container text-center">
-        <div class="card-gonjong reveal reveal-fade-up">
+        <div class="card-gonjong">
           <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--marawa-gold); text-transform:uppercase;">Buku Tamu Real-time</p>
           <h2 class="serif-title" style="font-size:24px; color:var(--marawa-red); margin:6px 0 15px;">Konfirmasi &amp; Doa Restu</h2>
           
@@ -403,9 +320,9 @@
     </section>
 
     <!-- AMPLOP DIGITAL -->
-    <section id="kado">
+    <section>
       <div class="container text-center">
-        <div class="card-gonjong reveal reveal-fade-up">
+        <div class="card-gonjong">
           <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--marawa-gold); text-transform:uppercase;">Tanda Kasih</p>
           <h2 class="serif-title" style="font-size:24px; color:var(--marawa-red); margin:6px 0 15px;">Kado Digital</h2>
           <p style="font-size:12.5px; color:var(--muted); margin-bottom:20px;">Bagi Datuak, Mamak, sarato dunsanak nan baparadok kersa maringankan langkah mambarikan tando kasiah digital:</p>
@@ -437,17 +354,6 @@
       </div>
     </footer>
 
-  
-  <!-- FLOATING LUXURY BOTTOM NAVIGATION DOCK -->
-  <nav id="bottomNav" class="bottom-nav-dock">
-    <a href="#cover" class="nav-dock-item" onclick="window.scrollTo({top:0, behavior:'smooth'})"><i class="fas fa-home"></i><span>Sampul</span></a>
-    <a href="#mempelai" class="nav-dock-item"><i class="fas fa-heart"></i><span>Mempelai</span></a>
-    <a href="#acara" class="nav-dock-item"><i class="fas fa-calendar-alt"></i><span>Acara</span></a>
-    <a href="#galeri" class="nav-dock-item"><i class="fas fa-images"></i><span>Galeri</span></a>
-    <a href="#rsvp" class="nav-dock-item"><i class="fas fa-book-open"></i><span>Ucapan</span></a>
-    <a href="#kado" class="nav-dock-item"><i class="fas fa-gift"></i><span>Kado</span></a>
-  </nav>
-    
   </main>
 
   <script>
@@ -475,8 +381,6 @@
       if (cover) cover.classList.add('hide');
       if (mainContent) mainContent.classList.add('show');
       if (musicToggle) musicToggle.style.display = 'flex';
-      const bottomNav = document.getElementById('bottomNav');
-      if (bottomNav) bottomNav.classList.add('show');
       if (bgMusic) {
         bgMusic.play().then(() => {
           isPlaying = true;
@@ -484,7 +388,6 @@
         }).catch(e => console.log('Audio autoplay prevented:', e));
       }
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      initScrollReveal();
     }
 
     function toggleMusic() {
