@@ -5,15 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pernikahan Adat Jawa Kasultanan - Danang &amp; Sekar</title>
   <meta name="description" content="Pawartos Palakrama Raden Mas Danang Prasetyo &amp; Raden Ajeng Sekar Ayuningtyas. Undangan Pernikahan Adat Jawa Kasultanan Surakarta Hadiningrat.">
-  
+
   <!-- Google Fonts: Royal Javanese Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Great+Vibes&family=Marcellus&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  
+
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
+
+  <!-- tsParticles: mesin partikel siap-pakai (gold dust / royal sparkle) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tsparticles/1.18.11/tsparticles.min.js"></script>
+
   <!-- Firebase Real-time Cloud -->
   <script src="../../../../firebase-rsvp.js"></script>
 
@@ -28,15 +31,25 @@
       --kraton-sogan: #5D4037;
       --border-joglo: rgba(197, 155, 39, 0.45);
       --shadow-kraton: 0 15px 40px rgba(32, 19, 12, 0.12);
+
+      /* ====================================================================
+         GANTI FOTO DI SINI — cukup ubah URL di bawah ini dengan foto kamu.
+         Bisa berupa link foto online, atau nama file foto yang kamu taruh
+         di folder yang sama dengan file ini, contoh: 'foto-kami.jpg'
+         ==================================================================== */
+      --foto-cover: url('GANTI-DENGAN-FOTO-KAMU.jpg'), url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1400&auto=format&fit=crop&q=80');
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
     html { scroll-behavior: smooth; }
 
-    /* REALISTIC SOGAN BATIK TEXTURED CANVAS BACKGROUND */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+    }
+
     body {
       background-color: #F5EFE3;
-      background-image: 
+      background-image:
         radial-gradient(circle at 50% 0%, rgba(197, 155, 39, 0.18) 0%, transparent 60%),
         radial-gradient(circle at 100% 100%, rgba(93, 64, 55, 0.12) 0%, transparent 50%),
         url("data:image/svg+xml,%3Csvg width='52' height='52' viewBox='0 0 52 52' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%238C6A1A' fill-opacity='0.05' fill-rule='evenodd'%3E%3Cpath d='M26 0l26 26-26 26L0 26zM26 10l16 16-16 16-16-16z'/%3E%3C/g%3E%3C/svg%3E");
@@ -45,7 +58,9 @@
       line-height: 1.8;
     }
 
-    #canvasParticles { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 999; }
+    /* PARTIKEL EMAS — kanvas kini dijalankan oleh tsParticles (bukan canvas manual) */
+    #tsparticles-bg { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 999; }
+
     .container { max-width: 640px; margin: 0 auto; padding: 0 22px; position: relative; z-index: 10; }
     .text-center { text-align: center; }
 
@@ -70,79 +85,101 @@
       100% { transform: translateY(-53%) scaleX(-1) rotate(2deg) translateX(6px); }
     }
 
-    /* SCROLL ANIMATION SYSTEM */
+    /* SCROLL ANIMATION SYSTEM — diperkuat: easing lebih halus + stagger otomatis */
     .reveal {
       opacity: 0;
-      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+      transition-delay: var(--reveal-delay, 0s);
       will-change: opacity, transform;
     }
-    .reveal-fade-up { transform: translateY(35px); }
-    .reveal-zoom { transform: scale(0.93); }
-    .reveal-slide-left { transform: translateX(-40px); }
-    .reveal-slide-right { transform: translateX(40px); }
-    .reveal.active { opacity: 1; transform: translate(0) scale(1); }
+    .reveal-fade-up { transform: translateY(45px) scale(0.98); }
+    .reveal-zoom { transform: scale(0.88); }
+    .reveal-slide-left { transform: translateX(-55px) rotate(-2deg); }
+    .reveal-slide-right { transform: translateX(55px) rotate(2deg); }
+    .reveal.active { opacity: 1; transform: translate(0) scale(1) rotate(0); }
 
-    /* COVER SECTION: KRATON GAPURA MAJESTY */
+    /* Elemen anak yang di-stagger di dalam kartu (langkah panggih, galeri, timeline) */
+    .stagger-child {
+      opacity: 0; transform: translateY(22px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      transition-delay: var(--reveal-delay, 0s);
+    }
+    .stagger-child.active { opacity: 1; transform: translateY(0); }
+
+    /* COVER SECTION: KRATON GAPURA MAJESTY — kini pakai foto kamu sendiri */
     .cover-section {
       min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
       text-align: center; padding: 45px 24px; position: fixed; inset: 0; z-index: 1000;
-      background: 
-        linear-gradient(180deg, rgba(250, 245, 235, 0.88) 0%, rgba(245, 236, 218, 0.92) 100%),
-        url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&auto=format&fit=crop&q=80') center/cover no-repeat;
-      transition: transform 0.95s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.95s ease;
       overflow: hidden;
+      transition: transform 1.1s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.9s ease, filter 1.1s ease;
     }
-    .cover-section.hide { transform: translateY(-100%); opacity: 0; pointer-events: none; }
+    .cover-section.hide { transform: translateY(-100%) scale(1.05); opacity: 0; filter: blur(6px); pointer-events: none; }
 
-    /* ORNATE GOLDEN GUNUNGAN EMBLEM */
-    .cover-gunungan-artwork {
-      width: 140px; height: 180px; margin-bottom: 14px;
-      filter: drop-shadow(0 10px 24px rgba(140, 106, 26, 0.4));
-      animation: floatGunungan 3.5s ease-in-out infinite alternate;
+    /* Lapisan foto latar cover: foto kamu + overlay krem-emas + gerakan Ken Burns lembut */
+    .cover-photo-layer {
+      position: absolute; inset: 0; z-index: -1;
+      background-image: var(--foto-cover);
+      background-size: cover; background-position: center;
+      animation: kenBurns 18s ease-in-out infinite alternate;
     }
-    @keyframes floatGunungan {
-      0% { transform: translateY(0) scale(1); }
-      100% { transform: translateY(-6px) scale(1.04); }
+    .cover-photo-layer::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(250, 245, 235, 0.90) 0%, rgba(245, 236, 218, 0.90) 45%, rgba(197, 155, 39, 0.28) 100%);
     }
+    @keyframes kenBurns {
+      0% { transform: scale(1) translate(0, 0); }
+      100% { transform: scale(1.12) translate(-1.5%, -1%); }
+    }
+
+    /* Sekuens masuk halaman: setiap elemen cover muncul bergantian */
+    .cover-anim { opacity: 0; transform: translateY(22px); animation: coverIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    @keyframes coverIn { to { opacity: 1; transform: translateY(0); } }
+    .cover-anim.d1 { animation-delay: .15s; }
+    .cover-anim.d2 { animation-delay: .35s; }
+    .cover-anim.d3 { animation-delay: .55s; }
+    .cover-anim.d4 { animation-delay: .8s; }
+    .cover-anim.d5 { animation-delay: 1.05s; }
+    .cover-anim.d6 { animation-delay: 1.3s; }
 
     .aksara-jawa-badge {
-      font-size: 13px; letter-spacing: 4px; color: var(--kraton-gold-dark); font-weight: 700;
+      font-size: clamp(11px, 3vw, 13px); letter-spacing: 4px; color: var(--kraton-gold-dark); font-weight: 700;
       margin-bottom: 6px; text-transform: uppercase;
     }
     .cover-sub-header {
-      font-size: 11px; letter-spacing: 5px; font-weight: 800; color: var(--kraton-sogan);
+      font-size: clamp(10px, 2.6vw, 11px); letter-spacing: 5px; font-weight: 800; color: var(--kraton-sogan);
       text-transform: uppercase; margin-bottom: 6px;
     }
     .cover-couple-name {
-      font-size: 58px; line-height: 1.1; color: var(--kraton-brown);
+      font-size: clamp(42px, 13vw, 62px); line-height: 1.1; color: var(--kraton-brown);
       margin: 6px 0 10px; text-shadow: 0 4px 16px rgba(197, 155, 39, 0.3);
     }
     .cover-date {
-      font-size: 13.5px; color: var(--kraton-sogan); font-weight: 600; letter-spacing: 1px;
+      font-size: clamp(12.5px, 3.4vw, 14px); color: var(--kraton-sogan); font-weight: 600; letter-spacing: 1px;
     }
 
     /* WAX SEALED PARCHMENT GUEST CARD */
     .guest-parchment-card {
-      background: rgba(255, 255, 255, 0.96);
-      border: 2px solid var(--kraton-gold);
-      border-radius: 26px; padding: 22px 30px; margin: 26px 0;
-      box-shadow: 0 16px 36px rgba(54, 34, 23, 0.08), inset 0 0 20px rgba(197, 155, 39, 0.07);
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border: 1.5px solid rgba(197, 155, 39, 0.5);
+      border-radius: 24px; padding: clamp(18px, 5vw, 22px) clamp(20px, 6vw, 30px); margin: 24px 0;
+      box-shadow: 0 16px 36px rgba(54, 34, 23, 0.10), inset 0 0 20px rgba(197, 155, 39, 0.07);
       max-width: 390px; width: 100%; position: relative;
-    }
-    .guest-parchment-card::before {
-      content: ""; position: absolute; inset: 5px;
-      border: 1px dashed rgba(197, 155, 39, 0.55); border-radius: 20px; pointer-events: none;
     }
 
     .btn-buka-undangan {
-      background: linear-gradient(135deg, #D4AF37 0%, #996515 50%, #5D4037 100%);
-      color: #FFF; border: none; padding: 16px 44px; border-radius: 40px; font-size: 14px;
+      background: linear-gradient(135deg, #D97706 0%, #B45309 50%, #78350F 100%);
+      color: #FFF; border: 1.5px solid rgba(255, 255, 255, 0.55); padding: 16px 44px; border-radius: 50px;
+      font-size: clamp(12.5px, 3.4vw, 14px);
       font-weight: 800; letter-spacing: 2px; cursor: pointer;
       box-shadow: 0 12px 32px rgba(140, 106, 26, 0.45);
       display: inline-flex; align-items: center; gap: 12px; transition: transform 0.25s, box-shadow 0.25s;
-      animation: pulseGoldBtn 2.2s infinite;
+      animation: coverIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards, pulseGoldBtn 2.2s 1.5s infinite;
+      text-transform: uppercase;
     }
-    .btn-buka-undangan:hover { transform: scale(1.05); box-shadow: 0 18px 40px rgba(197, 155, 39, 0.6); }
+    .btn-buka-undangan:hover { transform: translateY(-2px) scale(1.05); box-shadow: 0 18px 40px rgba(197, 155, 39, 0.6); }
+    .btn-buka-undangan:active { transform: translateY(0) scale(0.98); }
     @keyframes pulseGoldBtn {
       0% { box-shadow: 0 0 0 0 rgba(197, 155, 39, 0.7); }
       70% { box-shadow: 0 0 0 16px rgba(197, 155, 39, 0); }
@@ -150,7 +187,7 @@
     }
 
     /* MAIN CONTENT */
-    .main-wrapper { opacity: 0; transition: opacity 1s ease; }
+    .main-wrapper { opacity: 0; transition: opacity 1.1s ease; }
     .main-wrapper.show { opacity: 1; }
 
     .music-btn {
@@ -158,40 +195,41 @@
       background: var(--kraton-brown); color: var(--kraton-gold); border-radius: 50%;
       display: none; align-items: center; justify-content: center; font-size: 20px;
       z-index: 998; border: 2px solid var(--kraton-gold); box-shadow: 0 8px 25px rgba(0,0,0,0.3); cursor: pointer;
+      opacity: 0; transform: scale(0.6); transition: opacity .5s ease, transform .5s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
+    .music-btn.show { opacity: 1; transform: scale(1); }
     .spin { animation: spinDisc 4s linear infinite; }
     @keyframes spinDisc { 100% { transform: rotate(360deg); } }
 
-    section { padding: 65px 0; position: relative; }
+    section { padding: clamp(45px, 9vw, 65px) 0; position: relative; }
 
     /* BESPOKE JOGLO CANOPY CARD ARCHITECTURE */
     .card-joglo-canopy {
       background: rgba(255, 253, 248, 0.96);
       border: 2px solid var(--border-joglo);
       border-radius: 40px 40px 24px 24px;
-      padding: 55px 28px 40px;
+      padding: clamp(38px, 9vw, 55px) clamp(20px, 6vw, 28px) clamp(30px, 7vw, 40px);
       box-shadow: 0 20px 45px rgba(54, 34, 23, 0.08), inset 0 0 25px rgba(197, 155, 39, 0.05);
       margin-bottom: 35px;
       position: relative;
+      transition: box-shadow .4s ease, transform .4s ease;
     }
+    .card-joglo-canopy:hover { box-shadow: 0 26px 55px rgba(54, 34, 23, 0.13), inset 0 0 25px rgba(197, 155, 39, 0.07); }
     .card-joglo-canopy::before {
       content: ""; position: absolute; inset: 6px;
       border: 1px dashed rgba(197, 155, 39, 0.45);
       border-radius: 34px 34px 18px 18px; pointer-events: none;
     }
 
-    /* ORNATE CORNERS */
     .card-corner { position: absolute; width: 36px; height: 36px; pointer-events: none; }
     .card-corner.bl { bottom: 14px; left: 14px; }
     .card-corner.br { bottom: 14px; right: 14px; transform: scaleX(-1); }
 
-    /* BESPOKE RADEN & RADEN AJENG ASYMMETRIC FRAMES */
     .couple-profile-wrapper { display: flex; flex-direction: column; align-items: center; gap: 32px; margin: 30px 0 10px; }
     .mempelai-card { width: 100%; max-width: 300px; text-align: center; }
-    
-    /* GROOM: JOGLO ARCH WITH KERIS CREST */
+
     .joglo-groom-frame {
-      width: 180px; height: 250px;
+      width: clamp(150px, 42vw, 180px); height: clamp(210px, 58vw, 250px);
       border-radius: 90px 90px 24px 24px;
       border: 4px solid var(--kraton-gold);
       padding: 6px; background: #FFFDF7;
@@ -204,10 +242,9 @@
     }
     .mempelai-card:hover .joglo-groom-frame img { transform: scale(1.08); }
 
-    /* BRIDE: OVAL CINDE BATIK FRAME */
     .joglo-bride-frame {
-      width: 190px; height: 250px;
-      border-radius: 120px 120px 120px 120px;
+      width: clamp(158px, 44vw, 190px); height: clamp(210px, 58vw, 250px);
+      border-radius: 120px;
       border: 4px solid var(--kraton-gold);
       padding: 6px; background: #FFFDF7;
       box-shadow: 0 14px 30px rgba(140, 106, 26, 0.25);
@@ -215,19 +252,19 @@
     }
     .joglo-bride-frame img {
       width: 100%; height: 100%; object-fit: cover;
-      border-radius: 110px 110px 110px 110px; transition: transform 0.6s ease;
+      border-radius: 110px; transition: transform 0.6s ease;
     }
     .mempelai-card:hover .joglo-bride-frame img { transform: scale(1.08); }
 
-    /* UPACARA ADAT PANGGIH STEPS */
     .panggih-steps-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 24px 0 10px; text-align: left; }
     .panggih-step-box {
       background: #FFFDF8; border: 1px solid rgba(197, 155, 39, 0.35); border-radius: 16px;
       padding: 14px; display: flex; align-items: flex-start; gap: 10px;
+      transition: transform .3s ease, border-color .3s ease;
     }
+    .panggih-step-box:hover { transform: translateY(-3px); border-color: var(--kraton-gold); }
     .panggih-icon { width: 32px; height: 32px; border-radius: 50%; background: var(--kraton-gold-light); color: var(--kraton-gold-dark); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; flex-shrink: 0; }
 
-    /* LOVE STORY TIMELINE (BABAD KATRESNAN) */
     .timeline-container { position: relative; margin: 30px 0 10px; padding-left: 24px; text-align: left; border-left: 2px dashed var(--kraton-gold); }
     .timeline-item { position: relative; margin-bottom: 24px; }
     .timeline-bead {
@@ -236,134 +273,61 @@
       box-shadow: 0 0 10px var(--kraton-gold);
     }
     .timeline-year { font-size: 11.5px; font-weight: 800; color: var(--kraton-gold-dark); text-transform: uppercase; }
-    .timeline-title { font-size: 16px; font-weight: 700; color: var(--kraton-brown); margin: 2px 0; }
+    .timeline-title { font-size: clamp(15px, 4vw, 16px); font-weight: 700; color: var(--kraton-brown); margin: 2px 0; }
     .timeline-desc { font-size: 12.5px; color: var(--kraton-sogan); }
 
-    /* ASYMMETRIC MASONRY GALLERY */
     .gallery-masonry-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 25px; }
     .gallery-item {
       border-radius: 20px; border: 2px solid var(--kraton-gold); overflow: hidden;
       box-shadow: 0 8px 22px rgba(54, 34, 23, 0.08); position: relative; height: 190px;
     }
     .gallery-item.tall { height: 240px; }
-    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
-    .gallery-item:hover img { transform: scale(1.08); }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+    .gallery-item:hover img { transform: scale(1.1) rotate(1deg); }
 
-    /* COUNTDOWN */
-    .countdown-grid { display: flex; justify-content: center; gap: 12px; margin: 26px 0; }
+    .countdown-grid { display: flex; justify-content: center; gap: clamp(8px, 2.6vw, 12px); margin: 26px 0; }
     .countdown-box {
       background: linear-gradient(145deg, #362217 0%, #20130C 100%);
       color: var(--kraton-gold-light); border-radius: 16px;
-      padding: 14px 8px; width: 68px; text-align: center; border: 1.5px solid var(--kraton-gold);
+      padding: 14px 6px; width: clamp(58px, 16vw, 68px); text-align: center; border: 1.5px solid var(--kraton-gold);
       box-shadow: 0 6px 18px rgba(54, 34, 23, 0.2);
+      transition: transform .2s ease;
     }
-    .countdown-num { font-size: 22px; font-weight: 800; font-family: 'Cinzel', serif; }
+    .countdown-box:hover { transform: translateY(-4px); }
+    .countdown-num { font-size: clamp(18px, 5vw, 22px); font-weight: 800; font-family: 'Cinzel', serif; }
     .countdown-lbl { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--kraton-gold); }
 
-    /* FORM & WISHES */
     .form-control {
       width: 100%; padding: 13px 16px; border: 1.5px solid #D7CCC8; border-radius: 12px;
       font-size: 14px; background: #FFFDF8; color: var(--kraton-brown); margin-bottom: 14px;
+      transition: border-color .25s ease, box-shadow .25s ease;
     }
+    .form-control:focus { outline: none; border-color: var(--kraton-gold); box-shadow: 0 0 0 3px rgba(197, 155, 39, 0.18); }
     .btn-submit {
       width: 100%; background: linear-gradient(135deg, #C59B27 0%, #8C6A1A 100%);
       color: #FFF; border: none; padding: 15px; border-radius: 14px; font-weight: 700;
       font-size: 14px; letter-spacing: 1px; cursor: pointer; box-shadow: 0 8px 20px rgba(140, 106, 26, 0.3);
+      transition: transform .2s ease, box-shadow .2s ease;
     }
+    .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 12px 26px rgba(140, 106, 26, 0.4); }
     .wish-card {
       background: #FFFDF8; border: 1px solid rgba(197, 155, 39, 0.35); border-radius: 14px;
       padding: 15px; margin-top: 12px; text-align: left; font-size: 13.5px;
+      animation: wishIn .6s cubic-bezier(0.16, 1, 0.3, 1);
     }
+    @keyframes wishIn { from { opacity: 0; transform: translateY(-14px) scale(0.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
     .btn-copy {
       background: var(--kraton-brown); color: var(--kraton-gold-light); border: 1px solid var(--kraton-gold);
       padding: 7px 16px; border-radius: 10px; font-size: 11.5px; font-weight: 700; cursor: pointer; margin-top: 8px;
+      transition: transform .2s ease;
     }
-  
-    .guest-parchment-card, .guest-box, .tamu-card {
-      background: rgba(255, 255, 255, 0.75);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1.5px solid rgba(217, 119, 6, 0.4);
-      border-radius: 20px;
-      padding: 18px 28px;
-      margin: 22px auto 28px;
-      max-width: 420px;
-      width: 100%;
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
-    }
-  
-  
-    /* ULTRA-LUXURY INVITATION COVER STYLING */
-    .cover-section {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 40px 24px;
-      position: fixed;
-      inset: 0;
-      z-index: 1000;
-      transition: transform 0.95s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.95s ease;
-      overflow: hidden;
-    }
-    .cover-couple {
-      font-size: 56px !important;
-      line-height: 1.15 !important;
-      margin: 8px 0 10px !important;
-      text-shadow: 0 4px 18px rgba(0, 0, 0, 0.15) !important;
-    }
-    .guest-parchment-card {
-      background: rgba(255, 255, 255, 0.82) !important;
-      backdrop-filter: blur(12px) !important;
-      -webkit-backdrop-filter: blur(12px) !important;
-      border: 1.5px solid rgba(217, 119, 6, 0.45) !important;
-      border-radius: 24px !important;
-      padding: 20px 30px !important;
-      margin: 24px auto 28px !important;
-      max-width: 420px !important;
-      width: 100% !important;
-      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.08), inset 0 0 15px rgba(245, 158, 11, 0.05) !important;
-      position: relative !important;
-    }
-    .guest-parchment-card::before {
-      display: none !important; /* Remove any dashed inner border to eliminate form/coupon look */
-    }
-    .btn-buka-undangan {
-      background: linear-gradient(135deg, #D97706 0%, #B45309 50%, #78350F 100%) !important;
-      color: #FFFFFF !important;
-      border: 1.5px solid rgba(255, 255, 255, 0.6) !important;
-      padding: 16px 44px !important;
-      border-radius: 50px !important;
-      font-size: 13.5px !important;
-      font-weight: 800 !important;
-      letter-spacing: 2px !important;
-      cursor: pointer !important;
-      box-shadow: 0 12px 30px rgba(180, 83, 9, 0.45) !important;
-      display: inline-flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      gap: 12px !important;
-      transition: transform 0.25s, box-shadow 0.25s !important;
-      text-transform: uppercase !important;
-      outline: none !important;
-    }
-    .btn-buka-undangan:hover {
-      transform: translateY(-2px) scale(1.04) !important;
-      box-shadow: 0 18px 40px rgba(180, 83, 9, 0.6) !important;
-    }
-  
+    .btn-copy:hover { transform: translateY(-2px); }
   </style>
 </head>
 <body>
 
-  <canvas id="canvasParticles"></canvas>
-
-  <!-- FLOATING GUNUNGAN SIDES (KIRI & KANAN) -->
-  
-
-  
+  <!-- Partikel emas — dijalankan oleh tsParticles, bukan canvas custom -->
+  <div id="tsparticles-bg"></div>
 
   <audio id="bgMusic" loop preload="auto">
     <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=gamelan-traditional-10515.mp3" type="audio/mp3">
@@ -373,30 +337,29 @@
     <i id="musicIcon" class="fas fa-compact-disc"></i>
   </button>
 
-  <!-- COVER SECTION: KRATON GAPURA -->
+  <!-- COVER SECTION: FOTO KAMU + KRATON GAPURA -->
   <div class="cover-section" id="cover">
-    
-    <!-- GOLDEN GUNUNGAN ARTWORK -->
-    <p class="aksara-jawa-badge">ꦱꦒꦼꦢ꧀ꦲꦤꦶꦤ꧀ꦝꦏꦶ</p>
-    <p class="cover-sub-header">PAWARTOS DHAPUR PALAKRAMA</p>
-    <h1 class="cover-couple-name script-royal">Danang &amp; Sekar</h1>
-    <p class="cover-date">Setu Pahing, 05 Desember 2026</p>
+    <div class="cover-photo-layer"></div>
 
-    <!-- WAX SEALED PARCHMENT GUEST CARD -->
-    <div class="guest-parchment-card">
+    <p class="aksara-jawa-badge cover-anim d1">ꦱꦒꦼꦢ꧀ꦲꦤꦶꦤ꧀ꦝꦏꦶ</p>
+    <p class="cover-sub-header cover-anim d2">PAWARTOS DHAPUR PALAKRAMA</p>
+    <h1 class="cover-couple-name script-royal cover-anim d3">Danang &amp; Sekar</h1>
+    <p class="cover-date cover-anim d4">Setu Pahing, 05 Desember 2026</p>
+
+    <div class="guest-parchment-card cover-anim d5">
       <p style="font-size:12px; color:var(--kraton-sogan); margin-bottom:4px;">Katur Dhumateng Panjenenganipun:</p>
       <h3 style="font-size:19px; color:var(--kraton-brown); font-weight:800;" id="namaTamuCover">Bpk. Anang dan Keluarga</h3>
       <p style="font-size:11.5px; color:#8D6E63; margin-top:4px;">*Kersaa rawuh paring berkah pangestu</p>
     </div>
 
-    <button class="btn-buka-undangan" onclick="bukaUndangan()">
+    <button class="btn-buka-undangan d6" onclick="bukaUndangan()">
       <i class="fas fa-envelope-open-text"></i> BUKA UNDANGAN
     </button>
   </div>
 
   <!-- MAIN CONTENT -->
   <main class="main-wrapper" id="mainContent">
-    
+
     <!-- AYAT SUCI & DOA AR-RUM -->
     <section>
       <div class="container text-center">
@@ -413,7 +376,7 @@
       </div>
     </section>
 
-    <!-- PROFIL MEMPELAI (RADEN & RADEN AJENG BESPOKE FRAMES) -->
+    <!-- PROFIL MEMPELAI -->
     <section>
       <div class="container text-center">
         <div class="card-joglo-canopy reveal reveal-zoom">
@@ -421,26 +384,24 @@
           <svg class="card-corner br" viewBox="0 0 40 40"><path d="M5 35 L35 35 M5 35 L5 5" stroke="#C59B27" stroke-width="2.5" fill="none"/></svg>
 
           <p style="font-size:11px; letter-spacing:3px; font-weight:800; color:var(--kraton-gold-dark); text-transform:uppercase;">Temanten Sekar Kekalih</p>
-          <h2 class="serif-royal" style="font-size:26px; color:var(--kraton-brown); margin:6px 0 24px;">Mempelai Pengantin</h2>
+          <h2 class="serif-royal" style="font-size:clamp(22px,6vw,26px); color:var(--kraton-brown); margin:6px 0 24px;">Mempelai Pengantin</h2>
 
           <div class="couple-profile-wrapper">
-            <!-- GROOM -->
             <div class="mempelai-card reveal reveal-slide-left">
               <div class="joglo-groom-frame">
                 <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80" alt="Danang">
               </div>
-              <h3 style="font-size:19px; color:var(--kraton-brown); font-weight:800;">Raden Mas Danang Prasetyo, S.T.</h3>
+              <h3 style="font-size:clamp(17px,4.6vw,19px); color:var(--kraton-brown); font-weight:800;">Raden Mas Danang Prasetyo, S.T.</h3>
               <p style="font-size:12.5px; color:var(--kraton-sogan); margin-top:2px;">Putra Kakung saking Bpk. Suryo Haryono &amp; Ibu Sri Rahayu</p>
             </div>
 
             <div class="script-royal reveal reveal-zoom" style="font-size:42px; color:var(--kraton-gold-dark);">&amp;</div>
 
-            <!-- BRIDE -->
             <div class="mempelai-card reveal reveal-slide-right">
               <div class="joglo-bride-frame">
                 <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80" alt="Sekar">
               </div>
-              <h3 style="font-size:19px; color:var(--kraton-brown); font-weight:800;">Raden Ajeng Sekar Ayuningtyas, S.E.</h3>
+              <h3 style="font-size:clamp(17px,4.6vw,19px); color:var(--kraton-brown); font-weight:800;">Raden Ajeng Sekar Ayuningtyas, S.E.</h3>
               <p style="font-size:12.5px; color:var(--kraton-sogan); margin-top:2px;">Putri Pawestri saking Bpk. Bambang Sutrisno &amp; Ibu Dwi Lestari</p>
             </div>
           </div>
@@ -456,7 +417,7 @@
           <svg class="card-corner br" viewBox="0 0 40 40"><path d="M5 35 L35 35 M5 35 L5 5" stroke="#C59B27" stroke-width="2.5" fill="none"/></svg>
 
           <p style="font-size:11px; letter-spacing:3px; font-weight:800; color:var(--kraton-gold-dark); text-transform:uppercase;">Rantaman Lampahing Adicara</p>
-          <h2 class="serif-royal" style="font-size:26px; color:var(--kraton-brown); margin:6px 0 20px;">Waktu &amp; Tempat Upacara</h2>
+          <h2 class="serif-royal" style="font-size:clamp(22px,6vw,26px); color:var(--kraton-brown); margin:6px 0 20px;">Waktu &amp; Tempat Upacara</h2>
 
           <div style="background:#FFFDF8; padding:22px; border-radius:20px; margin-bottom:16px; border:1px solid rgba(197, 155, 39, 0.35);">
             <h3 style="font-size:18px; color:var(--kraton-brown);"><i class="fas fa-ring" style="color:var(--kraton-gold-dark);"></i> Akad Nikah (Ijab Qabul)</h3>
@@ -472,27 +433,25 @@
             <p style="font-size:12.5px; color:var(--kraton-sogan); margin-top:4px;">Gedung Joglo Ageng Royal Heritage, Surakarta</p>
           </div>
 
-          <!-- RANGKAIAN ADAT PANGGIH -->
-          <div class="panggih-steps-grid reveal reveal-fade-up">
-            <div class="panggih-step-box">
+          <div class="panggih-steps-grid reveal reveal-fade-up" id="panggihGrid">
+            <div class="panggih-step-box stagger-child">
               <div class="panggih-icon">1</div>
               <div><strong style="font-size:12.5px;">Balangan Gantal</strong><p style="font-size:11px; color:var(--kraton-sogan);">Silih uncal suruh katresnan</p></div>
             </div>
-            <div class="panggih-step-box">
+            <div class="panggih-step-box stagger-child">
               <div class="panggih-icon">2</div>
               <div><strong style="font-size:12.5px;">Ngidak Endhog</strong><p style="font-size:11px; color:var(--kraton-sogan);">Mijiki samparaning kakung</p></div>
             </div>
-            <div class="panggih-step-box">
+            <div class="panggih-step-box stagger-child">
               <div class="panggih-icon">3</div>
               <div><strong style="font-size:12.5px;">Sinduran</strong><p style="font-size:11px; color:var(--kraton-sogan);">Kasinjingan kain sindur abrit</p></div>
             </div>
-            <div class="panggih-step-box">
+            <div class="panggih-step-box stagger-child">
               <div class="panggih-icon">4</div>
               <div><strong style="font-size:12.5px;">Kacar-Kucur</strong><p style="font-size:11px; color:var(--kraton-sogan);">Guno kaya nafkah kulawarga</p></div>
             </div>
           </div>
 
-          <!-- Countdown -->
           <div class="countdown-grid reveal reveal-zoom">
             <div class="countdown-box"><div class="countdown-num" id="days">00</div><div class="countdown-lbl">Hari</div></div>
             <div class="countdown-box"><div class="countdown-num" id="hours">00</div><div class="countdown-lbl">Jam</div></div>
@@ -515,22 +474,22 @@
           <svg class="card-corner br" viewBox="0 0 40 40"><path d="M5 35 L35 35 M5 35 L5 5" stroke="#C59B27" stroke-width="2.5" fill="none"/></svg>
 
           <p style="font-size:11px; letter-spacing:3px; font-weight:800; color:var(--kraton-gold-dark); text-transform:uppercase;">Babad Katresnan</p>
-          <h2 class="serif-royal" style="font-size:24px; color:var(--kraton-brown); margin:6px 0 15px;">Kisah Cinta Kasultanan</h2>
+          <h2 class="serif-royal" style="font-size:clamp(20px,5.5vw,24px); color:var(--kraton-brown); margin:6px 0 15px;">Kisah Cinta Kasultanan</h2>
 
-          <div class="timeline-container">
-            <div class="timeline-item">
+          <div class="timeline-container" id="timelineGrid">
+            <div class="timeline-item stagger-child">
               <div class="timeline-bead"></div>
               <div class="timeline-year">Maret 2021</div>
               <div class="timeline-title">Wiwitan Pepanggihan</div>
               <div class="timeline-desc">Pitepangan kapisanan ing kutha Solo, lumantar raos tresna ingkang tulus lan suci.</div>
             </div>
-            <div class="timeline-item">
+            <div class="timeline-item stagger-child">
               <div class="timeline-bead"></div>
               <div class="timeline-year">Juli 2025</div>
               <div class="timeline-title">Nalika Lamaran</div>
               <div class="timeline-desc">Nyawijiaken manah kulawarga ageng kanthi pasrah paningset lan tandha tresna.</div>
             </div>
-            <div class="timeline-item" style="margin-bottom:0;">
+            <div class="timeline-item stagger-child" style="margin-bottom:0;">
               <div class="timeline-bead"></div>
               <div class="timeline-year">Desember 2026</div>
               <div class="timeline-title">Dinten Palakrama</div>
@@ -549,13 +508,13 @@
           <svg class="card-corner br" viewBox="0 0 40 40"><path d="M5 35 L35 35 M5 35 L5 5" stroke="#C59B27" stroke-width="2.5" fill="none"/></svg>
 
           <p style="font-size:11px; letter-spacing:3px; font-weight:800; color:var(--kraton-gold-dark); text-transform:uppercase;">Galeri Kenangan Manis</p>
-          <h2 class="serif-royal" style="font-size:24px; color:var(--kraton-brown); margin:6px 0 15px;">Momen Bahagia</h2>
-          
-          <div class="gallery-masonry-grid">
-            <div class="gallery-item tall reveal reveal-slide-left"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=500&auto=format&fit=crop&q=80" alt="Gallery 1"></div>
-            <div class="gallery-item reveal reveal-slide-right"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=500&auto=format&fit=crop&q=80" alt="Gallery 2"></div>
-            <div class="gallery-item reveal reveal-slide-left"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=500&auto=format&fit=crop&q=80" alt="Gallery 3"></div>
-            <div class="gallery-item tall reveal reveal-slide-right"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=500&auto=format&fit=crop&q=80" alt="Gallery 4"></div>
+          <h2 class="serif-royal" style="font-size:clamp(20px,5.5vw,24px); color:var(--kraton-brown); margin:6px 0 15px;">Momen Bahagia</h2>
+
+          <div class="gallery-masonry-grid" id="galleryGrid">
+            <div class="gallery-item tall stagger-child"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=500&auto=format&fit=crop&q=80" alt="Gallery 1"></div>
+            <div class="gallery-item stagger-child"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=500&auto=format&fit=crop&q=80" alt="Gallery 2"></div>
+            <div class="gallery-item stagger-child"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=500&auto=format&fit=crop&q=80" alt="Gallery 3"></div>
+            <div class="gallery-item tall stagger-child"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=500&auto=format&fit=crop&q=80" alt="Gallery 4"></div>
           </div>
         </div>
       </div>
@@ -569,8 +528,8 @@
           <svg class="card-corner br" viewBox="0 0 40 40"><path d="M5 35 L35 35 M5 35 L5 5" stroke="#C59B27" stroke-width="2.5" fill="none"/></svg>
 
           <p style="font-size:11px; letter-spacing:3px; font-weight:800; color:var(--kraton-gold-dark); text-transform:uppercase;">Presensi &amp; Donga Pamuji</p>
-          <h2 class="serif-royal" style="font-size:24px; color:var(--kraton-brown); margin:6px 0 15px;">Konfirmasi &amp; Doa Restu</h2>
-          
+          <h2 class="serif-royal" style="font-size:clamp(20px,5.5vw,24px); color:var(--kraton-brown); margin:6px 0 15px;">Konfirmasi &amp; Doa Restu</h2>
+
           <form onsubmit="handleRSVP(event)">
             <input type="text" id="nama" class="form-control" placeholder="Nama Lengkap Panjenengan" required>
             <select id="kehadiran" class="form-control">
@@ -600,7 +559,7 @@
           <svg class="card-corner br" viewBox="0 0 40 40"><path d="M5 35 L35 35 M5 35 L5 5" stroke="#C59B27" stroke-width="2.5" fill="none"/></svg>
 
           <p style="font-size:11px; letter-spacing:3px; font-weight:800; color:var(--kraton-gold-dark); text-transform:uppercase;">Kado Katresnan</p>
-          <h2 class="serif-royal" style="font-size:24px; color:var(--kraton-brown); margin:6px 0 15px;">Amplop Digital</h2>
+          <h2 class="serif-royal" style="font-size:clamp(20px,5.5vw,24px); color:var(--kraton-brown); margin:6px 0 15px;">Amplop Digital</h2>
           <p style="font-size:13px; color:var(--kraton-sogan); margin-bottom:20px;">Katur dhumateng para rawuh ingkang kepareng maringi tanda katresnan kanthi cara digital:</p>
 
           <div style="background:#FFFDF8; padding:20px; border-radius:18px; margin-bottom:14px; border:1px solid rgba(197, 155, 39, 0.35);">
@@ -624,7 +583,7 @@
     <footer style="padding:45px 0 30px; text-align:center; border-top:1px solid rgba(197, 155, 39, 0.35);">
       <div class="container">
         <p style="font-size:11.5px; color:var(--kraton-gold-dark); font-weight:700; letter-spacing:3px;">MATUR NUWUN</p>
-        <h3 class="script-royal" style="font-size:38px; color:var(--kraton-brown); margin:6px 0;">Danang &amp; Sekar</h3>
+        <h3 class="script-royal" style="font-size:clamp(30px,8vw,38px); color:var(--kraton-brown); margin:6px 0;">Danang &amp; Sekar</h3>
         <p style="font-size:13px; color:var(--kraton-sogan);">Sowan rawuh panjenengan sedaya dadosaken bingahing manah kula sakeluwarga 🙏</p>
         <p style="font-size:11px; color:#A48B77; margin-top:22px;">Undangan Digital by <strong>UndangYuk</strong></p>
       </div>
@@ -654,7 +613,7 @@
       const mainContent = document.getElementById('mainContent');
       if (cover) cover.classList.add('hide');
       if (mainContent) mainContent.classList.add('show');
-      if (musicToggle) musicToggle.style.display = 'flex';
+      if (musicToggle) setTimeout(() => musicToggle.classList.add('show'), 500);
       if (bgMusic) {
         bgMusic.play().then(() => {
           isPlaying = true;
@@ -662,7 +621,7 @@
         }).catch(e => console.log('Audio autoplay prevented:', e));
       }
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      initScrollReveal();
+      setTimeout(initScrollReveal, 400);
     }
 
     function toggleMusic() {
@@ -678,27 +637,44 @@
       }
     }
 
+    // Scroll reveal + stagger otomatis untuk grid berisi banyak elemen (galeri, timeline, langkah panggih)
     function initScrollReveal() {
       const reveals = document.querySelectorAll('.reveal');
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('active');
+            const children = entry.target.querySelectorAll('.stagger-child');
+            children.forEach((child, i) => {
+              child.style.setProperty('--reveal-delay', (i * 0.12) + 's');
+              child.classList.add('active');
+            });
           } else {
             entry.target.classList.remove('active');
+            entry.target.querySelectorAll('.stagger-child').forEach(child => child.classList.remove('active'));
           }
         });
       }, { threshold: 0.15 });
       reveals.forEach(el => observer.observe(el));
-    }
 
-    window.addEventListener('scroll', () => {
-      const scrollY = window.pageYOffset;
-      const leftOrn = document.querySelector('.gunungan-side.left');
-      const rightOrn = document.querySelector('.gunungan-side.right');
-      if (leftOrn) leftOrn.style.transform = 'translateY(' + (-50 + (scrollY % 100) * 0.08) + '%) rotate(' + (scrollY * 0.02) + 'deg)';
-      if (rightOrn) rightOrn.style.transform = 'translateY(' + (-50 + (scrollY % 100) * 0.08) + '%) scaleX(-1) rotate(' + (scrollY * 0.02) + 'deg)';
-    });
+      // Grid yang berisi stagger-child tapi bukan .reveal langsung (panggih, timeline, galeri)
+      ['panggihGrid', 'timelineGrid', 'galleryGrid'].forEach(id => {
+        const grid = document.getElementById(id);
+        if (grid && !grid.classList.contains('reveal')) {
+          const gridObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.querySelectorAll('.stagger-child').forEach((child, i) => {
+                  child.style.setProperty('--reveal-delay', (i * 0.12) + 's');
+                  child.classList.add('active');
+                });
+              }
+            });
+          }, { threshold: 0.2 });
+          gridObserver.observe(grid);
+        }
+      });
+    }
 
     const targetDate = new Date('December 05, 2026 08:00:00').getTime();
     setInterval(() => {
@@ -728,7 +704,7 @@
       feed.innerHTML = '';
       wishes.forEach(item => {
         const div = document.createElement('div');
-        div.className = 'wish-card reveal reveal-fade-up active';
+        div.className = 'wish-card';
         div.innerHTML = '<strong>' + esc(item.nama || 'Tamu') + '</strong> <span style="font-size:11px; font-weight:700; color:var(--kraton-gold-dark);">(' + esc(item.kehadiran || 'Sowan Rawuh') + ')</span><p>' + esc(item.ucapan || '') + '</p>';
         feed.appendChild(div);
       });
@@ -743,7 +719,7 @@
       const n = (document.getElementById('nama') ? document.getElementById('nama').value : '').trim();
       const k = document.getElementById('kehadiran') ? document.getElementById('kehadiran').value : 'Hadir';
       const u = (document.getElementById('ucapan') ? document.getElementById('ucapan').value : '').trim();
-      
+
       if (window.submitRSVPToCloud) {
         await window.submitRSVPToCloud(THEME_CLOUD_ID, { nama: n, kehadiran: k, ucapan: u });
       }
@@ -767,62 +743,40 @@
       });
     }
 
-    (function initCanvasParticles() {
-      const canvas = document.getElementById('canvasParticles');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      let width = canvas.width = window.innerWidth;
-      let height = canvas.height = window.innerHeight;
-
-      window.addEventListener('resize', () => {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
+    // ===================== PARTIKEL EMAS (tsParticles) =====================
+    // Diambil dari CDN (cdnjs) — bukan kanvas buatan tangan lagi.
+    // Efek: serbuk emas melayang turun perlahan, berkelip lembut, khas suasana kraton.
+    if (window.tsParticles) {
+      tsParticles.load('tsparticles-bg', {
+        fpsLimit: 60,
+        particles: {
+          number: { value: window.innerWidth < 600 ? 26 : 46, density: { enable: true, area: 900 } },
+          color: { value: ['#C59B27', '#D4AF37', '#F7ECC8', '#8C6A1A'] },
+          shape: { type: ['circle', 'polygon'], polygon: { nb_sides: 6 } },
+          opacity: {
+            value: 0.55, random: { enable: true, minimumValue: 0.15 },
+            animation: { enable: true, speed: 0.6, minimumValue: 0.1, sync: false }
+          },
+          size: {
+            value: 3.4, random: { enable: true, minimumValue: 1 },
+            animation: { enable: true, speed: 2, minimumValue: 0.5, sync: false }
+          },
+          move: {
+            enable: true, speed: 0.9, direction: 'bottom', random: true, straight: false,
+            outModes: { default: 'out', top: 'out', bottom: 'out' },
+            gravity: { enable: false }
+          },
+          links: { enable: false },
+          shadow: { enable: true, color: '#8C6A1A', blur: 6 }
+        },
+        interactivity: {
+          events: { onHover: { enable: true, mode: 'bubble' }, resize: true },
+          modes: { bubble: { distance: 90, size: 5, duration: 2, opacity: 0.8 } }
+        },
+        detectRetina: true,
+        background: { color: 'transparent' }
       });
-
-      const particles = [];
-      const count = window.innerWidth < 600 ? 30 : 50;
-
-      for (let i = 0; i < count; i++) {
-        particles.push({
-          x: Math.random() * width,
-          y: Math.random() * height,
-          r: Math.random() * 2.8 + 1.2,
-          dx: (Math.random() - 0.5) * 0.6,
-          dy: Math.random() * 1.2 + 0.3,
-          opacity: Math.random() * 0.7 + 0.25,
-          rot: Math.random() * Math.PI * 2,
-          rotSpeed: (Math.random() - 0.5) * 0.02
-        });
-      }
-
-      function render() {
-        ctx.clearRect(0, 0, width, height);
-        particles.forEach(p => {
-          p.x += p.dx;
-          p.y += p.dy;
-          p.rot += p.rotSpeed;
-
-          if (p.y > height) { p.y = -10; p.x = Math.random() * width; }
-          if (p.x > width) p.x = 0;
-          if (p.x < 0) p.x = width;
-
-          ctx.save();
-          ctx.translate(p.x, p.y);
-          ctx.rotate(p.rot);
-          ctx.globalAlpha = p.opacity;
-
-          ctx.fillStyle = '#C59B27';
-          ctx.shadowBlur = 8;
-          ctx.shadowColor = '#8C6A1A';
-          ctx.beginPath();
-          ctx.arc(0, 0, p.r, 0, Math.PI * 2);
-          ctx.fill();
-          ctx.restore();
-        });
-        requestAnimationFrame(render);
-      }
-      render();
-    })();
+    }
   </script>
 </body>
 </html>
