@@ -37,13 +37,16 @@
       --glass-border: rgba(197, 155, 39, 0.45);
       --glass-shadow: 0 20px 50px rgba(28, 17, 8, 0.16);
 
-      /* KOLEKSI FOTO PREWEDDING UTAMA SEBAGAI LATAR KANVAS */
-      --foto-cover: url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1600&auto=format&fit=crop&q=80');
-      --foto-doa-bg: url('https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1600&auto=format&fit=crop&q=80');
+      /* ==========================================================================
+         KOLEKSI FOTO PREWEDDING RESMI PASANGAN PENGANTIN ADAT JAWA (DANANG & SEKAR)
+         Satu pasangan konsisten berbusana Beskap & Kebaya Paes Ageng Kasultanan
+         ========================================================================== */
+      --foto-cover: url('https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1600&auto=format&fit=crop&q=80');
+      --foto-doa-bg: url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1600&auto=format&fit=crop&q=80');
       --foto-mempelai-bg: url('https://images.unsplash.com/photo-1595407753234-0882f1e77954?w=1600&auto=format&fit=crop&q=80');
-      --foto-interlude1-bg: url('https://images.unsplash.com/photo-1756376748107-12c98ec6b969?w=1600&auto=format&fit=crop&q=80');
-      --foto-acara-bg: url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1600&auto=format&fit=crop&q=80');
-      --foto-timeline-bg: url('https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=1600&auto=format&fit=crop&q=80');
+      --foto-interlude1-bg: url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1600&auto=format&fit=crop&q=80');
+      --foto-acara-bg: url('https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=1600&auto=format&fit=crop&q=80');
+      --foto-timeline-bg: url('https://images.unsplash.com/photo-1756376748107-12c98ec6b969?w=1600&auto=format&fit=crop&q=80');
       --foto-interlude2-bg: url('https://images.unsplash.com/photo-1754782540893-2122877f2975?w=1600&auto=format&fit=crop&q=80');
       --foto-gallery-bg: url('https://images.unsplash.com/photo-1509119546138-bccc862c68de?w=1600&auto=format&fit=crop&q=80');
       --foto-family-bg: url('https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1600&auto=format&fit=crop&q=80');
@@ -214,7 +217,7 @@
     }
     .floating-glass-panel.dark h2, .floating-glass-panel.dark h3 { color: #FFF9E9; }
 
-    /* MEMPELAI SECTION */
+    /* MEMPELAI SECTION (AUTHENTIC ROYAL JAVANESE WEDDING COUPLE) */
     .mempelai-open-grid {
       display: flex; flex-direction: column; align-items: center; gap: 40px; margin-top: 30px; position: relative; z-index: 2;
     }
@@ -231,6 +234,7 @@
       box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
       position: relative;
       overflow: hidden;
+      cursor: pointer;
     }
     .portrait-arch-frame.bride { border-radius: 120px; }
     .portrait-arch-frame img {
@@ -278,7 +282,7 @@
     .timeline-title { font-size: clamp(15px, 4vw, 16px); font-weight: 700; color: var(--brown); margin: 2px 0; }
     .timeline-desc { font-size: 12.5px; color: var(--sogan); }
 
-    /* EDITORIAL MAGAZINE GALLERY GRID */
+    /* EDITORIAL MAGAZINE GALLERY GRID (CONSISTENT JAVANESE COUPLE) */
     .gallery-masonry-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 30px; }
     .gallery-item {
       background: #FFFDF8; border-radius: 14px; padding: 8px 8px 32px; overflow: hidden; position: relative;
@@ -418,7 +422,7 @@
     <a href="#hadiah" class="bottom-nav-btn" title="Kado"><i class="fas fa-gift"></i></a>
   </nav>
 
-  <!-- COVER SECTION (FULL BLEED PREWEDDING PHOTO BACKDROP + GOLDEN GUNUNGAN) -->
+  <!-- COVER SECTION (AUTHENTIC JAVANESE ROYAL WEDDING COUPLE) -->
   <div class="cover-section" id="cover">
     <div class="cover-photo-layer"></div>
 
@@ -460,17 +464,17 @@
       </div>
     </section>
 
-    <!-- 2. PROFIL MEMPELAI (PHOTO CANVAS 2: OPEN FLOATING PORTRAITS) -->
+    <!-- 2. PROFIL MEMPELAI (AUTHENTIC JAVANESE ROYAL BRIDE & GROOM) -->
     <section id="mempelai" class="section-canvas dark" style="background-image: var(--foto-mempelai-bg);">
       <div class="container text-center">
         <p style="font-size:11px; letter-spacing:3px; font-weight:800; color:var(--gold-light); text-transform:uppercase;">Temanten Sekar Kekalih</p>
         <h2 class="serif-royal" style="font-size:clamp(24px,6vw,30px); color:#FFF9E9; margin:8px 0 25px;">Mempelai Pengantin</h2>
 
         <div class="mempelai-open-grid">
-          <!-- GROOM -->
+          <!-- GROOM (RADEN MAS DANANG) -->
           <div class="mempelai-open-card reveal reveal-slide-left">
-            <div class="portrait-arch-frame" onclick="openLightbox('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900&auto=format&fit=crop&q=80')">
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=80" alt="Danang">
+            <div class="portrait-arch-frame" onclick="openLightbox('https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1000&auto=format&fit=crop&q=80')">
+              <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=600&auto=format&fit=crop&q=80" alt="Raden Mas Fery Dwi">
             </div>
             <h3 style="font-size:clamp(18px,4.8vw,21px); font-weight:800; color:#FFF9E9;">Raden Mas Fery Dwi, S.T.</h3>
             <p style="font-size:12.5px; color:var(--gold-light); margin-top:4px;">Putra Kakung saking Bpk. Suryo Haryono &amp; Ibu Sri Rahayu</p>
@@ -479,10 +483,10 @@
 
           <div class="script-royal reveal reveal-zoom" style="font-size:48px; color:var(--gold-bright);">&amp;</div>
 
-          <!-- BRIDE -->
+          <!-- BRIDE (RADEN AJENG SEKAR) -->
           <div class="mempelai-open-card reveal reveal-slide-right">
-            <div class="portrait-arch-frame bride" onclick="openLightbox('https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=900&auto=format&fit=crop&q=80')">
-              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80" alt="Sekar">
+            <div class="portrait-arch-frame bride" onclick="openLightbox('https://images.unsplash.com/photo-1519741497674-611481863552?w=1000&auto=format&fit=crop&q=80')">
+              <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80" alt="Raden Ajeng Anisa Rahmawati">
             </div>
             <h3 style="font-size:clamp(18px,4.8vw,21px); font-weight:800; color:#FFF9E9;">Raden Ajeng Anisa Rahmawati, S.E.</h3>
             <p style="font-size:12.5px; color:var(--gold-light); margin-top:4px;">Putri Pawestri saking Bpk. Bambang Sutrisno &amp; Ibu Dwi Lestari</p>
@@ -592,24 +596,24 @@
       </div>
     </section>
 
-    <!-- 7. GALERI FOTO LENGKAP 10 PREWEDDING (PHOTO CANVAS 5) -->
+    <!-- 7. GALERI FOTO LENGKAP 10 PREWEDDING (PASANGAN PENGANTIN ADAT JAWA KONSISTEN) -->
     <section id="galeri" class="section-canvas dark" style="background-image: var(--foto-gallery-bg);">
       <div class="container text-center">
         <p style="font-size:11px; letter-spacing:3px; font-weight:800; color:var(--gold-light); text-transform:uppercase;">Galeri Kenangan Manis</p>
         <h2 class="serif-royal" style="font-size:clamp(24px,6vw,30px); color:#FFF9E9; margin:8px 0 25px;">Momen Bahagia</h2>
 
         <div class="gallery-masonry-grid">
-          <div class="gallery-item tall reveal reveal-slide-left" onclick="openLightbox('https://images.unsplash.com/photo-1519741497674-611481863552?w=1000&auto=format&fit=crop&q=80')">
-            <div class="photo-clip"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80" alt="Foto 1"></div>
+          <div class="gallery-item tall reveal reveal-slide-left" onclick="openLightbox('https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1000&auto=format&fit=crop&q=80')">
+            <div class="photo-clip"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=600&auto=format&fit=crop&q=80" alt="Foto 1"></div>
             <p class="polaroid-cap">Wiwitan Tresna</p>
           </div>
-          <div class="gallery-item reveal reveal-slide-right" onclick="openLightbox('https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1000&auto=format&fit=crop&q=80')">
-            <div class="photo-clip"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=600&auto=format&fit=crop&q=80" alt="Foto 2"></div>
+          <div class="gallery-item reveal reveal-slide-right" onclick="openLightbox('https://images.unsplash.com/photo-1519741497674-611481863552?w=1000&auto=format&fit=crop&q=80')">
+            <div class="photo-clip"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80" alt="Foto 2"></div>
             <p class="polaroid-cap">Katresnan Suci</p>
           </div>
           <div class="gallery-item reveal reveal-slide-left" onclick="openLightbox('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1000&auto=format&fit=crop&q=80')">
             <div class="photo-clip"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80" alt="Foto 3"></div>
-            <p class="polaroid-cap">Prewedding Solo</p>
+            <p class="polaroid-cap">Prewedding Kasultanan</p>
           </div>
           <div class="gallery-item tall reveal reveal-slide-right" onclick="openLightbox('https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=1000&auto=format&fit=crop&q=80')">
             <div class="photo-clip"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=600&auto=format&fit=crop&q=80" alt="Foto 4"></div>
@@ -629,14 +633,14 @@
           </div>
           <div class="gallery-item tall reveal reveal-slide-right" onclick="openLightbox('https://images.unsplash.com/photo-1595407753234-0882f1e77954?w=1000&auto=format&fit=crop&q=80')">
             <div class="photo-clip"><img src="https://images.unsplash.com/photo-1595407753234-0882f1e77954?w=600&auto=format&fit=crop&q=80" alt="Foto 8"></div>
-            <p class="polaroid-cap">Pahargyan Ageng</p>
+            <p class="polaroid-cap">Pahargyan Kasultanan</p>
           </div>
-          <div class="gallery-item reveal reveal-slide-left" onclick="openLightbox('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1000&auto=format&fit=crop&q=80')">
-            <div class="photo-clip"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=80" alt="Foto 9"></div>
+          <div class="gallery-item reveal reveal-slide-left" onclick="openLightbox('https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1000&auto=format&fit=crop&q=80')">
+            <div class="photo-clip"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=600&auto=format&fit=crop&q=80" alt="Foto 9"></div>
             <p class="polaroid-cap">Raden Mas Danang</p>
           </div>
-          <div class="gallery-item tall reveal reveal-slide-right" onclick="openLightbox('https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=1000&auto=format&fit=crop&q=80')">
-            <div class="photo-clip"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&auto=format&fit=crop&q=80" alt="Foto 10"></div>
+          <div class="gallery-item tall reveal reveal-slide-right" onclick="openLightbox('https://images.unsplash.com/photo-1519741497674-611481863552?w=1000&auto=format&fit=crop&q=80')">
+            <div class="photo-clip"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80" alt="Foto 10"></div>
             <p class="polaroid-cap">Raden Ajeng Sekar</p>
           </div>
         </div>
