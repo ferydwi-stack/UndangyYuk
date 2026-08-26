@@ -48,83 +48,12 @@
     /* COVER MINANG - GONJONG PEAKS */
     .cover-section {
       min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
-      text-align: center; padding: 40px 20px; position: fixed; inset: 0; z-index: 1000;
-      background: radial-gradient(circle at 50% 30%, #FFFDF7 0%, #F5E5CE 60%, #DFC196 100%);
-      transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
-    }
-    .cover-section.hide { transform: translateY(-100%); opacity: 0; pointer-events: none; }
-    
-    .gonjong-icon { width: 105px; height: auto; margin-bottom: 12px; filter: drop-shadow(0 4px 10px rgba(139, 0, 0, 0.3)); }
-    .cover-couple { font-size: 52px; line-height: 1.1; color: var(--marawa-red); margin: 15px 0 8px; text-shadow: 0 2px 8px rgba(212, 175, 55, 0.35); }
-    
-    .guest-badge {
-      background: rgba(255, 255, 255, 0.92); border: 2px solid var(--marawa-gold);
-      padding: 16px 28px; border-radius: 18px; margin: 22px 0;
-      box-shadow: 0 10px 25px rgba(139, 0, 0, 0.08); max-width: 380px; width: 100%;
-    }
-
-    .btn-seal {
-      background: linear-gradient(135deg, #8B0000 0%, #D4AF37 100%);
-      color: #FFF; border: none; padding: 15px 36px; border-radius: 30px; font-size: 14px; font-weight: 700;
-      letter-spacing: 1.5px; cursor: pointer; box-shadow: 0 10px 25px rgba(139, 0, 0, 0.35);
-      display: inline-flex; align-items: center; gap: 10px; transition: transform 0.2s;
-      animation: pulseMarawa 2s infinite;
-    }
-    .btn-seal:hover { transform: scale(1.05); }
-    @keyframes pulseMarawa {
-      0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
-      70% { box-shadow: 0 0 0 14px rgba(212, 175, 55, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
-    }
-
-    /* MAIN CONTENT */
-    .main-wrapper { opacity: 0; transition: opacity 1s ease; }
-    .main-wrapper.show { opacity: 1; }
-
-    .music-btn {
-      position: fixed; bottom: 25px; right: 25px; width: 48px; height: 48px;
-      background: var(--marawa-red); color: var(--marawa-gold-light); border-radius: 50%;
-      display: none; align-items: center; justify-content: center; font-size: 18px;
-      z-index: 998; border: 2px solid var(--marawa-gold); box-shadow: 0 5px 20px rgba(0,0,0,0.25); cursor: pointer;
-    }
-    .spin { animation: spinDisc 4s linear infinite; }
-    @keyframes spinDisc { 100% { transform: rotate(360deg); } }
-
-    section { padding: 60px 0; position: relative; }
-
-    /* CARD GONJONG PEAK SILHOUETTE */
-    .card-gonjong {
-      background: rgba(255, 255, 255, 0.92);
-      border: 2px solid rgba(212, 175, 55, 0.5);
-      border-radius: 36px 36px 20px 20px;
-      padding: 45px 24px 35px;
-      box-shadow: 0 15px 35px rgba(139, 0, 0, 0.08);
-      margin-bottom: 30px;
-      position: relative;
-    }
-    .card-gonjong::before {
-      content: ""; position: absolute; top: 0; left: 0; right: 0; height: 5px;
-      background: linear-gradient(90deg, #1A1A1A 33.3%, #8B0000 33.3% 66.6%, #D4AF37 66.6%);
-      border-radius: 36px 36px 0 0;
-    }
-
-    /* RHOMBUS DIAMOND PHOTO GEOMETRY */
-    .rhombus-frame-wrapper {
-      display: flex; justify-content: center; align-items: center; margin: 25px 0 10px;
-    }
-    .rhombus-photo-frame {
-      width: 140px; height: 140px; transform: rotate(45deg);
-      border: 3.5px solid var(--marawa-gold); border-radius: 20px;
-      overflow: hidden; box-shadow: 0 10px 25px rgba(139, 0, 0, 0.15);
-    }
-    .rhombus-photo-frame img {
-      width: 142%; height: 142%; object-fit: cover; transform: rotate(-45deg) translate(-15%, -15%);
-    }
-
-    /* GALLERY SONGKET MOSAIC */
-    .gallery-songket-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 20px; }
-    .gallery-songket-item {
-      height: 180px; border-radius: 18px; border: 2px solid var(--marawa-gold); overflow: hidden;
+      text-align: center; padding: 45px 24px; position: fixed; inset: 0; z-index: 1000;
+      background: 
+        linear-gradient(180deg, rgba(254, 249, 238, 0.88) 0%, rgba(254, 243, 199, 0.92) 100%),
+        url('https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1200&auto=format&fit=crop&q=80') center/cover no-repeat;
+      transition: transform 0.95s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.95s ease;
+      overflow: hidden;
     }
     .gallery-songket-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
     .gallery-songket-item:hover img { transform: scale(1.08); }
@@ -207,10 +136,9 @@
 
   <!-- COVER SECTION -->
   <div class="cover-section" id="cover">
-    <svg class="cultural-emblem-artwork" viewBox="0 0 140 120" fill="none">
-      <path d="M10 90 L30 30 L45 70 L70 15 L95 70 L110 30 L130 90 Z" fill="#D97706" stroke="#991B1B" stroke-width="2.5"/>
-      <rect x="25" y="85" width="90" height="30" rx="6" fill="#991B1B" stroke="#D97706" stroke-width="2"/>
-    </svg>
+    <div style="width:110px; height:110px; border-radius:50%; border:3px solid #D97706; padding:4px; margin:0 auto 14px; box-shadow:0 10px 25px rgba(0,0,0,0.15); overflow:hidden; background:#FFFDF8;">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=300&auto=format&fit=crop&q=80" alt="Emblem" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
+    </div>
     <p style="font-size:12px; letter-spacing:3px; color:var(--marawa-gold); font-weight:800; text-transform:uppercase;">Baralek Gadang</p>
     <h1 class="cursive-font cover-couple">Rasyid &amp; Mayang</h1>
     <p style="font-size:13px; color:var(--muted); font-weight:600;">Ahad, 20 Desember 2026</p>

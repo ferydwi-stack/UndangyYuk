@@ -44,69 +44,12 @@
     /* COVER LUXURY */
     .cover-section {
       min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
-      text-align: center; padding: 40px 20px; position: fixed; inset: 0; z-index: 1000;
-      background: radial-gradient(circle at 50% 30%, #171E2E 0%, #0B0F19 80%);
-      transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
-    }
-    .cover-section.hide { transform: translateY(-100%); opacity: 0; pointer-events: none; }
-    
-    .cover-couple { font-size: 48px; line-height: 1.1; color: var(--gold-luxury); margin: 15px 0 8px; font-family: 'Cinzel', serif; font-weight: 700; }
-    
-    .guest-badge {
-      background: rgba(255, 255, 255, 0.05); border: 1px solid var(--gold-luxury);
-      padding: 16px 28px; border-radius: 16px; margin: 22px 0; backdrop-filter: blur(16px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); max-width: 380px; width: 100%;
-    }
-
-    .btn-seal {
-      background: linear-gradient(135deg, #E5C378 0%, #B89243 100%);
-      color: #0B0F19; border: none; padding: 16px 40px; border-radius: 30px; font-size: 13px; font-weight: 800;
-      letter-spacing: 2px; cursor: pointer; box-shadow: 0 10px 30px rgba(229, 195, 120, 0.25);
-      display: inline-flex; align-items: center; gap: 10px; transition: transform 0.2s;
-    }
-    .btn-seal:hover { transform: scale(1.05); }
-
-    /* MAIN CONTENT */
-    .main-wrapper { opacity: 0; transition: opacity 1s ease; }
-    .main-wrapper.show { opacity: 1; }
-
-    .music-btn {
-      position: fixed; bottom: 25px; right: 25px; width: 48px; height: 48px;
-      background: rgba(255, 255, 255, 0.1); color: var(--gold-luxury); border-radius: 50%;
-      display: none; align-items: center; justify-content: center; font-size: 18px; backdrop-filter: blur(12px);
-      z-index: 998; border: 1px solid var(--gold-luxury); box-shadow: 0 5px 20px rgba(0,0,0,0.5); cursor: pointer;
-    }
-    .spin { animation: spinDisc 4s linear infinite; }
-    @keyframes spinDisc { 100% { transform: rotate(360deg); } }
-
-    section { padding: 60px 0; position: relative; }
-
-    /* GLASSMORPHISM CARD */
-    .card-glassmorphism {
-      background: var(--card-glass);
-      border: 1px solid var(--glass-border);
-      backdrop-filter: blur(20px);
-      border-radius: 24px;
-      padding: 45px 24px 35px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-      margin-bottom: 30px;
-    }
-
-    /* MAGAZINE LOOKBOOK PHOTO */
-    .lookbook-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 25px 0 10px; }
-    .lookbook-card {
-      background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border); border-radius: 16px;
-      padding: 14px 10px; text-align: center;
-    }
-    .lookbook-img {
-      width: 100%; height: 180px; object-fit: cover; border-radius: 10px;
-      filter: grayscale(15%); transition: filter 0.3s;
-    }
-    .lookbook-img:hover { filter: grayscale(0%); }
-
-    .gallery-lookbook-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 20px; }
-    .gallery-lookbook-item {
-      height: 190px; border-radius: 14px; border: 1px solid var(--glass-border); overflow: hidden;
+      text-align: center; padding: 45px 24px; position: fixed; inset: 0; z-index: 1000;
+      background: 
+        linear-gradient(180deg, rgba(9, 13, 22, 0.88) 0%, rgba(15, 23, 42, 0.92) 100%),
+        url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200&auto=format&fit=crop&q=80') center/cover no-repeat;
+      transition: transform 0.95s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.95s ease;
+      overflow: hidden;
     }
     .gallery-lookbook-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
     .gallery-lookbook-item:hover img { transform: scale(1.08); }

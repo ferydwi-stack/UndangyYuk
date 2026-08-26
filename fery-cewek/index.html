@@ -87,8 +87,8 @@
       min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
       text-align: center; padding: 45px 24px; position: fixed; inset: 0; z-index: 1000;
       background: 
-        radial-gradient(circle at 50% 25%, #FFFDF8 0%, #F5ECDA 50%, #E8D9B8 100%),
-        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23C59B27' fill-opacity='0.08'%3E%3Cpath d='M30 30L15 45L0 30L15 15L30 30zM60 30L45 45L30 30L45 15L60 30z'/%3E%3C/g%3E%3C/svg%3E");
+        linear-gradient(180deg, rgba(250, 245, 235, 0.88) 0%, rgba(245, 236, 218, 0.92) 100%),
+        url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&auto=format&fit=crop&q=80') center/cover no-repeat;
       transition: transform 0.95s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.95s ease;
       overflow: hidden;
     }
@@ -285,27 +285,9 @@
   <canvas id="canvasParticles"></canvas>
 
   <!-- FLOATING GUNUNGAN SIDES (KIRI & KANAN) -->
-  <svg class="gunungan-side left" viewBox="0 0 100 200" fill="none">
-    <path d="M50 5 L85 70 L75 140 L50 195 L25 140 L15 70 Z" fill="url(#gununganGradLeft)" stroke="#8C6A1A" stroke-width="1.5" opacity="0.45"/>
-    <circle cx="50" cy="80" r="18" fill="#F7ECC8" opacity="0.6"/>
-    <defs>
-      <linearGradient id="gununganGradLeft" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#C59B27"/>
-        <stop offset="100%" stop-color="#8C6A1A"/>
-      </linearGradient>
-    </defs>
-  </svg>
+  
 
-  <svg class="gunungan-side right" viewBox="0 0 100 200" fill="none">
-    <path d="M50 5 L85 70 L75 140 L50 195 L25 140 L15 70 Z" fill="url(#gununganGradRight)" stroke="#8C6A1A" stroke-width="1.5" opacity="0.45"/>
-    <circle cx="50" cy="80" r="18" fill="#F7ECC8" opacity="0.6"/>
-    <defs>
-      <linearGradient id="gununganGradRight" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#C59B27"/>
-        <stop offset="100%" stop-color="#8C6A1A"/>
-      </linearGradient>
-    </defs>
-  </svg>
+  
 
   <audio id="bgMusic" loop preload="auto">
     <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=gamelan-traditional-10515.mp3" type="audio/mp3">
@@ -319,18 +301,9 @@
   <div class="cover-section" id="cover">
     
     <!-- GOLDEN GUNUNGAN ARTWORK -->
-    <svg class="cover-gunungan-artwork" viewBox="0 0 100 130" fill="none">
-      <path d="M50 5 L90 55 L75 105 L50 125 L25 105 L10 55 Z" fill="url(#coverGununganGrad)" stroke="#C59B27" stroke-width="2"/>
-      <path d="M50 20 L75 60 L65 95 L50 110 L35 95 L25 60 Z" stroke="#F7ECC8" stroke-width="1.5" fill="rgba(54,34,23,0.2)"/>
-      <circle cx="50" cy="65" r="12" fill="#C59B27" stroke="#362217" stroke-width="1"/>
-      <defs>
-        <linearGradient id="coverGununganGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#F7ECC8"/>
-          <stop offset="40%" stop-color="#C59B27"/>
-          <stop offset="100%" stop-color="#5D4037"/>
-        </linearGradient>
-      </defs>
-    </svg>
+    <div style="width:110px; height:110px; border-radius:50%; border:3px solid var(--kraton-gold); padding:4px; margin:0 auto 14px; box-shadow:0 10px 25px rgba(140,106,26,0.35); overflow:hidden; background:#FFFDF8;">
+      <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=300&auto=format&fit=crop&q=80" alt="Emblem Kasultanan" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
+    </div>
 
     <p class="aksara-jawa-badge">ꦱꦒꦼꦢ꧀ꦲꦤꦶꦤ꧀ꦝꦏꦶ</p>
     <p class="cover-sub-header">PAWARTOS DHAPUR PALAKRAMA</p>

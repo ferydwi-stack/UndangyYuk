@@ -46,74 +46,12 @@
     /* COVER BATAK - RUMAH BOLON */
     .cover-section {
       min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
-      text-align: center; padding: 40px 20px; position: fixed; inset: 0; z-index: 1000;
-      background: radial-gradient(circle at 50% 30%, #FFFFFF 0%, #F4E8E8 60%, #DFC2C2 100%);
-      transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
-    }
-    .cover-section.hide { transform: translateY(-100%); opacity: 0; pointer-events: none; }
-    
-    .gorga-icon { width: 110px; height: auto; margin-bottom: 12px; filter: drop-shadow(0 4px 10px rgba(153, 27, 27, 0.35)); }
-    .cover-couple { font-size: 46px; line-height: 1.1; color: var(--gorga-red); margin: 15px 0 8px; font-family: 'Playfair Display', serif; font-weight: 700; }
-    
-    .guest-badge {
-      background: rgba(255, 255, 255, 0.95); border: 2px solid var(--gorga-red);
-      padding: 16px 28px; border-radius: 14px; margin: 22px 0;
-      box-shadow: 0 10px 25px rgba(153, 27, 27, 0.08); max-width: 380px; width: 100%;
-    }
-
-    .btn-seal {
-      background: linear-gradient(135deg, #991B1B 0%, #18181B 100%);
-      color: #FFF; border: none; padding: 15px 36px; border-radius: 30px; font-size: 14px; font-weight: 700;
-      letter-spacing: 1.5px; cursor: pointer; box-shadow: 0 10px 25px rgba(153, 27, 27, 0.35);
-      display: inline-flex; align-items: center; gap: 10px; transition: transform 0.2s;
-    }
-    .btn-seal:hover { transform: scale(1.05); }
-
-    /* MAIN CONTENT */
-    .main-wrapper { opacity: 0; transition: opacity 1s ease; }
-    .main-wrapper.show { opacity: 1; }
-
-    .music-btn {
-      position: fixed; bottom: 25px; right: 25px; width: 48px; height: 48px;
-      background: var(--gorga-red); color: #FFF; border-radius: 50%;
-      display: none; align-items: center; justify-content: center; font-size: 18px;
-      z-index: 998; border: 2px solid var(--gorga-gold); box-shadow: 0 5px 20px rgba(0,0,0,0.25); cursor: pointer;
-    }
-    .spin { animation: spinDisc 4s linear infinite; }
-    @keyframes spinDisc { 100% { transform: rotate(360deg); } }
-
-    section { padding: 60px 0; position: relative; }
-
-    /* CARD RUMAH BOLON SILHOUETTE */
-    .card-bolon {
-      background: rgba(255, 255, 255, 0.95);
-      border: 2.5px solid var(--gorga-red);
-      border-radius: 20px;
-      padding: 45px 24px 35px;
-      box-shadow: 0 15px 35px rgba(153, 27, 27, 0.08);
-      margin-bottom: 30px;
-      position: relative;
-    }
-    .card-bolon::before {
-      content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px;
-      background: repeating-linear-gradient(45deg, #991B1B, #991B1B 10px, #18181B 10px, #18181B 20px, #CA8A04 20px, #CA8A04 30px);
-      border-radius: 18px 18px 0 0;
-    }
-
-    /* WOVEN ULOS STAGGERED PHOTO FRAME */
-    .ulos-photo-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 25px 0 10px; }
-    .ulos-photo-card {
-      background: #FFF; border: 2px solid var(--gorga-black); border-radius: 16px;
-      padding: 14px 10px; text-align: center; box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-    }
-    .ulos-photo-img {
-      width: 100%; height: 160px; object-fit: cover; border-radius: 10px;
-      border-bottom: 4px solid var(--gorga-red);
-    }
-
-    .gallery-ulos-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 20px; }
-    .gallery-ulos-item {
-      height: 180px; border-radius: 14px; border: 2px solid var(--gorga-red); overflow: hidden;
+      text-align: center; padding: 45px 24px; position: fixed; inset: 0; z-index: 1000;
+      background: 
+        linear-gradient(180deg, rgba(255, 241, 242, 0.88) 0%, rgba(254, 226, 226, 0.92) 100%),
+        url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200&auto=format&fit=crop&q=80') center/cover no-repeat;
+      transition: transform 0.95s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.95s ease;
+      overflow: hidden;
     }
     .gallery-ulos-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
     .gallery-ulos-item:hover img { transform: scale(1.08); }
@@ -193,10 +131,9 @@
 
   <!-- COVER SECTION -->
   <div class="cover-section" id="cover">
-    <svg class="cultural-emblem-artwork" viewBox="0 0 140 120" fill="none">
-      <path d="M15 40 Q 70 85 125 40 L115 105 L25 105 Z" fill="#991B1B" stroke="#1C1917" stroke-width="3"/>
-      <path d="M25 50 Q 70 80 115 50" stroke="#FBBF24" stroke-width="3" fill="none"/>
-    </svg>
+    <div style="width:110px; height:110px; border-radius:50%; border:3px solid #991B1B; padding:4px; margin:0 auto 14px; box-shadow:0 10px 25px rgba(0,0,0,0.15); overflow:hidden; background:#FFFDF8;">
+      <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=300&auto=format&fit=crop&q=80" alt="Emblem" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
+    </div>
     <p style="font-size:12px; letter-spacing:3px; color:var(--gorga-gold); font-weight:800; text-transform:uppercase;">Gokhon Dohot Jou-Jou</p>
     <h1 class="cover-couple script-title">Ucok &amp; Butet</h1>
     <p style="font-size:13px; color:var(--muted); font-weight:600;">Sabtu, 26 Desember 2026</p>
