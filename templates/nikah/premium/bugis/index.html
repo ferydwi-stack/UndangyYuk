@@ -3,1031 +3,142 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Undangan Pernikahan Adat Bugis Makassar - Daeng Parani &amp; Andi Tenri</title>
-  <meta name="description" content="Mappabotting Daeng Parani &amp; Andi Tenri - Adat Bugis Makassar">
+  <title>Mappabotting Adat Bugis - Andi Muh. Rizky &amp; Andi Tenri Abeng</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
-:root {
-  --primary: #1A5235; /* Deep Emerald Bugis */
-  --primary-dark: #0D331F;
-  --gold: #D4AF37; /* Emas Sengkang */
-  --gold-light: #F9E79F;
-  --bg-cream: #F7FAF8;
-  --text-dark: #1E2D24;
-  --text-muted: #556B5D;
-  --white: #FFFFFF;
-  --shadow: 0 10px 30px rgba(26, 82, 53, 0.15);
-  --border-gold: 1px solid rgba(212, 175, 55, 0.4);
-}
+    :root {
+      --emerald: #0B4734;
+      --gold: #D4AF37;
+      --maroon: #611515;
+      --bg: #FAF9F5;
+      --shadow: 0 10px 30px rgba(11, 71, 52, 0.2);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+    body { background-color: var(--bg); color: #1E2D24; line-height: 1.6; }
+    h1, h2, h3, .cover-title { font-family: 'Cinzel', serif; color: var(--emerald); }
+    .container { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+    .text-center { text-align: center; }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-}
+    /* COVER BUGIS */
+    .cover-section {
+      position: fixed; inset: 0; background: linear-gradient(135deg, #05261C 0%, #0B4734 50%, #03140F 100%);
+      color: #FFF; display: flex; justify-content: center; align-items: center; z-index: 999;
+      transition: transform 0.8s ease; padding: 20px; text-align: center;
+    }
+    .cover-section.hide { transform: translateY(-100%); pointer-events: none; }
+    .cover-card {
+      border: 2px solid var(--gold); padding: 40px 25px; border-radius: 20px; max-width: 460px;
+      background: rgba(5, 38, 28, 0.94); box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+    }
+    .btn-buka {
+      background: var(--gold); color: #05261C; border: none; padding: 12px 32px;
+      font-size: 14px; font-weight: 800; border-radius: 30px; cursor: pointer; margin-top: 20px;
+    }
 
-body {
-  background-color: var(--bg-cream);
-  color: var(--text-dark);
-  line-height: 1.6;
-  overflow-x: hidden;
-}
+    /* MAIN */
+    .main-content { display: none; opacity: 0; transition: opacity 0.6s ease; padding-bottom: 70px; }
+    .main-content.show { display: block; opacity: 1; }
+    section { padding: 60px 0; text-align: center; }
 
-h1, h2, h3, h4, .cover-title, .nama-mempelai, .footer-names {
-  font-family: 'Cinzel', serif;
-  color: var(--primary);
-}
+    /* DIAMOND SILK CARDS */
+    .mempelai-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 30px; }
+    .silk-card {
+      background: #FFF; border: 2px solid var(--emerald); padding: 25px 20px;
+      border-radius: 20px; width: 280px; box-shadow: var(--shadow);
+    }
+    .silk-img { width: 140px; height: 180px; object-fit: cover; border-radius: 16px; border: 3px solid var(--gold); margin-bottom: 15px; }
 
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.text-center { text-align: center; }
-
-/* COVER */
-.cover-section {
-  position: fixed;
-  inset: 0;
-  background: linear-gradient(135deg, #091F14 0%, #1A5235 50%, #06140D 100%);
-  color: var(--gold-light);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-  transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
-  padding: 20px;
-  text-align: center;
-}
-
-.cover-section.hide {
-  transform: translateY(-100%);
-  opacity: 0;
-  pointer-events: none;
-}
-
-.cover-content {
-  position: relative;
-  z-index: 2;
-  max-width: 480px;
-  border: 2px solid var(--gold);
-  padding: 40px 25px;
-  border-radius: 18px;
-  background: rgba(9, 31, 20, 0.88);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-}
-
-.bugis-icon {
-  font-size: 36px;
-  color: var(--gold);
-  margin-bottom: 10px;
-}
-
-.cover-salutation {
-  font-size: 13px;
-  letter-spacing: 3px;
-  color: var(--gold);
-  font-weight: 700;
-}
-
-.cover-title {
-  font-size: 34px;
-  color: var(--gold-light);
-  margin: 6px 0;
-}
-
-.cover-date {
-  font-size: 14px;
-  color: #D3E6D8;
-}
-
-.bugis-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  margin: 15px 0 20px;
-  color: var(--gold);
-}
-.bugis-divider span { height: 1px; width: 40px; background: var(--gold); }
-
-.cover-guest-box {
-  background: rgba(0, 0, 0, 0.35);
-  border: 1px dashed var(--gold);
-  padding: 15px;
-  border-radius: 12px;
-  margin-bottom: 25px;
-}
-.cover-guest-box .kepada { font-size: 12px; color: #CCC; }
-.cover-guest-box .guest-name { font-size: 20px; color: var(--gold); margin: 5px 0; font-weight: 700; }
-.cover-guest-box .guest-note { font-size: 11px; color: #AAA; }
-
-.btn-buka {
-  background: linear-gradient(135deg, var(--gold) 0%, #B8860B 100%);
-  color: #091F14;
-  border: none;
-  padding: 12px 32px;
-  font-size: 15px;
-  font-weight: 800;
-  border-radius: 30px;
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
-  transition: all 0.3s;
-}
-.btn-buka:hover { transform: translateY(-2px); }
-
-/* MAIN CONTENT */
-.main-content {
-  display: none;
-  opacity: 0;
-  transition: opacity 0.8s ease;
-  padding-bottom: 80px;
-}
-.main-content.show {
-  display: block;
-  opacity: 1;
-}
-
-section { padding: 65px 0; position: relative; }
-.section-heading { margin-bottom: 40px; }
-.section-heading .sub-title {
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 12px;
-  color: var(--primary);
-  font-weight: 700;
-}
-.section-heading h2 { font-size: 28px; margin: 5px 0 10px; }
-.heading-line { width: 60px; height: 3px; background: var(--primary); margin: 0 auto; border-radius: 2px; }
-
-/* HERO */
-.section-hero {
-  background: linear-gradient(180deg, #E6EFE8 0%, var(--bg-cream) 100%);
-  padding: 75px 0 45px;
-}
-.bugis-badge {
-  display: inline-block;
-  background: var(--primary);
-  color: #FFF;
-  font-size: 12px;
-  padding: 6px 16px;
-  border-radius: 20px;
-  font-weight: 600;
-  margin-bottom: 18px;
-}
-.bismillah-arab { font-size: 24px; color: var(--primary-dark); margin-bottom: 8px; }
-.salam-teks { font-weight: 700; color: var(--primary-dark); margin-bottom: 12px; }
-.opening-quote { font-style: italic; max-width: 650px; margin: 0 auto 10px; color: var(--text-muted); font-size: 14px; }
-.surah-label { font-size: 13px; font-weight: 700; color: var(--gold); }
-
-/* MEMPELAI (DIAMOND FRAME) */
-.mempelai-grid {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
-  flex-wrap: wrap;
-}
-.mempelai-card.diamond-card {
-  background: var(--white);
-  border: var(--border-gold);
-  border-radius: 18px;
-  padding: 30px 20px;
-  text-align: center;
-  flex: 1;
-  min-width: 260px;
-  max-width: 350px;
-  box-shadow: var(--shadow);
-}
-.diamond-photo-wrapper {
-  width: 145px;
-  height: 165px;
-  margin: 0 auto 20px;
-  border-radius: 16px;
-  overflow: hidden;
-  position: relative;
-  border: 3px solid var(--gold);
-  box-shadow: 0 8px 20px rgba(26, 82, 53, 0.25);
-}
-.diamond-photo-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.nama-mempelai { font-size: 20px; margin-bottom: 4px; }
-.gelar-adat { font-size: 12px; color: var(--primary); font-weight: 700; margin-bottom: 12px; }
-.info-ortu { font-size: 13px; color: var(--text-muted); margin-bottom: 15px; }
-.asal-kota { display: block; font-size: 12px; color: var(--primary); margin-top: 4px; font-weight: 600; }
-.sosmed-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--primary);
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: 600;
-  padding: 6px 14px;
-  background: #E6EFE8;
-  border-radius: 20px;
-  transition: 0.3s;
-}
-.sosmed-link:hover { background: var(--primary); color: #FFF; }
-.ampersand-circle {
-  width: 50px;
-  height: 50px;
-  background: var(--primary);
-  color: var(--gold);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Cinzel', serif;
-  font-size: 24px;
-  font-weight: 700;
-}
-
-/* COUNTDOWN */
-.section-countdown {
-  background: linear-gradient(135deg, #091F14 0%, #1A5235 100%);
-  color: var(--white);
-}
-.countdown-heading { color: var(--gold-light); margin-bottom: 25px; font-size: 20px; }
-.timer-grid { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; }
-.timer-box {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid var(--gold);
-  border-radius: 12px;
-  padding: 15px 12px;
-  min-width: 70px;
-}
-.timer-num { display: block; font-size: 28px; font-weight: 700; color: var(--gold-light); font-family: 'Cinzel', serif; }
-.timer-label { font-size: 11px; text-transform: uppercase; color: #CCC; }
-.btn-secondary {
-  display: inline-block;
-  background: transparent;
-  border: 1px solid var(--gold);
-  color: var(--gold-light);
-  text-decoration: none;
-  padding: 10px 22px;
-  border-radius: 25px;
-  font-size: 13px;
-  font-weight: 600;
-  transition: 0.3s;
-}
-.btn-secondary:hover { background: var(--gold); color: #091F14; }
-
-/* ACARA */
-.acara-grid { display: flex; gap: 25px; flex-wrap: wrap; justify-content: center; }
-.acara-card {
-  background: var(--white);
-  border: var(--border-gold);
-  border-radius: 18px;
-  padding: 30px 20px;
-  text-align: center;
-  flex: 1;
-  min-width: 280px;
-  max-width: 400px;
-  box-shadow: var(--shadow);
-  position: relative;
-}
-.acara-card.highlight { border: 2px solid var(--primary); }
-.acara-badge {
-  position: absolute;
-  top: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--primary);
-  color: var(--gold-light);
-  padding: 4px 16px;
-  border-radius: 12px;
-  font-size: 11px;
-  font-weight: 700;
-}
-.acara-icon { font-size: 32px; color: var(--gold); margin-bottom: 12px; }
-.acara-tanggal, .acara-waktu { font-size: 14px; color: var(--text-dark); margin: 4px 0; font-weight: 600; }
-.acara-tempat { margin: 15px 0 20px; padding: 12px; background: #EBF2ED; border-radius: 8px; font-size: 13px; }
-.acara-tempat strong { display: block; color: var(--primary-dark); margin-bottom: 4px; }
-.btn-map {
-  display: inline-block;
-  background: var(--primary);
-  color: var(--white);
-  text-decoration: none;
-  padding: 10px 20px;
-  border-radius: 20px;
-  font-size: 13px;
-  font-weight: 600;
-  transition: 0.3s;
-}
-.btn-map:hover { background: var(--primary-dark); }
-
-/* GALLERY (6 FOTO GRID BUGIS) */
-.gallery-subtitle { font-size: 13px; color: var(--text-muted); margin-top: 5px; }
-.bugis-gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-}
-.bugis-photo-card {
-  cursor: pointer;
-}
-.bugis-photo-inner {
-  height: 240px;
-  border-radius: 14px;
-  overflow: hidden;
-  position: relative;
-  border: 2px solid var(--gold);
-  box-shadow: var(--shadow);
-}
-.bugis-photo-inner img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s;
-}
-.bugis-photo-inner:hover img { transform: scale(1.08); }
-
-.zoom-hint {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  background: rgba(0,0,0,0.6);
-  color: var(--gold);
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-.bugis-photo-inner:hover .zoom-hint { opacity: 1; }
-
-/* LIGHTBOX */
-.lightbox-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.9);
-  z-index: 10000;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-.lightbox-modal.show { display: flex; }
-.lightbox-modal img {
-  max-width: 90vw;
-  max-height: 85vh;
-  border-radius: 10px;
-  border: 2px solid var(--gold);
-  box-shadow: 0 10px 40px rgba(0,0,0,0.8);
-}
-.lightbox-close {
-  position: absolute;
-  top: 25px;
-  right: 35px;
-  color: #FFF;
-  font-size: 35px;
-  cursor: pointer;
-}
-
-/* GIFT */
-.gift-desc { max-width: 550px; margin: 10px auto 0; font-size: 14px; color: var(--text-muted); }
-.gift-cards { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 30px; }
-.bank-card {
-  background: linear-gradient(135deg, #1A5235 0%, #091F14 100%);
-  color: var(--white);
-  border: 1px solid var(--gold);
-  border-radius: 16px;
-  padding: 25px 20px;
-  min-width: 270px;
-  max-width: 320px;
-  text-align: left;
-}
-.bank-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; color: var(--gold); }
-.bank-name { font-weight: 700; }
-.bank-number { font-family: 'Cinzel', serif; font-size: 22px; color: var(--gold-light); margin-bottom: 5px; }
-.bank-owner { font-size: 13px; color: #CCC; margin-bottom: 20px; }
-.btn-copy {
-  width: 100%;
-  background: var(--gold);
-  color: #091F14;
-  border: none;
-  padding: 10px;
-  border-radius: 8px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: 0.3s;
-}
-.btn-copy:hover { background: var(--gold-light); }
-
-/* RSVP */
-.section-rsvp { background: #EBF2ED; }
-.rsvp-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 850px; margin: 0 auto; }
-@media (max-width: 768px) { .rsvp-wrapper { grid-template-columns: 1fr; } }
-.rsvp-form, .guestbook-list {
-  background: var(--white);
-  padding: 25px;
-  border-radius: 16px;
-  box-shadow: var(--shadow);
-  border: var(--border-gold);
-}
-.form-group { margin-bottom: 15px; text-align: left; }
-.form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 5px; }
-.form-group input, .form-group select, .form-group textarea {
-  width: 100%;
-  padding: 10px 12px;
-  border: 1px solid #CCC;
-  border-radius: 8px;
-  font-size: 14px;
-  outline: none;
-}
-.btn-submit {
-  width: 100%;
-  background: var(--primary);
-  color: var(--white);
-  border: none;
-  padding: 12px;
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 14px;
-  cursor: pointer;
-}
-.guest-messages { max-height: 300px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
-.msg-card { background: var(--bg-cream); padding: 12px; border-radius: 8px; border-left: 4px solid var(--gold); text-align: left; }
-.msg-author { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 4px; }
-.badge-hadir { background: #2E7D32; color: #FFF; font-size: 10px; padding: 2px 6px; border-radius: 4px; }
-.msg-card p { font-size: 12px; }
-.msg-time { display: block; font-size: 10px; color: #888; margin-top: 4px; }
-
-/* FOOTER */
-.section-footer { background: #06140D; color: var(--white); padding: 50px 0 90px; }
-.pantun-bugis { font-style: italic; font-size: 14px; color: var(--gold-light); max-width: 600px; margin: 0 auto 20px; line-height: 1.8; }
-.footer-names { font-size: 28px; color: var(--gold); margin-bottom: 10px; }
-.copyright { font-size: 12px; color: #888; }
-
-/* BOTTOM NAV */
-.bottom-nav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  display: flex;
-  justify-content: space-around;
-  padding: 8px 0;
-  box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.08);
-  z-index: 900;
-  border-top: 1px solid rgba(212, 175, 55, 0.3);
-}
-.nav-link { display: flex; flex-direction: column; align-items: center; text-decoration: none; color: var(--text-muted); font-size: 11px; }
-.nav-link i { font-size: 18px; margin-bottom: 2px; }
-.nav-link:hover { color: var(--primary); }
-
-.music-toggle {
-  position: fixed;
-  bottom: 75px;
-  right: 20px;
-  width: 44px;
-  height: 44px;
-  background: var(--gold);
-  color: #091F14;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  z-index: 950;
-  font-size: 20px;
-}
-.spin { animation: spinMusic 3s linear infinite; }
-@keyframes spinMusic { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
-.toast {
-  position: fixed;
-  bottom: 80px;
-  left: 50%;
-  transform: translateX(-50%) translateY(100px);
-  background: #333;
-  color: #FFF;
-  padding: 12px 24px;
-  border-radius: 30px;
-  font-size: 13px;
-  z-index: 1000;
-  opacity: 0;
-  transition: all 0.4s ease;
-  pointer-events: none;
-}
-.toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
-
-
-/* ========================================================
-   ENHANCED UTILITIES & SECTION STYLING (PERFECT RENDER)
-   ======================================================== */
-.section-mempelai, .section-acara, .section-galeri, .section-gift, .section-profil, .section-cerita, .section-rsvp {
-  width: 100%;
-  position: relative;
-  box-sizing: border-box;
-}
-
-.mempelai-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-  margin: 20px 0;
-  font-size: 22px;
-  color: var(--gold, var(--primary, #D4AF37));
-}
-.mempelai-divider span {
-  display: block;
-  width: 50px;
-  height: 1px;
-  background: var(--gold, var(--primary, #D4AF37));
-  opacity: 0.5;
-}
-
-.gift-desc {
-  font-size: 14px;
-  color: var(--text-muted, #64748B);
-  max-width: 520px;
-  margin: 0 auto 30px;
-  line-height: 1.6;
-}
-
-.bank-name {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--text-dark, #1E293B);
-  margin-bottom: 4px;
-}
-
-.closing-thanks {
-  font-size: 15px;
-  color: var(--text-muted, #64748B);
-  line-height: 1.7;
-  max-width: 580px;
-  margin: 0 auto 25px;
-}
-
-.arch-border-gold, .gonjong-frame-gold, .oval-border-gold {
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  border: 1px solid rgba(212, 175, 55, 0.4);
-}
-
-.bali-mandala-bg, .sutera-bg-pattern, .songket-bg-pattern, .dayak-pattern-bg, .madura-bg-pattern, .rustic-leaf-bg {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.05;
-}
-
-
-/* PURE CSS SMOOTH ANIMATIONS */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes zoomIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
-}
-.cover-content {
-  animation: zoomIn 0.8s ease-out forwards;
-}
-.section-hero .container, .section-heading {
-  animation: fadeInUp 0.8s ease-out forwards;
-}
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-</style>
+    .music-toggle { position: fixed; bottom: 25px; left: 25px; width: 45px; height: 45px; background: var(--emerald); color: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; z-index: 998; cursor: pointer; border: 2px solid var(--gold); }
+  </style>
 </head>
 <body>
-
   <audio id="bgMusic" loop>
     <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=traditional-asian-melody-113337.mp3" type="audio/mp3">
   </audio>
 
   <div class="music-toggle" id="musicToggle" onclick="toggleMusic()" style="display:none;">
-    <i class="fas fa-compact-disc spin" id="musicIcon"></i>
+    <i class="fas fa-gem"></i>
   </div>
 
-  <div id="toast" class="toast"><i class="fas fa-check-circle"></i> Nomor rekening berhasil disalin!</div>
-
-  <div id="lightboxModal" class="lightbox-modal" onclick="closeLightbox()">
-    <span class="lightbox-close">&times;</span>
-    <img id="lightboxImg" src="" alt="Fullscreen Preview">
-  </div>
-
-  <!-- COVER -->
   <div class="cover-section" id="cover">
-    <div class="sutera-bg-pattern"></div>
-    <div class="cover-content" style="opacity:1 !important; visibility:visible !important;">
-      <div class="bugis-icon"><i class="fas fa-ship"></i></div>
-      <p class="cover-salutation">MAPPABOTTING (ADAT BUGIS MAKASSAR)</p>
-      <h1 class="cover-title">Daeng Parani &amp; Andi Tenri</h1>
-      <p class="cover-date">Ahad, 08 Nopember 2026</p>
-      
-      <div class="bugis-divider">
-        <span></span><i class="fas fa-gem"></i><span></span>
+    <div class="cover-card">
+      <i class="fas fa-shield-alt" style="font-size:36px; color:var(--gold); margin-bottom:10px;"></i>
+      <p style="font-size:12px; letter-spacing:4px; color:var(--gold);">MAPPABOTTING ADAT BUGIS</p>
+      <h1 class="cover-title" style="color:#FFF; font-size:30px; margin:10px 0;">Andi Rizky &amp; Andi Tenri</h1>
+      <p style="font-size:13px; color:#B0D6C8;">Ahad, 22 November 2026</p>
+      <div style="margin:20px 0; padding:12px; background:rgba(0,0,0,0.5); border:1px dashed var(--gold); border-radius:12px;">
+        <p style="font-size:11px; color:#DDD;">Tabea / Kpd Yth:</p>
+        <h3 style="font-size:18px; color:var(--gold);" id="namaTamuCover">Tamu Undangan</h3>
       </div>
-
-      <div class="cover-guest-box">
-        <p class="kepada">Mappatabe' Katur Majeng Ri:</p>
-        <h3 class="guest-name" id="namaTamuCover">Tamu Undangan</h3>
-        <p class="guest-note">Sipakalebbi, Sipakatau, Sipakainge</p>
-      </div>
-
-      <button class="btn-buka" onclick="bukaUndangan()">
-        <i class="fas fa-envelope-open-text"></i> Buka Undangan
-      </button>
+      <button class="btn-buka" onclick="bukaUndangan()"><i class="fas fa-envelope-open"></i> Buka Undangan</button>
     </div>
   </div>
 
-  <!-- MAIN CONTENT -->
   <main class="main-content" id="mainContent">
-
-    <section class="section-hero">
-      <div class="container text-center">
-        <div class="bugis-badge">Adat Bugis Makassar — Balla Lompoa</div>
-        <p class="bismillah-arab">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p>
-        <p class="salam-teks">Assalamu’alaikum Warahmatullahi Wabarakatuh</p>
-        <p class="opening-quote">
-          "Taro ada taro gau, sompa nenniya botting ripallawa ada mateppe, nalolongang berkah saba' pappaseng tomatoa."
+    <section style="background:linear-gradient(180deg, #E6F2ED 0%, var(--bg) 100%);">
+      <div class="container">
+        <span style="background:var(--emerald); color:var(--gold); padding:5px 16px; border-radius:20px; font-size:11px; font-weight:700;">Adat Bugis Makassar &bull; Balla Lompoa</span>
+        <h2 style="font-size:24px; margin:15px 0 8px;">Mappabotting Ri Salassae</h2>
+        <p style="font-style:italic; max-width:600px; margin:0 auto; font-size:13px; color:#446152;">
+          "Sipakatau, Sipakalebbi, Sipakainge.. Saling menghormati, memuliakan, dan mengingatkan dalam ikatan suci pernikahan."
         </p>
-        <p class="surah-label">— Paseng Ri Ade —</p>
       </div>
     </section>
 
-    <!-- MEMPELAI (DIAMOND FRAME) -->
-    <section class="section-mempelai" id="mempelai">
+    <!-- MEMPELAI -->
+    <section>
       <div class="container">
-        <div class="section-heading text-center">
-          <span class="sub-title">Mempelai Pria &amp; Wanita</span>
-          <h2>Dua Hati Saling Terpaut</h2>
-          <div class="heading-line"></div>
-        </div>
-
+        <h2>Mempelai Botting</h2>
         <div class="mempelai-grid">
-          <!-- Pria -->
-          <div class="mempelai-card diamond-card">
-            <div class="diamond-photo-wrapper">
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=80" alt="Daeng Parani">
-            </div>
-            <h3 class="nama-mempelai">Muhammad Parani (Daeng Parani)</h3>
-            <p class="gelar-adat">Mempelai Pria</p>
-            <p class="info-ortu">
-              Putra tercinta dari<br>
-              <strong>Bpk. H. Andi Mappanyukki</strong> &amp; <strong>Ibu Hj. Andi Bau Massepe</strong><br>
-              <span class="asal-kota">Sengkang, Wajo</span>
-            </p>
-            <a href="https://instagram.com" target="_blank" class="sosmed-link"><i class="fab fa-instagram"></i> @daengparani</a>
+          <div class="silk-card">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=80" class="silk-img" alt="Rizky">
+            <h3 style="font-size:18px;">Andi Muh. Rizky, S.H.</h3>
+            <p style="font-size:12px; color:var(--emerald); font-weight:700;">Mempelai Laki-laki</p>
+            <p style="font-size:12px; color:#777;">Putra Andi Baso Patunru &amp; Andi Nurhayati</p>
           </div>
-
-          <div class="mempelai-divider">
-            <div class="ampersand-circle">&amp;</div>
-          </div>
-
-          <!-- Wanita -->
-          <div class="mempelai-card diamond-card">
-            <div class="diamond-photo-wrapper">
-              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80" alt="Andi Tenri">
-            </div>
-            <h3 class="nama-mempelai">Andi Tenri Olle, S.E.</h3>
-            <p class="gelar-adat">Mempelai Wanita</p>
-            <p class="info-ortu">
-              Putri tercinta dari<br>
-              <strong>Bpk. Andi Mallarangeng</strong> &amp; <strong>Ibu Hj. Andi Nurhayani</strong><br>
-              <span class="asal-kota">Somba Opu, Gowa</span>
-            </p>
-            <a href="https://instagram.com" target="_blank" class="sosmed-link"><i class="fab fa-instagram"></i> @anditenri_olle</a>
+          <div class="silk-card">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&auto=format&fit=crop&q=80" class="silk-img" alt="Tenri">
+            <h3 style="font-size:18px;">Andi Tenri Abeng, S.E.</h3>
+            <p style="font-size:12px; color:var(--emerald); font-weight:700;">Mempelai Perempuan</p>
+            <p style="font-size:12px; color:#777;">Putri Andi Mappatunru &amp; Andi Bau Sitti</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- COUNTDOWN -->
-    <section class="section-countdown">
-      <div class="container text-center">
-        <h3 class="countdown-heading">Menghitung Hari Mappabotting</h3>
-        <div class="timer-grid">
-          <div class="timer-box"><span class="timer-num" id="days">00</span><span class="timer-label">Hari</span></div>
-          <div class="timer-box"><span class="timer-num" id="hours">00</span><span class="timer-label">Jam</span></div>
-          <div class="timer-box"><span class="timer-num" id="minutes">00</span><span class="timer-label">Menit</span></div>
-          <div class="timer-box"><span class="timer-num" id="seconds">00</span><span class="timer-label">Detik</span></div>
-        </div>
-        <a href="https://calendar.google.com" target="_blank" class="btn-secondary">
-          <i class="far fa-calendar-plus"></i> Simpan ke Google Calendar
-        </a>
-      </div>
-    </section>
-
-    <!-- ACARA -->
-    <section class="section-acara" id="acara">
+    <!-- RUNDOWN BUGIS -->
+    <section style="background:#E6F2ED;">
       <div class="container">
-        <div class="section-heading text-center">
-          <span class="sub-title">Waktu &amp; Lokasi</span>
-          <h2>Rangkaian Acara</h2>
-          <div class="heading-line"></div>
-        </div>
-
-        <div class="acara-grid">
-          <div class="acara-card">
-            <div class="acara-icon"><i class="fas fa-mosque"></i></div>
-            <h3>Akad Nikah &amp; Mappasikarawa</h3>
-            <p class="acara-tanggal"><i class="far fa-calendar-alt"></i> Ahad, 08 Nopember 2026</p>
-            <p class="acara-waktu"><i class="far fa-clock"></i> 09.00 - 11.00 WITA</p>
-            <div class="acara-tempat">
-              <strong>Masjid Raya Makassar</strong>
-              <p>Jl. Masjid Raya, Bontoala, Kota Makassar, Sulawesi Selatan</p>
-            </div>
-            <a href="https://maps.google.com" target="_blank" class="btn-map"><i class="fas fa-location-arrow"></i> Petunjuk Arah</a>
-          </div>
-
-          <div class="acara-card highlight">
-            <div class="acara-badge">Mappabotting &amp; Resepsi</div>
-            <div class="acara-icon"><i class="fas fa-glass-cheers"></i></div>
-            <h3>Resepsi Pernikahan</h3>
-            <p class="acara-tanggal"><i class="far fa-calendar-alt"></i> Ahad, 08 Nopember 2026</p>
-            <p class="acara-waktu"><i class="far fa-clock"></i> 13.00 - 17.00 WITA</p>
-            <div class="acara-tempat">
-              <strong>Ballroom Phinisi - Hotel Claro Makassar</strong>
-              <p>Jl. A. P. Pettarani No. 3, Mannuruki, Kota Makassar</p>
-            </div>
-            <a href="https://maps.google.com" target="_blank" class="btn-map"><i class="fas fa-location-arrow"></i> Petunjuk Arah</a>
-          </div>
+        <h2>Rangkaian Acara Adat</h2>
+        <div style="background:#FFF; padding:25px; border-radius:16px; max-width:600px; margin:20px auto; text-align:left; border-left:4px solid var(--emerald);">
+          <p><strong>1. Malam Mappacci (Pembersihan Jiwa):</strong><br>Sabtu Malam, 21 November 2026 | 19.30 WITA</p>
+          <hr style="margin:12px 0; border:none; border-top:1px solid #E2E8F0;">
+          <p><strong>2. Akad Nikah &amp; Resepsi Madduppa Botting:</strong><br>Ahad, 22 November 2026 | 10.00 - 15.00 WITA (Ballroom Claro Makassar)</p>
         </div>
       </div>
     </section>
-
-    <!-- GALERI FOTO (6 FOTO GRID SUTERA) -->
-    <section class="section-galeri" id="galeri">
-      <div class="container">
-        <div class="section-heading text-center">
-          <span class="sub-title">Dokumentasi Foto</span>
-          <h2>Galeri Pesona Bugis Makassar (6 Potret)</h2>
-          <div class="heading-line"></div>
-          <p class="gallery-subtitle">Klik gambar untuk melihat ukuran besar</p>
-        </div>
-
-        <div class="bugis-gallery-grid">
-          <div class="bugis-photo-card" onclick="openLightbox('https://images.unsplash.com/photo-1519741497674-611481863552?w=1000&auto=format&fit=crop&q=80')">
-            <div class="bugis-photo-inner">
-              <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80" alt="Bugis 1">
-              <div class="zoom-hint"><i class="fas fa-search-plus"></i></div>
-            </div>
-          </div>
-          <div class="bugis-photo-card" onclick="openLightbox('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1000&auto=format&fit=crop&q=80')">
-            <div class="bugis-photo-inner">
-              <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80" alt="Bugis 2">
-              <div class="zoom-hint"><i class="fas fa-search-plus"></i></div>
-            </div>
-          </div>
-          <div class="bugis-photo-card" onclick="openLightbox('https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1000&auto=format&fit=crop&q=80')">
-            <div class="bugis-photo-inner">
-              <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=600&auto=format&fit=crop&q=80" alt="Bugis 3">
-              <div class="zoom-hint"><i class="fas fa-search-plus"></i></div>
-            </div>
-          </div>
-          <div class="bugis-photo-card" onclick="openLightbox('https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1000&auto=format&fit=crop&q=80')">
-            <div class="bugis-photo-inner">
-              <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600&auto=format&fit=crop&q=80" alt="Bugis 4">
-              <div class="zoom-hint"><i class="fas fa-search-plus"></i></div>
-            </div>
-          </div>
-          <div class="bugis-photo-card" onclick="openLightbox('https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=1000&auto=format&fit=crop&q=80')">
-            <div class="bugis-photo-inner">
-              <img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=600&auto=format&fit=crop&q=80" alt="Bugis 5">
-              <div class="zoom-hint"><i class="fas fa-search-plus"></i></div>
-            </div>
-          </div>
-          <div class="bugis-photo-card" onclick="openLightbox('https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=1000&auto=format&fit=crop&q=80')">
-            <div class="bugis-photo-inner">
-              <img src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=600&auto=format&fit=crop&q=80" alt="Bugis 6">
-              <div class="zoom-hint"><i class="fas fa-search-plus"></i></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- AMPLOP DIGITAL -->
-    <section class="section-gift" id="gift">
-      <div class="container">
-        <div class="section-heading text-center">
-          <span class="sub-title">Tanda Kasih</span>
-          <h2>Kado &amp; Amplop Digital</h2>
-          <div class="heading-line"></div>
-          <p class="gift-desc">Doa restu Anda adalah kehormatan bagi kami. Bagi yang berkenan memberikan kado digital:</p>
-        </div>
-
-        <div class="gift-cards">
-          <div class="bank-card">
-            <div class="bank-header"><span class="bank-name">BANK BNI</span><i class="fas fa-credit-card"></i></div>
-            <div class="bank-number" id="rek1">0819283746</div>
-            <p class="bank-owner">a.n. Muhammad Parani</p>
-            <button class="btn-copy" onclick="copyRek('0819283746', this)"><i class="far fa-copy"></i> Salin Rekening BNI</button>
-          </div>
-
-          <div class="bank-card">
-            <div class="bank-header"><span class="bank-name">BANK BRI</span><i class="fas fa-credit-card"></i></div>
-            <div class="bank-number" id="rek2">0029384756102</div>
-            <p class="bank-owner">a.n. Andi Tenri Olle</p>
-            <button class="btn-copy" onclick="copyRek('0029384756102', this)"><i class="far fa-copy"></i> Salin Rekening BRI</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- RSVP & BUKU TAMU -->
-    <section class="section-rsvp" id="rsvp">
-      <div class="container">
-        <div class="section-heading text-center">
-          <span class="sub-title">Konfirmasi &amp; Doa</span>
-          <h2>Buku Tamu Mappabotting</h2>
-          <div class="heading-line"></div>
-        </div>
-
-        <div class="rsvp-wrapper">
-          <form class="rsvp-form" id="rsvpForm" onsubmit="handleRSVP(event)">
-            <div class="form-group">
-              <label for="nama">Nama Lengkap</label>
-              <input type="text" id="nama" placeholder="Masukkan nama..." required>
-            </div>
-            <div class="form-group">
-              <label for="kehadiran">Konfirmasi Kehadiran</label>
-              <select id="kehadiran" required>
-                <option value="">-- Pilih Kehadiran --</option>
-                <option value="Hadir">Insya Allah Hadir</option>
-                <option value="Tidak Hadir">Berhalangan Hadir</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="ucapan">Doa &amp; Restu</label>
-              <textarea id="ucapan" rows="3" placeholder="Tuliskan doa restu..." required></textarea>
-            </div>
-            <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Kirim Doa Restu</button>
-          </form>
-
-          <div class="guestbook-list" id="guestbookList">
-            <h3>Doa Sanak Saudara &amp; Kerabat</h3>
-            <div class="guest-messages" id="messagesContainer">
-              <!-- Rendered via LocalStorage -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="section-footer text-center">
-      <div class="container">
-        <p class="pantun-bugis">
-          "Sipakalebbi, sipakatau, sipakainge.<br>
-          Mogi Allah Ta'ala salama'ki bottinge lalo ri decengnge."
-        </p>
-        <p class="closing-thanks">Kurru Sumange' &amp; Terima Kasih Atas Doa Restunya.</p>
-        <h4 class="footer-names">Daeng Parani &amp; Andi Tenri</h4>
-        <p class="copyright">&copy; 2026 Daeng Parani &amp; Andi Tenri. Template Undangan Adat Bugis Makassar.</p>
-      </div>
-    </footer>
-
-    <!-- BOTTOM NAVBAR -->
-    <nav class="bottom-nav">
-      <a href="#mempelai" class="nav-link"><i class="fas fa-heart"></i><span>Mempelai</span></a>
-      <a href="#acara" class="nav-link"><i class="far fa-calendar-alt"></i><span>Acara</span></a>
-      <a href="#galeri" class="nav-link"><i class="far fa-images"></i><span>Galeri</span></a>
-      <a href="#gift" class="nav-link"><i class="fas fa-gift"></i><span>Kado</span></a>
-      <a href="#rsvp" class="nav-link"><i class="far fa-comment-dots"></i><span>Buku Tamu</span></a>
-    </nav>
-
   </main>
 
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
-    AOS.init({ duration: 800, once: true });
-
     const urlParams = new URLSearchParams(window.location.search);
-    const guestParam = urlParams.get('to') || urlParams.get('p') || urlParams.get('guest') || 'Tamu Undangan';
-    document.getElementById('namaTamuCover').textContent = guestParam;
-
+    document.getElementById('namaTamuCover').textContent = urlParams.get('to') || 'Tamu Undangan';
     const bgMusic = document.getElementById('bgMusic');
     const musicToggle = document.getElementById('musicToggle');
-    const musicIcon = document.getElementById('musicIcon');
     let isPlaying = false;
-
     function bukaUndangan() {
       document.getElementById('cover').classList.add('hide');
       document.getElementById('mainContent').classList.add('show');
       musicToggle.style.display = 'flex';
-      bgMusic.play().then(() => { isPlaying = true; musicIcon.classList.add('spin'); 
-      if (typeof AOS !== 'undefined') {
-        setTimeout(() => { AOS.refresh(); }, 150);
-      }
-    }).catch(e => console.log(e));
+      bgMusic.play().then(() => { isPlaying = true; }).catch(e => console.log(e));
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-
     function toggleMusic() {
-      if (isPlaying) { bgMusic.pause(); musicIcon.classList.remove('spin'); isPlaying = false; }
-      else { bgMusic.play(); musicIcon.classList.add('spin'); isPlaying = true; }
+      if (isPlaying) { bgMusic.pause(); isPlaying = false; }
+      else { bgMusic.play(); isPlaying = true; }
     }
-
-    const weddingDate = new Date('November 8, 2026 09:00:00').getTime();
-    setInterval(() => {
-      const now = new Date().getTime();
-      const diff = weddingDate - now;
-      if (diff > 0) {
-        document.getElementById('days').innerText = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
-        document.getElementById('hours').innerText = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
-        document.getElementById('minutes').innerText = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-        document.getElementById('seconds').innerText = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
-      }
-    }, 1000);
-
-    function copyRek(text, btn) {
-      navigator.clipboard.writeText(text).then(() => {
-        const toast = document.getElementById('toast');
-        toast.classList.add('show');
-        const oldText = btn.innerHTML;
-        btn.innerHTML = '<i class="fas fa-check"></i> Disalin!';
-        setTimeout(() => {
-          toast.classList.remove('show');
-          btn.innerHTML = oldText;
-        }, 3000);
-      });
-    }
-
-    function openLightbox(src) {
-      document.getElementById('lightboxImg').src = src;
-      document.getElementById('lightboxModal').classList.add('show');
-    }
-    function closeLightbox() {
-      document.getElementById('lightboxModal').classList.remove('show');
-    }
-
-    // Guestbook LocalStorage
-    const STORAGE_KEY = 'gasnikah_guestbook_bugis';
-    const defaultWishes = [
-      { nama: "Puang Haji Andi Rusdi & Keluarga", kehadiran: "Hadir", ucapan: "Salama' ki Mappabotting Daeng Parani & Andi Tenri, semoga sakinah mawaddah warahmah.", waktu: "1 jam lalu" },
-      { nama: "Keluarga Besar Sengkang Wajo", kehadiran: "Hadir", ucapan: "Mabarakka bottingna anak! Bahagia selalu dunia akhirat.", waktu: "4 jam lalu" }
-    ];
-
-    function loadGuestbook() {
-      const data = JSON.parse(localStorage.getItem(STORAGE_KEY)) || defaultWishes;
-      const container = document.getElementById('messagesContainer');
-      container.innerHTML = '';
-      data.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'msg-card';
-        card.innerHTML = `
-          <div class="msg-author"><strong>${escapeHtml(item.nama)}</strong> <span class="badge-hadir">${escapeHtml(item.kehadiran)}</span></div>
-          <p>${escapeHtml(item.ucapan)}</p>
-          <span class="msg-time">${escapeHtml(item.waktu)}</span>
-        `;
-        container.appendChild(card);
-      });
-    }
-
-    function handleRSVP(e) {
-      e.preventDefault();
-      const nama = document.getElementById('nama').value.trim();
-      const kehadiran = document.getElementById('kehadiran').value;
-      const ucapan = document.getElementById('ucapan').value.trim();
-
-      const newEntry = { nama: nama, kehadiran: kehadiran, ucapan: ucapan, waktu: "Baru saja" };
-      const data = JSON.parse(localStorage.getItem(STORAGE_KEY)) || defaultWishes;
-      data.unshift(newEntry);
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-      loadGuestbook();
-
-      document.getElementById('rsvpForm').reset();
-      alert('Kurru Sumange! Doa restu Anda telah tersimpan.');
-    }
-
-    function escapeHtml(text) {
-      return text.replace(/[&<>"']/g, function(m) {
-        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m];
-      });
-    }
-
-    loadGuestbook();
   </script>
 </body>
 </html>
