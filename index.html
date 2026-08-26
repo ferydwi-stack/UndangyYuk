@@ -125,103 +125,121 @@
     .stat-label { font-size: 12px; color: var(--text-muted); font-weight: 600; }
     .stat-divider { width: 1px; height: 35px; background: #CBD5E1; }
 
-    /* SLEEK GLASS TABLET / FRAMELESS INTERACTIVE WINDOW HERO */
-    .glass-window-container { position: relative; max-width: 440px; margin: 0 auto; }
-    
+    /* 3D STACK / FAN CARDS HERO SHOWCASE */
+    .hero-deck-wrapper {
+      position: relative; max-width: 520px; margin: 0 auto; perspective: 1200px;
+    }
+
     .floating-badge {
-      position: absolute; z-index: 12; display: inline-flex; align-items: center; gap: 8px;
+      position: absolute; z-index: 15; display: inline-flex; align-items: center; gap: 8px;
       background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px);
-      padding: 8px 14px; border-radius: 20px; font-size: 11.5px; font-weight: 700;
+      padding: 8px 16px; border-radius: 20px; font-size: 11.5px; font-weight: 700;
       color: var(--secondary); box-shadow: 0 10px 25px rgba(0,0,0,0.12);
       border: 1px solid rgba(212, 160, 23, 0.35); animation: floatBadge 4s ease-in-out infinite alternate;
     }
-    .badge-top-left { top: -14px; left: -18px; }
-    .badge-bottom-right { bottom: 12px; right: -18px; animation-delay: 2s; }
+    .badge-top-left { top: -18px; left: -10px; }
+    .badge-bottom-right { bottom: 60px; right: -15px; animation-delay: 2s; }
     @keyframes floatBadge {
       0% { transform: translateY(0px); }
       100% { transform: translateY(-8px); }
     }
 
-    .glass-window {
-      background: #FFFFFF; border-radius: 22px;
-      border: 1.5px solid rgba(212, 160, 23, 0.3);
-      box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.22), 0 0 0 1px rgba(255, 255, 255, 0.8);
-      overflow: hidden; display: flex; flex-direction: column;
+    .cards-3d-deck {
+      position: relative; width: 100%; height: 460px;
+      display: flex; justify-content: center; align-items: center;
     }
 
-    .window-topbar {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 10px 16px; background: #0F172A; color: #FFF;
+    .deck-card {
+      position: absolute; width: 255px; height: 410px; border-radius: 24px;
+      overflow: hidden; box-shadow: 0 20px 45px rgba(15, 23, 42, 0.25);
+      border: 1.5px solid rgba(255, 255, 255, 0.6);
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      cursor: pointer; background: #0F172A; display: flex; flex-direction: column;
     }
-    .window-dots { display: flex; gap: 6px; align-items: center; }
-    .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
-    .dot-red { background: #EF4444; }
-    .dot-yellow { background: #F59E0B; }
-    .dot-green { background: #10B981; }
+    .deck-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+    .deck-card:hover img { transform: scale(1.06); }
 
-    .window-title-badge {
-      display: flex; align-items: center; gap: 7px;
-      font-size: 12px; font-weight: 700; color: #E2E8F0;
-    }
-    .live-pulse {
-      width: 8px; height: 8px; border-radius: 50%; background: #22C55E;
-      box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
-      animation: pulseGreen 1.8s infinite;
-    }
-    @keyframes pulseGreen {
-      0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
-      70% { box-shadow: 0 0 0 7px rgba(34, 197, 94, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+    .deck-card-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.25) 0%, rgba(15, 23, 42, 0.45) 45%, rgba(15, 23, 42, 0.95) 100%);
+      display: flex; flex-direction: column; justify-content: space-between;
+      padding: 18px; color: #FFF;
     }
 
-    .btn-window-fullscreen {
-      background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.2);
-      color: #FFF; font-size: 11px; font-weight: 700; padding: 4px 10px;
-      border-radius: 12px; cursor: pointer; transition: all 0.2s;
-      display: flex; align-items: center; gap: 5px;
-    }
-    .btn-window-fullscreen:hover { background: var(--primary); border-color: var(--primary); }
-
-    .window-tab-bar {
-      display: flex; gap: 6px; padding: 8px 12px; background: #F8FAFC;
-      border-bottom: 1px solid #E2E8F0; overflow-x: auto; scrollbar-width: none;
-    }
-    .window-tab-bar::-webkit-scrollbar { display: none; }
-    .tab-pill {
-      background: #FFF; border: 1px solid #E2E8F0; padding: 6px 12px;
-      border-radius: 14px; font-size: 11.5px; font-weight: 700; color: #64748B;
-      cursor: pointer; transition: all 0.2s; white-space: nowrap;
+    .deck-card-top { display: flex; justify-content: space-between; align-items: flex-start; }
+    .deck-badge {
+      background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px);
+      border: 1px solid rgba(212, 160, 23, 0.6); color: #FFD700;
+      font-size: 11px; font-weight: 800; padding: 5px 12px; border-radius: 14px;
       display: inline-flex; align-items: center; gap: 5px;
     }
-    .tab-pill.active, .tab-pill:hover {
+
+    .deck-card-body { text-align: left; }
+    .deck-card-title {
+      font-size: 18px; font-weight: 800; color: #FFF; margin-bottom: 4px; font-family: 'Cinzel', serif;
+    }
+    .deck-card-sub { font-size: 11.5px; color: #CBD5E1; margin-bottom: 12px; line-height: 1.4; }
+
+    .btn-deck-play {
+      background: linear-gradient(135deg, #D4A017, #B8860B); color: #FFF; border: none;
+      padding: 10px 16px; border-radius: 14px; font-size: 12px; font-weight: 800;
+      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      width: 100%; cursor: pointer; box-shadow: 0 4px 15px rgba(212, 160, 23, 0.4);
+      transition: all 0.2s;
+    }
+    .btn-deck-play:hover {
+      transform: translateY(-2px); box-shadow: 0 6px 22px rgba(212, 160, 23, 0.6);
+    }
+
+    /* FAN CARD POSITIONS */
+    .card-left {
+      left: 15px; transform: rotate(-9deg) translateY(18px) scale(0.88);
+      z-index: 2; opacity: 0.85;
+    }
+    .card-left:hover {
+      transform: rotate(-5deg) translateY(0px) scale(0.96);
+      z-index: 9; opacity: 1; box-shadow: 0 25px 55px rgba(15, 23, 42, 0.4);
+    }
+
+    .card-center {
+      transform: rotate(0deg) translateY(0px) scale(1);
+      z-index: 6; border: 2.5px solid #D4A017;
+      box-shadow: 0 25px 60px rgba(212, 160, 23, 0.3), 0 15px 35px rgba(15, 23, 42, 0.45);
+    }
+    .card-center:hover {
+      transform: translateY(-8px) scale(1.03); z-index: 10;
+      box-shadow: 0 30px 75px rgba(212, 160, 23, 0.45), 0 20px 45px rgba(15, 23, 42, 0.55);
+    }
+
+    .card-right {
+      right: 15px; transform: rotate(9deg) translateY(18px) scale(0.88);
+      z-index: 2; opacity: 0.85;
+    }
+    .card-right:hover {
+      transform: rotate(5deg) translateY(0px) scale(0.96);
+      z-index: 9; opacity: 1; box-shadow: 0 25px 55px rgba(15, 23, 42, 0.4);
+    }
+
+    /* QUICK CHIPS UNDER DECK */
+    .deck-quick-chips {
+      margin-top: 14px; display: flex; flex-direction: column; align-items: center; gap: 8px;
+    }
+    .deck-chips-label {
+      font-size: 12px; font-weight: 700; color: var(--text-muted); display: flex; align-items: center; gap: 6px;
+    }
+    .deck-chips-group {
+      display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;
+    }
+    .chip-btn {
+      background: #FFF; border: 1px solid #E2E8F0; padding: 6px 14px; border-radius: 16px;
+      font-size: 12px; font-weight: 700; color: var(--secondary); cursor: pointer;
+      transition: all 0.2s; display: inline-flex; align-items: center; gap: 5px;
+      box-shadow: var(--shadow-sm);
+    }
+    .chip-btn:hover {
       background: var(--primary); color: #FFF; border-color: var(--primary);
-      box-shadow: 0 3px 10px rgba(184, 134, 11, 0.25);
+      box-shadow: var(--shadow-gold); transform: translateY(-1px);
     }
-
-    .window-viewport-wrap {
-      width: 100%; height: 530px; background: #0A0D14;
-      position: relative; overflow: hidden;
-    }
-    .window-viewport {
-      width: 100%; height: 100%; overflow: hidden; position: relative;
-    }
-    .window-viewport iframe {
-      width: calc(100% + 18px); height: 100%; border: none;
-      scrollbar-width: none; -ms-overflow-style: none;
-    }
-    .window-viewport iframe::-webkit-scrollbar { display: none; width: 0 !important; height: 0 !important; }
-
-    .window-footer {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 10px 14px; background: #FFF; border-top: 1px solid #E2E8F0;
-    }
-    .window-footer-hint { font-size: 11px; color: #64748B; font-weight: 600; }
-    .btn-window-order {
-      background: #16A34A; color: #FFF; border: none; padding: 6px 14px;
-      border-radius: 12px; font-size: 11.5px; font-weight: 800; cursor: pointer;
-      display: inline-flex; align-items: center; gap: 5px; transition: all 0.2s;
-    }
-    .btn-window-order:hover { background: #15803D; box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3); }
 
     /* SECTION HEADERS */
     section { padding: 90px 0; }
@@ -509,75 +527,93 @@
         </div>
       </div>
 
-      <!-- HERO VISUAL: SLEEK GLASS TABLET / FRAMELESS INTERACTIVE WINDOW -->
+      <!-- HERO VISUAL: 3D STACK / FAN CARDS SHOWCASE -->
       <div class="hero-visual">
-        <div class="glass-window-container">
+        <div class="hero-deck-wrapper">
           
           <!-- FLOATING LUXURY BADGES -->
           <div class="floating-badge badge-top-left">
             <i class="fas fa-music" style="color:var(--primary);"></i>
-            <span>Alunan Musik Tradisional Sakral</span>
+            <span>Alunan Gending Sakral &amp; Ayat Suci</span>
           </div>
           <div class="floating-badge badge-bottom-right">
-            <i class="fas fa-check-circle" style="color:#16A34A;"></i>
-            <span>100% Responsif &amp; Interaktif</span>
+            <i class="fas fa-magic" style="color:var(--primary);"></i>
+            <span>Otomatis Nama Tamu (Link WhatsApp)</span>
           </div>
 
-          <!-- THE GLASS WINDOW -->
-          <div class="glass-window">
+          <!-- THE 3D FAN DECK -->
+          <div class="cards-3d-deck">
             
-            <!-- WINDOW TOP BAR -->
-            <div class="window-topbar">
-              <div class="window-dots">
-                <span class="dot dot-red"></span>
-                <span class="dot dot-yellow"></span>
-                <span class="dot dot-green"></span>
-              </div>
-              
-              <div class="window-title-badge">
-                <span class="live-pulse"></span>
-                <span id="windowActiveTitle">Live Demo · Adat Jawa</span>
-              </div>
-
-              <button class="btn-window-fullscreen" onclick="openHeroDemoModal()" title="Buka Pratinjau Layar Penuh">
-                <i class="fas fa-expand"></i> <span>Layar Penuh</span>
-              </button>
-            </div>
-
-            <!-- THEME SWITCHER TABS (TOP OF PREVIEW) -->
-            <div class="window-tab-bar">
-              <button class="tab-pill active" onclick="switchHeroTheme('jawa', 'Adat Jawa Kasultanan', this)">
-                <i class="fas fa-crown"></i> Jawa
-              </button>
-              <button class="tab-pill" onclick="switchHeroTheme('bali', 'Adat Bali Pawiwahan', this)">
-                <i class="fas fa-gem"></i> Bali
-              </button>
-              <button class="tab-pill" onclick="switchHeroTheme('minang', 'Adat Minangkabau', this)">
-                <i class="fas fa-landmark"></i> Minang
-              </button>
-              <button class="tab-pill" onclick="switchHeroTheme('sunda', 'Adat Sunda Priangan', this)">
-                <i class="fas fa-feather-alt"></i> Sunda
-              </button>
-              <button class="tab-pill" onclick="switchHeroTheme('modern', 'Modern Luxury VIP', this)">
-                <i class="fas fa-star"></i> Modern
-              </button>
-            </div>
-
-            <!-- FRAMELESS VIEWPORT (NO SCROLLBAR DISTORTION) -->
-            <div class="window-viewport-wrap">
-              <div class="window-viewport">
-                <iframe id="heroPhoneIframe" src="jawa?to=fufufafa" title="Live Preview Undangan"></iframe>
+            <!-- LEFT CARD: BALI PAWIWAHAN -->
+            <div class="deck-card card-left" onclick="openDemoModal('templates/nikah/premium/bali/index.html', 'Adat Bali Pawiwahan')" title="Klik untuk Live Demo Bali">
+              <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&auto=format&fit=crop&q=80" alt="Bali Pawiwahan">
+              <div class="deck-card-overlay">
+                <div class="deck-card-top">
+                  <span class="deck-badge"><i class="fas fa-gem"></i> Bali 50k</span>
+                </div>
+                <div class="deck-card-body">
+                  <div class="deck-card-title">Bali Pawiwahan</div>
+                  <div class="deck-card-sub">Gapura Kori Agung &amp; Ornamen Prada Emas</div>
+                  <button class="btn-deck-play"><i class="fas fa-play"></i> Coba Demo</button>
+                </div>
               </div>
             </div>
 
-            <!-- WINDOW FOOTER ACTIONS -->
-            <div class="window-footer">
-              <span class="window-footer-hint"><i class="fas fa-hand-pointer"></i> Buka undangan &amp; coba interaksinya</span>
-              <button class="btn-window-order" onclick="openOrderFromHero()">
-                <i class="fab fa-whatsapp"></i> Pesan Tema Ini
-              </button>
+            <!-- CENTER CARD: JAWA KASULTANAN (MAIN HERO FOCUS) -->
+            <div class="deck-card card-center" onclick="openDemoModal('templates/nikah/premium/jawa/index.html', 'Adat Jawa Kasultanan')" title="Klik untuk Live Demo Jawa">
+              <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80" alt="Jawa Kasultanan">
+              <div class="deck-card-overlay">
+                <div class="deck-card-top">
+                  <span class="deck-badge" style="background:#D4A017; color:#000;"><i class="fas fa-crown"></i> Koleksi Favorit · 50k</span>
+                </div>
+                <div class="deck-card-body">
+                  <div class="deck-card-title">Jawa Kasultanan</div>
+                  <div class="deck-card-sub">Kanvas Joglo Ageng, Gunungan &amp; Bunga Melati Melayang</div>
+                  <button class="btn-deck-play"><i class="fas fa-play"></i> Buka Live Demo Interaktif</button>
+                </div>
+              </div>
             </div>
 
+            <!-- RIGHT CARD: MINANG RUMAH GADANG -->
+            <div class="deck-card card-right" onclick="openDemoModal('templates/nikah/premium/minang/index.html', 'Adat Minangkabau')" title="Klik untuk Live Demo Minang">
+              <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=600&auto=format&fit=crop&q=80" alt="Minangkabau">
+              <div class="deck-card-overlay">
+                <div class="deck-card-top">
+                  <span class="deck-badge"><i class="fas fa-landmark"></i> Minang 50k</span>
+                </div>
+                <div class="deck-card-body">
+                  <div class="deck-card-title">Minang Rumah Gadang</div>
+                  <div class="deck-card-sub">Atap Gonjong &amp; Kain Songket Marawa</div>
+                  <button class="btn-deck-play"><i class="fas fa-play"></i> Coba Demo</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- QUICK DEMO CHIPS -->
+          <div class="deck-quick-chips">
+            <span class="deck-chips-label"><i class="fas fa-hand-pointer"></i> Coba Pratinjau Tema Lainnya Langsung:</span>
+            <div class="deck-chips-group">
+              <button class="chip-btn" onclick="openDemoModal('templates/nikah/premium/jawa/index.html', 'Adat Jawa Kasultanan')">
+                <i class="fas fa-crown" style="color:#D4A017;"></i> Jawa
+              </button>
+              <button class="chip-btn" onclick="openDemoModal('templates/nikah/premium/bali/index.html', 'Adat Bali Pawiwahan')">
+                <i class="fas fa-gem" style="color:#D4A017;"></i> Bali
+              </button>
+              <button class="chip-btn" onclick="openDemoModal('templates/nikah/premium/minang/index.html', 'Adat Minangkabau')">
+                <i class="fas fa-landmark" style="color:#D4A017;"></i> Minang
+              </button>
+              <button class="chip-btn" onclick="openDemoModal('templates/nikah/standar/sunda/index.html', 'Adat Sunda Priangan')">
+                <i class="fas fa-feather-alt" style="color:#16A34A;"></i> Sunda (35k)
+              </button>
+              <button class="chip-btn" onclick="openDemoModal('templates/nikah/custom/modern/index.html', 'Modern Luxury VIP')">
+                <i class="fas fa-star" style="color:#3B82F6;"></i> Modern VIP
+              </button>
+              <a href="#katalog" class="chip-btn" style="background:#F8FAFC; color:#64748B;">
+                Semua 16 Tema <i class="fas fa-arrow-down"></i>
+              </a>
+            </div>
           </div>
 
         </div>
