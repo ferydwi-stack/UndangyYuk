@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tasyakuran Khitanan - Rayyan Al-Fatih</title>
+  <meta name="description" content="Tasyakuran Khitanan Ananda Muhammad Rayyan Al-Fatih.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script src="../../../firebase-rsvp.js"></script>
+
+  <style>
+    :root {
+      --khitan-green: #047857;
+      --khitan-dark: #064E3B;
+      --khitan-gold: #D97706;
+      --khitan-gold-light: #FDE68A;
+      --cream: #FFFDF5;
+      --cream-bg: #ECFDF5;
+      --text: #1E293B;
+      --muted: #475569;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--cream-bg);
+      background-image: 
+        radial-gradient(rgba(4, 120, 87, 0.12) 1.2px, transparent 1.2px),
+        linear-gradient(180deg, #F0FDF4 0%, #ECFDF5 50%, #D1FAE5 100%);
+      background-size: 20px 20px, 100% 100%;
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.8;
+    }
+
+    #canvasParticles { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 999; }
+    .container { max-width: 650px; margin: 0 auto; padding: 0 20px; position: relative; }
+    .text-center { text-align: center; }
+    .serif-title { font-family: 'Cinzel', serif; letter-spacing: 2px; }
+
+    /* COVER KHITAN */
+    .cover-section {
+      min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+      text-align: center; padding: 45px 24px; position: fixed; inset: 0; z-index: 1000;
+      background: 
+        linear-gradient(180deg, rgba(236, 253, 245, 0.88) 0%, rgba(209, 250, 229, 0.92) 100%),
+        url('https://images.unsplash.com/photo-1543332164-6e82f355badc?w=1200&auto=format&fit=crop&q=80') center/cover no-repeat;
+      transition: transform 0.95s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.95s ease;
+      overflow: hidden;
+    }
+    .gallery-khitan-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+    .gallery-khitan-item:hover img { transform: scale(1.08); }
+
+    .countdown-grid { display: flex; justify-content: center; gap: 10px; margin: 25px 0; }
+    .countdown-box {
+      background: var(--khitan-green); color: var(--khitan-gold-light); border-radius: 14px;
+      padding: 12px; width: 66px; text-align: center; border: 1px solid var(--khitan-gold);
+    }
+    .countdown-num { font-size: 22px; font-weight: 800; font-family: 'Cinzel', serif; }
+    .countdown-lbl { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; }
+
+    .form-control {
+      width: 100%; padding: 12px 14px; border: 1px solid #D4C3A3; border-radius: 10px;
+      font-size: 14px; background: #FFFDF9; color: var(--text); margin-bottom: 14px;
+    }
+    .btn-submit {
+      width: 100%; background: var(--khitan-green); color: var(--khitan-gold-light); border: none;
+      padding: 14px; border-radius: 12px; font-weight: 700; font-size: 14px; cursor: pointer;
+    }
+    .wish-card {
+      background: #FFF; border: 1px solid rgba(4, 120, 87, 0.3); border-radius: 12px;
+      padding: 14px; margin-top: 10px; text-align: left; font-size: 13px;
+    }
+    .btn-copy {
+      background: var(--khitan-green); color: #FFF; border: none; padding: 6px 14px;
+      border-radius: 8px; font-size: 11px; font-weight: 700; cursor: pointer; margin-top: 6px;
+    }
+  
+    /* REALISTIC TEXTURED LINEN OIL CANVAS BACKGROUND */
+    body {
+      background-color: #ECFDF5;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(4, 120, 87, 0.35) 0%, transparent 60%),
+        url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23996515' fill-opacity='0.04' fill-rule='evenodd'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .script-title { font-family: 'Great Vibes', cursive; font-weight: normal; }
+
+    /* WAX-SEALED GUEST PARCHMENT CARD */
+    .guest-canvas-card {
+      background: rgba(255, 255, 255, 0.95);
+      border: 2px solid #047857;
+      border-radius: 24px; padding: 20px 28px; margin: 24px 0;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08), inset 0 0 20px rgba(212, 175, 55, 0.08);
+      max-width: 380px; width: 100%; position: relative;
+    }
+    .guest-canvas-card::before {
+      content: ""; position: absolute; inset: 4px; border: 1px dashed #047857;
+      border-radius: 18px; pointer-events: none; opacity: 0.6;
+    }
+
+    /* EMBLEM PULSE ANIMATION */
+    .cultural-emblem-artwork {
+      width: 140px; height: 160px; margin-bottom: 12px;
+      filter: drop-shadow(0 10px 20px rgba(4, 120, 87, 0.35));
+      animation: pulseEmblem 3.5s ease-in-out infinite alternate;
+    }
+    @keyframes pulseEmblem {
+      0% { transform: scale(1) translateY(0); }
+      100% { transform: scale(1.05) translateY(-5px); }
+    }
+  
+  
+    .guest-parchment-card, .guest-box, .tamu-card {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1.5px solid rgba(217, 119, 6, 0.4);
+      border-radius: 20px;
+      padding: 18px 28px;
+      margin: 22px auto 28px;
+      max-width: 420px;
+      width: 100%;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+    }
+  
+  
+    .btn-buka-undangan {
+      background: linear-gradient(135deg, #D97706 0%, #B45309 50%, #78350F 100%) !important;
+      color: #FFFFFF !important;
+      border: 1.5px solid rgba(255, 255, 255, 0.6) !important;
+      padding: 15px 42px !important;
+      border-radius: 50px !important;
+      font-size: 13.5px !important;
+      font-weight: 800 !important;
+      letter-spacing: 2px !important;
+      cursor: pointer !important;
+      box-shadow: 0 10px 28px rgba(180, 83, 9, 0.45) !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 10px !important;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      text-transform: uppercase !important;
+      outline: none !important;
+    }
+    .btn-buka-undangan:hover {
+      transform: translateY(-2px) scale(1.04) !important;
+      box-shadow: 0 16px 36px rgba(180, 83, 9, 0.6) !important;
+    }
+  
+  
+    /* ULTRA-LUXURY INVITATION COVER STYLING */
+    .cover-section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px 24px;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      transition: transform 0.95s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.95s ease;
+      overflow: hidden;
+    }
+    .cover-couple {
+      font-size: 56px !important;
+      line-height: 1.15 !important;
+      margin: 8px 0 10px !important;
+      text-shadow: 0 4px 18px rgba(0, 0, 0, 0.15) !important;
+    }
+    .guest-parchment-card {
+      background: rgba(255, 255, 255, 0.82) !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+      border: 1.5px solid rgba(217, 119, 6, 0.45) !important;
+      border-radius: 24px !important;
+      padding: 20px 30px !important;
+      margin: 24px auto 28px !important;
+      max-width: 420px !important;
+      width: 100% !important;
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.08), inset 0 0 15px rgba(245, 158, 11, 0.05) !important;
+      position: relative !important;
+    }
+    .guest-parchment-card::before {
+      display: none !important; /* Remove any dashed inner border to eliminate form/coupon look */
+    }
+    .btn-buka-undangan {
+      background: linear-gradient(135deg, #D97706 0%, #B45309 50%, #78350F 100%) !important;
+      color: #FFFFFF !important;
+      border: 1.5px solid rgba(255, 255, 255, 0.6) !important;
+      padding: 16px 44px !important;
+      border-radius: 50px !important;
+      font-size: 13.5px !important;
+      font-weight: 800 !important;
+      letter-spacing: 2px !important;
+      cursor: pointer !important;
+      box-shadow: 0 12px 30px rgba(180, 83, 9, 0.45) !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 12px !important;
+      transition: transform 0.25s, box-shadow 0.25s !important;
+      text-transform: uppercase !important;
+      outline: none !important;
+    }
+    .btn-buka-undangan:hover {
+      transform: translateY(-2px) scale(1.04) !important;
+      box-shadow: 0 18px 40px rgba(180, 83, 9, 0.6) !important;
+    }
+  
+  </style>
+</head>
+<body>
+
+  <canvas id="canvasParticles"></canvas>
+
+  <audio id="bgMusic" loop preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=gamelan-traditional-10515.mp3" type="audio/mp3">
+  </audio>
+
+  <button id="musicToggle" class="music-btn" onclick="toggleMusic()" aria-label="Toggle Audio">
+    <i id="musicIcon" class="fas fa-compact-disc"></i>
+  </button>
+
+  <!-- COVER SECTION -->
+  <div class="cover-section" id="cover">
+    <p style="font-size:12px; letter-spacing:3px; color:var(--khitan-gold); font-weight:800; text-transform:uppercase;">Tasyakuran Khitanan</p>
+    <h1 class="cover-couple script-title">Rayyan Al-Fatih</h1>
+    <p style="font-size:13px; color:var(--muted); font-weight:600;">Ahad, 28 Februari 2027</p>
+
+    <div class="guest-parchment-card">
+      <p style="font-size:11.5px; color:var(--muted); margin-bottom:4px;">Kepada Yth. Bapak/Ibu/Saudara/i:</p>
+      <h3 style="font-size:17px; color:var(--khitan-green); font-weight:800;" id="namaTamuCover">Tamu Undangan Yang Berbahagia</h3>
+    </div>
+
+    <button class="btn-buka-undangan" onclick="bukaUndangan()">
+      <i class="fas fa-envelope-open-text"></i> BUKA UNDANGAN
+    </button>
+  </div>
+
+  <!-- MAIN INVITATION CONTENT -->
+  <main class="main-wrapper" id="mainContent">
+    
+    <!-- AYAT SUCI -->
+    <section>
+      <div class="container text-center">
+        <div class="card-khitan">
+          <p class="serif-title" style="font-size:18px; color:var(--khitan-green); font-weight:800;">Bismillahirrohmanirrohim</p>
+          <p style="font-size:13px; color:var(--muted); margin:15px 0;">
+            <em>"Semoga ananda menjadi anak yang sholeh, berbakti kepada kedua orang tua, agama, nusa, dan bangsa. Aamiin ya Robbal 'Alamin."</em>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROFIL ANANDA -->
+    <section>
+      <div class="container text-center">
+        <div class="card-khitan">
+          <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--khitan-gold); text-transform:uppercase;">Putra Tercinta</p>
+          <h2 class="serif-title" style="font-size:24px; color:var(--khitan-green); margin:6px 0 15px;">Muhammad Rayyan Al-Fatih</h2>
+
+          <div class="kid-photo-frame">
+            <img src="https://images.unsplash.com/photo-1543332164-6e82f355badc?w=350&auto=format&fit=crop&q=80" alt="Rayyan">
+          </div>
+          <p style="font-size:13px; color:var(--muted); margin-top:10px;">Putra dari Bpk. Hendra Gunawan &amp; Ibu Fitria Wardani</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACARA & LOKASI -->
+    <section>
+      <div class="container text-center">
+        <div class="card-khitan">
+          <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--khitan-gold); text-transform:uppercase;">Rundown Acara</p>
+          <h2 class="serif-title" style="font-size:24px; color:var(--khitan-green); margin:6px 0 20px;">Waktu &amp; Tempat</h2>
+
+          <div style="background:#FAF4E8; padding:20px; border-radius:14px; margin-bottom:16px; border:1px solid rgba(4, 120, 87, 0.3);">
+            <h3 style="font-size:17px; color:var(--khitan-green);"><i class="fas fa-quran"></i> Doa Bersama &amp; Santunan</h3>
+            <p style="font-size:13.5px; font-weight:700; color:var(--text); margin:6px 0;">Ahad, 28 Februari 2027</p>
+            <p style="font-size:12.5px; color:var(--muted);">Pukul 09.00 - 11.30 WIB</p>
+            <p style="font-size:12px; color:var(--muted); margin-top:4px;">Kediaman Mempelai, Jl. Melati Indah No. 12, Jakarta</p>
+          </div>
+
+          <div style="background:#FAF4E8; padding:20px; border-radius:14px; border:1px solid rgba(4, 120, 87, 0.3);">
+            <h3 style="font-size:17px; color:var(--khitan-green);"><i class="fas fa-utensils"></i> Ramah Tamah &amp; Tasyakuran</h3>
+            <p style="font-size:13.5px; font-weight:700; color:var(--text); margin:6px 0;">Ahad, 28 Februari 2027</p>
+            <p style="font-size:12.5px; color:var(--muted);">Pukul 12.00 - 16.00 WIB</p>
+            <p style="font-size:12px; color:var(--muted); margin-top:4px;">Kediaman Mempelai, Jl. Melati Indah No. 12, Jakarta</p>
+          </div>
+
+          <!-- Countdown -->
+          <div class="countdown-grid">
+            <div class="countdown-box"><div class="countdown-num" id="days">00</div><div class="countdown-lbl">Hari</div></div>
+            <div class="countdown-box"><div class="countdown-num" id="hours">00</div><div class="countdown-lbl">Jam</div></div>
+            <div class="countdown-box"><div class="countdown-num" id="minutes">00</div><div class="countdown-lbl">Menit</div></div>
+            <div class="countdown-box"><div class="countdown-num" id="seconds">00</div><div class="countdown-lbl">Detik</div></div>
+          </div>
+
+          <a href="https://maps.google.com" target="_blank" class="btn-submit" style="display:inline-block; text-decoration:none; margin-top:10px;">
+            <i class="fas fa-map-marker-alt"></i> Petunjuk Rute Google Maps
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERI -->
+    <section>
+      <div class="container text-center">
+        <div class="card-khitan">
+          <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--khitan-gold); text-transform:uppercase;">Galeri Momen</p>
+          <h2 class="serif-title" style="font-size:22px; color:var(--khitan-green); margin:6px 0 15px;">Potret Bahagia</h2>
+          <div class="gallery-khitan-grid">
+            <div class="gallery-khitan-item"><img src="https://images.unsplash.com/photo-1543332164-6e82f355badc?w=500&auto=format&fit=crop&q=80" alt="Gallery 1"></div>
+            <div class="gallery-khitan-item"><img src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=500&auto=format&fit=crop&q=80" alt="Gallery 2"></div>
+            <div class="gallery-khitan-item"><img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=500&auto=format&fit=crop&q=80" alt="Gallery 3"></div>
+            <div class="gallery-khitan-item"><img src="https://images.unsplash.com/photo-1485546246426-74dc88dec4d9?w=500&auto=format&fit=crop&q=80" alt="Gallery 4"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP & UCAPAN DOA (FIREBASE CLOUD) -->
+    <section>
+      <div class="container text-center">
+        <div class="card-khitan">
+          <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--khitan-gold); text-transform:uppercase;">Buku Tamu Real-time</p>
+          <h2 class="serif-title" style="font-size:22px; color:var(--khitan-green); margin:6px 0 15px;">Konfirmasi &amp; Doa Restu</h2>
+          
+          <form onsubmit="handleRSVP(event)">
+            <input type="text" id="nama" class="form-control" placeholder="Nama Anda" required>
+            <select id="kehadiran" class="form-control">
+              <option value="Hadir">Insya Allah Hadir</option>
+              <option value="Ragu-ragu">Masih Ragu-ragu</option>
+              <option value="Tidak Hadir">Minta Maaf Belum Sempat Hadir</option>
+            </select>
+            <textarea id="ucapan" class="form-control" rows="3" placeholder="Tuliskan doa untuk ananda Rayyan..." required></textarea>
+            <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Kirim Konfirmasi &amp; Doa</button>
+          </form>
+
+          <div id="messagesContainer" style="max-height:280px; overflow-y:auto; margin-top:20px;">
+            <div class="wish-card">
+              <strong>Om Ridwan</strong> <span style="font-size:11px; font-weight:700; color:var(--khitan-green);">(Hadir)</span>
+              <p>Selamat ya jagoan Rayyan! Semoga lekas pulih dan menjadi anak yang sholeh serta membanggakan keluarga.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AMPLOP DIGITAL -->
+    <section>
+      <div class="container text-center">
+        <div class="card-khitan">
+          <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--khitan-gold); text-transform:uppercase;">Tanda Kasih</p>
+          <h2 class="serif-title" style="font-size:22px; color:var(--khitan-green); margin:6px 0 15px;">Kado Digital untuk Ananda</h2>
+          <p style="font-size:12.5px; color:var(--muted); margin-bottom:20px;">Bagi keluarga dan kerabat yang ingin memberikan tanda kasih secara digital:</p>
+
+          <div style="background:#FAF4E8; padding:18px; border-radius:14px; margin-bottom:14px; border:1px solid rgba(4, 120, 87, 0.3);">
+            <p style="font-weight:800; color:var(--khitan-green);">BANK BCA</p>
+            <p style="font-size:20px; font-weight:700; letter-spacing:2px; color:var(--text);" id="rekBCA">2345678901</p>
+            <p style="font-size:12px; color:var(--muted);">a.n. Hendra Gunawan (Ayah)</p>
+            <button class="btn-copy" onclick="copyRek('2345678901', this)"><i class="far fa-copy"></i> Salin No. Rekening</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="padding:40px 0 25px; text-align:center; border-top:1px solid rgba(4, 120, 87, 0.3);">
+      <div class="container">
+        <p style="font-size:11px; color:var(--khitan-gold); font-weight:700; letter-spacing:2px;">JAZAKUMULLAH KHAIRAN</p>
+        <h3 class="serif-title" style="font-size:22px; color:var(--khitan-green); margin:6px 0;">Rayyan Al-Fatih</h3>
+        <p style="font-size:12.5px; color:var(--muted);">Terima kasih atas kehadiran dan doa restu Anda semua 🙏</p>
+        <p style="font-size:11px; color:#A48B77; margin-top:20px;">Undangan Digital by <strong>UndangYuk</strong></p>
+      </div>
+    </footer>
+
+  </main>
+
+  <script>
+    // 1. Safe Guest Parameter Extraction
+    const urlParams = new URLSearchParams(window.location.search);
+    const guestParam = urlParams.get('to') || urlParams.get('p') || urlParams.get('guest');
+    const guestEl = document.getElementById('namaTamuCover');
+    if (guestEl) {
+      if (guestParam && guestParam.trim().length > 0) {
+        guestEl.textContent = decodeURIComponent(guestParam.trim());
+      } else {
+        guestEl.textContent = "Tamu Undangan Yang Berbahagia";
+      }
+    }
+
+    // 2. Music Player & Open Invitation
+    const bgMusic = document.getElementById('bgMusic');
+    const musicToggle = document.getElementById('musicToggle');
+    const musicIcon = document.getElementById('musicIcon');
+    let isPlaying = false;
+
+    function bukaUndangan() {
+      const cover = document.getElementById('cover');
+      const mainContent = document.getElementById('mainContent');
+      if (cover) cover.classList.add('hide');
+      if (mainContent) mainContent.classList.add('show');
+      if (musicToggle) musicToggle.style.display = 'flex';
+      if (bgMusic) {
+        bgMusic.play().then(() => {
+          isPlaying = true;
+          if (musicIcon) musicIcon.classList.add('spin');
+        }).catch(e => console.log('Audio autoplay prevented:', e));
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleMusic() {
+      if (!bgMusic) return;
+      if (isPlaying) {
+        bgMusic.pause();
+        if (musicIcon) musicIcon.classList.remove('spin');
+        isPlaying = false;
+      } else {
+        bgMusic.play();
+        if (musicIcon) musicIcon.classList.add('spin');
+        isPlaying = true;
+      }
+    }
+
+    // 3. Countdown Timer (28 Feb 2027)
+    const targetDate = new Date('February 28, 2027 09:00:00').getTime();
+    setInterval(() => {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+      if (diff > 0) {
+        const d = document.getElementById('days');
+        const h = document.getElementById('hours');
+        const m = document.getElementById('minutes');
+        const s = document.getElementById('seconds');
+        if (d) d.innerText = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
+        if (h) h.innerText = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+        if (m) m.innerText = String(Math.floor((diff % (1000 * 60)) / (1000 * 60))).padStart(2, '0');
+        if (s) s.innerText = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
+      }
+    }, 1000);
+
+    // 4. Firebase Cloud Firestore RSVP (Collection: rsvp_khitan_islami)
+    const THEME_CLOUD_ID = 'khitan_islami';
+
+    function esc(t) {
+      return (t || '').replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m]));
+    }
+
+    function renderCloudWishes(wishes) {
+      const feed = document.getElementById('messagesContainer');
+      if (!feed || !wishes || !wishes.length) return;
+      feed.innerHTML = '';
+      wishes.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'wish-card';
+        div.innerHTML = '<strong>' + esc(item.nama || 'Tamu') + '</strong> <span style="font-size:11px; font-weight:700; color:var(--khitan-green);">(' + esc(item.kehadiran || 'Hadir') + ')</span><p>' + esc(item.ucapan || '') + '</p>';
+        feed.appendChild(div);
+      });
+    }
+
+    if (window.listenRSVPFromCloud) {
+      window.listenRSVPFromCloud(THEME_CLOUD_ID, renderCloudWishes);
+    }
+
+    async function handleRSVP(e) {
+      e.preventDefault();
+      const n = (document.getElementById('nama') ? document.getElementById('nama').value : '').trim();
+      const k = document.getElementById('kehadiran') ? document.getElementById('kehadiran').value : 'Hadir';
+      const u = (document.getElementById('ucapan') ? document.getElementById('ucapan').value : '').trim();
+      
+      if (window.submitRSVPToCloud) {
+        await window.submitRSVPToCloud(THEME_CLOUD_ID, { nama: n, kehadiran: k, ucapan: u });
+      }
+
+      const feed = document.getElementById('messagesContainer');
+      if (feed) {
+        const div = document.createElement('div');
+        div.className = 'wish-card';
+        div.innerHTML = '<strong>' + esc(n) + '</strong> <span style="font-size:11px; font-weight:700; color:var(--khitan-green);">(' + esc(k) + ')</span><p>' + esc(u) + '</p>';
+        feed.prepend(div);
+      }
+      alert('Alhamdulillah! Konfirmasi & doa Anda telah tersimpan secara real-time.');
+      e.target.reset();
+    }
+
+    // 5. Copy Rekening
+    function copyRek(num, btn) {
+      navigator.clipboard.writeText(num).then(() => {
+        const old = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-check"></i> Disalin!';
+        setTimeout(() => { btn.innerHTML = old; }, 2000);
+      });
+    }
+
+    // 6. Particle Engine
+    (function initCanvasParticles() {
+      const canvas = document.getElementById('canvasParticles');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let width = canvas.width = window.innerWidth;
+      let height = canvas.height = window.innerHeight;
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      const particles = [];
+      const count = window.innerWidth < 600 ? 25 : 45;
+
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          r: Math.random() * 2.2 + 1,
+          dx: (Math.random() - 0.5) * 0.6,
+          dy: Math.random() * 1.0 + 0.3,
+          opacity: Math.random() * 0.7 + 0.2,
+          rot: Math.random() * Math.PI * 2,
+          rotSpeed: (Math.random() - 0.5) * 0.02
+        });
+      }
+
+      function render() {
+        ctx.clearRect(0, 0, width, height);
+        particles.forEach(p => {
+          p.x += p.dx;
+          p.y += p.dy;
+          p.rot += p.rotSpeed;
+
+          if (p.y > height) { p.y = -10; p.x = Math.random() * width; }
+          if (p.x > width) p.x = 0;
+          if (p.x < 0) p.x = width;
+
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.rot);
+          ctx.globalAlpha = p.opacity;
+
+          ctx.fillStyle = '#D97706';
+          ctx.shadowBlur = 6;
+          ctx.shadowColor = '#047857';
+          ctx.beginPath();
+          ctx.arc(0, 0, p.r * 1.2, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        });
+        requestAnimationFrame(render);
+      }
+      render();
+    })();
+  </script>
+</body>
+</html>
