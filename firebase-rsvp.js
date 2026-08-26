@@ -3,15 +3,16 @@
  * Centralized Real-time RSVP & Guestbook Handler with LocalStorage Fallback
  */
 
-// 1. MASUKKAN KONFIGURASI FIREBASE ANDA DI SINI
-// Dapatkan config ini dari Firebase Console -> Project Settings -> General -> Your Apps -> Web App
+// 1. KONFIGURASI FIREBASE RESMI (PROJECT: UNDANG-YUK)
 window.FIREBASE_CONFIG = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyA1jOD-xmZc_8vSfUa7eQfuqYDTCoWXnDc",
+  authDomain: "undang-yuk.firebaseapp.com",
+  databaseURL: "https://undang-yuk-default-rtdb.firebaseio.com",
+  projectId: "undang-yuk",
+  storageBucket: "undang-yuk.firebasestorage.app",
+  messagingSenderId: "699815928750",
+  appId: "1:699815928750:web:5d6bd962520ea35f801e3f",
+  measurementId: "G-BFWY0CP7XH"
 };
 
 // 2. INITIALIZE FIREBASE SDK (Firestore)
@@ -19,7 +20,6 @@ let firestoreDb = null;
 let isFirebaseReady = false;
 
 (function initFirebaseRSVP() {
-  // Check if user has entered their real Firebase credentials
   if (
     window.FIREBASE_CONFIG &&
     window.FIREBASE_CONFIG.apiKey &&
@@ -47,7 +47,7 @@ let isFirebaseReady = false;
         window.firestoreDb = db;
         window.firestoreTools = { collection, addDoc, onSnapshot, query, orderBy, limit, serverTimestamp };
         window.isFirebaseReady = true;
-        console.log("🔥 Firebase Firestore connected successfully for RSVP!");
+        console.log("🔥 Firebase Firestore Cloud (undang-yuk) terhubung sukses!");
         
         // Trigger live listener if template has initialized
         if (window.onFirebaseReadyCallback) {
@@ -58,14 +58,12 @@ let isFirebaseReady = false;
       }
     `;
     document.head.appendChild(scriptApp);
-  } else {
-    console.log("ℹ️ Firebase config belum diisi. Sistem menggunakan LocalStorage Fallback secara otomatis.");
   }
 })();
 
 /**
- * Kirim RSVP ke Firebase Firestore (atau LocalStorage jika belum connect)
- * @param {string} themeId - ID tema undangan (contoh: 'jawa_danang_sekar')
+ * Kirim RSVP ke Firebase Firestore (atau LocalStorage jika offline)
+ * @param {string} themeId - ID tema undangan (contoh: 'jawa_kasultanan')
  * @param {object} data - { nama, kehadiran, ucapan }
  * @returns {Promise}
  */
@@ -88,7 +86,7 @@ window.submitRSVPToCloud = async function(themeId, data) {
     console.log('LocalStorage backup error:', e);
   }
 
-  // Jika Firebase aktif, simpan ke Cloud Firestore
+  // Simpan ke Cloud Firestore Real-time
   if (window.isFirebaseReady && window.firestoreDb && window.firestoreTools) {
     try {
       const { collection, addDoc, serverTimestamp } = window.firestoreTools;
@@ -96,7 +94,7 @@ window.submitRSVPToCloud = async function(themeId, data) {
         ...payload,
         createdAt: serverTimestamp()
       });
-      console.log('✅ RSVP tersimpan di Firebase Firestore Cloud!');
+      console.log('✅ RSVP tersimpan di Firebase Firestore Cloud (undang-yuk)!');
       return { success: true, source: 'firebase' };
     } catch (err) {
       console.error('Firebase save error:', err);
