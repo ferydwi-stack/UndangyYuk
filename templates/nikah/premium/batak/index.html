@@ -196,6 +196,30 @@
     .reveal-slide-right { transform: translateX(50px); }
     .reveal.active { opacity: 1; transform: translate(0) scale(1); }
   
+  
+    /* LUXURY FLOATING BOTTOM NAVIGATION DOCK */
+    .bottom-nav-dock {
+      position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(100px);
+      background: rgba(255, 255, 255, 0.88); backdrop-filter: blur(16px);
+      border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 40px;
+      padding: 8px 16px; display: flex; align-items: center; gap: 14px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15); z-index: 995;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+      opacity: 0; pointer-events: none;
+    }
+    .bottom-nav-dock.show {
+      transform: translateX(-50%) translateY(0); opacity: 1; pointer-events: auto;
+    }
+    .nav-dock-item {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      color: #64748B; text-decoration: none; font-size: 10px; font-weight: 700;
+      padding: 6px 10px; border-radius: 20px; transition: all 0.25s;
+    }
+    .nav-dock-item i { font-size: 15px; margin-bottom: 2px; }
+    .nav-dock-item:hover, .nav-dock-item.active {
+      color: #996515; background: rgba(212, 175, 55, 0.15); transform: translateY(-2px);
+    }
+    
   </style>
 </head>
 <body>
@@ -238,7 +262,7 @@
   <main class="main-wrapper" id="mainContent">
     
     <!-- AYAT SUCI -->
-    <section>
+    <section id="doa">
       <div class="container text-center">
         <div class="card-bolon reveal reveal-fade-up">
           <p class="serif-title" style="font-size:18px; color:var(--gorga-red); font-weight:800;">Ende Ni Angka Ende 8:7</p>
@@ -251,7 +275,7 @@
     </section>
 
     <!-- PROFIL MEMPELAI (WOVEN ULOS) -->
-    <section>
+    <section id="mempelai">
       <div class="container text-center">
         <div class="card-bolon reveal reveal-fade-up">
           <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--gorga-gold); text-transform:uppercase;">Pangoli &amp; Oroan</p>
@@ -274,7 +298,7 @@
     </section>
 
     <!-- ACARA & LOKASI -->
-    <section>
+    <section id="acara">
       <div class="container text-center">
         <div class="card-bolon reveal reveal-fade-up">
           <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--gorga-gold); text-transform:uppercase;">Rundown Acara</p>
@@ -310,7 +334,7 @@
     </section>
 
     <!-- GALERI ULOS -->
-    <section>
+    <section id="galeri">
       <div class="container text-center">
         <div class="card-bolon reveal reveal-fade-up">
           <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--gorga-gold); text-transform:uppercase;">Galeri Momen</p>
@@ -326,7 +350,7 @@
     </section>
 
     <!-- RSVP & UCAPAN DOA (FIREBASE CLOUD) -->
-    <section>
+    <section id="rsvp">
       <div class="container text-center">
         <div class="card-bolon reveal reveal-fade-up">
           <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--gorga-gold); text-transform:uppercase;">Buku Tamu Real-time</p>
@@ -354,7 +378,7 @@
     </section>
 
     <!-- AMPLOP DIGITAL -->
-    <section>
+    <section id="kado">
       <div class="container text-center">
         <div class="card-bolon reveal reveal-fade-up">
           <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--gorga-gold); text-transform:uppercase;">Tanda Holong</p>
@@ -388,6 +412,17 @@
       </div>
     </footer>
 
+  
+  <!-- FLOATING LUXURY BOTTOM NAVIGATION DOCK -->
+  <nav id="bottomNav" class="bottom-nav-dock">
+    <a href="#cover" class="nav-dock-item" onclick="window.scrollTo({top:0, behavior:'smooth'})"><i class="fas fa-home"></i><span>Sampul</span></a>
+    <a href="#mempelai" class="nav-dock-item"><i class="fas fa-heart"></i><span>Mempelai</span></a>
+    <a href="#acara" class="nav-dock-item"><i class="fas fa-calendar-alt"></i><span>Acara</span></a>
+    <a href="#galeri" class="nav-dock-item"><i class="fas fa-images"></i><span>Galeri</span></a>
+    <a href="#rsvp" class="nav-dock-item"><i class="fas fa-book-open"></i><span>Ucapan</span></a>
+    <a href="#kado" class="nav-dock-item"><i class="fas fa-gift"></i><span>Kado</span></a>
+  </nav>
+    
   </main>
 
   <script>
@@ -415,6 +450,8 @@
       if (cover) cover.classList.add('hide');
       if (mainContent) mainContent.classList.add('show');
       if (musicToggle) musicToggle.style.display = 'flex';
+      const bottomNav = document.getElementById('bottomNav');
+      if (bottomNav) bottomNav.classList.add('show');
       if (bgMusic) {
         bgMusic.play().then(() => {
           isPlaying = true;
