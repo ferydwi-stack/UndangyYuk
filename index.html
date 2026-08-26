@@ -274,6 +274,7 @@
     .badge-premium { background: linear-gradient(135deg, #C5A059 0%, #8C6A28 100%); color: #FFF; }
     .badge-standar { background: #334155; color: #FFF; }
     .badge-custom { background: #7C3AED; color: #FFF; }
+    .badge-acara { background: #0D9488; color: #FFF; }
     
     .thumb-overlay {
       position: absolute; inset: 0; background: rgba(0,0,0,0.4);
@@ -642,9 +643,10 @@
         <button class="tab-btn" onclick="filterCatalog('premium', this)">👑 Paket Premium 50k</button>
         <button class="tab-btn" onclick="filterCatalog('standar', this)">🥉 Paket Standar 35k</button>
         <button class="tab-btn" onclick="filterCatalog('custom', this)">💎 Paket Custom</button>
+        <button class="tab-btn" onclick="filterCatalog('acara', this)">🎉 Acara Lainnya</button>
       </div>
 
-      <!-- CATALOG CARDS GRID -->
+      <!-- CATALOG CARDS GRID (16 KOLEKSI LENGKAP) -->
       <div class="catalog-grid" id="catalogGrid">
         
         <!-- 1. JAWA KASULTANAN (PREMIUM) -->
@@ -659,7 +661,7 @@
           <div class="card-body">
             <span class="card-meta">Adat Jawa</span>
             <h3 class="card-title">Jawa Kasultanan</h3>
-            <p class="card-desc">Keanggunan budaya Jawa dengan sentuhan visual yang mewah dan berwibawa.</p>
+            <p class="card-desc">Keanggunan budaya Jawa dengan sentuhan visual mewah berwibawa dan ornamen Joglo emas.</p>
             <div class="card-actions">
               <button class="btn-card-demo" onclick="window.open('templates/nikah/premium/jawa/index.html', '_blank')"><i class="fas fa-expand"></i> Demo</button>
               <button class="btn-card-order" onclick="openOrderModal('Paket Premium 50k', 'Adat Jawa')"><i class="fab fa-whatsapp"></i> Pesan</button>
@@ -679,7 +681,7 @@
           <div class="card-body">
             <span class="card-meta">Adat Bali</span>
             <h3 class="card-title">Bali Pawiwahan</h3>
-            <p class="card-desc">Menampilkan kemegahan arsitektur dan ornamen emas khas Bali yang eksotis.</p>
+            <p class="card-desc">Menampilkan kemegahan arsitektur gapura Kori Agung dan ukiran Prada Emas khas Bali.</p>
             <div class="card-actions">
               <button class="btn-card-demo" onclick="window.open('templates/nikah/premium/bali/index.html', '_blank')"><i class="fas fa-expand"></i> Demo</button>
               <button class="btn-card-order" onclick="openOrderModal('Paket Premium 50k', 'Adat Bali')"><i class="fab fa-whatsapp"></i> Pesan</button>
@@ -699,7 +701,7 @@
           <div class="card-body">
             <span class="card-meta">Adat Minang</span>
             <h3 class="card-title">Minang Rumah Gadang</h3>
-            <p class="card-desc">Nuansa adat Minang yang kental dengan detail kain songket dan estetika Rumah Gadang.</p>
+            <p class="card-desc">Nuansa adat Minang yang kental dengan detail kain songket Pandai Sikek dan Gonjong megah.</p>
             <div class="card-actions">
               <button class="btn-card-demo" onclick="window.open('templates/nikah/premium/minang/index.html', '_blank')"><i class="fas fa-expand"></i> Demo</button>
               <button class="btn-card-order" onclick="openOrderModal('Paket Premium 50k', 'Adat Minangkabau')"><i class="fab fa-whatsapp"></i> Pesan</button>
@@ -719,7 +721,7 @@
           <div class="card-body">
             <span class="card-meta">Adat Batak</span>
             <h3 class="card-title">Batak Toba Gorga</h3>
-            <p class="card-desc">Perpaduan motif Gorga dan kain Ulos dalam visual yang artistik dan penuh makna.</p>
+            <p class="card-desc">Perpaduan motif ukiran Gorga tiga warna dan kehangatan kain Ulos ragi hotang yang sakral.</p>
             <div class="card-actions">
               <button class="btn-card-demo" onclick="window.open('templates/nikah/premium/batak/index.html', '_blank')"><i class="fas fa-expand"></i> Demo</button>
               <button class="btn-card-order" onclick="openOrderModal('Paket Premium 50k', 'Adat Batak Toba')"><i class="fab fa-whatsapp"></i> Pesan</button>
@@ -727,7 +729,87 @@
           </div>
         </div>
 
-        <!-- 5. SUNDA PRIANGAN (STANDAR) -->
+        <!-- 5. BUGIS MAKASSAR (PREMIUM) -->
+        <div class="catalog-card" data-category="premium">
+          <div class="card-thumb">
+            <span class="badge-tier badge-premium">👑 Paket Premium 50k</span>
+            <img src="https://images.unsplash.com/photo-1544077960-604201fe74bc?w=600&auto=format&fit=crop&q=80" alt="Bugis">
+            <div class="thumb-overlay">
+              <button class="btn-preview-modal" onclick="openDemoModal('templates/nikah/premium/bugis/index.html', 'Bugis Makassar')"><i class="fas fa-play"></i> Live Demo</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <span class="card-meta">Adat Bugis</span>
+            <h3 class="card-title">Bugis Mappabotting</h3>
+            <p class="card-desc">Kemewahan ornamen Balla Lompoa dengan paduan kain sutera Saqbe khas Bugis Makassar.</p>
+            <div class="card-actions">
+              <button class="btn-card-demo" onclick="window.open('templates/nikah/premium/bugis/index.html', '_blank')"><i class="fas fa-expand"></i> Demo</button>
+              <button class="btn-card-order" onclick="openOrderModal('Paket Premium 50k', 'Adat Bugis Makassar')"><i class="fab fa-whatsapp"></i> Pesan</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. DAYAK BORNEO (PREMIUM) -->
+        <div class="catalog-card" data-category="premium">
+          <div class="card-thumb">
+            <span class="badge-tier badge-premium">👑 Paket Premium 50k</span>
+            <img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=600&auto=format&fit=crop&q=80" alt="Dayak">
+            <div class="thumb-overlay">
+              <button class="btn-preview-modal" onclick="openDemoModal('templates/nikah/premium/dayak/index.html', 'Dayak Borneo')"><i class="fas fa-play"></i> Live Demo</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <span class="card-meta">Adat Dayak</span>
+            <h3 class="card-title">Dayak Batang Garing</h3>
+            <p class="card-desc">Eksotisme ukiran khas suku Dayak Kalimantan dengan simbol Pohon Kehidupan Batang Garing.</p>
+            <div class="card-actions">
+              <button class="btn-card-demo" onclick="window.open('templates/nikah/premium/dayak/index.html', '_blank')"><i class="fas fa-expand"></i> Demo</button>
+              <button class="btn-card-order" onclick="openOrderModal('Paket Premium 50k', 'Adat Dayak Borneo')"><i class="fab fa-whatsapp"></i> Pesan</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. MADURA (PREMIUM) -->
+        <div class="catalog-card" data-category="premium">
+          <div class="card-thumb">
+            <span class="badge-tier badge-premium">👑 Paket Premium 50k</span>
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&auto=format&fit=crop&q=80" alt="Madura">
+            <div class="thumb-overlay">
+              <button class="btn-preview-modal" onclick="openDemoModal('templates/nikah/premium/madura/index.html', 'Adat Madura')"><i class="fas fa-play"></i> Live Demo</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <span class="card-meta">Adat Madura</span>
+            <h3 class="card-title">Madura Karapan Megah</h3>
+            <p class="card-desc">Semangat budaya Madura yang gagah dan anggun dengan motif khas dan warna emas berani.</p>
+            <div class="card-actions">
+              <button class="btn-card-demo" onclick="window.open('templates/nikah/premium/madura/index.html', '_blank')"><i class="fas fa-expand"></i> Demo</button>
+              <button class="btn-card-order" onclick="openOrderModal('Paket Premium 50k', 'Adat Madura')"><i class="fab fa-whatsapp"></i> Pesan</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. PALEMBANG SRIWIJAYA (PREMIUM) -->
+        <div class="catalog-card" data-category="premium">
+          <div class="card-thumb">
+            <span class="badge-tier badge-premium">👑 Paket Premium 50k</span>
+            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80" alt="Palembang">
+            <div class="thumb-overlay">
+              <button class="btn-preview-modal" onclick="openDemoModal('templates/nikah/premium/palembang/index.html', 'Palembang Sriwijaya')"><i class="fas fa-play"></i> Live Demo</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <span class="card-meta">Adat Palembang</span>
+            <h3 class="card-title">Palembang Sriwijaya Emas</h3>
+            <p class="card-desc">Keagungan Kesultanan Palembang dengan kemewahan kain Songket Lepus benang emas.</p>
+            <div class="card-actions">
+              <button class="btn-card-demo" onclick="window.open('templates/nikah/premium/palembang/index.html', '_blank')"><i class="fas fa-expand"></i> Demo</button>
+              <button class="btn-card-order" onclick="openOrderModal('Paket Premium 50k', 'Adat Palembang')"><i class="fab fa-whatsapp"></i> Pesan</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9. SUNDA PRIANGAN (STANDAR) -->
         <div class="catalog-card" data-category="standar">
           <div class="card-thumb">
             <span class="badge-tier badge-standar">🥉 Paket Standar 35k</span>
@@ -747,7 +829,7 @@
           </div>
         </div>
 
-        <!-- 6. BETAWI PALANG PINTU (STANDAR) -->
+        <!-- 10. BETAWI PALANG PINTU (STANDAR) -->
         <div class="catalog-card" data-category="standar">
           <div class="card-thumb">
             <span class="badge-tier badge-standar">🥉 Paket Standar 35k</span>
@@ -759,7 +841,7 @@
           <div class="card-body">
             <span class="card-meta">Adat Betawi</span>
             <h3 class="card-title">Betawi Palang Pintu</h3>
-            <p class="card-desc">Tampilan ringkas dengan sentuhan budaya Betawi yang khas dan praktis.</p>
+            <p class="card-desc">Tampilan ringkas dengan sentuhan budaya Betawi yang khas, hangat, dan praktis.</p>
             <div class="card-actions">
               <button class="btn-card-demo" onclick="window.open('templates/nikah/standar/betawi/index.html', '_blank')"><i class="fas fa-expand"></i> Demo</button>
               <button class="btn-card-order" onclick="openOrderModal('Paket Standar 35k', 'Adat Betawi')"><i class="fab fa-whatsapp"></i> Pesan</button>
@@ -767,7 +849,7 @@
           </div>
         </div>
 
-        <!-- 7. RUSTIC BOHO (STANDAR) -->
+        <!-- 11. RUSTIC BOHO (STANDAR) -->
         <div class="catalog-card" data-category="standar">
           <div class="card-thumb">
             <span class="badge-tier badge-standar">🥉 Paket Standar 35k</span>
@@ -779,7 +861,7 @@
           <div class="card-body">
             <span class="card-meta">Rustic Boho</span>
             <h3 class="card-title">Rustic Botanical</h3>
-            <p class="card-desc">Suasana hangat dengan elemen alam, dirancang sederhana untuk pengalaman tamu yang nyaman.</p>
+            <p class="card-desc">Suasana hangat dengan elemen floral alami, dirancang sederhana untuk pengalaman tamu yang nyaman.</p>
             <div class="card-actions">
               <button class="btn-card-demo" onclick="window.open('templates/nikah/standar/rustic/index.html', '_blank')"><i class="fas fa-expand"></i> Demo</button>
               <button class="btn-card-order" onclick="openOrderModal('Paket Standar 35k', 'Rustic Boho')"><i class="fab fa-whatsapp"></i> Pesan</button>
@@ -787,7 +869,7 @@
           </div>
         </div>
 
-        <!-- 8. MODERN LUXURY (CUSTOM VIP) -->
+        <!-- 12. MODERN LUXURY (CUSTOM VIP) -->
         <div class="catalog-card" data-category="custom">
           <div class="card-thumb">
             <span class="badge-tier badge-custom">💎 Paket Custom</span>
@@ -799,10 +881,90 @@
           <div class="card-body">
             <span class="card-meta">Modern VIP</span>
             <h3 class="card-title">Modern Luxury VIP</h3>
-            <p class="card-desc">Desain eksklusif dengan visual premium dan fitur lengkap untuk kesan yang tak terlupakan.</p>
+            <p class="card-desc">Desain eksklusif dengan visual modern elegan dan fitur terlengkap untuk momen spesial.</p>
             <div class="card-actions">
               <button class="btn-card-demo" onclick="window.open('templates/nikah/custom/modern/index.html', '_blank')"><i class="fas fa-expand"></i> Demo</button>
               <button class="btn-card-order" onclick="openOrderModal('Paket Custom', 'Modern Luxury')"><i class="fab fa-whatsapp"></i> Pesan</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 13. KHITANAN (ACARA LAIN) -->
+        <div class="catalog-card" data-category="acara">
+          <div class="card-thumb">
+            <span class="badge-tier badge-acara">🎉 Acara Lain 35k</span>
+            <img src="https://images.unsplash.com/photo-1566737236500-c8ac43014a67?w=600&auto=format&fit=crop&q=80" alt="Khitanan">
+            <div class="thumb-overlay">
+              <button class="btn-preview-modal" onclick="openDemoModal('templates/acara-lain/khitan/index.html', 'Walimatul Khitan')"><i class="fas fa-play"></i> Live Demo</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <span class="card-meta">Tasyakuran Khitan</span>
+            <h3 class="card-title">Walimatul Khitan</h3>
+            <p class="card-desc">Undangan tasyakuran khitanan buah hati dengan desain islami yang bersih, sopan, dan ceria.</p>
+            <div class="card-actions">
+              <button class="btn-card-demo" onclick="window.open('templates/acara-lain/khitan/index.html', '_blank')"><i class="fas fa-expand"></i> Demo</button>
+              <button class="btn-card-order" onclick="openOrderModal('Paket Standar 35k', 'Walimatul Khitan')"><i class="fab fa-whatsapp"></i> Pesan</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 14. AQIQAH (ACARA LAIN) -->
+        <div class="catalog-card" data-category="acara">
+          <div class="card-thumb">
+            <span class="badge-tier badge-acara">🎉 Acara Lain 35k</span>
+            <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?w=600&auto=format&fit=crop&q=80" alt="Aqiqah">
+            <div class="thumb-overlay">
+              <button class="btn-preview-modal" onclick="openDemoModal('templates/acara-lain/aqiqah/index.html', 'Walimatul Aqiqah')"><i class="fas fa-play"></i> Live Demo</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <span class="card-meta">Tasyakuran Kelahiran</span>
+            <h3 class="card-title">Walimatul Aqiqah</h3>
+            <p class="card-desc">Sambut kelahiran buah hati tercinta dengan undangan aqiqah yang manis, lembut, dan penuh berkah.</p>
+            <div class="card-actions">
+              <button class="btn-card-demo" onclick="window.open('templates/acara-lain/aqiqah/index.html', '_blank')"><i class="fas fa-expand"></i> Demo</button>
+              <button class="btn-card-order" onclick="openOrderModal('Paket Standar 35k', 'Walimatul Aqiqah')"><i class="fab fa-whatsapp"></i> Pesan</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 15. SWEET BIRTHDAY (ACARA LAIN) -->
+        <div class="catalog-card" data-category="acara">
+          <div class="card-thumb">
+            <span class="badge-tier badge-acara">🎉 Acara Lain 35k</span>
+            <img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=600&auto=format&fit=crop&q=80" alt="Birthday">
+            <div class="thumb-overlay">
+              <button class="btn-preview-modal" onclick="openDemoModal('templates/acara-lain/birthday/index.html', 'Sweet Birthday')"><i class="fas fa-play"></i> Live Demo</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <span class="card-meta">Ulang Tahun</span>
+            <h3 class="card-title">Sweet Birthday Party</h3>
+            <p class="card-desc">Rayakan pertambahan usia dengan undangan pesta ulang tahun yang ceria, kekinian, dan interaktif.</p>
+            <div class="card-actions">
+              <button class="btn-card-demo" onclick="window.open('templates/acara-lain/birthday/index.html', '_blank')"><i class="fas fa-expand"></i> Demo</button>
+              <button class="btn-card-order" onclick="openOrderModal('Paket Standar 35k', 'Sweet Birthday')"><i class="fab fa-whatsapp"></i> Pesan</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 16. WISUDA & GRADUATION (ACARA LAIN) -->
+        <div class="catalog-card" data-category="acara">
+          <div class="card-thumb">
+            <span class="badge-tier badge-acara">🎉 Acara Lain 35k</span>
+            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&auto=format&fit=crop&q=80" alt="Wisuda">
+            <div class="thumb-overlay">
+              <button class="btn-preview-modal" onclick="openDemoModal('templates/acara-lain/wisuda/index.html', 'Syukuran Wisuda')"><i class="fas fa-play"></i> Live Demo</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <span class="card-meta">Graduation</span>
+            <h3 class="card-title">Syukuran Wisuda</h3>
+            <p class="card-desc">Bagi kebahagiaan kelulusan dan gelar akademik baru Anda bersama keluarga besar dan sahabat.</p>
+            <div class="card-actions">
+              <button class="btn-card-demo" onclick="window.open('templates/acara-lain/wisuda/index.html', '_blank')"><i class="fas fa-expand"></i> Demo</button>
+              <button class="btn-card-order" onclick="openOrderModal('Paket Standar 35k', 'Syukuran Wisuda')"><i class="fab fa-whatsapp"></i> Pesan</button>
             </div>
           </div>
         </div>
@@ -921,11 +1083,11 @@
       <div class="testi-grid">
         <div class="testi-card">
           <div class="testi-stars">★★★★★</div>
-          <p class="testi-text">"Tema Jawa Kasultanan beneran bagus banget! Latar lukisan kanvas sama kelopak melati yang jatuh bikin tamu-tamu kami pada takjub. Buka undangannya berasa sakral banget!"</p>
+          <p class="testi-text">"Tema Jawa Kasultanan beneran bagus banget! Detail ornamen Joglo sama kelopak melati yang jatuh bikin tamu-tamu kami pada takjub. Buka undangannya berasa sakral banget!"</p>
           <div class="testi-author">
             <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Sekar" class="testi-avatar">
             <div>
-              <div class="testi-name">Sekar &amp; Danang</div>
+              <div class="testi-name">Sekar &amp; Fery</div>
               <div class="testi-role">Tema Adat Jawa Kasultanan</div>
             </div>
           </div>
@@ -1015,7 +1177,7 @@
             <i class="fas fa-chevron-down"></i>
           </button>
           <div class="faq-answer">
-            Paket Standar (Rp 35.000) didesain simpel &amp; bersih tanpa form RSVP dan tanpa rekening bank untuk keperluan sebar cepat. Paket Premium (Rp 50.000) adalah Premium Edition dengan lukisan seni kanvas, animasi partikel melayang, buku tamu RSVP real-time, dan amplop digital multi-rekening + QRIS.
+            Paket Standar (Rp 35.000) didesain simpel &amp; bersih tanpa form RSVP dan tanpa rekening bank untuk keperluan sebar cepat. Paket Premium (Rp 50.000) adalah Premium Edition dengan ornamen khas adat Nusantara, animasi partikel lembut, buku tamu RSVP real-time, dan amplop digital multi-rekening + QRIS.
           </div>
         </div>
 
@@ -1166,7 +1328,7 @@
         <div>
           <h4 class="footer-title">Hubungi Kami</h4>
           <ul class="footer-links">
-            <li><a href="https://api.whatsapp.com/send?phone=6281234567890" target="_blank"><i class="fab fa-whatsapp"></i> +62 812-3456-7890</a></li>
+            <li><a href="https://api.whatsapp.com/send?phone=6282183458754" target="_blank"><i class="fab fa-whatsapp"></i> +62 821-8345-8754</a></li>
             <li><a href="#"><i class="fas fa-envelope"></i> halo@undangyuk.com</a></li>
             <li><a href="#"><i class="fas fa-shield-alt"></i> 100% Garansi Uptime</a></li>
           </ul>
@@ -1206,23 +1368,35 @@
         <div class="form-group">
           <label>Pilihan Tema:</label>
           <select id="orderTema" class="form-control">
-            <option value="Adat Jawa (Kasultanan)">Adat Jawa (Kasultanan - Premium)</option>
-            <option value="Adat Bali (Pawiwahan)">Adat Bali (Pawiwahan - Premium)</option>
-            <option value="Adat Minangkabau">Adat Minangkabau (Premium)</option>
-            <option value="Adat Batak Toba">Adat Batak Toba (Premium)</option>
-            <option value="Adat Bugis Makassar">Adat Bugis Makassar (Premium)</option>
-            <option value="Adat Dayak Borneo">Adat Dayak Borneo (Premium)</option>
-            <option value="Adat Madura">Adat Madura (Premium)</option>
-            <option value="Adat Palembang">Adat Palembang (Premium)</option>
-            <option value="Adat Sunda (Priangan)">Adat Sunda (Priangan - Standar)</option>
-            <option value="Adat Betawi">Adat Betawi (Standar)</option>
-            <option value="Rustic Boho">Rustic Boho (Standar)</option>
-            <option value="Modern Luxury VIP">Modern Luxury (Custom VIP)</option>
+            <optgroup label="👑 TEMA PREMIUM (50K)">
+              <option value="Adat Jawa (Kasultanan)">Adat Jawa (Kasultanan)</option>
+              <option value="Adat Bali (Pawiwahan)">Adat Bali (Pawiwahan)</option>
+              <option value="Adat Minangkabau">Adat Minangkabau (Rumah Gadang)</option>
+              <option value="Adat Batak Toba">Adat Batak Toba (Gorga)</option>
+              <option value="Adat Bugis Makassar">Adat Bugis Makassar (Balla Lompoa)</option>
+              <option value="Adat Dayak Borneo">Adat Dayak Borneo (Batang Garing)</option>
+              <option value="Adat Madura">Adat Madura (Karapan Megah)</option>
+              <option value="Adat Palembang">Adat Palembang (Sriwijaya Emas)</option>
+            </optgroup>
+            <optgroup label="🥉 TEMA STANDAR (35K)">
+              <option value="Adat Sunda (Priangan)">Adat Sunda (Priangan)</option>
+              <option value="Adat Betawi">Adat Betawi (Palang Pintu)</option>
+              <option value="Rustic Boho">Rustic Botanical</option>
+            </optgroup>
+            <optgroup label="💎 PAKET CUSTOM VIP">
+              <option value="Modern Luxury VIP">Modern Luxury VIP</option>
+            </optgroup>
+            <optgroup label="🎉 ACARA LAINNYA (35K)">
+              <option value="Walimatul Khitan">Walimatul Khitan</option>
+              <option value="Walimatul Aqiqah">Walimatul Aqiqah</option>
+              <option value="Sweet Birthday">Sweet Birthday Party</option>
+              <option value="Syukuran Wisuda">Syukuran Wisuda &amp; Graduation</option>
+            </optgroup>
           </select>
         </div>
         <div class="form-group">
-          <label>Nama Pasangan (Pria &amp; Wanita):</label>
-          <input type="text" id="orderMempelai" class="form-control" placeholder="Contoh: Danang &amp; Sekar" required>
+          <label>Nama Pasangan / Yang Dirayakan:</label>
+          <input type="text" id="orderMempelai" class="form-control" placeholder="Contoh: Fery &amp; Dila" required>
         </div>
         <div class="form-group">
           <label>Perkiraan Tanggal Acara:</label>
@@ -1230,7 +1404,7 @@
         </div>
         <div class="form-group">
           <label>Nomor WhatsApp Anda:</label>
-          <input type="tel" id="orderNomorWA" class="form-control" placeholder="Contoh: 081234567890" required>
+          <input type="tel" id="orderNomorWA" class="form-control" placeholder="Contoh: 082183458754" required>
         </div>
         <div class="form-group" id="addonKilatBox">
           <label>Layanan Tambahan (Opsional):</label>
@@ -1256,7 +1430,7 @@
   </div>
 
   <script>
-    const ADMIN_WA = '6281234567890';
+    const ADMIN_WA = '6282183458754';
     const SITE_DOMAIN = 'https://undangy-yuk.vercel.app';
 
     const THEME_PATHS = {
