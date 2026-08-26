@@ -2,6 +2,24 @@
   "version": 2,
   "cleanUrls": true,
   "trailingSlash": false,
+  "rewrites": [
+    { "source": "/jawa", "destination": "/templates/nikah/premium/jawa/index.html" },
+    { "source": "/bali", "destination": "/templates/nikah/premium/bali/index.html" },
+    { "source": "/minang", "destination": "/templates/nikah/premium/minang/index.html" },
+    { "source": "/batak", "destination": "/templates/nikah/premium/batak/index.html" },
+    { "source": "/bugis", "destination": "/templates/nikah/premium/bugis/index.html" },
+    { "source": "/dayak", "destination": "/templates/nikah/premium/dayak/index.html" },
+    { "source": "/madura", "destination": "/templates/nikah/premium/madura/index.html" },
+    { "source": "/palembang", "destination": "/templates/nikah/premium/palembang/index.html" },
+    { "source": "/sunda", "destination": "/templates/nikah/standar/sunda/index.html" },
+    { "source": "/betawi", "destination": "/templates/nikah/standar/betawi/index.html" },
+    { "source": "/rustic", "destination": "/templates/nikah/standar/rustic/index.html" },
+    { "source": "/modern", "destination": "/templates/nikah/custom/modern/index.html" },
+    { "source": "/khitan", "destination": "/templates/acara-lain/khitan/index.html" },
+    { "source": "/aqiqah", "destination": "/templates/acara-lain/aqiqah/index.html" },
+    { "source": "/birthday", "destination": "/templates/acara-lain/birthday/index.html" },
+    { "source": "/wisuda", "destination": "/templates/acara-lain/wisuda/index.html" }
+  ],
   "headers": [
     {
       "source": "/(.*)",
