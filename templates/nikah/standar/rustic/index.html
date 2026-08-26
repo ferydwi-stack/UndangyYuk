@@ -3,255 +3,250 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Wedding of Samuel &amp; Jessica</title>
-  <meta name="description" content="Rustic Botanical Wedding Invitation - Standar Clean Edition">
+  <title>Pernikahan Rustic Botanical - Kraft Organic Edition</title>
+  <meta name="description" content="The Wedding of Liam &amp; Olivia.">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
   <style>
     :root {
-      --primary: #B36B4C;
-      --primary-dark: #7A3F27;
-      --olive: #738276;
-      --bg: #FAF6F0;
-      --card-bg: #FFFFFF;
-      --text: #3D2B24;
-      --muted: #736159;
-      --shadow: 0 8px 25px rgba(179, 107, 76, 0.08);
-      --border: 1px solid rgba(179, 107, 76, 0.25);
+      --rustic-brown: #78350F;
+      --rustic-gold: #D97706;
+      --rustic-kraft: #FDFBF7;
+      --cream-bg: #F5EFE6;
+      --text: #292524;
+      --muted: #57534E;
     }
+
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-    body { background-color: var(--bg); color: var(--text); line-height: 1.7; overflow-x: hidden; }
-    h1, h2, h3, h4, .serif { font-family: 'Cinzel', serif; color: var(--primary); }
-    .container { max-width: 780px; margin: 0 auto; padding: 0 20px; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--cream-bg);
+      background-image: 
+        radial-gradient(rgba(120, 53, 15, 0.1) 1.2px, transparent 1.2px),
+        linear-gradient(180deg, #FAF7F2 0%, #F5EFE6 50%, #EFE8DA 100%);
+      background-size: 20px 20px, 100% 100%;
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.8;
+    }
+
+    .container { max-width: 650px; margin: 0 auto; padding: 0 20px; position: relative; }
     .text-center { text-align: center; }
+    .serif-title { font-family: 'Cinzel', serif; letter-spacing: 2px; }
 
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes spin { 100% { transform: rotate(360deg); } }
-    .animate { opacity: 0; }
-    .animate.visible { animation: fadeInUp 0.7s ease forwards; }
-    .animate-delay-1 { animation-delay: 0.15s; }
-    .animate-delay-2 { animation-delay: 0.3s; }
-    .spin { animation: spin 4s linear infinite; }
-
+    /* COVER RUSTIC */
     .cover-section {
-      position: fixed; inset: 0;
-      background: linear-gradient(135deg, #2E1A12 0%, #4D2D20 100%);
-      color: #FFF; display: flex; justify-content: center; align-items: center;
-      z-index: 999; transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
-      padding: 20px; text-align: center;
+      min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+      text-align: center; padding: 40px 20px; position: fixed; inset: 0; z-index: 1000;
+      background: radial-gradient(circle at 50% 30%, #FFFDF9 0%, #F4EDE2 60%, #E7DBC9 100%);
+      transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
     }
-    .cover-section.hide { transform: translateY(-100%); pointer-events: none; }
-    .cover-card {
-      border: 1.5px solid var(--primary); padding: 40px 24px; border-radius: 24px; max-width: 420px; width: 100%;
-      background: rgba(46, 26, 18, 0.92); backdrop-filter: blur(10px); box-shadow: 0 20px 50px rgba(0,0,0,0.7);
-    }
-    .cover-badge { font-size: 11px; letter-spacing: 3px; color: #E8A88A; font-weight: 700; text-transform: uppercase; }
-    .cover-title { font-size: 32px; color: #FFF; margin: 10px 0; font-style: italic; }
-    .cover-date { font-size: 13.5px; color: #E0CECE; }
-    .guest-box {
-      background: rgba(0,0,0,0.3); border: 1px dashed var(--primary);
-      padding: 14px; border-radius: 14px; margin: 20px 0;
-    }
-    .btn-buka {
-      background: linear-gradient(135deg, var(--primary) 0%, #8A462A 100%);
-      color: #FFF; border: none; padding: 12px 32px; font-size: 14px; font-weight: 800;
-      border-radius: 25px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
-      box-shadow: 0 4px 15px rgba(179, 107, 76, 0.4); transition: transform 0.2s;
-    }
-    .btn-buka:hover { transform: translateY(-2px); }
-
-    .main-content { display: none; opacity: 0; transition: opacity 0.8s ease; padding-bottom: 70px; }
-    .main-content.show { display: block; opacity: 1; }
-    section { padding: 60px 0; }
-    .section-heading { margin-bottom: 30px; }
-    .section-heading .sub-title { text-transform: uppercase; letter-spacing: 3px; font-size: 11px; color: var(--primary); font-weight: 700; }
-    .section-heading h2 { font-size: 26px; margin: 4px 0 8px; }
-    .heading-line { width: 45px; height: 3px; background: var(--primary); margin: 0 auto; border-radius: 2px; }
-
-    .mempelai-grid { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-top: 20px; }
-    .mempelai-card {
-      background: var(--card-bg); border: var(--border); padding: 28px 20px;
-      border-radius: 20px; width: 280px; text-align: center; box-shadow: var(--shadow);
-    }
-    .mempelai-photo {
-      width: 140px; height: 180px; margin: 0 auto 15px; overflow: hidden;
-      border-radius: 16px; border: 2.5px solid var(--primary);
-    }
-    .mempelai-photo img { width: 100%; height: 100%; object-fit: cover; }
-    .mempelai-divider { font-size: 28px; color: var(--primary); align-self: center; padding-top: 40px; }
-
-    .acara-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
-    .acara-card { background: var(--card-bg); border: var(--border); border-radius: 20px; padding: 28px 20px; text-align: center; box-shadow: var(--shadow); }
-    .acara-icon {
-      width: 48px; height: 48px; background: #F7EAE3; color: var(--primary);
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      font-size: 20px; margin: 0 auto 14px;
-    }
-    .btn-maps {
-      display: inline-flex; align-items: center; gap: 6px; background: var(--primary);
-      color: #FFF; padding: 8px 20px; border-radius: 20px; text-decoration: none;
-      font-size: 12px; font-weight: 700; margin-top: 14px;
+    .cover-section.hide { transform: translateY(-100%); opacity: 0; pointer-events: none; }
+    
+    .cover-couple { font-size: 46px; line-height: 1.1; color: var(--rustic-brown); margin: 15px 0 8px; font-family: 'Playfair Display', serif; font-weight: 700; }
+    
+    .guest-badge {
+      background: rgba(255, 255, 255, 0.95); border: 2px solid var(--rustic-gold);
+      padding: 16px 28px; border-radius: 16px; margin: 22px 0;
+      box-shadow: 0 10px 25px rgba(120, 53, 15, 0.08); max-width: 380px; width: 100%;
     }
 
-    .countdown-container { display: flex; justify-content: center; gap: 12px; margin: 20px 0; }
-    .count-box {
-      background: var(--primary); color: #FFF; width: 64px; padding: 12px 4px;
-      border-radius: 12px; text-align: center; border: 1px solid var(--primary-dark);
+    .btn-seal {
+      background: linear-gradient(135deg, #78350F 0%, #D97706 100%);
+      color: #FFF; border: none; padding: 15px 36px; border-radius: 30px; font-size: 14px; font-weight: 700;
+      letter-spacing: 1.5px; cursor: pointer; box-shadow: 0 10px 25px rgba(120, 53, 15, 0.35);
+      display: inline-flex; align-items: center; gap: 10px; transition: transform 0.2s;
     }
-    .count-num { font-size: 20px; font-weight: 800; font-family: 'Cinzel', serif; }
-    .count-label { font-size: 9.5px; text-transform: uppercase; }
+    .btn-seal:hover { transform: scale(1.05); }
 
-    .galeri-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .galeri-item { border-radius: 14px; overflow: hidden; height: 160px; border: 1.5px solid var(--primary); }
-    .galeri-item img { width: 100%; height: 100%; object-fit: cover; }
+    /* MAIN CONTENT */
+    .main-wrapper { opacity: 0; transition: opacity 1s ease; }
+    .main-wrapper.show { opacity: 1; }
 
-    .music-toggle {
-      position: fixed; bottom: 25px; left: 25px; width: 44px; height: 44px;
-      background: var(--primary); color: #FFF; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center; font-size: 18px;
-      z-index: 998; cursor: pointer; border: 1.5px solid var(--primary-dark); box-shadow: var(--shadow);
+    .music-btn {
+      position: fixed; bottom: 25px; right: 25px; width: 48px; height: 48px;
+      background: var(--rustic-brown); color: #FFF; border-radius: 50%;
+      display: none; align-items: center; justify-content: center; font-size: 18px;
+      z-index: 998; border: 2px solid var(--rustic-gold); box-shadow: 0 5px 20px rgba(0,0,0,0.25); cursor: pointer;
+    }
+    .spin { animation: spinDisc 4s linear infinite; }
+    @keyframes spinDisc { 100% { transform: rotate(360deg); } }
+
+    section { padding: 60px 0; position: relative; }
+
+    /* CARD RUSTIC KRAFT SILHOUETTE */
+    .card-kraft {
+      background: rgba(255, 255, 255, 0.95);
+      border: 2px solid rgba(120, 53, 15, 0.3);
+      border-radius: 24px;
+      padding: 45px 24px 35px;
+      box-shadow: 0 15px 35px rgba(120, 53, 15, 0.08);
+      margin-bottom: 30px;
+    }
+
+    /* BOTANICAL PHOTO FRAME */
+    .rustic-photo-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 25px 0 10px; }
+    .rustic-photo-card {
+      background: #FFFDF8; border: 2px solid var(--rustic-brown); border-radius: 16px;
+      padding: 14px 10px; text-align: center; box-shadow: 0 8px 20px rgba(120, 53, 15, 0.08);
+    }
+    .rustic-photo-img {
+      width: 100%; height: 160px; object-fit: cover; border-radius: 10px;
+      border: 2px solid var(--rustic-gold);
+    }
+
+    .gallery-rustic-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 20px; }
+    .gallery-rustic-item {
+      height: 180px; border-radius: 16px; border: 2px solid var(--rustic-gold); overflow: hidden;
+    }
+    .gallery-rustic-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+    .gallery-rustic-item:hover img { transform: scale(1.08); }
+
+    .countdown-grid { display: flex; justify-content: center; gap: 10px; margin: 25px 0; }
+    .countdown-box {
+      background: var(--rustic-brown); color: #FFF; border-radius: 12px;
+      padding: 12px; width: 66px; text-align: center;
+    }
+    .countdown-num { font-size: 22px; font-weight: 800; font-family: 'Cinzel', serif; }
+    .countdown-lbl { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; }
+    .btn-submit {
+      width: 100%; background: var(--rustic-brown); color: #FFF; border: none;
+      padding: 14px; border-radius: 12px; font-weight: 700; font-size: 14px; cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <audio id="bgMusic" loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mp3">
+
+  <!-- AUDIO -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=gamelan-traditional-10515.mp3" type="audio/mp3">
   </audio>
-  <div class="music-toggle" id="musicToggle" onclick="toggleMusic()" style="display:none">
-    <i class="fas fa-compact-disc spin" id="musicIcon"></i>
-  </div>
 
+  <!-- MUSIC TOGGLE -->
+  <button id="musicToggle" class="music-btn" onclick="toggleMusic()" aria-label="Toggle Audio">
+    <i id="musicIcon" class="fas fa-compact-disc"></i>
+  </button>
+
+  <!-- COVER SECTION -->
   <div class="cover-section" id="cover">
-    <div class="cover-card">
-      <div style="font-size:36px; color:#E8A88A; margin-bottom:10px;"><i class="fas fa-feather"></i></div>
-      <p class="cover-badge">Rustic Botanical Wedding</p>
-      <h1 class="cover-title">Samuel &amp; Jessica</h1>
-      <p class="cover-date">Saturday, November 21, 2026</p>
-      <div class="guest-box">
-        <p style="font-size:11px; color:#E0CECE;">Cordially Invited:</p>
-        <h3 style="font-size:19px; color:#E8A88A; margin:3px 0;" id="namaTamuCover">Tamu Undangan Yang Berbahagia</h3>
-        <p style="font-size:10.5px; color:#BFA69B;">At Bali Botanical Garden</p>
-      </div>
-      <button class="btn-buka" onclick="bukaUndangan()">
-        <i class="fas fa-envelope-open"></i> Open Invitation
-      </button>
+    <p style="font-size:12px; letter-spacing:3px; color:var(--rustic-gold); font-weight:800; text-transform:uppercase;">Wedding Invitation</p>
+    <h1 class="cover-couple">Liam &amp; Olivia</h1>
+    <p style="font-size:13px; color:var(--muted); font-weight:600;">Sunday, 14 February 2027</p>
+
+    <div class="guest-badge">
+      <p style="font-size:11.5px; color:var(--muted); margin-bottom:4px;">Dear Honored Guest:</p>
+      <h3 style="font-size:17px; color:var(--rustic-brown); font-weight:800;" id="namaTamuCover">Tamu Undangan Yang Berbahagia</h3>
     </div>
+
+    <button class="btn-seal" onclick="bukaUndangan()">
+      <i class="fas fa-envelope-open-text"></i> OPEN INVITATION
+    </button>
   </div>
 
-  <main class="main-content" id="mainContent">
-    <section style="background:linear-gradient(180deg, #F7EAE3 0%, var(--bg) 100%)">
-      <div class="container text-center">
-        <div class="animate" style="display:inline-block; background:var(--primary); color:#FFF; padding:5px 16px; border-radius:15px; font-size:11px; font-weight:700;">
-          Together with our families
-        </div>
-        <h2 class="animate animate-delay-1" style="font-size:24px; margin:14px 0 6px;">Holy Matrimony</h2>
-        <p class="animate animate-delay-2" style="font-size:13.5px; color:var(--muted); max-width:580px; margin:0 auto; font-style:italic;">
-          "Two souls with but a single thought, two hearts that beat as one."<br>
-          <small style="font-size:11.5px; color:var(--primary);">(1 Corinthians 13:4-8)</small>
-        </p>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <div class="section-heading text-center">
-          <span class="sub-title">The Happy Couple</span>
-          <h2>The Bride &amp; Groom</h2>
-          <div class="heading-line"></div>
-        </div>
-        <div class="mempelai-grid">
-          <div class="mempelai-card animate">
-            <div class="mempelai-photo">
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80" alt="Samuel">
-            </div>
-            <h3 style="font-size:18px; margin-bottom:3px;">Samuel Pratama, B.A.</h3>
-            <p style="font-size:11.5px; color:var(--primary); font-weight:700;">The Groom</p>
-            <p style="font-size:11.5px; color:var(--muted); margin-top:4px;">Son of Mr. Hendra Pratama &amp; Mrs. Linda Wijaya</p>
-            <p style="font-size:11.5px; color:var(--muted);">Jakarta</p>
-          </div>
-          <div class="mempelai-divider animate animate-delay-1">&amp;</div>
-          <div class="mempelai-card animate animate-delay-2">
-            <div class="mempelai-photo">
-              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&auto=format&fit=crop&q=80" alt="Jessica">
-            </div>
-            <h3 style="font-size:18px; margin-bottom:3px;">Jessica Tanujaya, B.Des.</h3>
-            <p style="font-size:11.5px; color:var(--primary); font-weight:700;">The Bride</p>
-            <p style="font-size:11.5px; color:var(--muted); margin-top:4px;">Daughter of Mr. Robert Tanujaya &amp; Mrs. Christine Natalie</p>
-            <p style="font-size:11.5px; color:var(--muted);">Surabaya</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section style="background:#F7EAE3;">
-      <div class="container">
-        <div class="section-heading text-center">
-          <span class="sub-title">Save The Date</span>
-          <h2>Wedding Events</h2>
-          <div class="heading-line"></div>
-        </div>
-        <div class="acara-grid">
-          <div class="acara-card animate">
-            <div class="acara-icon"><i class="fas fa-church"></i></div>
-            <h3 style="font-size:17px; color:var(--primary);">Holy Matrimony</h3>
-            <p style="font-size:12.5px;"><i class="far fa-calendar-alt"></i> Saturday, Nov 21, 2026</p>
-            <p style="font-size:13.5px; font-weight:700; color:var(--primary-dark); margin:5px 0;"><i class="far fa-clock"></i> 10.00 - 11.30 WITA</p>
-            <p style="font-size:11.5px; color:var(--muted);">The Glass House Chapel, Bali</p>
-            <a href="https://maps.google.com" target="_blank" class="btn-maps"><i class="fas fa-map-marker-alt"></i> View Google Maps</a>
-          </div>
-          <div class="acara-card animate animate-delay-1">
-            <div class="acara-icon"><i class="fas fa-cocktail"></i></div>
-            <h3 style="font-size:17px; color:var(--primary);">Sunset Dinner Reception</h3>
-            <p style="font-size:12.5px;"><i class="far fa-calendar-alt"></i> Saturday, Nov 21, 2026</p>
-            <p style="font-size:13.5px; font-weight:700; color:var(--primary-dark); margin:5px 0;"><i class="far fa-clock"></i> 17.00 - 21.00 WITA</p>
-            <p style="font-size:11.5px; color:var(--muted);">Plataran Canggu Resort &amp; Spa, Bali</p>
-            <a href="https://maps.google.com" target="_blank" class="btn-maps"><i class="fas fa-map-marker-alt"></i> View Google Maps</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
+  <!-- MAIN INVITATION CONTENT -->
+  <main class="main-wrapper" id="mainContent">
+    
+    <!-- QUOTE -->
     <section>
       <div class="container text-center">
-        <div class="section-heading">
-          <span class="sub-title">Countdown</span>
-          <h2>The Big Day</h2>
-          <div class="heading-line"></div>
-        </div>
-        <div class="countdown-container animate">
-          <div class="count-box"><div class="count-num" id="days">00</div><div class="count-label">Days</div></div>
-          <div class="count-box"><div class="count-num" id="hours">00</div><div class="count-label">Hours</div></div>
-          <div class="count-box"><div class="count-num" id="minutes">00</div><div class="count-label">Mins</div></div>
-          <div class="count-box"><div class="count-num" id="seconds">00</div><div class="count-label">Secs</div></div>
+        <div class="card-kraft">
+          <p class="serif-title" style="font-size:18px; color:var(--rustic-brown); font-weight:800;">1 Corinthians 13:4-7</p>
+          <p style="font-size:13px; color:var(--muted); margin:15px 0;">
+            <em>"Love is patient, love is kind. It does not envy, it does not boast, it is not proud. It always protects, always trusts, always hopes, always perseveres."</em>
+          </p>
         </div>
       </div>
     </section>
 
-    <section style="background:#F7EAE3;">
-      <div class="container">
-        <div class="section-heading text-center">
-          <span class="sub-title">Memories</span>
-          <h2>Photo Gallery</h2>
-          <div class="heading-line"></div>
-        </div>
-        <div class="galeri-grid">
-          <div class="galeri-item animate"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=500&auto=format&fit=crop&q=80" alt="1"></div>
-          <div class="galeri-item animate animate-delay-1"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=500&auto=format&fit=crop&q=80" alt="2"></div>
-          <div class="galeri-item animate animate-delay-2"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=500&auto=format&fit=crop&q=80" alt="3"></div>
-          <div class="galeri-item animate animate-delay-3"><img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=500&auto=format&fit=crop&q=80" alt="4"></div>
+    <!-- COUPLE PROFILE -->
+    <section>
+      <div class="container text-center">
+        <div class="card-kraft">
+          <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--rustic-gold); text-transform:uppercase;">The Happy Couple</p>
+          <h2 class="serif-title" style="font-size:24px; color:var(--rustic-brown); margin:6px 0 15px;">Groom &amp; Bride</h2>
+
+          <div class="rustic-photo-grid">
+            <div class="rustic-photo-card">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=350&auto=format&fit=crop&q=80" alt="Liam" class="rustic-photo-img">
+              <h3 style="font-size:16px; color:var(--rustic-brown); font-weight:800; margin-top:8px;">Liam Alexander, B.A.</h3>
+              <p style="font-size:11px; color:var(--muted);">Son of Mr. Robert &amp; Mrs. Sarah</p>
+            </div>
+            <div class="rustic-photo-card">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=350&auto=format&fit=crop&q=80" alt="Olivia" class="rustic-photo-img">
+              <h3 style="font-size:16px; color:var(--rustic-brown); font-weight:800; margin-top:8px;">Olivia Grace, B.Sc.</h3>
+              <p style="font-size:11px; color:var(--muted);">Daughter of Mr. James &amp; Mrs. Emily</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <footer style="padding:40px 0 20px; text-align:center; border-top:1px solid rgba(179, 107, 76, 0.2);">
+    <!-- ACARA & LOKASI -->
+    <section>
+      <div class="container text-center">
+        <div class="card-kraft">
+          <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--rustic-gold); text-transform:uppercase;">Celebration Details</p>
+          <h2 class="serif-title" style="font-size:24px; color:var(--rustic-brown); margin:6px 0 20px;">Time &amp; Location</h2>
+
+          <div style="background:#FAF4E8; padding:20px; border-radius:14px; margin-bottom:16px; border:1px solid rgba(120, 53, 15, 0.2);">
+            <h3 style="font-size:17px; color:var(--rustic-brown);"><i class="fas fa-ring"></i> Holy Matrimony</h3>
+            <p style="font-size:13.5px; font-weight:700; color:var(--text); margin:6px 0;">Sunday, 14 February 2027</p>
+            <p style="font-size:12.5px; color:var(--muted);">10:00 AM - 11:30 AM</p>
+            <p style="font-size:12px; color:var(--muted); margin-top:4px;">The Pine Forest Glasshouse, Bandung</p>
+          </div>
+
+          <div style="background:#FAF4E8; padding:20px; border-radius:14px; border:1px solid rgba(120, 53, 15, 0.2);">
+            <h3 style="font-size:17px; color:var(--rustic-brown);"><i class="fas fa-glass-cheers"></i> Dinner Reception</h3>
+            <p style="font-size:13.5px; font-weight:700; color:var(--text); margin:6px 0;">Sunday, 14 February 2027</p>
+            <p style="font-size:12.5px; color:var(--muted);">05:00 PM - 09:00 PM</p>
+            <p style="font-size:12px; color:var(--muted); margin-top:4px;">The Pine Forest Glasshouse, Bandung</p>
+          </div>
+
+          <!-- Countdown -->
+          <div class="countdown-grid">
+            <div class="countdown-box"><div class="countdown-num" id="days">00</div><div class="countdown-lbl">Days</div></div>
+            <div class="countdown-box"><div class="countdown-num" id="hours">00</div><div class="countdown-lbl">Hours</div></div>
+            <div class="countdown-box"><div class="countdown-num" id="minutes">00</div><div class="countdown-lbl">Mins</div></div>
+            <div class="countdown-box"><div class="countdown-num" id="seconds">00</div><div class="countdown-lbl">Secs</div></div>
+          </div>
+
+          <a href="https://maps.google.com" target="_blank" class="btn-submit" style="display:inline-block; text-decoration:none; margin-top:10px;">
+            <i class="fas fa-map-marker-alt"></i> Google Maps Directions
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERI FOTO (4 FOTO) -->
+    <section>
+      <div class="container text-center">
+        <div class="card-kraft">
+          <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--rustic-gold); text-transform:uppercase;">Sweet Memories</p>
+          <h2 class="serif-title" style="font-size:22px; color:var(--rustic-brown); margin:6px 0 15px;">Photo Gallery</h2>
+          <div class="gallery-rustic-grid">
+            <div class="gallery-rustic-item"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=500&auto=format&fit=crop&q=80" alt="Gallery 1"></div>
+            <div class="gallery-rustic-item"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=500&auto=format&fit=crop&q=80" alt="Gallery 2"></div>
+            <div class="gallery-rustic-item"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=500&auto=format&fit=crop&q=80" alt="Gallery 3"></div>
+            <div class="gallery-rustic-item"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=500&auto=format&fit=crop&q=80" alt="Gallery 4"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="padding:40px 0 25px; text-align:center; border-top:1px solid rgba(120, 53, 15, 0.2);">
       <div class="container">
-        <h3 style="font-family:'Cinzel',serif; font-size:22px; color:var(--primary); margin-bottom:5px;">Samuel &amp; Jessica</h3>
-        <p style="font-size:12.5px; color:var(--muted);">Thank you for your love and warm wishes 🙏</p>
-        <p style="font-size:10.5px; color:#A18479; margin-top:15px;">Powered by <strong>UndangYuk</strong> (Standar Edition)</p>
+        <p style="font-size:11px; color:var(--rustic-gold); font-weight:700; letter-spacing:2px;">THANK YOU SO MUCH</p>
+        <h3 class="serif-title" style="font-size:22px; color:var(--rustic-brown); margin:6px 0;">Liam &amp; Olivia</h3>
+        <p style="font-size:12.5px; color:var(--muted);">We can't wait to celebrate our special day with you! 🙏</p>
+        <p style="font-size:11px; color:#A48B77; margin-top:20px;">Digital Invitation by <strong>UndangYuk</strong></p>
       </div>
     </footer>
+
   </main>
 
   <script>
@@ -260,7 +255,7 @@
     const guestEl = document.getElementById('namaTamuCover');
     if (guestEl) {
       if (guestParam && guestParam.trim().length > 0) {
-        guestEl.textContent = guestParam.trim();
+        guestEl.textContent = decodeURIComponent(guestParam.trim());
       } else {
         guestEl.textContent = "Tamu Undangan Yang Berbahagia";
       }
@@ -272,11 +267,16 @@
     let isPlaying = false;
 
     function bukaUndangan() {
-      document.getElementById('cover').classList.add('hide');
-      document.getElementById('mainContent').classList.add('show');
+      const cover = document.getElementById('cover');
+      const mainContent = document.getElementById('mainContent');
+      if (cover) cover.classList.add('hide');
+      if (mainContent) mainContent.classList.add('show');
       if (musicToggle) musicToggle.style.display = 'flex';
       if (bgMusic) {
-        bgMusic.play().then(() => { isPlaying = true; }).catch(e => console.log(e));
+        bgMusic.play().then(() => {
+          isPlaying = true;
+          if (musicIcon) musicIcon.classList.add('spin');
+        }).catch(e => console.log('Audio autoplay prevented:', e));
       }
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -294,7 +294,7 @@
       }
     }
 
-    const targetDate = new Date('November 21, 2026 10:00:00').getTime();
+    const targetDate = new Date('February 14, 2027 10:00:00').getTime();
     setInterval(() => {
       const now = new Date().getTime();
       const diff = targetDate - now;
@@ -309,11 +309,6 @@
         if (s) s.innerText = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
       }
     }, 1000);
-
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.15 });
-    document.querySelectorAll('.animate').forEach(el => obs.observe(el));
   </script>
 </body>
 </html>

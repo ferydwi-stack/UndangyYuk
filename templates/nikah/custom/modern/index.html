@@ -3,317 +3,315 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VIP Wedding Celebration - Alexander &amp; Jennifer</title>
-  <meta name="description" content="VIP Modern Luxury Wedding Experience">
+  <title>The Wedding of Christian &amp; Valerie - VIP Modern Editorial</title>
+  <meta name="description" content="Exclusive VIP Wedding Celebration of Christian &amp; Valerie.">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script src="../../../../firebase-rsvp.js"></script>
+
   <style>
     :root {
-      --dark: #0A0F1D;
-      --card-glass: rgba(255, 255, 255, 0.06);
-      --rose: #E5A894;
-      --rose-light: #F7D7CE;
-      --text: #F1F5F9;
+      --bg-dark: #0B0F19;
+      --card-glass: rgba(255, 255, 255, 0.05);
+      --glass-border: rgba(255, 255, 255, 0.12);
+      --gold-luxury: #E5C378;
+      --gold-light: #FBF0D9;
+      --text-light: #F8FAFC;
       --text-muted: #94A3B8;
-      --border-glass: 1px solid rgba(229, 168, 148, 0.25);
     }
+
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-    body { background-color: var(--dark); color: var(--text); line-height: 1.7; overflow-x: hidden; }
-    h1, h2, h3, h4, .cover-title { font-family: 'Cormorant Garamond', serif; color: var(--rose-light); }
-    .container { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(229, 195, 120, 0.06) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 40%);
+      color: var(--text-light);
+      overflow-x: hidden;
+      line-height: 1.8;
+    }
+
+    #canvasParticles { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 999; }
+    .container { max-width: 650px; margin: 0 auto; padding: 0 20px; position: relative; }
     .text-center { text-align: center; }
+    .serif-title { font-family: 'Cinzel', serif; letter-spacing: 3px; }
 
-    /* ANIMATIONS */
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(35px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes spin { 100% { transform: rotate(360deg); } }
-    .animate { opacity: 0; }
-    .animate.visible { animation: fadeInUp 0.8s ease forwards; }
-    .animate-delay-1 { animation-delay: 0.15s; }
-    .animate-delay-2 { animation-delay: 0.3s; }
-    .spin { animation: spin 4s linear infinite; }
-
-    /* COVER */
+    /* COVER LUXURY */
     .cover-section {
-      position: fixed; inset: 0;
-      background: radial-gradient(circle at center, #1E293B 0%, #0A0F1D 100%);
-      color: #FFF; display: flex; justify-content: center; align-items: center;
-      z-index: 999; transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
-      padding: 20px; text-align: center;
+      min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+      text-align: center; padding: 40px 20px; position: fixed; inset: 0; z-index: 1000;
+      background: radial-gradient(circle at 50% 30%, #171E2E 0%, #0B0F19 80%);
+      transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
     }
-    .cover-section.hide { transform: translateY(-100%); pointer-events: none; }
-    .cover-card {
-      border: var(--border-glass); padding: 45px 30px; border-radius: 30px; max-width: 460px;
-      background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(20px); box-shadow: 0 20px 60px rgba(0,0,0,0.8);
-    }
-    .btn-buka {
-      background: linear-gradient(135deg, var(--rose) 0%, #C77D67 100%);
-      color: #0A0F1D; border: none; padding: 13px 36px; font-size: 13px; font-weight: 800;
-      letter-spacing: 2px; text-transform: uppercase; border-radius: 30px; cursor: pointer;
-      display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(229, 168, 148, 0.4);
-      margin-top: 20px; transition: transform 0.3s;
+    .cover-section.hide { transform: translateY(-100%); opacity: 0; pointer-events: none; }
+    
+    .cover-couple { font-size: 48px; line-height: 1.1; color: var(--gold-luxury); margin: 15px 0 8px; font-family: 'Cinzel', serif; font-weight: 700; }
+    
+    .guest-badge {
+      background: rgba(255, 255, 255, 0.05); border: 1px solid var(--gold-luxury);
+      padding: 16px 28px; border-radius: 16px; margin: 22px 0; backdrop-filter: blur(16px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); max-width: 380px; width: 100%;
     }
 
-    /* MAIN */
-    .main-content { display: none; opacity: 0; transition: opacity 0.8s ease; padding-bottom: 80px; }
-    .main-content.show { display: block; opacity: 1; }
-    section { padding: 65px 0; position: relative; }
-    .section-heading { margin-bottom: 35px; }
-    .section-heading .sub-title { text-transform: uppercase; letter-spacing: 3px; font-size: 11px; color: var(--rose); font-weight: 700; }
-    .section-heading h2 { font-size: 34px; margin: 5px 0 10px; }
-    .heading-line { width: 45px; height: 2px; background: var(--rose); margin: 0 auto; }
-
-    /* FLOATING GLASS CARDS */
-    .mempelai-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 20px; }
-    .glass-card {
-      background: var(--card-glass); border: var(--border-glass); backdrop-filter: blur(15px);
-      padding: 30px 20px; border-radius: 24px; width: 280px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    .btn-seal {
+      background: linear-gradient(135deg, #E5C378 0%, #B89243 100%);
+      color: #0B0F19; border: none; padding: 16px 40px; border-radius: 30px; font-size: 13px; font-weight: 800;
+      letter-spacing: 2px; cursor: pointer; box-shadow: 0 10px 30px rgba(229, 195, 120, 0.25);
+      display: inline-flex; align-items: center; gap: 10px; transition: transform 0.2s;
     }
-    .glass-photo { width: 150px; height: 200px; margin: 0 auto 15px; border-radius: 18px; border: 2px solid var(--rose); overflow: hidden; }
-    .glass-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .btn-seal:hover { transform: scale(1.05); }
 
-    /* ACARA */
-    .acara-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-    .acara-card { background: var(--card-glass); border: var(--border-glass); backdrop-filter: blur(15px); border-radius: 20px; padding: 30px 20px; text-align: center; }
-    .btn-maps { display: inline-flex; align-items: center; gap: 6px; background: var(--rose); color: #0A0F1D; padding: 8px 18px; border-radius: 20px; text-decoration: none; font-size: 12px; font-weight: 700; margin-top: 15px; }
+    /* MAIN CONTENT */
+    .main-wrapper { opacity: 0; transition: opacity 1s ease; }
+    .main-wrapper.show { opacity: 1; }
 
-    /* COUNTDOWN */
-    .countdown-container { display: flex; justify-content: center; gap: 15px; margin: 25px 0; }
-    .count-box { background: rgba(255,255,255,0.06); border: var(--border-glass); color: #FFF; width: 68px; padding: 12px 5px; border-radius: 14px; text-align: center; }
-    .count-num { font-size: 22px; font-weight: 800; font-family: 'Cormorant Garamond', serif; color: var(--rose); }
-    .count-label { font-size: 10px; text-transform: uppercase; color: var(--text-muted); }
+    .music-btn {
+      position: fixed; bottom: 25px; right: 25px; width: 48px; height: 48px;
+      background: rgba(255, 255, 255, 0.1); color: var(--gold-luxury); border-radius: 50%;
+      display: none; align-items: center; justify-content: center; font-size: 18px; backdrop-filter: blur(12px);
+      z-index: 998; border: 1px solid var(--gold-luxury); box-shadow: 0 5px 20px rgba(0,0,0,0.5); cursor: pointer;
+    }
+    .spin { animation: spinDisc 4s linear infinite; }
+    @keyframes spinDisc { 100% { transform: rotate(360deg); } }
 
-    /* EDITORIAL LOOKBOOK GALERI */
-    .galeri-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-    .galeri-item { border-radius: 14px; overflow: hidden; height: 160px; border: var(--border-glass); cursor: pointer; }
-    .galeri-item.span-2 { grid-column: span 2; }
-    .galeri-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
-    .galeri-item:hover img { transform: scale(1.06); }
+    section { padding: 60px 0; position: relative; }
 
-    /* RSVP */
-    .form-box { background: var(--card-glass); border: var(--border-glass); backdrop-filter: blur(15px); border-radius: 24px; padding: 30px 25px; max-width: 540px; margin: 0 auto; }
-    .form-group { margin-bottom: 16px; text-align: left; }
-    .form-group label { display: block; font-size: 12px; font-weight: 700; color: var(--rose); margin-bottom: 6px; }
-    .form-control { width: 100%; padding: 12px; border: 1px solid rgba(255,255,255,0.15); background: rgba(0,0,0,0.3); color: #FFF; border-radius: 10px; font-size: 13px; }
-    .btn-submit { width: 100%; background: linear-gradient(135deg, var(--rose) 0%, #C77D67 100%); color: #0A0F1D; padding: 13px; border: none; border-radius: 12px; font-weight: 800; cursor: pointer; font-size: 14px; }
-    .wishes-feed { max-height: 250px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; margin-top: 25px; }
-    .wish-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 12px 16px; border-radius: 12px; font-size: 13px; border-left: 3px solid var(--rose); }
+    /* GLASSMORPHISM CARD */
+    .card-glassmorphism {
+      background: var(--card-glass);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      padding: 45px 24px 35px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      margin-bottom: 30px;
+    }
 
-    /* AMPLOP */
-    .gift-card { background: var(--card-glass); border: var(--border-glass); backdrop-filter: blur(15px); border-radius: 20px; padding: 25px; max-width: 440px; margin: 0 auto; text-align: center; }
-    .btn-copy { background: rgba(229,168,148,0.1); border: 1px solid var(--rose); color: var(--rose); padding: 6px 14px; border-radius: 16px; font-weight: 700; font-size: 12px; cursor: pointer; margin-top: 10px; }
+    /* MAGAZINE LOOKBOOK PHOTO */
+    .lookbook-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 25px 0 10px; }
+    .lookbook-card {
+      background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border); border-radius: 16px;
+      padding: 14px 10px; text-align: center;
+    }
+    .lookbook-img {
+      width: 100%; height: 180px; object-fit: cover; border-radius: 10px;
+      filter: grayscale(15%); transition: filter 0.3s;
+    }
+    .lookbook-img:hover { filter: grayscale(0%); }
 
-    /* MUSIC */
-    .music-toggle { position: fixed; bottom: 25px; left: 25px; width: 48px; height: 48px; background: var(--card-glass); color: var(--rose); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; z-index: 998; cursor: pointer; border: var(--border-glass); backdrop-filter: blur(10px); }
-  
-  /* CANVAS TEXTURE BACKGROUND */
-  .canvas-texture {
-    background-image: 
-      radial-gradient(rgba(212, 175, 55, 0.06) 1px, transparent 0),
-      radial-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 0);
-    background-size: 24px 24px, 12px 12px;
-    background-position: 0 0, 12px 12px;
-  }
-  #canvasParticles {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    pointer-events: none;
-    z-index: 10;
-  }
-  .ornament-corner {
-    position: absolute;
-    width: 45px; height: 45px;
-    pointer-events: none;
-    opacity: 0.75;
-  }
-  .ornament-tl { top: 12px; left: 12px; }
-  .ornament-tr { top: 12px; right: 12px; transform: scaleX(-1); }
-  .ornament-bl { bottom: 12px; left: 12px; transform: scaleY(-1); }
-  .ornament-br { bottom: 12px; right: 12px; transform: scale(-1); }
+    .gallery-lookbook-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 20px; }
+    .gallery-lookbook-item {
+      height: 190px; border-radius: 14px; border: 1px solid var(--glass-border); overflow: hidden;
+    }
+    .gallery-lookbook-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+    .gallery-lookbook-item:hover img { transform: scale(1.08); }
 
+    .countdown-grid { display: flex; justify-content: center; gap: 10px; margin: 25px 0; }
+    .countdown-box {
+      background: rgba(255, 255, 255, 0.04); color: var(--gold-luxury); border-radius: 14px;
+      padding: 12px; width: 66px; text-align: center; border: 1px solid var(--glass-border);
+    }
+    .countdown-num { font-size: 22px; font-weight: 800; font-family: 'Cinzel', serif; }
+    .countdown-lbl { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
+
+    .form-control {
+      width: 100%; padding: 12px 14px; border: 1px solid var(--glass-border); border-radius: 10px;
+      font-size: 14px; background: rgba(255, 255, 255, 0.05); color: #FFF; margin-bottom: 14px;
+    }
+    .form-control option { background: #0B0F19; color: #FFF; }
+    .btn-submit {
+      width: 100%; background: linear-gradient(135deg, #E5C378 0%, #B89243 100%); color: #0B0F19; border: none;
+      padding: 14px; border-radius: 12px; font-weight: 800; font-size: 13px; letter-spacing: 1px; cursor: pointer;
+    }
+    .wish-card {
+      background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border); border-radius: 12px;
+      padding: 14px; margin-top: 10px; text-align: left; font-size: 13px;
+    }
+    .btn-copy {
+      background: rgba(255, 255, 255, 0.1); color: var(--gold-luxury); border: 1px solid var(--gold-luxury);
+      padding: 6px 14px; border-radius: 8px; font-size: 11px; font-weight: 700; cursor: pointer; margin-top: 6px;
+    }
   </style>
-  <script src="../../../../firebase-rsvp.js"></script>
 </head>
-<body class="canvas-texture">
+<body>
+
   <canvas id="canvasParticles"></canvas>
-  <audio id="bgMusic" loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mp3">
+
+  <audio id="bgMusic" loop preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=gamelan-traditional-10515.mp3" type="audio/mp3">
   </audio>
 
-  <div class="music-toggle" id="musicToggle" onclick="toggleMusic()" style="display:none;">
-    <i class="fas fa-compact-disc spin" id="musicIcon"></i>
-  </div>
+  <button id="musicToggle" class="music-btn" onclick="toggleMusic()" aria-label="Toggle Audio">
+    <i id="musicIcon" class="fas fa-compact-disc"></i>
+  </button>
 
+  <!-- COVER SECTION -->
   <div class="cover-section" id="cover">
-    <div class="cover-card">
-      <p style="font-size:11px; letter-spacing:4px; color:var(--rose); text-transform:uppercase; font-weight:700;">VIP Wedding Celebration</p>
-      <h1 class="cover-title" style="font-size:36px; margin:10px 0;">Alexander &amp; Jennifer</h1>
-      <p style="font-size:13px; color:var(--text-muted); font-style:italic;">Saturday, December 19th, 2026</p>
-      <div style="margin:20px 0; padding:12px; background:rgba(255,255,255,0.04); border:var(--border-glass); border-radius:14px;">
-        <p style="font-size:11px; color:var(--text-muted);">Exclusive Invitation For:</p>
-        <h3 style="font-size:18px; color:var(--rose);" id="namaTamuCover">Distinguished Guest</h3>
-      </div>
-      <button class="btn-buka" onclick="bukaUndangan()">Enter Experience</button>
+    <p style="font-size:12px; letter-spacing:4px; color:var(--gold-luxury); font-weight:800; text-transform:uppercase;">Exclusive VIP Invitation</p>
+    <h1 class="cover-couple">Christian &amp; Valerie</h1>
+    <p style="font-size:13px; color:var(--text-muted); font-weight:600; letter-spacing:1px;">Saturday, 20 February 2027</p>
+
+    <div class="guest-badge">
+      <p style="font-size:11px; color:var(--text-muted); text-transform:uppercase; letter-spacing:2px; margin-bottom:4px;">VIP Guest Pass</p>
+      <h3 style="font-size:17px; color:var(--gold-luxury); font-weight:700;" id="namaTamuCover">Tamu Undangan Yang Berbahagia</h3>
     </div>
+
+    <button class="btn-seal" onclick="bukaUndangan()">
+      <i class="fas fa-key"></i> ACCESS INVITATION
+    </button>
   </div>
 
-  <main class="main-content" id="mainContent">
+  <!-- MAIN INVITATION CONTENT -->
+  <main class="main-wrapper" id="mainContent">
+    
+    <!-- QUOTE -->
     <section>
       <div class="container text-center">
-        <span class="animate" style="background:rgba(229,168,148,0.1); border:1px solid var(--rose); color:var(--rose-light); padding:5px 18px; border-radius:20px; font-size:11px; font-weight:700; letter-spacing:2px;">THE CELEBRATION</span>
-        <h2 class="animate animate-delay-1" style="font-size:34px; margin:15px 0 8px;">Two Hearts, Infinite Possibilities</h2>
-        <p class="animate animate-delay-2" style="font-style:italic; max-width:560px; margin:0 auto; font-size:14px; color:var(--text-muted);">
-          "In all the world, there is no heart for me like yours. In all the world, there is no love for you like mine."
-        </p>
+        <div class="card-glassmorphism">
+          <p class="serif-title" style="font-size:18px; color:var(--gold-luxury); font-weight:800;">A Love Story</p>
+          <p style="font-size:13.5px; color:var(--text-muted); margin:15px 0; font-style:italic;">
+            "Two souls with but a single thought, two hearts that beat as one. Together in love, ambition, and lifetime eternity."
+          </p>
+        </div>
       </div>
     </section>
 
-    <!-- MEMPELAI -->
+    <!-- COUPLE LOOKBOOK -->
     <section>
-      <div class="container">
-        <div class="section-heading text-center">
-          <span class="sub-title">The Couple</span>
-          <h2>The Bride &amp; Groom</h2>
-          <div class="heading-line"></div>
-        </div>
-        <div class="mempelai-grid">
-          <div class="glass-card animate">
-            <div class="glass-photo">
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=80" alt="Alex">
+      <div class="container text-center">
+        <div class="card-glassmorphism">
+          <p style="font-size:11px; letter-spacing:3px; font-weight:800; color:var(--gold-luxury); text-transform:uppercase;">The Couple</p>
+          <h2 class="serif-title" style="font-size:24px; color:var(--text-light); margin:6px 0 15px;">Christian &amp; Valerie</h2>
+
+          <div class="lookbook-grid">
+            <div class="lookbook-card">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=350&auto=format&fit=crop&q=80" alt="Christian" class="lookbook-img">
+              <h3 style="font-size:15px; color:var(--gold-luxury); font-weight:800; margin-top:8px;">Christian William, B.A.</h3>
+              <p style="font-size:11px; color:var(--text-muted);">Son of Mr. Henry William &amp; Mrs. Grace</p>
             </div>
-            <h3 style="font-size:22px;">Alexander Hartanto, B.B.A.</h3>
-            <p style="font-size:12px; color:var(--rose);">The Groom</p>
-            <p style="font-size:12px; color:var(--text-muted);">Son of Mr. Michael Hartanto &amp; Mrs. Linda</p>
-          </div>
-          <div class="glass-card animate animate-delay-1">
-            <div class="glass-photo">
-              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&auto=format&fit=crop&q=80" alt="Jennifer">
+            <div class="lookbook-card">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=350&auto=format&fit=crop&q=80" alt="Valerie" class="lookbook-img">
+              <h3 style="font-size:15px; color:var(--gold-luxury); font-weight:800; margin-top:8px;">Valerie Anastasia, M.B.A.</h3>
+              <p style="font-size:11px; color:var(--text-muted);">Daughter of Mr. Alexander Hart &amp; Mrs. Jennifer</p>
             </div>
-            <h3 style="font-size:22px;">Jennifer Wijaya, B.Des.</h3>
-            <p style="font-size:12px; color:var(--rose);">The Bride</p>
-            <p style="font-size:12px; color:var(--text-muted);">Daughter of Mr. David Wijaya &amp; Mrs. Catherine</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ACARA -->
-    <section style="background:rgba(255,255,255,0.02);">
-      <div class="container">
-        <div class="section-heading text-center">
-          <span class="sub-title">Event Schedule</span>
-          <h2>Celebration Times</h2>
-          <div class="heading-line"></div>
-        </div>
-        <div class="acara-grid">
-          <div class="acara-card animate">
-            <div style="font-size:28px; color:var(--rose); margin-bottom:10px;"><i class="fas fa-ring"></i></div>
-            <h3 style="font-size:20px;">Holy Matrimony</h3>
-            <p><i class="far fa-calendar-alt"></i> Saturday, 19 Dec 2026</p>
-            <p style="font-size:14px; font-weight:700; color:var(--rose); margin:6px 0;"><i class="far fa-clock"></i> 10.00 - 11.30 WIB</p>
-            <p style="font-size:12px; color:var(--text-muted);">St. Mary of the Angels Cathedral, Jakarta</p>
-            <a href="https://maps.google.com" target="_blank" class="btn-maps"><i class="fas fa-map-marker-alt"></i> Google Maps</a>
-          </div>
-          <div class="acara-card animate animate-delay-1">
-            <div style="font-size:28px; color:var(--rose); margin-bottom:10px;"><i class="fas fa-glass-cheers"></i></div>
-            <h3 style="font-size:20px;">Grand Ballroom Gala</h3>
-            <p><i class="far fa-calendar-alt"></i> Saturday, 19 Dec 2026</p>
-            <p style="font-size:14px; font-weight:700; color:var(--rose); margin:6px 0;"><i class="far fa-clock"></i> 18.30 - 22.00 WIB</p>
-            <p style="font-size:12px; color:var(--text-muted);">The Ritz-Carlton Mega Kuningan, Jakarta</p>
-            <a href="https://maps.google.com" target="_blank" class="btn-maps"><i class="fas fa-map-marker-alt"></i> Google Maps</a>
-          </div>
-        </div>
+    <!-- ACARA & LOKASI -->
+    <section>
+      <div class="container text-center">
+        <div class="card-glassmorphism">
+          <p style="font-size:11px; letter-spacing:3px; font-weight:800; color:var(--gold-luxury); text-transform:uppercase;">Itinerary</p>
+          <h2 class="serif-title" style="font-size:24px; color:var(--text-light); margin:6px 0 20px;">Time &amp; Venue</h2>
 
-        <div class="countdown-container animate">
-          <div class="count-box"><div class="count-num" id="days">00</div><div class="count-label">Days</div></div>
-          <div class="count-box"><div class="count-num" id="hours">00</div><div class="count-label">Hours</div></div>
-          <div class="count-box"><div class="count-num" id="minutes">00</div><div class="count-label">Mins</div></div>
-          <div class="count-box"><div class="count-num" id="seconds">00</div><div class="count-label">Secs</div></div>
+          <div style="background:rgba(255, 255, 255, 0.03); padding:20px; border-radius:14px; margin-bottom:16px; border:1px solid var(--glass-border);">
+            <h3 style="font-size:17px; color:var(--gold-luxury);"><i class="fas fa-ring"></i> Holy Matrimony</h3>
+            <p style="font-size:13.5px; font-weight:700; color:var(--text-light); margin:6px 0;">Saturday, 20 February 2027</p>
+            <p style="font-size:12.5px; color:var(--text-muted);">10:00 AM - 12:00 PM</p>
+            <p style="font-size:12px; color:var(--text-muted); margin-top:4px;">The Glass Ballroom, The Langham Hotel, Jakarta</p>
+          </div>
+
+          <div style="background:rgba(255, 255, 255, 0.03); padding:20px; border-radius:14px; border:1px solid var(--glass-border);">
+            <h3 style="font-size:17px; color:var(--gold-luxury);"><i class="fas fa-glass-cheers"></i> Grand Gala Reception</h3>
+            <p style="font-size:13.5px; font-weight:700; color:var(--text-light); margin:6px 0;">Saturday, 20 February 2027</p>
+            <p style="font-size:12.5px; color:var(--text-muted);">06:30 PM - Late</p>
+            <p style="font-size:12px; color:var(--text-muted); margin-top:4px;">Grand Ballroom, The Langham Hotel, Jakarta</p>
+          </div>
+
+          <!-- Countdown -->
+          <div class="countdown-grid">
+            <div class="countdown-box"><div class="countdown-num" id="days">00</div><div class="countdown-lbl">Days</div></div>
+            <div class="countdown-box"><div class="countdown-num" id="hours">00</div><div class="countdown-lbl">Hours</div></div>
+            <div class="countdown-box"><div class="countdown-num" id="minutes">00</div><div class="countdown-lbl">Mins</div></div>
+            <div class="countdown-box"><div class="countdown-num" id="seconds">00</div><div class="countdown-lbl">Secs</div></div>
+          </div>
+
+          <a href="https://maps.google.com" target="_blank" class="btn-submit" style="display:inline-block; text-decoration:none; margin-top:10px;">
+            <i class="fas fa-map-marker-alt"></i> Google Maps Directions
+          </a>
         </div>
       </div>
     </section>
 
     <!-- GALERI LOOKBOOK -->
     <section>
-      <div class="container">
-        <div class="section-heading text-center">
-          <span class="sub-title">Lookbook</span>
-          <h2>Editorial Gallery</h2>
-          <div class="heading-line"></div>
-        </div>
-        <div class="galeri-grid">
-          <div class="galeri-item span-2 animate"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80" alt="1"></div>
-          <div class="galeri-item animate animate-delay-1"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=500&auto=format&fit=crop&q=80" alt="2"></div>
-          <div class="galeri-item animate animate-delay-2"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=500&auto=format&fit=crop&q=80" alt="3"></div>
-          <div class="galeri-item animate animate-delay-3"><img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=500&auto=format&fit=crop&q=80" alt="4"></div>
-          <div class="galeri-item span-2 animate"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=600&auto=format&fit=crop&q=80" alt="5"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- RSVP -->
-    <section style="background:rgba(255,255,255,0.02);">
       <div class="container text-center">
-        <div class="section-heading">
-          <span class="sub-title">Guestbook</span>
-          <h2>RSVP &amp; Best Wishes</h2>
-          <div class="heading-line"></div>
-        </div>
-        <div class="form-box animate">
-          <form onsubmit="handleRSVP(event)">
-            <div class="form-group">
-              <label>Full Name:</label>
-              <input type="text" id="nama" class="form-control" placeholder="e.g. Christian Davies" required>
-            </div>
-            <div class="form-group">
-              <label>Attendance Status:</label>
-              <select id="kehadiran" class="form-control">
-                <option value="Delighted to Attend">Delighted to Attend</option>
-                <option value="Regretfully Decline">Regretfully Decline</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Personal Message:</label>
-              <textarea id="ucapan" class="form-control" rows="3" placeholder="Write your heartfelt blessing..." required></textarea>
-            </div>
-            <button type="submit" class="btn-submit">Confirm Attendance</button>
-          </form>
-          <div class="wishes-feed" id="messagesContainer">
-            <div class="wish-card">
-              <strong>Marcus &amp; Serena</strong> <span style="font-size:11px; color:var(--rose); font-weight:700;">(Attending)</span>
-              <p>Heartiest congratulations to the power couple Alex and Jen! Looking forward to an extraordinary evening.</p>
-            </div>
+        <div class="card-glassmorphism">
+          <p style="font-size:11px; letter-spacing:3px; font-weight:800; color:var(--gold-luxury); text-transform:uppercase;">Editorial Gallery</p>
+          <h2 class="serif-title" style="font-size:22px; color:var(--text-light); margin:6px 0 15px;">Captures of Love</h2>
+          <div class="gallery-lookbook-grid">
+            <div class="gallery-lookbook-item"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=500&auto=format&fit=crop&q=80" alt="Gallery 1"></div>
+            <div class="gallery-lookbook-item"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=500&auto=format&fit=crop&q=80" alt="Gallery 2"></div>
+            <div class="gallery-lookbook-item"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=500&auto=format&fit=crop&q=80" alt="Gallery 3"></div>
+            <div class="gallery-lookbook-item"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=500&auto=format&fit=crop&q=80" alt="Gallery 4"></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- WEDDING GIFT -->
+    <!-- RSVP & UCAPAN DOA (FIREBASE CLOUD) -->
     <section>
       <div class="container text-center">
-        <div class="section-heading">
-          <span class="sub-title">Wedding Gift</span>
-          <h2>Digital Registry</h2>
-          <div class="heading-line"></div>
-        </div>
-        <div class="gift-card animate">
-          <p style="font-size:13px; color:var(--text-muted); margin-bottom:15px;">For our honored guests wishing to send a digital gift:</p>
-          <div style="background:rgba(255,255,255,0.03); padding:15px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
-            <p style="font-weight:800; color:var(--rose);">BANK CENTRAL ASIA</p>
-            <p style="font-size:18px; font-weight:700; color:#FFF;" id="rekBcaVip">8802910482</p>
-            <p style="font-size:12px; color:var(--text-muted);">a.n. Alexander Hartanto</p>
-            <button class="btn-copy" onclick="copyRek('8802910482', this)"><i class="far fa-copy"></i> Copy Account Number</button>
+        <div class="card-glassmorphism">
+          <p style="font-size:11px; letter-spacing:3px; font-weight:800; color:var(--gold-luxury); text-transform:uppercase;">VIP Guestbook</p>
+          <h2 class="serif-title" style="font-size:22px; color:var(--text-light); margin:6px 0 15px;">Real-time RSVP &amp; Wishes</h2>
+          
+          <form onsubmit="handleRSVP(event)">
+            <input type="text" id="nama" class="form-control" placeholder="Your Full Name" required>
+            <select id="kehadiran" class="form-control">
+              <option value="Definitely Attending">Definitely Attending</option>
+              <option value="Uncertain">Uncertain</option>
+              <option value="Unable to Attend">Unable to Attend</option>
+            </select>
+            <textarea id="ucapan" class="form-control" rows="3" placeholder="Leave your heartfelt wishes..." required></textarea>
+            <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> SUBMIT RSVP</button>
+          </form>
+
+          <div id="messagesContainer" style="max-height:280px; overflow-y:auto; margin-top:20px;">
+            <div class="wish-card">
+              <strong>Alexander Hart</strong> <span style="font-size:11px; font-weight:700; color:var(--gold-luxury);">(Definitely Attending)</span>
+              <p>Congratulations Christian &amp; Valerie! Looking forward to celebrating this magnificent milestone with both of you.</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <footer style="padding:40px 0 20px; text-align:center; font-size:12px; color:var(--text-muted); border-top:1px solid rgba(255,255,255,0.06);">
-      <h3 style="font-family:'Cormorant Garamond', serif; font-size:24px; color:var(--rose);">Alexander &amp; Jennifer</h3>
-      <p>Thank you for being part of our unforgettable journey.</p>
+    <!-- AMPLOP DIGITAL -->
+    <section>
+      <div class="container text-center">
+        <div class="card-glassmorphism">
+          <p style="font-size:11px; letter-spacing:3px; font-weight:800; color:var(--gold-luxury); text-transform:uppercase;">Wedding Gift</p>
+          <h2 class="serif-title" style="font-size:22px; color:var(--text-light); margin:6px 0 15px;">Digital Envelope</h2>
+          <p style="font-size:12.5px; color:var(--text-muted); margin-bottom:20px;">For those who have asked how they can contribute, digital transfers are available below:</p>
+
+          <div style="background:rgba(255, 255, 255, 0.03); padding:18px; border-radius:14px; margin-bottom:14px; border:1px solid var(--glass-border);">
+            <p style="font-weight:800; color:var(--gold-luxury);">BANK CENTRAL ASIA (BCA)</p>
+            <p style="font-size:20px; font-weight:700; letter-spacing:2px; color:var(--text-light);" id="rekBCA">1234567890</p>
+            <p style="font-size:12px; color:var(--text-muted);">a.n. Christian William</p>
+            <button class="btn-copy" onclick="copyRek('1234567890', this)"><i class="far fa-copy"></i> Copy Account Number</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="padding:40px 0 25px; text-align:center; border-top:1px solid var(--glass-border);">
+      <div class="container">
+        <p style="font-size:11px; color:var(--gold-luxury); font-weight:700; letter-spacing:3px;">THANK YOU &bull; EXCLUSIVE LUXURY</p>
+        <h3 class="serif-title" style="font-size:22px; color:var(--text-light); margin:6px 0;">Christian &amp; Valerie</h3>
+        <p style="font-size:12.5px; color:var(--text-muted);">With sincere appreciation for your presence and blessings 🙏</p>
+        <p style="font-size:11px; color:var(--text-muted); margin-top:20px;">VIP Invitation by <strong>UndangYuk</strong></p>
+      </div>
     </footer>
+
   </main>
 
   <script>
@@ -363,8 +361,8 @@
       }
     }
 
-    // 3. Countdown Timer
-    const targetDate = new Date('December 05, 2026 08:00:00').getTime();
+    // 3. Countdown Timer (20 Feb 2027)
+    const targetDate = new Date('February 20, 2027 10:00:00').getTime();
     setInterval(() => {
       const now = new Date().getTime();
       const diff = targetDate - now;
@@ -380,16 +378,8 @@
       }
     }, 1000);
 
-    // 4. Scroll Reveal Animations
-    if ('IntersectionObserver' in window) {
-      const obs = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-      }, { threshold: 0.1 });
-      document.querySelectorAll('.animate').forEach(el => obs.observe(el));
-    }
-
-    // 5. Firebase Cloud Firestore RSVP & Real-time Guestbook
-    const THEME_CLOUD_ID = 'modern_luxury_vip';
+    // 4. Firebase Cloud Firestore RSVP (Collection: rsvp_modern_luxury)
+    const THEME_CLOUD_ID = 'modern_luxury';
 
     function esc(t) {
       return (t || '').replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m]));
@@ -402,7 +392,7 @@
       wishes.forEach(item => {
         const div = document.createElement('div');
         div.className = 'wish-card';
-        div.innerHTML = '<strong>' + esc(item.nama || 'Tamu') + '</strong> <span style="font-size:11px; font-weight:700;">(' + esc(item.kehadiran || 'Hadir') + ')</span><p>' + esc(item.ucapan || '') + '</p>';
+        div.innerHTML = '<strong>' + esc(item.nama || 'VIP Guest') + '</strong> <span style="font-size:11px; font-weight:700; color:var(--gold-luxury);">(' + esc(item.kehadiran || 'Attending') + ')</span><p>' + esc(item.ucapan || '') + '</p>';
         feed.appendChild(div);
       });
     }
@@ -414,7 +404,7 @@
     async function handleRSVP(e) {
       e.preventDefault();
       const n = (document.getElementById('nama') ? document.getElementById('nama').value : '').trim();
-      const k = document.getElementById('kehadiran') ? document.getElementById('kehadiran').value : 'Hadir';
+      const k = document.getElementById('kehadiran') ? document.getElementById('kehadiran').value : 'Attending';
       const u = (document.getElementById('ucapan') ? document.getElementById('ucapan').value : '').trim();
       
       if (window.submitRSVPToCloud) {
@@ -425,35 +415,79 @@
       if (feed) {
         const div = document.createElement('div');
         div.className = 'wish-card';
-        div.innerHTML = '<strong>' + esc(n) + '</strong> <span style="font-size:11px; font-weight:700;">(' + esc(k) + ')</span><p>' + esc(u) + '</p>';
+        div.innerHTML = '<strong>' + esc(n) + '</strong> <span style="font-size:11px; font-weight:700; color:var(--gold-luxury);">(' + esc(k) + ')</span><p>' + esc(u) + '</p>';
         feed.prepend(div);
       }
-      alert('Terima kasih banyak! Konfirmasi RSVP & Doa Restu Anda telah tersimpan secara real-time.');
+      alert('Thank you! Your RSVP and wishes have been synchronized in real-time.');
       e.target.reset();
     }
 
-    // 6. Copy Rekening Bank
+    // 5. Copy Rekening
     function copyRek(num, btn) {
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(num).then(() => {
-          const old = btn.innerHTML;
-          btn.innerHTML = '<i class="fas fa-check"></i> Disalin!';
-          setTimeout(() => { btn.innerHTML = old; }, 2000);
-        });
-      } else {
-        const ta = document.createElement('textarea');
-        ta.value = num;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand('copy');
-        document.body.removeChild(ta);
+      navigator.clipboard.writeText(num).then(() => {
         const old = btn.innerHTML;
-        btn.innerHTML = '<i class="fas fa-check"></i> Disalin!';
+        btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
         setTimeout(() => { btn.innerHTML = old; }, 2000);
-      }
+      });
     }
 
-    
+    // 6. Particle Engine (Gold Stardust)
+    (function initCanvasParticles() {
+      const canvas = document.getElementById('canvasParticles');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let width = canvas.width = window.innerWidth;
+      let height = canvas.height = window.innerHeight;
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      const particles = [];
+      const count = window.innerWidth < 600 ? 25 : 45;
+
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          r: Math.random() * 2.2 + 1,
+          dx: (Math.random() - 0.5) * 0.6,
+          dy: Math.random() * 1.0 + 0.3,
+          opacity: Math.random() * 0.7 + 0.2,
+          rot: Math.random() * Math.PI * 2,
+          rotSpeed: (Math.random() - 0.5) * 0.02
+        });
+      }
+
+      function render() {
+        ctx.clearRect(0, 0, width, height);
+        particles.forEach(p => {
+          p.x += p.dx;
+          p.y += p.dy;
+          p.rot += p.rotSpeed;
+
+          if (p.y > height) { p.y = -10; p.x = Math.random() * width; }
+          if (p.x > width) p.x = 0;
+          if (p.x < 0) p.x = width;
+
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.rot);
+          ctx.globalAlpha = p.opacity;
+
+          ctx.fillStyle = '#E5C378';
+          ctx.shadowBlur = 8;
+          ctx.shadowColor = '#E5C378';
+          ctx.beginPath();
+          ctx.arc(0, 0, p.r * 1.2, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        });
+        requestAnimationFrame(render);
+      }
+      render();
+    })();
   </script>
 </body>
 </html>

@@ -3,303 +3,312 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tasyakuran Kelulusan &amp; Wisuda - Kevin Pratama, S.Kom.</title>
-  <meta name="description" content="Tasyakuran Kelulusan Sarjana Komputer Kevin Pratama, S.Kom.">
+  <title>Syukuran Wisuda - Dimas Prasetya, S.Kom.</title>
+  <meta name="description" content="Tasyakuran Wisuda &amp; Kelulusan Dimas Prasetya, S.Kom.">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script src="../../../firebase-rsvp.js"></script>
+
   <style>
     :root {
-      --navy: #0F254A;
-      --navy-dark: #071224;
-      --gold: #C89B3C;
-      --bg: #F8F9FA;
-      --text: #222222;
-      --muted: #556677;
-      --white: #FFFFFF;
-      --shadow: 0 10px 30px rgba(15, 37, 74, 0.15);
-      --border: 1.5px solid rgba(200, 155, 60, 0.4);
+      --wisuda-navy: #1E3A8A;
+      --wisuda-dark: #0F172A;
+      --wisuda-gold: #EAB308;
+      --wisuda-gold-light: #FEF08A;
+      --cream: #FAFDF7;
+      --cream-bg: #EFF6FF;
+      --text: #0F172A;
+      --muted: #475569;
     }
+
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-    body { background-color: var(--bg); color: var(--text); line-height: 1.7; overflow-x: hidden; }
-    h1, h2, h3, h4, .cover-title { font-family: 'Cinzel', serif; color: var(--navy); }
-    .container { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--cream-bg);
+      background-image: 
+        radial-gradient(rgba(30, 58, 138, 0.12) 1.2px, transparent 1.2px),
+        linear-gradient(180deg, #F8FAFC 0%, #EFF6FF 50%, #DBEAFE 100%);
+      background-size: 20px 20px, 100% 100%;
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.8;
+    }
+
+    #canvasParticles { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 999; }
+    .container { max-width: 650px; margin: 0 auto; padding: 0 20px; position: relative; }
     .text-center { text-align: center; }
+    .serif-title { font-family: 'Cinzel', serif; letter-spacing: 2px; }
 
-    /* ANIMATIONS */
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(35px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes spin { 100% { transform: rotate(360deg); } }
-    .animate { opacity: 0; }
-    .animate.visible { animation: fadeInUp 0.8s ease forwards; }
-    .animate-delay-1 { animation-delay: 0.15s; }
-    .animate-delay-2 { animation-delay: 0.3s; }
-    .spin { animation: spin 4s linear infinite; }
-
-    /* COVER */
+    /* COVER WISUDA */
     .cover-section {
-      position: fixed; inset: 0;
-      background: linear-gradient(135deg, #071224 0%, #0F254A 50%, #030812 100%);
-      color: #FFF; display: flex; justify-content: center; align-items: center;
-      z-index: 999; transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
-      padding: 20px; text-align: center;
+      min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+      text-align: center; padding: 40px 20px; position: fixed; inset: 0; z-index: 1000;
+      background: radial-gradient(circle at 50% 30%, #FFFFFF 0%, #EFF6FF 60%, #BFDBFE 100%);
+      transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
     }
-    .cover-section.hide { transform: translateY(-100%); pointer-events: none; }
-    .cover-card {
-      border: 2px solid var(--gold); padding: 40px 25px; border-radius: 24px; max-width: 460px;
-      background: rgba(7, 18, 36, 0.94); backdrop-filter: blur(12px); box-shadow: 0 20px 60px rgba(0,0,0,0.8);
-    }
-    .btn-buka {
-      background: linear-gradient(135deg, var(--gold) 0%, #9B7020 100%);
-      color: #071224; border: none; padding: 13px 34px; font-size: 14px; font-weight: 800;
-      border-radius: 30px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
-      box-shadow: 0 4px 15px rgba(200, 155, 60, 0.4); margin-top: 15px; transition: transform 0.3s;
+    .cover-section.hide { transform: translateY(-100%); opacity: 0; pointer-events: none; }
+    
+    .toga-icon { width: 90px; height: auto; margin-bottom: 12px; filter: drop-shadow(0 4px 10px rgba(30, 58, 138, 0.35)); }
+    .cover-couple { font-size: 42px; line-height: 1.1; color: var(--wisuda-navy); margin: 15px 0 8px; font-family: 'Playfair Display', serif; font-weight: 700; }
+    
+    .guest-badge {
+      background: rgba(255, 255, 255, 0.95); border: 2px solid var(--wisuda-gold);
+      padding: 16px 28px; border-radius: 16px; margin: 22px 0;
+      box-shadow: 0 10px 25px rgba(30, 58, 138, 0.08); max-width: 380px; width: 100%;
     }
 
-    /* MAIN */
-    .main-content { display: none; opacity: 0; transition: opacity 0.8s ease; padding-bottom: 80px; }
-    .main-content.show { display: block; opacity: 1; }
-    section { padding: 65px 0; position: relative; }
-    .section-heading { margin-bottom: 35px; }
-    .section-heading .sub-title { text-transform: uppercase; letter-spacing: 3px; font-size: 11px; color: var(--navy); font-weight: 700; }
-    .section-heading h2 { font-size: 28px; margin: 5px 0 10px; }
-    .heading-line { width: 50px; height: 3px; background: var(--gold); margin: 0 auto; border-radius: 2px; }
-
-    /* TOGA CAP PROFILE CARD */
-    .wisuda-card {
-      background: var(--white); border: 2px solid var(--gold); padding: 35px 25px;
-      border-radius: 30px; max-width: 380px; margin: 20px auto 0; text-align: center; box-shadow: var(--shadow);
+    .btn-seal {
+      background: linear-gradient(135deg, #1E3A8A 0%, #EAB308 100%);
+      color: #FFF; border: none; padding: 15px 36px; border-radius: 30px; font-size: 14px; font-weight: 700;
+      letter-spacing: 1.5px; cursor: pointer; box-shadow: 0 10px 25px rgba(30, 58, 138, 0.35);
+      display: inline-flex; align-items: center; gap: 10px; transition: transform 0.2s;
     }
-    .wisuda-photo {
-      width: 160px; height: 190px; margin: 0 auto 15px; overflow: hidden;
-      clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-      background: var(--navy); padding: 4px;
+    .btn-seal:hover { transform: scale(1.05); }
+
+    /* MAIN CONTENT */
+    .main-wrapper { opacity: 0; transition: opacity 1s ease; }
+    .main-wrapper.show { opacity: 1; }
+
+    .music-btn {
+      position: fixed; bottom: 25px; right: 25px; width: 48px; height: 48px;
+      background: var(--wisuda-navy); color: var(--wisuda-gold-light); border-radius: 50%;
+      display: none; align-items: center; justify-content: center; font-size: 18px;
+      z-index: 998; border: 2px solid var(--wisuda-gold); box-shadow: 0 5px 20px rgba(0,0,0,0.25); cursor: pointer;
     }
-    .wisuda-photo img { width: 100%; height: 100%; object-fit: cover; clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); }
+    .spin { animation: spinDisc 4s linear infinite; }
+    @keyframes spinDisc { 100% { transform: rotate(360deg); } }
 
-    /* ACADEMIC STATS BADGE */
-    .academic-box { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin: 20px 0; }
-    .academic-item { background: #EEF3FA; border: 1px solid var(--navy); padding: 10px 16px; border-radius: 14px; font-size: 12px; font-weight: 700; color: var(--navy); }
+    section { padding: 60px 0; position: relative; }
 
-    /* ACARA */
-    .acara-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-    .acara-card { background: var(--white); border: var(--border); border-radius: 20px; padding: 30px 20px; text-align: center; box-shadow: var(--shadow); }
-    .btn-maps { display: inline-flex; align-items: center; gap: 6px; background: var(--navy); color: #FFF; padding: 8px 18px; border-radius: 20px; text-decoration: none; font-size: 12px; font-weight: 700; margin-top: 15px; }
+    /* CARD WISUDA PLAQUE SILHOUETTE */
+    .card-wisuda {
+      background: rgba(255, 255, 255, 0.95);
+      border: 2px solid rgba(30, 58, 138, 0.3);
+      border-radius: 24px;
+      padding: 45px 24px 35px;
+      box-shadow: 0 15px 35px rgba(30, 58, 138, 0.08);
+      margin-bottom: 30px;
+      position: relative;
+    }
+    .card-wisuda::before {
+      content: "🎓"; position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
+      font-size: 18px; color: var(--wisuda-navy);
+    }
 
-    /* COUNTDOWN */
-    .countdown-container { display: flex; justify-content: center; gap: 15px; margin: 25px 0; }
-    .count-box { background: var(--navy); color: #FFF; width: 68px; padding: 12px 5px; border-radius: 14px; text-align: center; border: 1.5px solid var(--gold); }
-    .count-num { font-size: 22px; font-weight: 800; font-family: 'Cinzel', serif; color: var(--gold); }
-    .count-label { font-size: 10px; text-transform: uppercase; }
+    .wisuda-photo-frame {
+      width: 170px; height: 210px; border-radius: 20px;
+      border: 3px solid var(--wisuda-navy); overflow: hidden; margin: 20px auto 10px;
+      box-shadow: 0 8px 25px rgba(30, 58, 138, 0.15);
+    }
+    .wisuda-photo-frame img { width: 100%; height: 100%; object-fit: cover; }
 
-    /* GALERI */
-    .galeri-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-    .galeri-item { border-radius: 16px; overflow: hidden; height: 160px; border: 2px solid var(--gold); cursor: pointer; }
-    .galeri-item.span-2 { grid-column: span 2; }
-    .galeri-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
-    .galeri-item:hover img { transform: scale(1.06); }
+    .gallery-wisuda-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 20px; }
+    .gallery-wisuda-item {
+      height: 180px; border-radius: 16px; border: 2px solid var(--wisuda-navy); overflow: hidden;
+    }
+    .gallery-wisuda-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+    .gallery-wisuda-item:hover img { transform: scale(1.08); }
 
-    /* RSVP */
-    .form-box { background: var(--white); border: var(--border); border-radius: 24px; padding: 30px 25px; box-shadow: var(--shadow); max-width: 540px; margin: 0 auto; }
-    .form-group { margin-bottom: 16px; text-align: left; }
-    .form-group label { display: block; font-size: 12px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
-    .form-control { width: 100%; padding: 12px; border: 1px solid #E2D5C8; border-radius: 10px; font-size: 13px; }
-    .btn-submit { width: 100%; background: var(--navy); color: #FFF; padding: 13px; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; font-size: 14px; }
-    .wishes-feed { max-height: 250px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; margin-top: 25px; }
-    .wish-card { background: #EEF3FA; padding: 12px 16px; border-radius: 12px; font-size: 13px; border-left: 3px solid var(--gold); }
+    .countdown-grid { display: flex; justify-content: center; gap: 10px; margin: 25px 0; }
+    .countdown-box {
+      background: var(--wisuda-navy); color: var(--wisuda-gold-light); border-radius: 14px;
+      padding: 12px; width: 66px; text-align: center; border: 1px solid var(--wisuda-gold);
+    }
+    .countdown-num { font-size: 22px; font-weight: 800; font-family: 'Cinzel', serif; }
+    .countdown-lbl { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; }
 
-    /* AMPLOP */
-    .gift-card { background: var(--white); border: var(--border); border-radius: 20px; padding: 25px; max-width: 440px; margin: 0 auto; text-align: center; }
-    .btn-copy { background: #EEF3FA; border: 1px solid var(--navy); color: var(--navy); padding: 6px 14px; border-radius: 16px; font-weight: 700; font-size: 12px; cursor: pointer; margin-top: 10px; }
-
-    /* MUSIC */
-    .music-toggle { position: fixed; bottom: 25px; left: 25px; width: 48px; height: 48px; background: var(--navy); color: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; z-index: 998; cursor: pointer; border: 2px solid var(--gold); box-shadow: var(--shadow); }
-  
-  /* CANVAS TEXTURE BACKGROUND */
-  .canvas-texture {
-    background-image: 
-      radial-gradient(rgba(212, 175, 55, 0.06) 1px, transparent 0),
-      radial-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 0);
-    background-size: 24px 24px, 12px 12px;
-    background-position: 0 0, 12px 12px;
-  }
-  #canvasParticles {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    pointer-events: none;
-    z-index: 10;
-  }
-  .ornament-corner {
-    position: absolute;
-    width: 45px; height: 45px;
-    pointer-events: none;
-    opacity: 0.75;
-  }
-  .ornament-tl { top: 12px; left: 12px; }
-  .ornament-tr { top: 12px; right: 12px; transform: scaleX(-1); }
-  .ornament-bl { bottom: 12px; left: 12px; transform: scaleY(-1); }
-  .ornament-br { bottom: 12px; right: 12px; transform: scale(-1); }
-
+    .form-control {
+      width: 100%; padding: 12px 14px; border: 1px solid #BFDBFE; border-radius: 10px;
+      font-size: 14px; background: #FFFDF9; color: var(--text); margin-bottom: 14px;
+    }
+    .btn-submit {
+      width: 100%; background: var(--wisuda-navy); color: var(--wisuda-gold-light); border: none;
+      padding: 14px; border-radius: 12px; font-weight: 700; font-size: 14px; cursor: pointer;
+    }
+    .wish-card {
+      background: #FFF; border: 1px solid rgba(30, 58, 138, 0.3); border-radius: 12px;
+      padding: 14px; margin-top: 10px; text-align: left; font-size: 13px;
+    }
+    .btn-copy {
+      background: var(--wisuda-navy); color: #FFF; border: none; padding: 6px 14px;
+      border-radius: 8px; font-size: 11px; font-weight: 700; cursor: pointer; margin-top: 6px;
+    }
   </style>
-  <script src="../../../firebase-rsvp.js"></script>
 </head>
-<body class="canvas-texture">
+<body>
+
   <canvas id="canvasParticles"></canvas>
-  <audio id="bgMusic" loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mp3">
+
+  <audio id="bgMusic" loop preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=gamelan-traditional-10515.mp3" type="audio/mp3">
   </audio>
 
-  <div class="music-toggle" id="musicToggle" onclick="toggleMusic()" style="display:none;">
-    <i class="fas fa-compact-disc spin" id="musicIcon"></i>
-  </div>
+  <button id="musicToggle" class="music-btn" onclick="toggleMusic()" aria-label="Toggle Audio">
+    <i id="musicIcon" class="fas fa-compact-disc"></i>
+  </button>
 
+  <!-- COVER SECTION -->
   <div class="cover-section" id="cover">
-    <div class="cover-card">
-      <div style="font-size:38px; color:var(--gold); margin-bottom:8px;"><i class="fas fa-graduation-cap"></i></div>
-      <p style="font-size:11px; letter-spacing:4px; color:var(--gold); font-weight:700;">TASYAKURAN KELULUSAN &amp; WISUDA</p>
-      <h1 class="cover-title" style="color:#FFF; font-size:30px; margin:8px 0;">Kevin Pratama, S.Kom.</h1>
-      <p style="font-size:13px; color:#B0C8E8;">Sabtu, 28 November 2026</p>
-      <div style="margin:18px 0; padding:12px; background:rgba(0,0,0,0.5); border:1px dashed var(--gold); border-radius:12px;">
-        <p style="font-size:11px; color:#DDD;">Undangan Khusus Kpd Yth:</p>
-        <h3 style="font-size:18px; color:var(--gold);" id="namaTamuCover">Tamu Undangan</h3>
-      </div>
-      <button class="btn-buka" onclick="bukaUndangan()"><i class="fas fa-envelope-open"></i> Buka Undangan</button>
+    <svg class="toga-icon" viewBox="0 0 100 80" fill="#1E3A8A">
+      <path d="M50 15 L90 35 L50 55 L10 35 Z M25 43 L25 65 Q50 80 75 65 L75 43 Q50 55 25 43 Z" stroke="#EAB308" stroke-width="2"/>
+    </svg>
+    <p style="font-size:12px; letter-spacing:3px; color:var(--wisuda-gold); font-weight:800; text-transform:uppercase;">Graduation Celebration</p>
+    <h1 class="cover-couple">Dimas Prasetya</h1>
+    <p style="font-size:14px; color:var(--wisuda-navy); font-weight:700;">Sarjana Komputer (S.Kom.)</p>
+    <p style="font-size:13px; color:var(--muted); font-weight:600; margin-top:4px;">Sabtu, 20 Maret 2027</p>
+
+    <div class="guest-badge">
+      <p style="font-size:11.5px; color:var(--muted); margin-bottom:4px;">Kepada Yth. Bapak/Ibu/Saudara/i:</p>
+      <h3 style="font-size:17px; color:var(--wisuda-navy); font-weight:800;" id="namaTamuCover">Tamu Undangan Yang Berbahagia</h3>
     </div>
+
+    <button class="btn-seal" onclick="bukaUndangan()">
+      <i class="fas fa-envelope-open-text"></i> BUKA UNDANGAN
+    </button>
   </div>
 
-  <main class="main-content" id="mainContent">
-    <section style="background:linear-gradient(180deg, #EEF3FA 0%, var(--bg) 100%);">
+  <!-- MAIN INVITATION CONTENT -->
+  <main class="main-wrapper" id="mainContent">
+    
+    <!-- AYAT SUCI -->
+    <section>
       <div class="container text-center">
-        <span class="animate" style="background:var(--navy); color:var(--gold); padding:5px 16px; border-radius:20px; font-size:11px; font-weight:700;">GRADUATION DAY &bull; CUM LAUDE</span>
-        <h2 class="animate animate-delay-1" style="font-size:28px; margin:15px 0 8px;">Sarjana Ilmu Komputer</h2>
-        <p class="animate animate-delay-2" style="font-style:italic; max-width:540px; margin:0 auto; font-size:14px; color:var(--muted);">
-          "Rasa syukur kami panjatkan atas kelulusan ananda tercinta. Terima kasih atas segala doa restu, dukungan, dan bimbingan selama masa studi."
-        </p>
-
-        <div class="wisuda-card animate">
-          <div class="wisuda-photo">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=80" alt="Kevin">
-          </div>
-          <h3 style="font-size:20px;">Kevin Pratama, S.Kom.</h3>
-          <p style="font-size:12px; color:var(--navy); font-weight:700;">Program Studi Teknik Informatika</p>
-          <p style="font-size:12px; color:var(--muted);">Fakultas Ilmu Komputer &bull; Institut Teknologi Bandung</p>
-        </div>
-
-        <div class="academic-box animate">
-          <div class="academic-item"><i class="fas fa-award"></i> Predikat: Cum Laude (IPK 3.88)</div>
-          <div class="academic-item"><i class="fas fa-university"></i> Wisuda Periode II 2026</div>
+        <div class="card-wisuda">
+          <p class="serif-title" style="font-size:18px; color:var(--wisuda-navy); font-weight:800;">Syukur &amp; Dedikasi</p>
+          <p style="font-size:13px; color:var(--muted); margin:15px 0;">
+            <em>"Alhamdulillah atas kelulusan dan diraihnya gelar Sarjana Komputer. Terima kasih yang tak terhingga untuk orang tua, dosen, dan para sahabat yang selalu mendukung."</em>
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- ACARA -->
-    <section style="background:#EEF3FA;">
-      <div class="container">
-        <div class="section-heading text-center">
-          <span class="sub-title">Waktu &amp; Tempat</span>
-          <h2>Jadwal Syukuran Wisuda</h2>
-          <div class="heading-line"></div>
-        </div>
-        <div class="acara-grid">
-          <div class="acara-card animate">
-            <div style="font-size:28px; color:var(--navy); margin-bottom:10px;"><i class="fas fa-glass-cheers"></i></div>
-            <h3 style="font-size:20px; color:var(--navy);">Tasyakuran &amp; Ramah Tamah</h3>
-            <p><i class="far fa-calendar-alt"></i> Sabtu, 28 November 2026</p>
-            <p style="font-size:14px; font-weight:700; color:var(--navy-dark); margin:6px 0;"><i class="far fa-clock"></i> 13.00 - 17.00 WIB</p>
-            <p style="font-size:12px; color:var(--muted);">Ballroom Hotel Pullman Grand Central Bandung</p>
-            <a href="https://maps.google.com" target="_blank" class="btn-maps"><i class="fas fa-map-marker-alt"></i> Google Maps</a>
-          </div>
-        </div>
+    <!-- GRADUATE PROFILE -->
+    <section>
+      <div class="container text-center">
+        <div class="card-wisuda">
+          <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--wisuda-gold); text-transform:uppercase;">The Graduate</p>
+          <h2 class="serif-title" style="font-size:24px; color:var(--wisuda-navy); margin:6px 0 15px;">Dimas Prasetya, S.Kom.</h2>
 
-        <div class="countdown-container animate">
-          <div class="count-box"><div class="count-num" id="days">00</div><div class="count-label">Hari</div></div>
-          <div class="count-box"><div class="count-num" id="hours">00</div><div class="count-label">Jam</div></div>
-          <div class="count-box"><div class="count-num" id="minutes">00</div><div class="count-label">Menit</div></div>
-          <div class="count-box"><div class="count-num" id="seconds">00</div><div class="count-label">Detik</div></div>
+          <div class="wisuda-photo-frame">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=350&auto=format&fit=crop&q=80" alt="Dimas">
+          </div>
+          <p style="font-size:13px; color:var(--wisuda-navy); font-weight:700; margin-top:10px;">Program Studi Teknik Informatika<br>Universitas Indonesia</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACARA & LOKASI -->
+    <section>
+      <div class="container text-center">
+        <div class="card-wisuda">
+          <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--wisuda-gold); text-transform:uppercase;">Rundown Syukuran</p>
+          <h2 class="serif-title" style="font-size:24px; color:var(--wisuda-navy); margin:6px 0 20px;">Waktu &amp; Tempat</h2>
+
+          <div style="background:#FAF4E8; padding:20px; border-radius:14px; margin-bottom:16px; border:1px solid rgba(30, 58, 138, 0.2);">
+            <h3 style="font-size:17px; color:var(--wisuda-navy);"><i class="fas fa-graduation-cap"></i> Prosesi Wisuda Universitas</h3>
+            <p style="font-size:13.5px; font-weight:700; color:var(--text); margin:6px 0;">Sabtu, 20 Maret 2027</p>
+            <p style="font-size:12.5px; color:var(--muted);">Pukul 08.00 - 11.30 WIB</p>
+            <p style="font-size:12px; color:var(--muted); margin-top:4px;">Balairung Universitas Indonesia, Depok</p>
+          </div>
+
+          <div style="background:#FAF4E8; padding:20px; border-radius:14px; border:1px solid rgba(30, 58, 138, 0.2);">
+            <h3 style="font-size:17px; color:var(--wisuda-navy);"><i class="fas fa-utensils"></i> Syukuran &amp; Ramah Tamah</h3>
+            <p style="font-size:13.5px; font-weight:700; color:var(--text); margin:6px 0;">Sabtu, 20 Maret 2027</p>
+            <p style="font-size:12.5px; color:var(--muted);">Pukul 13.00 - 17.00 WIB</p>
+            <p style="font-size:12px; color:var(--muted); margin-top:4px;">Restoran Mang Engking Danau Salam UI, Depok</p>
+          </div>
+
+          <!-- Countdown -->
+          <div class="countdown-grid">
+            <div class="countdown-box"><div class="countdown-num" id="days">00</div><div class="countdown-lbl">Hari</div></div>
+            <div class="countdown-box"><div class="countdown-num" id="hours">00</div><div class="countdown-lbl">Jam</div></div>
+            <div class="countdown-box"><div class="countdown-num" id="minutes">00</div><div class="countdown-lbl">Menit</div></div>
+            <div class="countdown-box"><div class="countdown-num" id="seconds">00</div><div class="countdown-lbl">Detik</div></div>
+          </div>
+
+          <a href="https://maps.google.com" target="_blank" class="btn-submit" style="display:inline-block; text-decoration:none; margin-top:10px;">
+            <i class="fas fa-map-marker-alt"></i> Google Maps Directions
+          </a>
         </div>
       </div>
     </section>
 
     <!-- GALERI -->
     <section>
-      <div class="container">
-        <div class="section-heading text-center">
-          <span class="sub-title">Dokumentasi</span>
-          <h2>Galeri Foto Kelulusan</h2>
-          <div class="heading-line"></div>
-        </div>
-        <div class="galeri-grid">
-          <div class="galeri-item span-2 animate"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80" alt="1"></div>
-          <div class="galeri-item animate animate-delay-1"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=500&auto=format&fit=crop&q=80" alt="2"></div>
-          <div class="galeri-item animate animate-delay-2"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=500&auto=format&fit=crop&q=80" alt="3"></div>
-          <div class="galeri-item animate animate-delay-3"><img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=500&auto=format&fit=crop&q=80" alt="4"></div>
-          <div class="galeri-item span-2 animate"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=600&auto=format&fit=crop&q=80" alt="5"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- RSVP -->
-    <section style="background:#EEF3FA;">
       <div class="container text-center">
-        <div class="section-heading">
-          <span class="sub-title">Buku Tamu</span>
-          <h2>Konfirmasi &amp; Ucapan Selamat</h2>
-          <div class="heading-line"></div>
-        </div>
-        <div class="form-box animate">
-          <form onsubmit="handleRSVP(event)">
-            <div class="form-group">
-              <label>Nama Lengkap:</label>
-              <input type="text" id="nama" class="form-control" placeholder="Contoh: Bpk. Gunawan" required>
-            </div>
-            <div class="form-group">
-              <label>Kehadiran:</label>
-              <select id="kehadiran" class="form-control">
-                <option value="Hadir">Insya Allah Hadir</option>
-                <option value="Tidak Hadir">Mohon Maaf Berhalangan</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Ucapan Selamat:</label>
-              <textarea id="ucapan" class="form-control" rows="3" placeholder="Tulis ucapan selamat atas kelulusan..." required></textarea>
-            </div>
-            <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Kirim Ucapan</button>
-          </form>
-          <div class="wishes-feed" id="messagesContainer">
-            <div class="wish-card">
-              <strong>Keluarga Bpk. Hartono</strong> <span style="font-size:11px; color:var(--navy); font-weight:700;">(Hadir)</span>
-              <p>Selamat atas kelulusan dan gelar S.Kom-nya Kevin! Sukses selalu dalam karir dan masa depan.</p>
-            </div>
+        <div class="card-wisuda">
+          <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--wisuda-gold); text-transform:uppercase;">Campus Journey</p>
+          <h2 class="serif-title" style="font-size:22px; color:var(--wisuda-navy); margin:6px 0 15px;">Kenangan Perkuliahan</h2>
+          <div class="gallery-wisuda-grid">
+            <div class="gallery-wisuda-item"><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=500&auto=format&fit=crop&q=80" alt="Gallery 1"></div>
+            <div class="gallery-wisuda-item"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=500&auto=format&fit=crop&q=80" alt="Gallery 2"></div>
+            <div class="gallery-wisuda-item"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=500&auto=format&fit=crop&q=80" alt="Gallery 3"></div>
+            <div class="gallery-wisuda-item"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=500&auto=format&fit=crop&q=80" alt="Gallery 4"></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- AMPLOP -->
+    <!-- RSVP & UCAPAN DOA (FIREBASE CLOUD) -->
     <section>
       <div class="container text-center">
-        <div class="section-heading">
-          <span class="sub-title">Tanda Kasih</span>
-          <h2>Kado Kelulusan Digital</h2>
-          <div class="heading-line"></div>
-        </div>
-        <div class="gift-card animate">
-          <p style="font-size:13px; color:var(--muted); margin-bottom:15px;">Bagi kerabat yang ingin memberikan kado kelulusan secara digital:</p>
-          <div style="background:#EEF3FA; padding:15px; border-radius:12px;">
-            <p style="font-weight:800; color:var(--navy);">BANK BCA</p>
-            <p style="font-size:18px; font-weight:700; color:var(--text);" id="rekBcaGrad">4820194820</p>
-            <p style="font-size:12px; color:var(--muted);">a.n. Kevin Pratama</p>
-            <button class="btn-copy" onclick="copyRek('4820194820', this)"><i class="far fa-copy"></i> Salin No. Rekening</button>
+        <div class="card-wisuda">
+          <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--wisuda-gold); text-transform:uppercase;">Konfirmasi &amp; Ucapan</p>
+          <h2 class="serif-title" style="font-size:22px; color:var(--wisuda-navy); margin:6px 0 15px;">Buku Tamu Real-time</h2>
+          
+          <form onsubmit="handleRSVP(event)">
+            <input type="text" id="nama" class="form-control" placeholder="Nama Anda" required>
+            <select id="kehadiran" class="form-control">
+              <option value="Hadir">Insya Allah Hadir</option>
+              <option value="Ragu-ragu">Masih Ragu-ragu</option>
+              <option value="Tidak Hadir">Minta Maaf Belum Sempat Hadir</option>
+            </select>
+            <textarea id="ucapan" class="form-control" rows="3" placeholder="Tuliskan ucapan selamat wisuda untuk Dimas..." required></textarea>
+            <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Kirim Konfirmasi &amp; Ucapan</button>
+          </form>
+
+          <div id="messagesContainer" style="max-height:280px; overflow-y:auto; margin-top:20px;">
+            <div class="wish-card">
+              <strong>Budi Santoso</strong> <span style="font-size:11px; font-weight:700; color:var(--wisuda-navy);">(Hadir)</span>
+              <p>Selamat bro Dimas atas gelarnya! Sukses terus untuk karirnya ke depan!</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <footer style="padding:40px 0 20px; text-align:center; font-size:12px; color:var(--muted);">
-      <h3 style="font-family:'Cinzel', serif; font-size:22px; color:var(--navy);">Kevin Pratama, S.Kom.</h3>
-      <p>Terima Kasih Banyak Atas Segala Bimbingan &amp; Doa Restunya</p>
+    <!-- AMPLOP DIGITAL -->
+    <section>
+      <div class="container text-center">
+        <div class="card-wisuda">
+          <p style="font-size:11px; letter-spacing:2px; font-weight:800; color:var(--wisuda-gold); text-transform:uppercase;">Hadiah Wisuda</p>
+          <h2 class="serif-title" style="font-size:22px; color:var(--wisuda-navy); margin:6px 0 15px;">Kado Digital</h2>
+          <p style="font-size:12.5px; color:var(--muted); margin-bottom:20px;">Bagi keluarga dan kerabat yang ingin memberikan tanda kasih secara digital:</p>
+
+          <div style="background:#FAF4E8; padding:18px; border-radius:14px; margin-bottom:14px; border:1px solid rgba(30, 58, 138, 0.2);">
+            <p style="font-weight:800; color:var(--wisuda-navy);">BANK BCA</p>
+            <p style="font-size:20px; font-weight:700; letter-spacing:2px; color:var(--text);" id="rekBCA">5678901234</p>
+            <p style="font-size:12px; color:var(--muted);">a.n. Dimas Prasetya</p>
+            <button class="btn-copy" onclick="copyRek('5678901234', this)"><i class="far fa-copy"></i> Salin No. Rekening</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="padding:40px 0 25px; text-align:center; border-top:1px solid rgba(30, 58, 138, 0.2);">
+      <div class="container">
+        <p style="font-size:11px; color:var(--wisuda-gold); font-weight:700; letter-spacing:2px;">CONGRATULATIONS &bull; CLASS OF 2027</p>
+        <h3 class="serif-title" style="font-size:22px; color:var(--wisuda-navy); margin:6px 0;">Dimas Prasetya, S.Kom.</h3>
+        <p style="font-size:12.5px; color:var(--muted);">Terima kasih atas doa dan dukungannya selalu 🙏</p>
+        <p style="font-size:11px; color:#A48B77; margin-top:20px;">Undangan Digital by <strong>UndangYuk</strong></p>
+      </div>
     </footer>
+
   </main>
 
   <script>
@@ -349,8 +358,8 @@
       }
     }
 
-    // 3. Countdown Timer
-    const targetDate = new Date('December 05, 2026 08:00:00').getTime();
+    // 3. Countdown Timer (20 Mar 2027)
+    const targetDate = new Date('March 20, 2027 08:00:00').getTime();
     setInterval(() => {
       const now = new Date().getTime();
       const diff = targetDate - now;
@@ -366,16 +375,8 @@
       }
     }, 1000);
 
-    // 4. Scroll Reveal Animations
-    if ('IntersectionObserver' in window) {
-      const obs = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-      }, { threshold: 0.1 });
-      document.querySelectorAll('.animate').forEach(el => obs.observe(el));
-    }
-
-    // 5. Firebase Cloud Firestore RSVP & Real-time Guestbook
-    const THEME_CLOUD_ID = 'acara_wisuda';
+    // 4. Firebase Cloud Firestore RSVP (Collection: rsvp_wisuda_syukuran)
+    const THEME_CLOUD_ID = 'wisuda_syukuran';
 
     function esc(t) {
       return (t || '').replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m]));
@@ -388,7 +389,7 @@
       wishes.forEach(item => {
         const div = document.createElement('div');
         div.className = 'wish-card';
-        div.innerHTML = '<strong>' + esc(item.nama || 'Tamu') + '</strong> <span style="font-size:11px; font-weight:700;">(' + esc(item.kehadiran || 'Hadir') + ')</span><p>' + esc(item.ucapan || '') + '</p>';
+        div.innerHTML = '<strong>' + esc(item.nama || 'Tamu') + '</strong> <span style="font-size:11px; font-weight:700; color:var(--wisuda-navy);">(' + esc(item.kehadiran || 'Hadir') + ')</span><p>' + esc(item.ucapan || '') + '</p>';
         feed.appendChild(div);
       });
     }
@@ -411,35 +412,79 @@
       if (feed) {
         const div = document.createElement('div');
         div.className = 'wish-card';
-        div.innerHTML = '<strong>' + esc(n) + '</strong> <span style="font-size:11px; font-weight:700;">(' + esc(k) + ')</span><p>' + esc(u) + '</p>';
+        div.innerHTML = '<strong>' + esc(n) + '</strong> <span style="font-size:11px; font-weight:700; color:var(--wisuda-navy);">(' + esc(k) + ')</span><p>' + esc(u) + '</p>';
         feed.prepend(div);
       }
-      alert('Terima kasih banyak! Konfirmasi RSVP & Doa Restu Anda telah tersimpan secara real-time.');
+      alert('Terima kasih! Konfirmasi kehadiran dan ucapan Anda telah tersimpan secara real-time.');
       e.target.reset();
     }
 
-    // 6. Copy Rekening Bank
+    // 5. Copy Rekening
     function copyRek(num, btn) {
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(num).then(() => {
-          const old = btn.innerHTML;
-          btn.innerHTML = '<i class="fas fa-check"></i> Disalin!';
-          setTimeout(() => { btn.innerHTML = old; }, 2000);
-        });
-      } else {
-        const ta = document.createElement('textarea');
-        ta.value = num;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand('copy');
-        document.body.removeChild(ta);
+      navigator.clipboard.writeText(num).then(() => {
         const old = btn.innerHTML;
         btn.innerHTML = '<i class="fas fa-check"></i> Disalin!';
         setTimeout(() => { btn.innerHTML = old; }, 2000);
-      }
+      });
     }
 
-    
+    // 6. Particle Engine (Gold Navy Sparkles)
+    (function initCanvasParticles() {
+      const canvas = document.getElementById('canvasParticles');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let width = canvas.width = window.innerWidth;
+      let height = canvas.height = window.innerHeight;
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      const particles = [];
+      const count = window.innerWidth < 600 ? 25 : 45;
+
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          r: Math.random() * 2.2 + 1,
+          dx: (Math.random() - 0.5) * 0.6,
+          dy: Math.random() * 1.0 + 0.3,
+          opacity: Math.random() * 0.7 + 0.2,
+          rot: Math.random() * Math.PI * 2,
+          rotSpeed: (Math.random() - 0.5) * 0.02
+        });
+      }
+
+      function render() {
+        ctx.clearRect(0, 0, width, height);
+        particles.forEach(p => {
+          p.x += p.dx;
+          p.y += p.dy;
+          p.rot += p.rotSpeed;
+
+          if (p.y > height) { p.y = -10; p.x = Math.random() * width; }
+          if (p.x > width) p.x = 0;
+          if (p.x < 0) p.x = width;
+
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.rot);
+          ctx.globalAlpha = p.opacity;
+
+          ctx.fillStyle = '#EAB308';
+          ctx.shadowBlur = 6;
+          ctx.shadowColor = '#1E3A8A';
+          ctx.beginPath();
+          ctx.arc(0, 0, p.r * 1.2, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        });
+        requestAnimationFrame(render);
+      }
+      render();
+    })();
   </script>
 </body>
 </html>
