@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pernikahan Adat Jawa Kasultanan - Fery &amp; Anisa</title>
-  <meta name="description" content="Pawartos Palakrama Raden Mas Fery Dwi &amp; Raden Ajeng Anisa Rahmawati. Undangan Pernikahan Adat Jawa Kasultanan Surakarta Hadiningrat Full Photo Canvas Edition.">
+  <meta name="description" content="Pawartos Palakrama Raden Mas Fery Dwi &amp; Raden Ajeng Anisa Rahmawati. Undangan Pernikahan Adat Jawa Kasultanan Surakarta Hadiningrat Ultra Luxury Masterpiece Edition.">
 
   <!-- Google Fonts: Royal Javanese Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Great+Vibes&family=Marcellus&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Great+Vibes&family=Marcellus&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -26,13 +26,16 @@
       --gold-dark: #8C6A1A;
       --gold-light: #F7ECC8;
       --gold-bright: #E7C158;
+      --gold-shimmer: linear-gradient(135deg, #F7ECC8 0%, #E7C158 50%, #B8892A 100%);
       --brown: #362217;
       --wood: #1C1108;
+      --wood-deep: #120A04;
       --cream: #FAF5EB;
       --sogan: #5D4037;
-      --glass-bg: rgba(255, 253, 248, 0.90);
+      --glass-bg: rgba(255, 253, 248, 0.92);
+      --glass-dark-bg: rgba(24, 14, 8, 0.85);
       --glass-border: rgba(197, 155, 39, 0.45);
-      --glass-shadow: 0 18px 45px rgba(28, 17, 8, 0.14);
+      --glass-shadow: 0 20px 50px rgba(28, 17, 8, 0.16);
 
       /* KOLEKSI FOTO PREWEDDING UTAMA SEBAGAI LATAR KANVAS */
       --foto-cover: url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1600&auto=format&fit=crop&q=80');
@@ -43,6 +46,7 @@
       --foto-timeline-bg: url('https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=1600&auto=format&fit=crop&q=80');
       --foto-interlude2-bg: url('https://images.unsplash.com/photo-1754782540893-2122877f2975?w=1600&auto=format&fit=crop&q=80');
       --foto-gallery-bg: url('https://images.unsplash.com/photo-1509119546138-bccc862c68de?w=1600&auto=format&fit=crop&q=80');
+      --foto-family-bg: url('https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1600&auto=format&fit=crop&q=80');
       --foto-closing-bg: url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1600&auto=format&fit=crop&q=80');
     }
 
@@ -54,6 +58,7 @@
       color: var(--brown);
       overflow-x: hidden;
       line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
     }
 
     #tsparticles-bg { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 997; }
@@ -67,15 +72,15 @@
     .gapura-panel {
       position: absolute; top: 0; bottom: 0; width: 51%;
       background:
-        linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.45)),
+        linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.5)),
         linear-gradient(160deg, #B8892A 0%, #7A5714 55%, #2A1B10 100%);
       display: flex; align-items: center;
-      transition: transform 1.4s cubic-bezier(0.87,0,0.13,1);
-      box-shadow: 0 0 60px rgba(0,0,0,.5);
+      transition: transform 1.5s cubic-bezier(0.87,0,0.13,1);
+      box-shadow: 0 0 70px rgba(0,0,0,.6);
     }
-    .gapura-panel.l { left: 0; justify-content: flex-end; border-right: 2px solid rgba(247,236,200,.4); }
-    .gapura-panel.r { right: 0; justify-content: flex-start; border-left: 2px solid rgba(247,236,200,.4); }
-    .gapura-panel svg { height: 48vh; max-height: 400px; width: auto; opacity: .95; }
+    .gapura-panel.l { left: 0; justify-content: flex-end; border-right: 2px solid rgba(247,236,200,.45); }
+    .gapura-panel.r { right: 0; justify-content: flex-start; border-left: 2px solid rgba(247,236,200,.45); }
+    .gapura-panel svg { height: 50vh; max-height: 420px; width: auto; opacity: .95; }
     .gapura-panel.l svg { margin-right: -2px; }
     .gapura-panel.r svg { margin-left: -2px; transform: scaleX(-1); }
     .gapura-open .gapura-panel.l { transform: translateX(-102%); }
@@ -93,7 +98,7 @@
     /* SECTION PHOTO CANVAS BACKGROUND SYSTEM */
     .section-canvas {
       position: relative;
-      padding: clamp(65px, 12vw, 95px) 0;
+      padding: clamp(70px, 14vw, 105px) 0;
       background-size: cover;
       background-position: center;
       background-attachment: scroll;
@@ -113,24 +118,24 @@
     /* FULL-BLEED PHOTO INTERLUDE BANNERS */
     .photo-interlude {
       position: relative;
-      min-height: 60vh;
+      min-height: 65vh;
       display: flex; align-items: center; justify-content: center;
       background-size: cover; background-position: center;
-      overflow: hidden; padding: 60px 24px;
+      overflow: hidden; padding: 70px 24px;
     }
     .photo-interlude::after {
       content: ""; position: absolute; inset: 0;
-      background: linear-gradient(180deg, rgba(20,12,7,.5) 0%, rgba(20,12,7,.2) 50%, rgba(20,12,7,.65) 100%);
+      background: linear-gradient(180deg, rgba(20,12,7,.55) 0%, rgba(20,12,7,.2) 50%, rgba(20,12,7,.7) 100%);
     }
     .interlude-content {
       position: relative; z-index: 2; text-align: center; max-width: 580px;
     }
     .interlude-quote {
-      font-family: 'Great Vibes', cursive; font-size: clamp(34px, 9vw, 48px); color: #FFF9E9;
-      text-shadow: 0 4px 20px rgba(0,0,0,0.6); line-height: 1.25; margin-bottom: 12px;
+      font-family: 'Great Vibes', cursive; font-size: clamp(34px, 9vw, 50px); color: #FFF9E9;
+      text-shadow: 0 4px 22px rgba(0,0,0,0.65); line-height: 1.25; margin-bottom: 14px;
     }
     .interlude-badge {
-      font-size: 11.5px; letter-spacing: 3px; color: var(--gold-light); text-transform: uppercase;
+      font-size: 12px; letter-spacing: 3px; color: var(--gold-light); text-transform: uppercase;
       font-weight: 700; text-shadow: 0 2px 8px rgba(0,0,0,0.6);
     }
 
@@ -159,7 +164,7 @@
 
     .gunungan-mini {
       width: 95px; height: auto; margin-bottom: 8px;
-      filter: drop-shadow(0 6px 18px rgba(0,0,0,.5));
+      filter: drop-shadow(0 6px 18px rgba(0,0,0,.55));
       animation: floatGunungan 3.5s ease-in-out infinite alternate;
     }
     @keyframes floatGunungan { 0%{transform:translateY(0) scale(1)} 100%{transform:translateY(-6px) scale(1.04)} }
@@ -170,10 +175,10 @@
 
     /* TRANSLUCENT GLASS BADGE FOR GUEST */
     .guest-parchment-card {
-      background: rgba(20, 12, 7, 0.45);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1.5px solid rgba(247, 236, 200, 0.45);
+      background: rgba(20, 12, 7, 0.48);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1.5px solid rgba(247, 236, 200, 0.5);
       border-radius: 24px; padding: clamp(18px,5vw,22px) clamp(20px,6vw,30px); margin: 24px auto 28px;
       box-shadow: 0 16px 36px rgba(0,0,0,.35); max-width: 420px; width: 100%;
     }
@@ -182,29 +187,29 @@
 
     .btn-buka-undangan {
       background: linear-gradient(135deg,#E7C158 0%,#B8892A 50%,#6B4A16 100%);
-      color:#2A1B0C; border: 1.5px solid rgba(255,255,255,.6); padding:16px 46px; border-radius:50px;
+      color:#2A1B0C; border: 1.5px solid rgba(255,255,255,.7); padding:16px 46px; border-radius:50px;
       font-size:clamp(12.5px,3.4vw,14px); font-weight:800; letter-spacing:2px; cursor:pointer;
       box-shadow:0 12px 32px rgba(0,0,0,.45); display:inline-flex; align-items:center; gap:12px;
       transition:transform .25s, box-shadow .25s; text-transform:uppercase;
     }
-    .btn-buka-undangan:hover { transform: translateY(-2px) scale(1.05); box-shadow: 0 18px 40px rgba(197,155,39,.6); }
+    .btn-buka-undangan:hover { transform: translateY(-2px) scale(1.05); box-shadow: 0 18px 40px rgba(197,155,39,.65); }
 
     /* FLOATING OPEN PANELS */
     .floating-glass-panel {
       background: var(--glass-bg);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       border: 1.5px solid var(--glass-border);
       border-radius: 30px;
-      padding: clamp(30px, 7vw, 45px) clamp(20px, 5vw, 32px);
+      padding: clamp(32px, 7vw, 48px) clamp(22px, 5vw, 34px);
       box-shadow: var(--glass-shadow);
       margin-bottom: 25px;
       position: relative;
       z-index: 2;
     }
     .floating-glass-panel.dark {
-      background: rgba(28, 17, 8, 0.78);
-      border-color: rgba(197, 155, 39, 0.4);
+      background: var(--glass-dark-bg);
+      border-color: rgba(197, 155, 39, 0.45);
       color: var(--gold-light);
     }
     .floating-glass-panel.dark h2, .floating-glass-panel.dark h3 { color: #FFF9E9; }
@@ -216,14 +221,14 @@
     .mempelai-open-card { width: 100%; max-width: 320px; text-align: center; }
 
     .portrait-arch-frame {
-      width: clamp(180px, 48vw, 220px);
-      height: clamp(250px, 64vw, 300px);
+      width: clamp(190px, 50vw, 230px);
+      height: clamp(260px, 66vw, 310px);
       margin: 0 auto 18px;
       border-radius: 120px 120px 20px 20px;
       border: 4px solid var(--gold-bright);
       padding: 6px;
       background: rgba(255, 253, 248, 0.9);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
       position: relative;
       overflow: hidden;
     }
@@ -236,18 +241,19 @@
 
     /* WAKTU & TEMPAT EVENT BOXES */
     .event-floating-box {
-      background: rgba(255, 253, 248, 0.92);
+      background: rgba(255, 253, 248, 0.94);
       border: 1px solid rgba(197, 155, 39, 0.4);
       border-radius: 20px;
       padding: 24px 20px;
       margin-bottom: 18px;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+      text-align: center;
     }
 
     /* PANGGIH STEPS */
     .panggih-steps-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 24px 0 10px; text-align: left; }
     .panggih-step-box {
-      background: rgba(255, 253, 248, 0.92); border: 1px solid rgba(197, 155, 39, 0.35); border-radius: 16px;
+      background: rgba(255, 253, 248, 0.94); border: 1px solid rgba(197, 155, 39, 0.35); border-radius: 16px;
       padding: 14px; display: flex; align-items: flex-start; gap: 10px;
     }
     .panggih-icon { width: 32px; height: 32px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; flex-shrink: 0; }
@@ -267,16 +273,16 @@
     .timeline-container { position: relative; margin: 30px 0 10px; padding-left: 24px; text-align: left; border-left: 2px dashed var(--gold); }
     .timeline-item { position: relative; margin-bottom: 28px; }
     .timeline-bead { position: absolute; left: -31px; top: 4px; width: 14px; height: 14px; border-radius: 50%; background: var(--gold); border: 2px solid #FFF; box-shadow: 0 0 10px var(--gold); }
-    .timeline-photo { width: 52px; height: 52px; border-radius: 50%; border: 2px solid var(--gold); object-fit: cover; float: right; margin-left: 10px; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
+    .timeline-photo { width: 52px; height: 52px; border-radius: 50%; border: 2px solid var(--gold); object-fit: cover; float: right; margin-left: 10px; box-shadow: 0 4px 14px rgba(0,0,0,.25); cursor: pointer; }
     .timeline-year { font-size: 11.5px; font-weight: 800; color: var(--gold-dark); text-transform: uppercase; }
     .timeline-title { font-size: clamp(15px, 4vw, 16px); font-weight: 700; color: var(--brown); margin: 2px 0; }
     .timeline-desc { font-size: 12.5px; color: var(--sogan); }
 
-    /* EDITORIAL MAGAZINE GALLERY GRID (10 PREWEDDING PHOTOS) */
+    /* EDITORIAL MAGAZINE GALLERY GRID */
     .gallery-masonry-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 30px; }
     .gallery-item {
-      background: #FFFDF8; border-radius: 14px; padding: 8px 8px 30px; overflow: hidden; position: relative;
-      box-shadow: 0 12px 28px rgba(0,0,0,0.18); border: 2px solid var(--gold);
+      background: #FFFDF8; border-radius: 14px; padding: 8px 8px 32px; overflow: hidden; position: relative;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.18); border: 2px solid var(--gold); cursor: pointer;
       transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
     .gallery-item:hover { transform: translateY(-6px) scale(1.03); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
@@ -284,7 +290,13 @@
     .gallery-item.tall .photo-clip { height: 230px; }
     .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
     .gallery-item:hover img { transform: scale(1.08); }
-    .gallery-item .polaroid-cap { position: absolute; left: 0; right: 0; bottom: 6px; text-align: center; font-family: 'Great Vibes', cursive; font-size: 18px; color: var(--gold-dark); }
+    .gallery-item .polaroid-cap { position: absolute; left: 0; right: 0; bottom: 8px; text-align: center; font-family: 'Great Vibes', cursive; font-size: 19px; color: var(--gold-dark); }
+
+    /* PROTOKOL & TURUT MENGUNDANG */
+    .family-list-box {
+      background: rgba(255, 253, 248, 0.94); border: 1px solid rgba(197, 155, 39, 0.35); border-radius: 18px;
+      padding: 20px; margin-top: 15px; text-align: center;
+    }
 
     /* FORM & WISHES */
     .form-control {
@@ -295,9 +307,10 @@
       width: 100%; background: linear-gradient(135deg, #C59B27 0%, #8C6A1A 100%);
       color: #FFF; border: none; padding: 15px; border-radius: 14px; font-weight: 700;
       font-size: 14px; letter-spacing: 1px; cursor: pointer; box-shadow: 0 8px 20px rgba(140, 106, 26, 0.3);
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;
     }
     .wish-card {
-      background: rgba(255, 253, 248, 0.92); border: 1px solid rgba(197, 155, 39, 0.35); border-radius: 14px;
+      background: rgba(255, 253, 248, 0.94); border: 1px solid rgba(197, 155, 39, 0.35); border-radius: 14px;
       padding: 15px; margin-top: 12px; text-align: left; font-size: 13.5px;
     }
     .btn-copy {
@@ -305,20 +318,65 @@
       padding: 7px 16px; border-radius: 10px; font-size: 11.5px; font-weight: 700; cursor: pointer; margin-top: 8px;
     }
 
+    /* FLOATING BOTTOM NAVIGATION DOCK */
+    .bottom-nav-dock {
+      position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+      background: rgba(28, 17, 8, 0.88); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--gold); border-radius: 40px; padding: 8px 16px; display: none;
+      align-items: center; gap: 14px; z-index: 996; box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+    .bottom-nav-dock.show { display: flex; }
+    .bottom-nav-btn {
+      color: var(--gold-light); font-size: 14px; text-decoration: none; width: 34px; height: 34px;
+      display: flex; align-items: center; justify-content: center; border-radius: 50%;
+      transition: background .25s, color .25s;
+    }
+    .bottom-nav-btn:hover, .bottom-nav-btn.active {
+      background: var(--gold); color: #1C1108;
+    }
+
+    /* MUSIC FLOATING BUTTON */
     .music-btn {
-      position: fixed; bottom: 25px; right: 25px; width: 50px; height: 50px;
+      position: fixed; bottom: 25px; right: 25px; width: 52px; height: 52px;
       background: var(--brown); color: var(--gold); border-radius: 50%;
-      display: none; align-items: center; justify-content: center; font-size: 20px;
-      z-index: 998; border: 2px solid var(--gold); box-shadow: 0 8px 25px rgba(0,0,0,0.3); cursor: pointer;
+      display: none; align-items: center; justify-content: center; font-size: 22px;
+      z-index: 998; border: 2px solid var(--gold); box-shadow: 0 8px 25px rgba(0,0,0,0.35); cursor: pointer;
     }
     .spin { animation: spinDisc 4s linear infinite; }
     @keyframes spinDisc { 100% { transform: rotate(360deg); } }
+
+    /* LIGHTBOX MODAL */
+    .lightbox-modal {
+      position: fixed; inset: 0; background: rgba(18, 10, 4, 0.95);
+      display: none; align-items: center; justify-content: center; z-index: 1500; padding: 20px;
+    }
+    .lightbox-modal.active { display: flex; }
+    .lightbox-img { max-width: 90vw; max-height: 80vh; border-radius: 12px; border: 2px solid var(--gold); box-shadow: 0 0 40px rgba(0,0,0,.8); }
+    .lightbox-close { position: absolute; top: 25px; right: 25px; color: var(--gold-light); font-size: 28px; cursor: pointer; }
+
+    /* TOAST NOTIFICATION */
+    .toast-msg {
+      position: fixed; top: 25px; left: 50%; transform: translateX(-50%) translateY(-100px);
+      background: var(--brown); color: var(--gold-light); border: 1.5px solid var(--gold);
+      padding: 12px 26px; border-radius: 30px; font-weight: 700; font-size: 13px; z-index: 2000;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4); opacity: 0; transition: transform .4s ease, opacity .4s ease;
+    }
+    .toast-msg.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
     .main-wrapper { opacity: 0; transition: opacity 1s ease; }
     .main-wrapper.show { opacity: 1; }
   </style>
 </head>
 <body>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toastMsg" class="toast-msg"><i class="fas fa-check-circle"></i> Berhasil disalin!</div>
+
+  <!-- LIGHTBOX MODAL -->
+  <div id="lightboxModal" class="lightbox-modal" onclick="closeLightbox()">
+    <i class="fas fa-times lightbox-close"></i>
+    <img id="lightboxImg" class="lightbox-img" src="" alt="Preview">
+  </div>
 
   <!-- GERBANG GAPURA KRATON OPENING INTRO CANVAS -->
   <div class="gapura-wrap" id="gapuraWrap">
@@ -348,6 +406,17 @@
   <button id="musicToggle" class="music-btn" onclick="toggleMusic()" aria-label="Toggle Audio">
     <i id="musicIcon" class="fas fa-compact-disc"></i>
   </button>
+
+  <!-- FLOATING NAVIGATION DOCK -->
+  <nav class="bottom-nav-dock" id="bottomNav">
+    <a href="#cover" class="bottom-nav-btn" title="Sampul"><i class="fas fa-home"></i></a>
+    <a href="#mempelai" class="bottom-nav-btn" title="Mempelai"><i class="fas fa-user-friends"></i></a>
+    <a href="#acara" class="bottom-nav-btn" title="Acara"><i class="fas fa-calendar-alt"></i></a>
+    <a href="#kisah" class="bottom-nav-btn" title="Kisah"><i class="fas fa-heart"></i></a>
+    <a href="#galeri" class="bottom-nav-btn" title="Galeri"><i class="fas fa-images"></i></a>
+    <a href="#rsvp" class="bottom-nav-btn" title="RSVP"><i class="fas fa-envelope-open-text"></i></a>
+    <a href="#hadiah" class="bottom-nav-btn" title="Kado"><i class="fas fa-gift"></i></a>
+  </nav>
 
   <!-- COVER SECTION (FULL BLEED PREWEDDING PHOTO BACKDROP + GOLDEN GUNUNGAN) -->
   <div class="cover-section" id="cover">
@@ -392,7 +461,7 @@
     </section>
 
     <!-- 2. PROFIL MEMPELAI (PHOTO CANVAS 2: OPEN FLOATING PORTRAITS) -->
-    <section class="section-canvas dark" style="background-image: var(--foto-mempelai-bg);">
+    <section id="mempelai" class="section-canvas dark" style="background-image: var(--foto-mempelai-bg);">
       <div class="container text-center">
         <p style="font-size:11px; letter-spacing:3px; font-weight:800; color:var(--gold-light); text-transform:uppercase;">Temanten Sekar Kekalih</p>
         <h2 class="serif-royal" style="font-size:clamp(24px,6vw,30px); color:#FFF9E9; margin:8px 0 25px;">Mempelai Pengantin</h2>
@@ -400,22 +469,24 @@
         <div class="mempelai-open-grid">
           <!-- GROOM -->
           <div class="mempelai-open-card reveal reveal-slide-left">
-            <div class="portrait-arch-frame">
+            <div class="portrait-arch-frame" onclick="openLightbox('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900&auto=format&fit=crop&q=80')">
               <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=80" alt="Danang">
             </div>
             <h3 style="font-size:clamp(18px,4.8vw,21px); font-weight:800; color:#FFF9E9;">Raden Mas Fery Dwi, S.T.</h3>
             <p style="font-size:12.5px; color:var(--gold-light); margin-top:4px;">Putra Kakung saking Bpk. Suryo Haryono &amp; Ibu Sri Rahayu</p>
+            <p style="font-size:11px; color:var(--gold); margin-top:4px;"><i class="fab fa-instagram"></i> @danang.prasetyo</p>
           </div>
 
           <div class="script-royal reveal reveal-zoom" style="font-size:48px; color:var(--gold-bright);">&amp;</div>
 
           <!-- BRIDE -->
           <div class="mempelai-open-card reveal reveal-slide-right">
-            <div class="portrait-arch-frame bride">
+            <div class="portrait-arch-frame bride" onclick="openLightbox('https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=900&auto=format&fit=crop&q=80')">
               <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80" alt="Sekar">
             </div>
             <h3 style="font-size:clamp(18px,4.8vw,21px); font-weight:800; color:#FFF9E9;">Raden Ajeng Anisa Rahmawati, S.E.</h3>
             <p style="font-size:12.5px; color:var(--gold-light); margin-top:4px;">Putri Pawestri saking Bpk. Bambang Sutrisno &amp; Ibu Dwi Lestari</p>
+            <p style="font-size:11px; color:var(--gold); margin-top:4px;"><i class="fab fa-instagram"></i> @sekar.ayuningtyas</p>
           </div>
         </div>
       </div>
@@ -430,7 +501,7 @@
     </section>
 
     <!-- 4. WAKTU, LOKASI & ADICARA PANGGIH (PHOTO CANVAS 3) -->
-    <section class="section-canvas" style="background-image: var(--foto-acara-bg);">
+    <section id="acara" class="section-canvas" style="background-image: var(--foto-acara-bg);">
       <div class="container text-center">
         <div class="floating-glass-panel reveal reveal-fade-up">
           <p style="font-size:11px; letter-spacing:3px; font-weight:800; color:var(--gold-dark); text-transform:uppercase;">Rantaman Lampahing Adicara</p>
@@ -450,6 +521,7 @@
             <p style="font-size:12.5px; color:var(--sogan); margin-top:4px;">Gedung Joglo Ageng Royal Heritage, Surakarta</p>
           </div>
 
+          <!-- PANGGIH 4 TAHAPAN -->
           <div class="panggih-steps-grid reveal reveal-fade-up">
             <div class="panggih-step-box"><div class="panggih-icon">1</div><div><strong style="font-size:12.5px;">Balangan Gantal</strong><p style="font-size:11px; color:var(--sogan);">Silih uncal suruh katresnan</p></div></div>
             <div class="panggih-step-box"><div class="panggih-icon">2</div><div><strong style="font-size:12.5px;">Ngidak Endhog</strong><p style="font-size:11px; color:var(--sogan);">Mijiki samparaning kakung</p></div></div>
@@ -457,6 +529,7 @@
             <div class="panggih-step-box"><div class="panggih-icon">4</div><div><strong style="font-size:12.5px;">Kacar-Kucur</strong><p style="font-size:11px; color:var(--sogan);">Guno kaya nafkah kulawarga</p></div></div>
           </div>
 
+          <!-- COUNTDOWN -->
           <div class="countdown-grid reveal reveal-zoom">
             <div class="countdown-box"><div class="countdown-num" id="days">00</div><div class="countdown-lbl">Hari</div></div>
             <div class="countdown-box"><div class="countdown-num" id="hours">00</div><div class="countdown-lbl">Jam</div></div>
@@ -464,15 +537,21 @@
             <div class="countdown-box"><div class="countdown-num" id="seconds">00</div><div class="countdown-lbl">Detik</div></div>
           </div>
 
-          <a href="https://maps.google.com" target="_blank" class="btn-submit" style="display:inline-block; text-decoration:none; margin-top:10px;">
-            <i class="fas fa-map-marker-alt"></i> Petunjuk Rute Google Maps
-          </a>
+          <!-- BUTTON GOOGLE MAPS & SAVE TO CALENDAR -->
+          <div style="display:flex; flex-direction:column; gap:10px; margin-top:15px;">
+            <a href="https://maps.google.com" target="_blank" class="btn-submit">
+              <i class="fas fa-map-marker-alt"></i> Petunjuk Rute Google Maps
+            </a>
+            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Pernikahan+Danang+%26+Sekar&dates=20261205T010000Z/20261205T070000Z&details=Undangan+Pernikahan+Adat+Jawa+Kasultanan+Danang+%26+Sekar&location=Gedung+Joglo+Ageng+Royal+Heritage,+Surakarta" target="_blank" class="btn-submit" style="background:var(--brown); border:1px solid var(--gold);">
+              <i class="far fa-calendar-plus"></i> Simpan ke Google Calendar
+            </a>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- 5. BABAD KATRESNAN (PHOTO CANVAS 4: TIMELINE WITH MILESTONE PHOTOS) -->
-    <section class="section-canvas" style="background-image: var(--foto-timeline-bg);">
+    <section id="kisah" class="section-canvas" style="background-image: var(--foto-timeline-bg);">
       <div class="container text-center">
         <div class="floating-glass-panel reveal reveal-fade-up">
           <p style="font-size:11px; letter-spacing:3px; font-weight:800; color:var(--gold-dark); text-transform:uppercase;">Babad Katresnan</p>
@@ -480,21 +559,21 @@
 
           <div class="timeline-container">
             <div class="timeline-item">
-              <img class="timeline-photo" src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=140&auto=format&fit=crop&q=80" alt="2021">
+              <img class="timeline-photo" src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=140&auto=format&fit=crop&q=80" alt="2021" onclick="openLightbox(this.src)">
               <div class="timeline-bead"></div>
               <div class="timeline-year">Maret 2021</div>
               <div class="timeline-title">Wiwitan Pepanggihan</div>
               <div class="timeline-desc">Pitepangan kapisanan ing kutha Solo, lumantar raos tresna ingkang tulus lan suci.</div>
             </div>
             <div class="timeline-item">
-              <img class="timeline-photo" src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=140&auto=format&fit=crop&q=80" alt="2025">
+              <img class="timeline-photo" src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=140&auto=format&fit=crop&q=80" alt="2025" onclick="openLightbox(this.src)">
               <div class="timeline-bead"></div>
               <div class="timeline-year">Juli 2025</div>
               <div class="timeline-title">Nalika Lamaran</div>
               <div class="timeline-desc">Nyawijiaken manah kulawarga ageng kanthi pasrah paningset lan tandha tresna.</div>
             </div>
             <div class="timeline-item" style="margin-bottom:0;">
-              <img class="timeline-photo" src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=140&auto=format&fit=crop&q=80" alt="2026">
+              <img class="timeline-photo" src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=140&auto=format&fit=crop&q=80" alt="2026" onclick="openLightbox(this.src)">
               <div class="timeline-bead"></div>
               <div class="timeline-year">Desember 2026</div>
               <div class="timeline-title">Dinten Palakrama</div>
@@ -514,49 +593,49 @@
     </section>
 
     <!-- 7. GALERI FOTO LENGKAP 10 PREWEDDING (PHOTO CANVAS 5) -->
-    <section class="section-canvas dark" style="background-image: var(--foto-gallery-bg);">
+    <section id="galeri" class="section-canvas dark" style="background-image: var(--foto-gallery-bg);">
       <div class="container text-center">
         <p style="font-size:11px; letter-spacing:3px; font-weight:800; color:var(--gold-light); text-transform:uppercase;">Galeri Kenangan Manis</p>
         <h2 class="serif-royal" style="font-size:clamp(24px,6vw,30px); color:#FFF9E9; margin:8px 0 25px;">Momen Bahagia</h2>
 
         <div class="gallery-masonry-grid">
-          <div class="gallery-item tall reveal reveal-slide-left">
+          <div class="gallery-item tall reveal reveal-slide-left" onclick="openLightbox('https://images.unsplash.com/photo-1519741497674-611481863552?w=1000&auto=format&fit=crop&q=80')">
             <div class="photo-clip"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80" alt="Foto 1"></div>
             <p class="polaroid-cap">Wiwitan Tresna</p>
           </div>
-          <div class="gallery-item reveal reveal-slide-right">
+          <div class="gallery-item reveal reveal-slide-right" onclick="openLightbox('https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1000&auto=format&fit=crop&q=80')">
             <div class="photo-clip"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=600&auto=format&fit=crop&q=80" alt="Foto 2"></div>
             <p class="polaroid-cap">Katresnan Suci</p>
           </div>
-          <div class="gallery-item reveal reveal-slide-left">
+          <div class="gallery-item reveal reveal-slide-left" onclick="openLightbox('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1000&auto=format&fit=crop&q=80')">
             <div class="photo-clip"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80" alt="Foto 3"></div>
             <p class="polaroid-cap">Prewedding Solo</p>
           </div>
-          <div class="gallery-item tall reveal reveal-slide-right">
+          <div class="gallery-item tall reveal reveal-slide-right" onclick="openLightbox('https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=1000&auto=format&fit=crop&q=80')">
             <div class="photo-clip"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=600&auto=format&fit=crop&q=80" alt="Foto 4"></div>
             <p class="polaroid-cap">Palakrama Ageng</p>
           </div>
-          <div class="gallery-item reveal reveal-slide-left">
+          <div class="gallery-item reveal reveal-slide-left" onclick="openLightbox('https://images.unsplash.com/photo-1754782540893-2122877f2975?w=1000&auto=format&fit=crop&q=80')">
             <div class="photo-clip"><img src="https://images.unsplash.com/photo-1754782540893-2122877f2975?w=600&auto=format&fit=crop&q=80" alt="Foto 5"></div>
             <p class="polaroid-cap">Kebersamaan</p>
           </div>
-          <div class="gallery-item tall reveal reveal-slide-right">
+          <div class="gallery-item tall reveal reveal-slide-right" onclick="openLightbox('https://images.unsplash.com/photo-1756376748107-12c98ec6b969?w=1000&auto=format&fit=crop&q=80')">
             <div class="photo-clip"><img src="https://images.unsplash.com/photo-1756376748107-12c98ec6b969?w=600&auto=format&fit=crop&q=80" alt="Foto 6"></div>
             <p class="polaroid-cap">Sowan Kulawarga</p>
           </div>
-          <div class="gallery-item reveal reveal-slide-left">
+          <div class="gallery-item reveal reveal-slide-left" onclick="openLightbox('https://images.unsplash.com/photo-1509119546138-bccc862c68de?w=1000&auto=format&fit=crop&q=80')">
             <div class="photo-clip"><img src="https://images.unsplash.com/photo-1509119546138-bccc862c68de?w=600&auto=format&fit=crop&q=80" alt="Foto 7"></div>
             <p class="polaroid-cap">Cincin Kasetyan</p>
           </div>
-          <div class="gallery-item tall reveal reveal-slide-right">
+          <div class="gallery-item tall reveal reveal-slide-right" onclick="openLightbox('https://images.unsplash.com/photo-1595407753234-0882f1e77954?w=1000&auto=format&fit=crop&q=80')">
             <div class="photo-clip"><img src="https://images.unsplash.com/photo-1595407753234-0882f1e77954?w=600&auto=format&fit=crop&q=80" alt="Foto 8"></div>
             <p class="polaroid-cap">Pahargyan Ageng</p>
           </div>
-          <div class="gallery-item reveal reveal-slide-left">
+          <div class="gallery-item reveal reveal-slide-left" onclick="openLightbox('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1000&auto=format&fit=crop&q=80')">
             <div class="photo-clip"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=80" alt="Foto 9"></div>
             <p class="polaroid-cap">Raden Mas Danang</p>
           </div>
-          <div class="gallery-item tall reveal reveal-slide-right">
+          <div class="gallery-item tall reveal reveal-slide-right" onclick="openLightbox('https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=1000&auto=format&fit=crop&q=80')">
             <div class="photo-clip"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&auto=format&fit=crop&q=80" alt="Foto 10"></div>
             <p class="polaroid-cap">Raden Ajeng Sekar</p>
           </div>
@@ -564,8 +643,26 @@
       </div>
     </section>
 
-    <!-- 8. RSVP & BUKU TAMU (PHOTO CANVAS 6) -->
-    <section class="section-canvas" style="background-image: var(--foto-closing-bg);">
+    <!-- 8. TURUT MENGUNDANG & PROTOKOL KESEHATAN (PHOTO CANVAS 6) -->
+    <section class="section-canvas" style="background-image: var(--foto-family-bg);">
+      <div class="container text-center">
+        <div class="floating-glass-panel reveal reveal-fade-up">
+          <p style="font-size:11px; letter-spacing:3px; font-weight:800; color:var(--gold-dark); text-transform:uppercase;">Panyuwunan Berkah</p>
+          <h2 class="serif-royal" style="font-size:clamp(20px,5.5vw,24px); color:var(--brown); margin:8px 0 15px;">Turut Mengundang</h2>
+
+          <div class="family-list-box">
+            <p style="font-weight:700; color:var(--gold-dark); margin-bottom:4px;">Kulawarga Ageng Suryo Haryono (Solo)</p>
+            <p style="font-size:12.5px; color:var(--sogan);">Bpk. Suryo Haryono &amp; Ibu Sri Rahayu beserta segenap keluarga</p>
+            <div style="height:1px; background:rgba(197,155,39,.3); margin:12px 0;"></div>
+            <p style="font-weight:700; color:var(--gold-dark); margin-bottom:4px;">Kulawarga Ageng Bambang Sutrisno (Yogyakarta)</p>
+            <p style="font-size:12.5px; color:var(--sogan);">Bpk. Bambang Sutrisno &amp; Ibu Dwi Lestari beserta segenap keluarga</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. RSVP & BUKU TAMU (PHOTO CANVAS 7) -->
+    <section id="rsvp" class="section-canvas" style="background-image: var(--foto-closing-bg);">
       <div class="container text-center">
         <div class="floating-glass-panel reveal reveal-fade-up">
           <p style="font-size:11px; letter-spacing:3px; font-weight:800; color:var(--gold-dark); text-transform:uppercase;">Presensi &amp; Donga Pamuji</p>
@@ -592,8 +689,8 @@
       </div>
     </section>
 
-    <!-- 9. AMPLOP DIGITAL (PHOTO CANVAS 7) -->
-    <section class="section-canvas" style="background-image: var(--foto-mempelai-bg);">
+    <!-- 10. AMPLOP DIGITAL & KADO (PHOTO CANVAS 8) -->
+    <section id="hadiah" class="section-canvas" style="background-image: var(--foto-mempelai-bg);">
       <div class="container text-center">
         <div class="floating-glass-panel reveal reveal-fade-up">
           <p style="font-size:11px; letter-spacing:3px; font-weight:800; color:var(--gold-dark); text-transform:uppercase;">Kado Katresnan</p>
@@ -617,8 +714,8 @@
       </div>
     </section>
 
-    <!-- FOOTER (PHOTO CANVAS 8) -->
-    <footer style="padding:55px 0 35px; text-align:center; background:#1C1108; color:var(--gold-light); border-top:1px solid rgba(197, 155, 39, 0.35);">
+    <!-- FOOTER -->
+    <footer style="padding:55px 0 80px; text-align:center; background:#1C1108; color:var(--gold-light); border-top:1px solid rgba(197, 155, 39, 0.35);">
       <div class="container">
         <p style="font-size:11.5px; font-weight:700; letter-spacing:3px;">MATUR NUWUN</p>
         <h3 class="script-royal" style="font-size:clamp(32px,8vw,42px); color:#FFF9E9; margin:6px 0;">Fery &amp; Anisa</h3>
@@ -636,7 +733,7 @@
       if (wrap) {
         setTimeout(() => {
           wrap.classList.add('gapura-open');
-          setTimeout(() => { wrap.classList.add('done'); }, 1400);
+          setTimeout(() => { wrap.classList.add('done'); }, 1500);
         }, 300);
       }
     });
@@ -655,6 +752,7 @@
     const bgMusic = document.getElementById('bgMusic');
     const musicToggle = document.getElementById('musicToggle');
     const musicIcon = document.getElementById('musicIcon');
+    const bottomNav = document.getElementById('bottomNav');
     let isPlaying = false;
 
     function bukaUndangan() {
@@ -663,6 +761,7 @@
       if (cover) cover.classList.add('hide');
       if (mainContent) mainContent.classList.add('show');
       if (musicToggle) musicToggle.style.display = 'flex';
+      if (bottomNav) bottomNav.classList.add('show');
       if (bgMusic) {
         bgMusic.play().then(() => {
           isPlaying = true;
@@ -683,6 +782,29 @@
         bgMusic.play();
         if (musicIcon) musicIcon.classList.add('spin');
         isPlaying = true;
+      }
+    }
+
+    function openLightbox(src) {
+      const modal = document.getElementById('lightboxModal');
+      const img = document.getElementById('lightboxImg');
+      if (modal && img) {
+        img.src = src;
+        modal.classList.add('active');
+      }
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('lightboxModal');
+      if (modal) modal.classList.remove('active');
+    }
+
+    function showToast(text) {
+      const t = document.getElementById('toastMsg');
+      if (t) {
+        t.innerHTML = '<i class="fas fa-check-circle"></i> ' + text;
+        t.classList.add('show');
+        setTimeout(() => { t.classList.remove('show'); }, 2200);
       }
     }
 
@@ -733,12 +855,17 @@
       if (window.submitRSVPToCloud) { await window.submitRSVPToCloud(THEME_CLOUD_ID, { nama:n, kehadiran:k, ucapan:u }); }
       const feed = document.getElementById('messagesContainer');
       if (feed) { const div=document.createElement('div'); div.className='wish-card'; div.innerHTML='<strong>'+esc(n)+'</strong> <span style="font-size:11px; font-weight:700; color:var(--gold-dark);">('+esc(k)+')</span><p>'+esc(u)+'</p>'; feed.prepend(div); }
-      alert('Matur nuwun! Donga pamuji panjenengan sampun katampi kanthi sae.');
+      showToast('Konfirmasi doa restu terkirim!');
       e.target.reset();
     }
 
     function copyRek(num, btn) {
-      navigator.clipboard.writeText(num).then(() => { const old=btn.innerHTML; btn.innerHTML='<i class="fas fa-check"></i> Disalin!'; setTimeout(() => { btn.innerHTML=old; }, 2000); });
+      navigator.clipboard.writeText(num).then(() => {
+        showToast('Nomor rekening berhasil disalin!');
+        const old=btn.innerHTML;
+        btn.innerHTML='<i class="fas fa-check"></i> Disalin!';
+        setTimeout(() => { btn.innerHTML=old; }, 2000);
+      });
     }
 
     const petalSVG = 'data:image/svg+xml;utf8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2 C18 6 20 12 12 22 C4 12 6 6 12 2 Z" fill="%23C59B27"/></svg>');
